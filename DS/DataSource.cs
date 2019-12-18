@@ -8,5 +8,8 @@ namespace DS
 {
     class DataSource
     {
+        List<GuestRequest> GuestRequests;
+        List<HostingUnit> HostingUnits;
+        List<Order> Orders;
     }
 }

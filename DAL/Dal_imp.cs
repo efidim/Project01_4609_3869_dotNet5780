@@ -12,10 +12,14 @@ namespace DAL
         {
             DataSource.guests.Add(guest.Clone());
         }
+        public void UpdateGuestRequest(GuestRequest guest)
+        {
+            throw new NotImplementedException();
+        }
 
         public void AddHostUnit(HostUnit host)
         {
-            throw new NotImplementedException();
+            DataSource.orders.Add(guest.Clone());
         }
 
         public void AddOrder(Order ord)
@@ -23,7 +27,7 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public List<string> GetGuestsList()
+        public List<GuestRequest> GetGuestsList()
         {
             throw new NotImplementedException();
         }
@@ -33,7 +37,7 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public List<Date> GetOrdersList()
+        public List<Order> GetOrdersList()
         {
             throw new NotImplementedException();
         }
@@ -43,15 +47,12 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public void RenoveHostUnit(HostUnit host)
+        public void RemoveHostUnit(HostUnit host)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateGuestRequest(GuestRequest guest)
-        {
-            throw new NotImplementedException();
-        }
+     
 
         public void UpdateHostUnit(HostUnit host)
         {

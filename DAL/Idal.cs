@@ -8,19 +8,19 @@ namespace DAL
 {
     public interface Idal
     {
-        void AddGuestRequest();
-        void UpdateGuestRequest();
+        void AddGuestRequest(GuestRequest guest);
+        void UpdateGuestRequest(GuestRequest guest);
 
-        void AddHostUnit();
-        void RenoveHostUnit();
-        void UpdateHostUnit();
+        void AddHostUnit(HostUnit host);
+        void RemoveHostUnit(int id);
+        void UpdateHostUnit(HostUnit host);
 
-        void AddOrder();
-        void UpdateOrder();
+        void AddOrder(Order ord);
+        void UpdateOrder(Order ord);
 
         List<Host> GetHostingUnitsList();
-        List<string> GetGuestsList();
-        List<DateTime> GetOrdersList();
-        List<int> ListBankBranches();
+        List<GuestRequest> GetGuestsList();
+        List<Order> GetOrdersList();
+        List<BankAccount> ListBankBranches();
     }
 }

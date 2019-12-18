@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Cloning.cs" />
+    <Compile Include="Dal_imp.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="Idal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
