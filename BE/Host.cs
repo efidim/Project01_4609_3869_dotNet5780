@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Host
+    public class Host
     {
         public int HostKey;
         public string PrivateName;

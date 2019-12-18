@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    class Cloning
+    public static class Cloning
     {
-        public static class Cloning
-        {
-            public static Student Clone(this Student original)
-            { Student target = new Student();
+            public static GuestRequest Clone(this GuestRequest original)
+            {
+            guestRequest target = new guestRequest();
                 target.id = original.id;    
                 ...       return target; }
-        }
     }
+    
 }

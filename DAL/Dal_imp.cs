@@ -14,6 +14,10 @@ namespace DAL
         }
         public void UpdateGuestRequest(GuestRequest guest)
         {
+            if (guest.id)
+            {
+
+            }
             throw new NotImplementedException();
         }
 
