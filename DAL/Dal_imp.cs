@@ -3,69 +3,81 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BE;
+using DS;
 
 namespace DAL
 {
-    class Dal_imp :Idal
+    class Dal_imp : Idal
     {
         public void AddGuestRequest(GuestRequest guest)
         {
-            DataSource.guests.Add(guest.Clone());
-        }
-        public void UpdateGuestRequest(GuestRequest guest)
-        {
-            if (guest.id)
-            {
-
-            }
-            throw new NotImplementedException();
+            DS.DataSource.GuestRequests.Add(guest.Clone());
         }
 
-        public void AddHostUnit(HostUnit host)
+        public void AddHostUnit(HostingUnit host)
         {
-            DataSource.orders.Add(guest.Clone());
+            DS.DataSource.HostingUnits.Add(host.Clone());
         }
 
         public void AddOrder(Order ord)
         {
-            throw new NotImplementedException();
+            DS.DataSource.Orders.Add(ord.Clone());
         }
 
         public List<GuestRequest> GetGuestsList()
         {
-            throw new NotImplementedException();
+            return GuestRequests;
         }
 
         public List<Host> GetHostingUnitsList()
         {
-            throw new NotImplementedException();
+            return HostingUnits;
         }
 
         public List<Order> GetOrdersList()
         {
-            throw new NotImplementedException();
+            return Orders;
         }
 
-        public List<int> ListBankBranches()
+        public List<BankAccount> ListBankBranches()
         {
             throw new NotImplementedException();
         }
 
-        public void RemoveHostUnit(HostUnit host)
+        public void RemoveHostUnit(HostingUnit host)
         {
-            throw new NotImplementedException();
+            int id = host.HostingUnitKey;
+            int count = DS.DataSource.HostingUnits.RemoveAll(x=>x.HostingUnitKey == id);
+            if (count == 0)
+                throw new Exception("The host unit does not exixt");
+
+        public void UpdateGuestRequest(GuestRequest guest)
+        {
+            int index=GuestRequests.FindIndex(g=>g.GuestRequestKey==guest.GuestRequestKey);
+                if (index == -1)
+                    throw new Exception("The guest request does not exixt");
+
+                GuestRequests[index] = guest;
         }
 
-     
-
-        public void UpdateHostUnit(HostUnit host)
+        public void UpdateHostUnit(HostingUnit host)
         {
-            throw new NotImplementedException();
+              int index = HostingUnits.FindIndex(h=> h.HostingUnitKey == host.HostingUnitKey);
+                if (index == -1)
+                    throw new Exception("The host unit does not exixt");
+
+                HostingUnits[index] = host;
         }
 
         public void UpdateOrder(Order ord)
         {
-            throw new NotImplementedException();
+                int index = Orders.FindIndex(o => o.OrderKey == ord.OrderKey);
+                if (index == -1)
+                    throw new Exception("The guest request does not exixt");
+
+                HostingUnits[index] = host; 
         }
     }
+
 }

@@ -16,6 +16,10 @@ namespace DAL
                 instance = new FactoryDal();
             return instance;
         }
+       /* public bool CheckStudent(int id)
+        {
+            return DS.DataSource.GuestRequests.Any(stud->stud.Id == id);
+        }*/
     }
     
 }

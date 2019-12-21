@@ -38,5 +38,11 @@
   <ItemGroup>
     <Compile Include="DataSource.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BE\BE.csproj">
+      <Project>{f0440165-36cb-4648-9a75-e475c1f019ed}</Project>
+      <Name>BE</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
