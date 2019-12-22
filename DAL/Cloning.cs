@@ -9,7 +9,7 @@ namespace DAL
 {
     public static class Cloning
     {
-            public static GuestRequest Clone(this GuestRequest original)
+        public static GuestRequest Clone(this GuestRequest original)
             {
             GuestRequest target = new GuestRequest();
             target.GuestRequestKey = original.GuestRequestKey;
@@ -50,6 +50,18 @@ namespace DAL
             target.Status = original.Status;
             target.CreateDate = original.CreateDate;
             target.OrderDate = original.OrderDate;
+
+            return target;
+        }
+        public static BankAccount Clone(this BankAccount original)
+        {
+            BankAccount target = new BankAccount();
+            target.BankNumber = original.BankNumber;
+            target.BankName = original.BankName;
+            target.BranchNumber = original.BranchNumber;
+            target.BranchAddress = original.BranchAddress;
+            target.BranchCity = original.BranchCity;
+            target.BankAccountNumber = original.BankAccountNumber;
 
             return target;
         }

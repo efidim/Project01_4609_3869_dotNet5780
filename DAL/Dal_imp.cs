@@ -8,36 +8,76 @@ using DS;
 
 namespace DAL
 {
-    class Dal_imp : Idal
+    class Dal_imp:Idal
     {
+        //************************************ Guest Request *********************************************
         public void AddGuestRequest(GuestRequest guest)
         {
-            DS.DataSource.GuestRequests.Add(guest.Clone());
+            if (DataSource.GuestRequests.Any(x => x.GuestRequestKey == guest.GuestRequestKey))
+                throw new Exception("The guest request exixts");
+            DataSource.GuestRequests.Add(guest.Clone());
+        }
+        public void UpdateGuestRequest(GuestRequest guest)
+        {
+            int index =  DataSource.GuestRequests.FindIndex(g => g.GuestRequestKey == guest.GuestRequestKey);
+            if (index == -1)
+                throw new Exception("The guest request does not exixts");
+
+            DataSource.GuestRequests[index] = guest.Clone();
         }
 
+        //************************************ Host unit *********************************************
         public void AddHostUnit(HostingUnit host)
         {
-            DS.DataSource.HostingUnits.Add(host.Clone());
+            if (DataSource.HostingUnits.Any(x => x.HostingUnitKey == host.HostingUnitKey))
+                throw new Exception("The host unit exixts");
+
+            DataSource.HostingUnits.Add(host.Clone());
         }
 
+        public void RemoveHostUnit(HostingUnit host)
+        {
+            int id = host.HostingUnitKey;
+            int count = DataSource.HostingUnits.RemoveAll(x => x.HostingUnitKey == id);
+            if (count == 0)
+                throw new Exception("The host unit does not exixt");
+        }
+
+        public void UpdateHostUnit(HostingUnit host)
+        {
+            int index = DataSource.HostingUnits.FindIndex(h => h.HostingUnitKey == host.HostingUnitKey);
+            if (index == -1)
+                throw new Exception("The host unit does not exixt");
+
+            DataSource.HostingUnits[index] = host.Clone();
+        }
+        //************************************ Order *********************************************
         public void AddOrder(Order ord)
         {
-            DS.DataSource.Orders.Add(ord.Clone());
+            DataSource.Orders.Add(ord.Clone());
         }
+        public void UpdateOrder(Order ord)
+        {
+            int index = DataSource.Orders.FindIndex(o => o.OrderKey == ord.OrderKey);
+            if (index == -1)
+                throw new Exception("The order does not exixt");
 
+            DataSource.Orders[index] = ord.Clone();
+        }
+        //************************************ Get lists *********************************************
         public List<GuestRequest> GetGuestsList()
         {
-            return GuestRequests;
+            return  DataSource.GuestRequests;
         }
 
-        public List<Host> GetHostingUnitsList()
+        public List<HostingUnit> GetHostingUnitsList()
         {
-            return HostingUnits;
+            return  DataSource.HostingUnits;
         }
 
         public List<Order> GetOrdersList()
         {
-            return Orders;
+            return  DataSource.Orders;
         }
 
         public List<BankAccount> ListBankBranches()
@@ -45,39 +85,20 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public void RemoveHostUnit(HostingUnit host)
-        {
-            int id = host.HostingUnitKey;
-            int count = DS.DataSource.HostingUnits.RemoveAll(x=>x.HostingUnitKey == id);
-            if (count == 0)
-                throw new Exception("The host unit does not exixt");
+   
+         public IEnumerable<GuestRequest> GetAllGuests(Func<GuestRequest, bool> predicate = null)
+            {
+            throw new NotImplementedException();
+            }
 
-        public void UpdateGuestRequest(GuestRequest guest)
-        {
-            int index=GuestRequests.FindIndex(g=>g.GuestRequestKey==guest.GuestRequestKey);
-                if (index == -1)
-                    throw new Exception("The guest request does not exixt");
+            public IEnumerable<Order> GetAllHOrders(Func<Order, bool> predicate = null)
+            {
+            throw new NotImplementedException();
+            }
 
-                GuestRequests[index] = guest;
-        }
-
-        public void UpdateHostUnit(HostingUnit host)
-        {
-              int index = HostingUnits.FindIndex(h=> h.HostingUnitKey == host.HostingUnitKey);
-                if (index == -1)
-                    throw new Exception("The host unit does not exixt");
-
-                HostingUnits[index] = host;
-        }
-
-        public void UpdateOrder(Order ord)
-        {
-                int index = Orders.FindIndex(o => o.OrderKey == ord.OrderKey);
-                if (index == -1)
-                    throw new Exception("The guest request does not exixt");
-
-                HostingUnits[index] = host; 
-        }
+           public IEnumerable<HostingUnit> GetAllHostingUnits(Func<HostingUnit, bool> predicate = null)
+           {
+            throw new NotImplementedException();
+           }
     }
-
 }

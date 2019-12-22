@@ -22,7 +22,7 @@ namespace DAL
         void UpdateOrder(Order ord);
         IEnumerable<Order> GetAllHOrders(Func<Order, bool> predicate = null);
 
-        List<Host> GetHostingUnitsList();
+        List<HostingUnit> GetHostingUnitsList();
         List<GuestRequest> GetGuestsList();
         List<Order> GetOrdersList();
         List<BankAccount> ListBankBranches();
