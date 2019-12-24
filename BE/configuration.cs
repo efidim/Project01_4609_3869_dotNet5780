@@ -8,5 +8,6 @@ namespace BE
 {
     class Configuration
     {
+        static int COMMISSION = 10; 
     }
 }

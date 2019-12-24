@@ -103,7 +103,7 @@ namespace DAL
             throw new NotImplementedException();
             }
 
-            public IEnumerable<Order> GetAllHOrders(Func<Order, bool> predicate = null)
+            public IEnumerable<Order> GetAllOrders(Func<Order, bool> predicate = null)
             {
             throw new NotImplementedException();
             }

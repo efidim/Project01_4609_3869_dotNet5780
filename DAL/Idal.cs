@@ -20,7 +20,7 @@ namespace DAL
 
         void AddOrder(Order ord);
         void UpdateOrder(Order ord);
-        IEnumerable<Order> GetAllHOrders(Func<Order, bool> predicate = null);
+        IEnumerable<Order> GetAllOrders(Func<Order, bool> predicate = null);
 
         List<HostingUnit> GetHostingUnitsList();
         List<GuestRequest> GetGuestsList();
