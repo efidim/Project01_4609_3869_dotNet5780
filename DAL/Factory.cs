@@ -8,18 +8,9 @@ namespace DAL
 {
     public class FactoryDal
     {
-        protected static FactoryDal instance;
-        protected FactoryDal() { }
-        public static FactoryDal GetInstance()//singleton
+        public static IDAL getdal()
         {
-            if (instance == null)
-                instance = new FactoryDal();
-            return instance;
+            return new Dal_imp();
         }
-       /* public bool CheckStudent(int id)
-        {
-            return DS.DataSource.GuestRequests.Any(stud->stud.Id == id);
-        }*/
     }
-    
 }

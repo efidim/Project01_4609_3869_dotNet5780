@@ -8,29 +8,41 @@ using DS;
 
 namespace DAL
 {
-    class Dal_imp:Idal
+    class Dal_imp:IDAL
     {
+        // *********************************** Singleton ****************************************
+        protected Dal_imp() { }
+
+        protected static Dal_imp instance = null;
+
+        public static Dal_imp GetInstance()
+        {
+            if (instance == null)
+                instance = new Dal_imp();
+            return instance;
+        }
+
         //************************************ Guest Request *********************************************
         public void AddGuestRequest(GuestRequest guest)
         {
             if (DataSource.GuestRequests.Any(x => x.GuestRequestKey == guest.GuestRequestKey))
-                throw new Exception("The guest request exixts");
+                throw new Exception("The guest request exists");
             DataSource.GuestRequests.Add(guest.Clone());
         }
         public void UpdateGuestRequest(GuestRequest guest)
         {
             int index =  DataSource.GuestRequests.FindIndex(g => g.GuestRequestKey == guest.GuestRequestKey);
             if (index == -1)
-                throw new Exception("The guest request does not exixts");
+                throw new Exception("The guest request does not exist");
 
             DataSource.GuestRequests[index] = guest.Clone();
         }
 
-        //************************************ Host unit *********************************************
+        //************************************ Hosting unit *********************************************
         public void AddHostUnit(HostingUnit host)
         {
             if (DataSource.HostingUnits.Any(x => x.HostingUnitKey == host.HostingUnitKey))
-                throw new Exception("The host unit exixts");
+                throw new Exception("The host unit exists");
 
             DataSource.HostingUnits.Add(host.Clone());
         }
@@ -40,14 +52,14 @@ namespace DAL
             int id = host.HostingUnitKey;
             int count = DataSource.HostingUnits.RemoveAll(x => x.HostingUnitKey == id);
             if (count == 0)
-                throw new Exception("The host unit does not exixt");
+                throw new Exception("The host unit does not exist");
         }
 
         public void UpdateHostUnit(HostingUnit host)
         {
             int index = DataSource.HostingUnits.FindIndex(h => h.HostingUnitKey == host.HostingUnitKey);
             if (index == -1)
-                throw new Exception("The host unit does not exixt");
+                throw new Exception("The host unit does not exist");
 
             DataSource.HostingUnits[index] = host.Clone();
         }
@@ -60,7 +72,7 @@ namespace DAL
         {
             int index = DataSource.Orders.FindIndex(o => o.OrderKey == ord.OrderKey);
             if (index == -1)
-                throw new Exception("The order does not exixt");
+                throw new Exception("The order does not exist");
 
             DataSource.Orders[index] = ord.Clone();
         }

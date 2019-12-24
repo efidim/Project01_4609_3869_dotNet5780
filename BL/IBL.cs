@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
+using DAL;
 
-namespace DAL
+namespace BL
 {
-    public interface IDAL
+    public interface IBL
     {
         void AddGuestRequest(GuestRequest guest);
         void UpdateGuestRequest(GuestRequest guest);
@@ -26,6 +27,5 @@ namespace DAL
         List<GuestRequest> GetGuestsList();
         List<Order> GetOrdersList();
         List<BankAccount> ListBankBranches();
-
     }
 }
