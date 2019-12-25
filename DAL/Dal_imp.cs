@@ -76,6 +76,9 @@ namespace DAL
 
             DataSource.Orders[index] = ord.Clone();
         }
+
+        //************************************ Host **************************************************
+        
         //************************************ Get lists *********************************************
         public List<GuestRequest> GetGuestsList()
         {

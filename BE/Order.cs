@@ -14,6 +14,7 @@ namespace BE
         public int Status;
         public DateTime CreateDate;
         public DateTime OrderDate;
+        public int Commission;
 
         public override string ToString()
         {

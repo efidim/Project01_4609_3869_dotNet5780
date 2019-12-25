@@ -38,6 +38,14 @@ namespace DAL
             target.Owner = original.Owner;
             target.HostingUnitName = original.HostingUnitName;
             target.Diary = original.Diary;
+            target.Area = original.Area;
+            target.subArea = original.subArea;
+            target.Type = original.Type;
+            target.Adults = original.Adults;
+            target.Children = original.Children;
+            target.Pool = original.Pool;
+            target.Jacuzzi = original.Jacuzzi;
+            target.ChildrenAttractions = original.ChildrenAttractions;
 
             return target;
         }
@@ -50,6 +58,7 @@ namespace DAL
             target.Status = original.Status;
             target.CreateDate = original.CreateDate;
             target.OrderDate = original.OrderDate;
+            target.Commission = original.Commission;
 
             return target;
         }

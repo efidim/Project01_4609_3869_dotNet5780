@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Configuration
+    public class Configuration
     {
-        static int COMMISSION = 10; 
+        public static int COMMISSION = 10; 
     }
 }
