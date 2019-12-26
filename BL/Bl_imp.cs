@@ -15,6 +15,8 @@ namespace BL
         //************************************ Guest Request *********************************************
         public void AddGuestRequest(GuestRequest guest)
         {
+            if (GetAllGuests().Any(x => x.GuestRequestKey == guest.GuestRequestKey))
+                throw new Exception("The guest request already exists");
             if (guest.ReleaseDate <= guest.RegistrationDate)
                 throw new Exception("The Registration Date must be at least one day before the Release Date");
             dal.AddGuestRequest(guest.Clone());            
@@ -214,6 +216,11 @@ namespace BL
             throw new NotImplementedException();
         }
 
+        //public IEnumerable<Host> GetAllHost()
+        //{
+        //    return dal.GetAllHost();
+        //}
+
 
         //************************************ Other Functions **************************************
 
@@ -325,7 +332,60 @@ namespace BL
             return count;
         }
 
+        /// <summary>
+        /// Returns Groups of Guest Request by wanted Area
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<IGrouping<string, GuestRequest>> RequestsByArea()
+        {
+            IEnumerable<GuestRequest> temp1 = GetAllGuests();
+            IEnumerable<IGrouping<string, GuestRequest>> temp2 = from item in temp1
+                                                                 group item by item.Area;
+            return temp2;
+        }
 
+        /// <summary>
+        /// Returns Groups of Guest Requests by number of Guests (Adults and Children)
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<IGrouping<int, GuestRequest>> RequestsByGuests()
+        {
+            IEnumerable<GuestRequest> temp1 = GetAllGuests();
+            IEnumerable<IGrouping<int, GuestRequest>> temp2 = from item in temp1
+                                                                 group item by item.Adults + item.Children;
+            return temp2;
+        }
+
+        /// <summary>
+        /// Returns groups of Hosts By number of Units
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<IGrouping<int, Host>> HostsByUnits()
+        {
+            IEnumerable<HostingUnit> temp1 = GetAllHostingUnits();
+            var temp2 = from item in temp1
+                        group item by item.Owner into g
+                        select new 
+                        {
+                           owner = g.Key,
+                           Count = g.Count()
+                        };
+            IEnumerable<IGrouping<int, Host>> temp3 = from item in temp2
+                                                      group item.owner by item.Count;
+            return temp3;                                                
+        }
+
+        /// <summary>
+        /// Returns Groups of Hosting Unitst by Area
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<IGrouping<string, HostingUnit>> UnitsByArea()
+        {
+            IEnumerable<HostingUnit> temp1 = GetAllHostingUnits();
+            IEnumerable<IGrouping<string, HostingUnit>> temp2 = from item in temp1
+                                                                 group item by item.Area;
+            return temp2;
+        }
 
     }
 }

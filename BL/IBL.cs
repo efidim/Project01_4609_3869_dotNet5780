@@ -46,8 +46,8 @@ namespace BL
         List<GuestRequest> GetGuestsList();
         List<Order> GetOrdersList();
         List<BankAccount> ListBankBranches();
-
-
+        
+               
         //************************************ Other Functions **************************************
         bool IsItAvailaible(HostingUnit unit, DateTime registration, int duration);
         IEnumerable<HostingUnit> AvailableUnits(DateTime registration, int duration);
@@ -55,7 +55,10 @@ namespace BL
         IEnumerable<Order> OlderOrders(int days);
         IEnumerable<GuestRequest> RequestsByCondition(Func<GuestRequest, bool> method);
         int OrdersByRequest(GuestRequest request);
-
         int OrdersByUnit(HostingUnit unit);
+        IEnumerable<IGrouping<string, GuestRequest>> RequestsByArea();
+        IEnumerable<IGrouping<int, GuestRequest>> RequestsByGuests();
+        IEnumerable<IGrouping<int, Host>> HostsByUnits();
+        IEnumerable<IGrouping<string, HostingUnit>> UnitsByArea();
     }
 }

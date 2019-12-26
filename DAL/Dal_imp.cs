@@ -25,8 +25,6 @@ namespace DAL
         //************************************ Guest Request *********************************************
         public void AddGuestRequest(GuestRequest guest)
         {
-            if (DataSource.GuestRequests.Any(x => x.GuestRequestKey == guest.GuestRequestKey))
-                throw new Exception("The guest request exists");
             DataSource.GuestRequests.Add(guest.Clone());
         }
         public void UpdateGuestRequest(GuestRequest guest)
