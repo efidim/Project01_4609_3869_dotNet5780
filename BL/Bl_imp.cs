@@ -61,6 +61,7 @@ namespace BL
                 if (HostingUnitDiary[current.Month, current.Day])
                     throw new Exception("The requested dates are not available");
             }
+            return true;
         }
         public void AddOrder(Order ord)
         {
@@ -387,5 +388,19 @@ namespace BL
             return temp2;
         }
 
+        public bool[,] GetDiary(int HostingUnitKey)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DateTime GetRegistration(int GuestRequestKey)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DateTime GetRelease(int GuestRequestKey)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

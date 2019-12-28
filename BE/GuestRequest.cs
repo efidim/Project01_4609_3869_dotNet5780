@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class GuestRequest
+    public class GuestRequest:IEnumerable
     {
         public int GuestRequestKey;
         public string PrivateName;
@@ -74,5 +74,10 @@ namespace BE
 
             return str;
         }               
+    }
+
+    public interface IEnumerable
+    { 
+
     }
 }

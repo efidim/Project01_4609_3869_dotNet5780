@@ -74,6 +74,20 @@ namespace DAL
 
             return target;
         }
+        public static Host Clone(this Host original)
+        {
+            Host target = new Host();
+            target.HostKey = original.HostKey;
+            target.PrivateName = original.PrivateName;
+            target.FamilyName = original.FamilyName;
+            target.PhoneNumber = original.PhoneNumber;
+            target.MailAddress = original.MailAddress;
+            target.BankBranchDetails = original.BankBranchDetails;
+            target.BankAccountNumber = original.BankAccountNumber;
+            target.CollectionClearance = original.CollectionClearance;
+
+            return target;
+        }
     }
     
 }
