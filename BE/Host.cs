@@ -13,7 +13,7 @@ namespace BE
         public string FamilyName;
         public string PhoneNumber;
         public string MailAddress;
-        public BankAccount BankBranchDetails;
+        public BankBranch BankBranchDetails;
         public int BankAccountNumber;
         public bool CollectionClearance;
 
