@@ -39,7 +39,7 @@ namespace DAL
         Host GetHost(int hostKey);
         void UpdateHost(Host host);
         #endregion
-        List<BankAccount> ListBankBranches();
+        List<BankBranch> ListBankBranches();
 
     }
 }
