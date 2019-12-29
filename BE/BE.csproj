@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BankAccount.cs" />
+    <Compile Include="BankBranch.cs" />
     <Compile Include="enum%27s.cs" />
     <Compile Include="HostingUnit.cs" />
     <Compile Include="Host.cs" />

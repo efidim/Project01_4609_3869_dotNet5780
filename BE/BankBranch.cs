@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class BankAccount
+    public class BankBranch
     {
         public int BankNumber;
         public string BankName;
@@ -20,8 +20,7 @@ namespace BE
                 "\n Bank Name: " + BankName +
                 "\n Branch Number: " + BranchNumber +
                 "\n Branch Address: " + BranchAddress +
-                "\n Branch City: " + BranchCity +
-                "\n Bank Account Number: " + BankAccountNumber;
+                "\n Branch City: " + BranchCity;
             return str;
         }
     }
