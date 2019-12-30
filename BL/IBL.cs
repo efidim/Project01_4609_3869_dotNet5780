@@ -21,10 +21,10 @@ namespace BL
         #endregion
 
         #region Hosting unit
-        HostingUnit GetHostingUnit(int hostingUnitkey);
         void AddHostUnit(HostingUnit host);
-        void RemoveHostUnit(HostingUnit host);
         void UpdateHostUnit(HostingUnit host);
+        void RemoveHostUnit(HostingUnit host);
+        HostingUnit GetHostingUnit(int hostingUnitkey);
         int OrdersByUnit(HostingUnit unit);
         bool IsItAvailaible(HostingUnit unit, DateTime entry, int duration);
         List<HostingUnit> GetAllHostingUnits();

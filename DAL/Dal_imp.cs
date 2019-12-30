@@ -33,7 +33,10 @@ namespace DAL
         {
             int index = DataSource.GuestRequests.FindIndex(g => g.GuestRequestKey == guest.GuestRequestKey);
             if (index == -1)
-                       DataSource.GuestRequests.Add(guest);
+            {
+                DataSource.GuestRequests.Add(guest);
+                return;
+            }
             DataSource.GuestRequests[index] = guest;
         }
         public GuestRequest GetRequest(int keyRequest)

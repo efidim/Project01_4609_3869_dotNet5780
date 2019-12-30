@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace BL
 {
-    public class FactoryDal
+    public class FactoryBl
     {
-        public static IDAL getdal()
+        public static IBL getBl()
         {
-            return Dal_imp.GetInstance();
+            return new Bl_imp();
         }
     }
 }

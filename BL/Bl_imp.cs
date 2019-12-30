@@ -79,13 +79,14 @@ namespace BL
 
 
         #region HostingUnit
-        public HostingUnit GetHostingUnit(int hostingUnitkey)
-        {
-            return dal.GetHostingUnit(hostingUnitkey);
-        }
+       
         public void AddHostUnit(HostingUnit unit)
         {
             dal.AddHostUnit(unit.Clone());
+        }       
+        public void UpdateHostUnit(HostingUnit unit)
+        {
+            dal.UpdateHostUnit(unit.Clone());
         }
         public void RemoveHostUnit(HostingUnit unit)
         {
@@ -93,11 +94,10 @@ namespace BL
             if (temp.Any(x => x.HostingUnitKey == unit.HostingUnitKey && x.Status >= 0 && x.Status < 2))
                 throw new Exception("Cannot Remove Hosting Unit while Order linked to this Unit is opened");
             dal.RemoveHostUnit(unit);
-        }
-       
-        public void UpdateHostUnit(HostingUnit unit)
+        } 
+        public HostingUnit GetHostingUnit(int hostingUnitkey)
         {
-            dal.UpdateHostUnit(unit.Clone());
+            return dal.GetHostingUnit(hostingUnitkey);
         }
 
         /// <summary>
@@ -273,7 +273,7 @@ namespace BL
             {
                 int days = DifferenceDays(GetRequest(ord.GuestRequestKey).ReleaseDate,
                 GetRequest(ord.GuestRequestKey).EntryDate) + 1;
-                ord.Commission = Configuration.COMMISSION * days;
+                ord.CommissionPerDay = Configuration.COMMISSION * days;
             }
             if (originStatus == 0 && ord.Status == 1)
             {
