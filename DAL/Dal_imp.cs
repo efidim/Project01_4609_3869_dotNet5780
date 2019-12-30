@@ -83,13 +83,9 @@ namespace DAL
         public HostingUnit GetHostingUnit(int hostingUnitkey)
         {
             int index = DataSource.HostingUnits.FindIndex(g => g.HostingUnitKey == hostingUnitkey);
-            var ex = from item in DataSource.HostingUnits
-                     where item.HostingUnitKey == hostingUnitkey
-                     select item;
-            if (ex==null)
-            {
+            if (index == -1)
                 throw new Exception("The host unit does not exist");
-            }
+            
             return DataSource.HostingUnits[index].Clone();
         }
 

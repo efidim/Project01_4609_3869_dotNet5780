@@ -127,10 +127,11 @@ namespace BL
         public bool IsItAvailaible(HostingUnit unit, DateTime entry, int duration)
         {
             DateTime current = entry;
-            for (int i = 0; i < duration; i++, current.AddDays(1))
+            for (int i = 0; i < duration; i++)
             {
-                if (unit.Diary[current.Month, current.Day])
+                if (unit.Diary[current.Month-1, current.Day-1])
                     return false;
+                current = current.AddDays(1);
             }
             return true;
         }
@@ -180,8 +181,8 @@ namespace BL
             DateTime release = GetRelease(ord.GuestRequestKey);
             int duration = DifferenceDays(entry, release);
             if (IsItAvailaible(GetHostingUnit(ord.HostingUnitKey), entry, duration))
-                throw new Exception("The requested dates are not available");            
-            return true;
+                return true;
+            throw new Exception("The requested dates are not available");               
         }
 
         public void AddOrder(Order ord)
@@ -220,10 +221,12 @@ namespace BL
             HostingUnit temp = GetHostingUnit(ord.HostingUnitKey);
             DateTime current = GetEntry(ord.GuestRequestKey);
             DateTime end = GetRelease(ord.GuestRequestKey);
+            end = end.AddDays(1);
 
-            for (; current < end.AddDays(1); current.AddDays(1))
+            for (; current < end; )
             {
-                temp.Diary[current.Month, current.Day] = true;
+               temp.Diary[current.Month-1,current.Day-1] = true;
+               current=current.AddDays(1);   
             }
 
             UpdateHostUnit(temp);
