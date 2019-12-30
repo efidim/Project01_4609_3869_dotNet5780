@@ -58,19 +58,18 @@ namespace DAL
             target.Status = original.Status;
             target.CreateDate = original.CreateDate;
             target.OrderDate = original.OrderDate;
-            target.Commission = original.Commission;
+            target.CommissionPerDay = original.CommissionPerDay;
 
             return target;
         }
-        public static BankAccount Clone(this BankAccount original)
+        public static BankBranch Clone(this BankBranch original)
         {
-            BankAccount target = new BankAccount();
+            BankBranch target = new BankBranch();
             target.BankNumber = original.BankNumber;
             target.BankName = original.BankName;
             target.BranchNumber = original.BranchNumber;
             target.BranchAddress = original.BranchAddress;
-            target.BranchCity = original.BranchCity;
-            target.BankAccountNumber = original.BankAccountNumber;
+            target.BranchCity = original.BranchCity;          
 
             return target;
         }
