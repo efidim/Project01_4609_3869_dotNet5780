@@ -383,7 +383,7 @@ namespace BL
             return (c - a).Days;
         }
 
-        public List<BankAccount> ListBankBranches()
+        public List<BankBranch> ListBankBranches()
         {
             return dal.ListBankBranches();
         }

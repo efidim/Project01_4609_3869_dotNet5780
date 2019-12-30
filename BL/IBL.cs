@@ -29,7 +29,7 @@ namespace BL
         bool IsItAvailaible(HostingUnit unit, DateTime entry, int duration);
         List<HostingUnit> GetAllHostingUnits();
         IEnumerable<IGrouping<string, HostingUnit>> UnitsByArea();
-        IEnumerable<HostingUnit> AvailableUnits(DateTime entry, int duration);
+        List<HostingUnit> AvailableUnits(DateTime entry, int duration);
         #endregion
 
         #region Order
@@ -45,7 +45,7 @@ namespace BL
         void UpdateOrder(Order ord);
         int OrdersByRequest(GuestRequest request);
         List<Order> GetAllOrders();
-        IEnumerable<Order> OlderOrders(int days);        
+        List<Order> OlderOrders(int days);        
         #endregion
 
         #region Host
@@ -58,7 +58,7 @@ namespace BL
         
         #region Others                         
         int DifferenceDays(DateTime a, DateTime? b = null);              
-        List<BankAccount> ListBankBranches();
+        List<BankBranch> ListBankBranches();
         #endregion
     }
 }
