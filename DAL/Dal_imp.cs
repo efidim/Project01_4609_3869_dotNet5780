@@ -39,16 +39,31 @@ namespace DAL
             }
             DataSource.GuestRequests[index] = guest;
         }
+        /// <summary>
+        ///  Returns a hosting request by the ID
+        /// </summary>
+        /// <param name="keyRequest">ID</param>
+        /// <returns>GuestRequest</returns>
         public GuestRequest GetRequest(int keyRequest)
         {
-            int index = DataSource.GuestRequests.FindIndex(g => g.GuestRequestKey == keyRequest);
-            if (index == -1)
+            List<GuestRequest> temp = DataSource.GuestRequests;
+            IEnumerable<GuestRequest> temp1 = from item in temp
+                                       where item.GuestRequestKey == keyRequest
+                                       select item;
+            if (temp1.ToList().Count==0)
+            {
                 throw new Exception("The guest request does not exist");
-            return DataSource.GuestRequests[index].Clone();
+            }
+            GuestRequest temp2 = temp[0];
+            return temp2.Clone();
         }
+        /// <summary>
+        /// Returns GuestRequests list
+        /// </summary>
+        /// <returns>List of GuestRequest</returns>
         public List<GuestRequest> GetAllGuests()
         {
-            if (DataSource.GuestRequests==null)
+            if (DataSource.GuestRequests.Count==0)
                 throw new Exception("The GuestRequests list is empty");
             return DataSource.GuestRequests.Select(gu => (GuestRequest)gu.Clone()).ToList();
         }
@@ -76,13 +91,23 @@ namespace DAL
                 DataSource.HostingUnits.Add(host);
             DataSource.HostingUnits[index] = host;
         }
+        /// <summary>
+        ///  Returns a hosting unit by the ID
+        /// </summary>
+        /// <param name="hostingUnitkey">ID's unit</param>
+        /// <returns>HostingUnit</returns>
         public HostingUnit GetHostingUnit(int hostingUnitkey)
         {
-            int index = DataSource.HostingUnits.FindIndex(g => g.HostingUnitKey == hostingUnitkey);
-            if (index == -1)
+            List<HostingUnit> temp = DataSource.HostingUnits;
+            IEnumerable<HostingUnit> temp1 = from item in temp
+                                             where item.HostingUnitKey == hostingUnitkey
+                                              select item;
+            if (temp1.ToList().Count == 0)
+            {
                 throw new Exception("The hosting unit does not exist");
-            
-            return DataSource.HostingUnits[index].Clone();
+            }
+            HostingUnit temp2 = temp[0];
+            return temp2.Clone();
         }
 
 
@@ -109,10 +134,16 @@ namespace DAL
         }
         public Order GetOrder(int orderKey)
         {
-            int index = DataSource.Orders.FindIndex(o => o.OrderKey == orderKey);
-            if (index == -1)
+            List<Order> temp = DataSource.Orders;
+            IEnumerable<Order> temp1 = from item in temp
+                                             where item.OrderKey == orderKey
+                                             select item;
+            if (temp1.ToList().Count == 0)
+            {
                 throw new Exception("The order does not exist");
-            return DataSource.Orders[index].Clone();
+            }
+            Order temp2 = temp[0];
+            return temp2.Clone();
         }
         public DateTime GetEntryDate(int GuestRequestKey)
         {
@@ -150,7 +181,10 @@ namespace DAL
 
         #endregion
         //************************************ Get lists *********************************************
-
+        /// <summary>
+        /// returns list of the five banks
+        /// </summary>
+        /// <returns>list of banks</returns>
         public List<BankBranch> ListBankBranches()
         {
             List<BankBranch> TheFiveBanks = new List<BankBranch>()

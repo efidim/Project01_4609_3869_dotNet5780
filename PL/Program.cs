@@ -1,4 +1,6 @@
-﻿using System;
+﻿/*Yossef Levran - 332484609
+Efraim Dimentman - 204083869*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,43 +19,50 @@ namespace PL
 
             #region GuestRequest testing
 
-            //GuestRequest req = new GuestRequest();
-            //req.PrivateName = "efi";
-            //req.FamilyName = "dim";
-            //req.MailAddress = "efi@org.zehut.il";
-            //req.Status = true;
-            //req.RegistrationDate = DateTime.Now;
-            //req.EntryDate = new DateTime(2019, 12, 02);
-            //req.ReleaseDate = new DateTime(2019, 12, 03);
-            //req.Area = "Tel Aviv";
-            //req.subArea = "Habima";
-            //req.Adults = 3;
-            //req.Children = 4;
-            //req.Jacuzzi = 1;
-            //req.Pool = 1;
-            //req.Type = "zimmer";
-            //req.ChildrenAttractions = 0;
+            GuestRequest req = new GuestRequest();
+            req.PrivateName = "efi";
+            req.FamilyName = "dim";
+            req.MailAddress = "efi@org.zehut.il";
+            req.Status = true;
+            req.RegistrationDate = DateTime.Now;
+            req.EntryDate = new DateTime(2019, 12, 02);
+            req.ReleaseDate = new DateTime(2019, 12, 03);
+            req.Area = "Tel Aviv";
+            req.subArea = "Habima";
+            req.Adults = 3;
+            req.Children = 4;
+            req.Jacuzzi = 1;
+            req.Pool = 1;
+            req.Type = "zimmer";
+            req.ChildrenAttractions = 0;
 
             //// exception testing
             ////req.EntryDate = new DateTime(2019, 12, 03);     
             ////req.ReleaseDate = new DateTime(2019, 12, 02);
 
-            //try
-            //{
-            //    bl.AddGuestRequest(req);
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine("ERROR: \n" + ex.Message);
-            //}
+            try
+            {
+                bl.AddGuestRequest(req);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: \n" + ex.Message);
+            }
 
-            ////req.GuestRequestKey = 10000009;
+            //req.GuestRequestKey = 10000009;
             //req.GuestRequestKey = 10000007;
             //req.Adults = 4;
             //bl.UpdateGuestRequest(req);
 
-            //GuestRequest temp = bl.GetRequest(10000009);
-            ////Console.WriteLine(temp.ToString());
+            try
+            {
+                GuestRequest temp = bl.GetRequest(10000009);
+                Console.WriteLine(temp.ToString());
+            }
+            catch (Exception ex)
+            {
+               Console.WriteLine("ERROR: \n" + ex.Message);
+            }
 
             ////List<GuestRequest> temp1 = bl.GetAllGuests();
             ////foreach (var item in temp1)
@@ -312,6 +321,7 @@ namespace PL
             //{
             //    Console.WriteLine(item.ToString() + "\n");
             //}
+            //bl.UpdateOtherOrders(12, 123);
             #endregion
 
             #region Others testing
