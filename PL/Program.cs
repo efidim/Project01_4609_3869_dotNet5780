@@ -261,65 +261,65 @@ namespace PL
 
             #region Order testing
 
-            //  Order ord = new Order();
-            //  ord.GuestRequestKey=4589;
-            //  ord.HostingUnitKey = 469834;
-            //  ord.OrderKey=3124;
-            //  ord.Status=0;
-            //  ord.CreateDate=DateTime.Now;
-            //  ord.OrderDate= new DateTime(2019, 12, 02);
-            //  ord.CommissionPerDay=5;
-            //  try
-            //  {
+            Order ord = new Order();
+            ord.GuestRequestKey = 4589;
+            ord.HostingUnitKey = 469834;
+            ord.OrderKey = 3124;
+            ord.Status = 0;
+            ord.CreateDate = DateTime.Now;
+            ord.OrderDate = new DateTime(2019, 12, 02);
+            ord.CommissionPerDay = 5;
+            try
+            {
+                bl.AddOrder(ord);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: \n" + ex.Message);
+            }
+            // exception testing
+            // ord.GuestRequestKey = 222;
+            // try
+            //{
             //      bl.AddOrder(ord);
-            //  }
+            // }
             //  catch (Exception ex)
             //  {
             //      Console.WriteLine("ERROR: \n" + ex.Message);
-            //  }
-            //  // exception testing
-            //  // ord.GuestRequestKey = 222;
-            //  // try
-            //  //{
-            //  //      bl.AddOrder(ord);
-            //  // }
-            //  //  catch (Exception ex)
-            //  //  {
-            //  //      Console.WriteLine("ERROR: \n" + ex.Message);
-            //  // }
-            //  ord.Status = 1;
-            //  try
-            //  {
-            //      bl.UpdateOrder(ord);
-            //  }
-            //  catch (Exception ex)
-            //  {
-            //      Console.WriteLine("ERROR: \n" + ex.Message);
-            //  }
+            // }
+            ord.Status = 1;
+            try
+            {
+                bl.UpdateOrder(ord);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: \n" + ex.Message);
+            }
 
-            //  List <Order> temp7 =bl.GetAllOrders();
-            //  foreach (var item in temp7)
-            //  {
-            //     Console.WriteLine(item.ToString() + "\n");
-            //  }
+            List<Order> temp7 = bl.GetAllOrders();
+            foreach (var item in temp7)
+            {
+                Console.WriteLine(item.ToString() + "\n");
+            }
 
-            ////  int temp8;
-            ////  Console.WriteLine(temp8 = bl.OrdersByRequest(req));
+            //  int temp8;
+            //  Console.WriteLine(temp8 = bl.OrdersByRequest(req));
             #endregion
 
             #region Others testing
 
-            DateTime temp12 = new DateTime(2019, 12, 4);
-            DateTime temp13 = new DateTime(2019, 12, 6);
-            Console.WriteLine(bl.DifferenceDays(temp12, temp13) + "\n");
+            //DateTime temp12 = new DateTime(2019, 12, 4);
+            //DateTime temp13 = new DateTime(2019, 12, 6);
+            //Console.WriteLine(bl.DifferenceDays(temp12, temp13) + "\n");
 
 
-            List<BankBranch> temp14 = bl.ListBankBranches();
-            foreach (var item in temp14)
-            {
-                Console.WriteLine(item.ToString() + "\n");
-            }
-            Console.WriteLine("\n");
+            //List<BankBranch> temp14 = bl.ListBankBranches();
+            //foreach (var item in temp14)
+            //{
+            //    Console.WriteLine(item.ToString() + "\n");
+            //}
+            //Console.WriteLine("\n");
             #endregion
 
             Console.ReadLine();

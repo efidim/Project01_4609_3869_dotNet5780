@@ -53,7 +53,6 @@ namespace DAL
             return DataSource.GuestRequests.Select(gu => (GuestRequest)gu.Clone()).ToList();
         }
         #endregion
-
         //************************************ Hosting unit *********************************************
         #region Hosting unit
         public void AddHostUnit(HostingUnit host)
