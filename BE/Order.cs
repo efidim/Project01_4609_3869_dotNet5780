@@ -19,19 +19,19 @@ namespace BE
         public override string ToString()
         {
             string str = "Hosting Unit Key: " + HostingUnitKey +
-                "\n Guest Request Key: " + GuestRequestKey +
-                "\n Order Key: " + OrderKey;
+                "\nGuest Request Key: " + GuestRequestKey +
+                "\nOrder Key: " + OrderKey;
             if (Status == 0)
                 str += "\n Not yet addressed";
             if (Status == 1)
-                str += "\n Mail sent";
+                str += "\nMail sent";
             if (Status == 2)
-                str += "\n Closed due to customer unresponsiveness";
+                str += "\nClosed due to customer unresponsiveness";
             if (Status == 3)
-                str += "\n Closed with customer responsiveness";
+                str += "\nClosed with customer responsiveness";
 
             str += "Create Date: " + CreateDate +
-                "\n Order Date: " + OrderDate;
+                "\nOrder Date: " + OrderDate;
 
             return str;
         }
