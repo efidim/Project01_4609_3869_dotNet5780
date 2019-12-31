@@ -58,10 +58,7 @@ namespace DAL
         #region Hosting unit
         public void AddHostUnit(HostingUnit host)
         {
-            host.HostingUnitKey = Configuration.unitKey++;
-           /* if (DataSource.HostingUnits.Any(x => x.HostingUnitKey == host.HostingUnitKey))
-                throw new Exception("The host unit exists");*/
-
+            host.HostingUnitKey = Configuration.unitKey++;     
             DataSource.HostingUnits.Add(host);
         }
 
@@ -70,7 +67,7 @@ namespace DAL
             int id = host.HostingUnitKey;
             int count = DataSource.HostingUnits.RemoveAll(x => x.HostingUnitKey == id);
             if (count == 0)
-                throw new Exception("The host unit does not exist");
+                throw new Exception("The hosting unit does not exist");
         }
 
         public void UpdateHostUnit(HostingUnit host)
@@ -84,7 +81,7 @@ namespace DAL
         {
             int index = DataSource.HostingUnits.FindIndex(g => g.HostingUnitKey == hostingUnitkey);
             if (index == -1)
-                throw new Exception("The host unit does not exist");
+                throw new Exception("The hosting unit does not exist");
             
             return DataSource.HostingUnits[index].Clone();
         }

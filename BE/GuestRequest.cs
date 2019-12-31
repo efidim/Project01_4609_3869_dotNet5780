@@ -36,7 +36,7 @@ namespace BE
             if (Status)
                 temp = "Active";
             else
-                temp = "Disactive";
+                temp = "Inactive";
             str += "\n Status? " + temp +
                 "\n RegistrationDate: " + RegistrationDate +
                 "\n EntryDate: " + EntryDate +
