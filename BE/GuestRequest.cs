@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class GuestRequest
+    public class GuestRequest:IEnumerable
     {
         public int GuestRequestKey;
         public string PrivateName;
@@ -36,7 +36,7 @@ namespace BE
             if (Status)
                 temp = "Active";
             else
-                temp = "Disactive";
+                temp = "Inactive";
             str += "\n Status? " + temp +
                 "\n RegistrationDate: " + RegistrationDate +
                 "\n EntryDate: " + EntryDate +
@@ -74,5 +74,10 @@ namespace BE
 
             return str;
         }               
+    }
+
+    public interface IEnumerable
+    { 
+
     }
 }

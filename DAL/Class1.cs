@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class Class1
-    {
-    }
+   public class FactoryDal
+      {
+            public static Idal getDal()
+            {
+                return new Class_dal_save_at_list();
+            }
+        }
+    
 }

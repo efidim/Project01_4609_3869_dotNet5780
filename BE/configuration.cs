@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Configuration
+    public class Configuration
     {
+        public static int COMMISSION = 10;
+        public static int guestKey = 10000009;
+        public static int unitKey = 00000009;
     }
 }

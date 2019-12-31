@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Host
+    public class Host
     {
         public int HostKey;
         public string PrivateName;
         public string FamilyName;
         public string PhoneNumber;
         public string MailAddress;
-        public BankAccount HostBankAccount;
+        public BankBranch BankBranchDetails;
+        public int BankAccountNumber;
         public bool CollectionClearance;
 
         public override string ToString()
@@ -23,7 +24,7 @@ namespace BE
                 "\n Family Name: " + FamilyName +
                 "\n Phone Number: " + PhoneNumber +
                 "\n Mail Address: " + MailAddress +
-                "\n Bank Account: " + HostBankAccount.ToString() +
+                "\n Bank Account: " + BankBranchDetails.ToString() +
                 "\n Collection Clearance: " + CollectionClearance;
              return str;
         }
