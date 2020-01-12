@@ -55,15 +55,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AppOwnerWindow.xaml">
+    <Page Include="AppOwner\AppOwnerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GuestRequestWindow.xaml">
+    <Page Include="GuestRequest\GuestRequestWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HostingUnitWindow.xaml">
+    <Page Include="HostingUnit\HostingUnitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -75,26 +75,26 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AppOwnerWindow.xaml.cs">
+    <Compile Include="AppOwner\AppOwnerWindow.xaml.cs">
       <DependentUpon>AppOwnerWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GuestRequestWindow.xaml.cs">
+    <Compile Include="GuestRequest\GuestRequestWindow.xaml.cs">
       <DependentUpon>GuestRequestWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HostingUnitWindow.xaml.cs">
+    <Compile Include="HostingUnit\HostingUnitWindow.xaml.cs">
       <DependentUpon>HostingUnitWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="OrderWindow.xaml">
+    <Page Include="Order\OrderWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OrderWindow.xaml.cs">
+    <Compile Include="Order\OrderWindow.xaml.cs">
       <DependentUpon>OrderWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
