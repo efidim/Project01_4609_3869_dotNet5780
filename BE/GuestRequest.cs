@@ -17,7 +17,6 @@ namespace BE
         public DateTime EntryDate;
         public DateTime ReleaseDate;
         public string Area;
-        public string subArea;
         public string Type;
         public int Adults;
         public int Children;
@@ -42,7 +41,6 @@ namespace BE
                 "\n EntryDate: " + EntryDate +
                 "\n ReleaseDate: " + ReleaseDate +
                 "\n Area: " + Area +
-                "\n subArea: " + subArea +
                 "\n Type: " + Type +
                 "\n Adults: " + Adults +
                 "\n Children: " + Children;

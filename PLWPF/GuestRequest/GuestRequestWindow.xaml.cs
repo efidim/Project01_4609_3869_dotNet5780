@@ -19,9 +19,25 @@ namespace PLWPF
     /// </summary>
     public partial class GuestRequestWindow : Window
     {
+        private Calendar MyCalendar;
         public GuestRequestWindow()
         {
             InitializeComponent();
+            MyCalendar = CreateCalendar();
+            vbCalendar.Child = null;
+            vbCalendar.Child = MyCalendar;                                 
         }
+
+        private Calendar CreateCalendar()
+        {
+            Calendar MonthlyCalendar = new Calendar();
+            MonthlyCalendar.Name = "MonthlyCalendar";
+            MonthlyCalendar.DisplayMode = CalendarMode.Month;
+            MonthlyCalendar.SelectionMode = CalendarSelectionMode.SingleRange;
+            MonthlyCalendar.IsTodayHighlighted = true;
+            return MonthlyCalendar;
+        }
+
+
     }
 }

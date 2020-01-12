@@ -13,7 +13,6 @@ namespace BE
         public string HostingUnitName;
         public bool[,] Diary = new bool[12, 31];
         public string Area;
-        public string subArea;
         public string Type;
         public int Adults;
         public int Children;
@@ -27,7 +26,6 @@ namespace BE
             string str = "Hosting Unit Number:" + this.HostingUnitKey.ToString() +
                 "\nHosting Unit Name: " + HostingUnitName +
                 "\nArea: " + Area +
-                "\nsubArea: " + subArea +
                 "\nType: " + Type +
                 "\nAdults: " + Adults +
                 "\nChildren: " + Children +

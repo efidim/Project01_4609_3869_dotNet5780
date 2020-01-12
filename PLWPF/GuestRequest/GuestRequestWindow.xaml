@@ -5,8 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="GuestRequestWindow" Height="450" Width="800">
+        Title="GuestRequestWindow" Height="600" Width="800">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type Control}" x:Key="baseStyle">
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
+    </Window.Resources>
+
     <Grid>
-        
+        <Label Content=":שם פרטי" HorizontalAlignment="Left" Margin="697,58,-53.4,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content=":שם משפחה" HorizontalAlignment="Left" Margin="397,58,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content=":מייל" HorizontalAlignment="Left" Margin="170,58,0,0" VerticalAlignment="Top" Width="150"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="552,62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="247,62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="13,62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151"/>
+        <Label Content="מלא פרטי דרישת לקוח" HorizontalAlignment="Center" Margin="281,0,261.6,0" VerticalAlignment="Top" Width="251" FontSize="24" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.112"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Viewbox Name="vbCalendar" HorizontalAlignment="Left" Height="178" Margin="246,133,0,0" VerticalAlignment="Top" Width="301"/>
+        <Label Content=":תאריכים רצויים" HorizontalAlignment="Left" Margin="567,178,0,0" VerticalAlignment="Top" Width="186" FontSize="24"/>
+        <Label Content=":העדפות" HorizontalAlignment="Left" Margin="633,326,0,0" VerticalAlignment="Top" Width="98" FontSize="24"/>
+        <Label Content=":אזור" HorizontalAlignment="Left" Margin="694,379,-50.4,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content=":סוג" HorizontalAlignment="Left" Margin="454,379,0,0" VerticalAlignment="Top" Width="65"/>
+        <ComboBox HorizontalAlignment="Left" Margin="552,389,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
+        <ComboBox HorizontalAlignment="Left" Margin="301,389,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
+        <Label Content=":מספר מבוגרים" HorizontalAlignment="Left" Margin="611,433,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content=":מספר ילדים" HorizontalAlignment="Left" Margin="301,433,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="540,442,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="226,442,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51"/>
+        <Label Content=":בריכה" HorizontalAlignment="Left" Margin="683,496,0,0" VerticalAlignment="Top" Width="70"/>
+        <ComboBox HorizontalAlignment="Left" Margin="552,505,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
+        <Label Content=":ג'קוזי" HorizontalAlignment="Left" Margin="454,496,0,0" VerticalAlignment="Top" Width="70"/>
+        <ComboBox HorizontalAlignment="Left" Margin="324,505,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
+        <Label Content=":פעילות ילדים" HorizontalAlignment="Left" Margin="156,496,0,0" VerticalAlignment="Top" Width="133"/>
+        <ComboBox HorizontalAlignment="Left" Margin="13,505,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
     </Grid>
 </Window>
