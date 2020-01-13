@@ -2,7 +2,7 @@
 {
     public static class Enums
     {
-        public enum HostingUnitType
+        public enum HostingUnitType 
         {
             Zimmer,
             Hotel,
