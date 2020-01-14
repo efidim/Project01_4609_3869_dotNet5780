@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE;
+using BL;
 
 namespace PLWPF
 {
@@ -19,9 +21,21 @@ namespace PLWPF
     /// </summary>
     public partial class UpdateUnitWindow2 : Window
     {
-        public UpdateUnitWindow2()
+        HostingUnit unit;
+        IBL bl;
+        public UpdateUnitWindow2(HostingUnit unit)
         {
             InitializeComponent();
+
+            unit = new HostingUnit();
+            bl = FactoryBl.getBl();
+
+
+
+
         }
+
+     
     }
+
 }

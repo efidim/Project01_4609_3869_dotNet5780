@@ -8,12 +8,29 @@
         Title="UpdateUnitWindow1" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="187*"/>
-            <RowDefinition Height="233*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
         </Grid.RowDefinitions>
 
-        <Label Name="instructionLabel" Content="הזן את קוד היחידה או את שם היחדיה" Margin="149,124,148.6,5.2" Grid.Row="0" FontSize="30" Width="496" HorizontalAlignment="Center" />
-        <TextBox Name="InputTextBox" Height="46" Margin="255,40.8,254.6,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="284" TextAlignment="Right" HorizontalAlignment="Center" FontSize="30" BorderBrush="Black"/>
+
+
+        <Label Name="instructionLabel" Content="הזן את קוד היחידה או את שם היחדיה" Margin="149,38,148.6,23.6" Grid.Row="0" FontSize="30" Width="496" HorizontalAlignment="Center" />
+
+        <TextBox Name="InputTextBox" HorizontalAlignment="Left" Height="46" Margin="255,8.4,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="284" FontSize="30" BorderBrush="Black" TextAlignment="Right" />
+
+        <Grid x:Name="GridButton" Grid.Row="1" Margin="0,152.4,-0.4,0" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="removeButton" Content="מחיקה" FontSize="25" HorizontalAlignment="Center" Grid.Column="0" VerticalAlignment="Top"  Width="189" Height="55" Click="removeButton_Click"/>
+            <Button x:Name="updateButton" Content="עדכון" FontSize="25" HorizontalAlignment="Center"  Grid.Column="1" VerticalAlignment="Top" Width="189" Height="55" Click="updateButton_Click"/>
+
+        </Grid>
+
 
     </Grid>
 </Window>

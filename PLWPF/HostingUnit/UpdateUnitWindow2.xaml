@@ -5,8 +5,154 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="UpdateUnitWindow2" Height="450" Width="800">
+        Title="UpdateUnitWindow2"  Height="1200" Width="800">
+    <Window.Resources>
+        <Style TargetType="{x:Type Control}" x:Key="baseStyle">
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+        </Style>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+        </Style>
+        <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
+    </Window.Resources>
+
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Content=" :יחידת אירוח"    FontSize="30" Margin="0"/>
+
+        <Grid x:Name="UnitDetailsGrid" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content=":שם היחידה" Grid.Column="1"  Margin="3" Grid.Row="0" />
+            <TextBox x:Name="nameTextBox" Grid.Column="0" Margin="3" Grid.Row="0"/>
+
+            <Label Content=":אזור" Grid.Column="1" Margin="3" Grid.Row="1"/>
+            <ComboBox x:Name="areaComboBox" Grid.Column="0" Margin="3" Grid.Row="1">
+                <ComboBoxItem Content="צפון" HorizontalAlignment="Right" />
+                <ComboBoxItem Content="דרום" HorizontalAlignment="Right" />
+                <ComboBoxItem Content="מרכז" HorizontalAlignment="Right"/>
+                <ComboBoxItem Content="ירושלים והסביבה" HorizontalAlignment="Right"/>
+            </ComboBox>
+
+            <Label Content=":מס' מבוגרים" Grid.Column="1" Margin="3" Grid.Row="2"/>
+            <TextBox x:Name="adultsTextBox" Grid.Column="0" Margin="3" Grid.Row="2" />
+
+            <Label Content=":מס' ילדים" Grid.Column="1" Margin="3" Grid.Row="3"/>
+            <TextBox x:Name="childrenTextBox" Grid.Column="0" Margin="3" Grid.Row="3" />
+
+            <Label Content=":סוג" Grid.Column="1" Margin="3" Grid.Row="4"/>
+            <ComboBox x:Name="typeComboBox" Grid.Column="0" Margin="3" Grid.Row="4">
+                <ComboBoxItem Content="צימר" HorizontalAlignment="Right"/>
+                <ComboBoxItem Content="מלון" HorizontalAlignment="Right"/>
+                <ComboBoxItem Content="קמפינג" HorizontalAlignment="Right" />
+            </ComboBox>
+
+            <Label Content=":בריכה" Grid.Column="1" Margin="3" Grid.Row="5"/>
+            <CheckBox x:Name="poolCheckBox" HorizontalAlignment="Left" Margin="689,10,0,0" Grid.Row="5" VerticalAlignment="Top"/>
+
+            <Label Content=":ג'קוזי" Grid.Column="1" Margin="3" Grid.Row="6"/>
+            <CheckBox x:Name="jacuzziCheckBox" HorizontalAlignment="Left" Margin="689,10,0,0" Grid.Row="6" VerticalAlignment="Top"/>
+
+            <Label Content=":פעילות לידלים" Grid.Column="1" Margin="3" Grid.Row="7"/>
+            <CheckBox x:Name="attractionsCheckBox" HorizontalAlignment="Left" Margin="689,10,0,0" Grid.Row="7" VerticalAlignment="Top"/>
+        </Grid>
+
+
+        <Grid x:Name="ownerDetails" Grid.Row="2" Margin="0,40,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="356*"/>
+                <ColumnDefinition Width="41*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content=":שם פרטי" Grid.Column="1"  Margin="0,3,2.6,3.2" Grid.Row="0" Width="52" />
+            <TextBox x:Name="privateNameTextBox" Grid.Column="0" Margin="3,3,2,3.2" Grid.Row="0"/>
+
+            <Label Content=":שם משפחה" Grid.Column="1" Margin="0,2.8,2.6,2.6" Grid.Row="1" Width="64"/>
+            <TextBox x:Name="familyNameTextBox" Grid.Column="0" Margin="3,2.8,2,2.6" Grid.Row="1" />
+
+            <Label Content=":ת-ז" Grid.Column="1" Margin="0,3.4,2.6,3" Grid.Row="2" Width="28"/>
+            <TextBox x:Name="idTextBox" Grid.Column="0" Margin="3,3.4,2,3" Grid.Row="2" />
+
+            <Label Content=":מס' טלפון" Grid.Column="1" Margin="0,3,2.6,3.4" Grid.Row="3" Width="55" />
+            <TextBox x:Name="phoneTextBox" Grid.Column="0" Margin="3,3,2,3.4" Grid.Row="3" />
+
+            <Label Content=":מייל" Grid.Column="1" Margin="0,2.6,2.6,2.8" Grid.Row="4" Width="31"/>
+            <TextBox x:Name="mailTextBox" Grid.Column="0" Margin="3,2.6,2,2.8" Grid.Row="4" />
+
+        </Grid>
+
+        <Grid x:Name="bankDetails" Grid.Row="3" Margin="0,40,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto" MinWidth="84.8"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content=":שם הבנק" Grid.Column="1"  Margin="0,3,2.6,2.8" Grid.Row="0" Width="53" />
+            <TextBox x:Name="bankNameTextBox" Grid.Column="0" Margin="3,3,1.8,2.8" Grid.Row="0"/>
+
+            <Label Content=":מספר הבנק" Grid.Column="1" Margin="0,3.2,2.6,2.6" Grid.Row="1" Width="64"/>
+            <TextBox x:Name="bankNumTextBox" Grid.Column="0" Margin="3,3.2,1.8,2.6" Grid.Row="1" />
+
+            <Label Content=":מספר הסניף" Grid.Column="1" Margin="0,3.4,2.6,3.4" Grid.Row="2" Width="68"/>
+            <TextBox x:Name="branchNumTextBox" Grid.Column="0" Margin="3,3.4,1.8,3.4" Grid.Row="2" />
+
+            <Label Content=":כתובת הסניף" Grid.Column="1" Margin="0,2.6,2.6,3.2" Grid.Row="3" Width="69"/>
+            <TextBox x:Name="addressBranchTextBox" Grid.Column="0" Margin="3,2.6,1.8,3.2" Grid.Row="3" />
+
+            <Label Content=":עיר הסניף" Grid.Column="1" Margin="0,2.8,2.6,3" Grid.Row="4" Width="56"/>
+            <TextBox x:Name="citylTextBox" Grid.Column="0" Margin="3,2.8,1.8,3" Grid.Row="4" />
+
+            <Label Content=":מספר חשבון" Grid.Column="1" Margin="0,3,2.6,2.8" Grid.Row="5" Width="66"/>
+            <TextBox x:Name="accountTextBox" Grid.Column="0" Margin="3,3,1.8,2.8" Grid.Row="5" />
+
+            <Label Content=":אישור גבייה" Grid.Column="1" Margin="0,3.2,2.6,2.8" Grid.Row="6" Width="63"/>
+            <CheckBox x:Name="collectionCheckBox" HorizontalAlignment="Left" Margin="684,10.2,0,0" Grid.Row="6" VerticalAlignment="Top"/>
+
+
+        </Grid>
+
+
+        <Button x:Name="addButton" Content="הוסף"   FontSize="30" Grid.Row="4" Margin="10" />
+
     </Grid>
 </Window>
