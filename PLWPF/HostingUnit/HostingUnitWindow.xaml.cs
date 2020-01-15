@@ -27,13 +27,13 @@ namespace PLWPF
         private void addUnitButton_Click(object sender, RoutedEventArgs e)
         {
             new AddUnitWindow().Show();
-            Hide();
+            //Hide();
         }
 
         private void existedUnitButton_Click(object sender, RoutedEventArgs e)
         {
             new UpdateUnitWindow1().Show();
-            Hide();
+            //Hide();
         }
     }
 }
