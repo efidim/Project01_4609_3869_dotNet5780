@@ -23,5 +23,17 @@ namespace PLWPF
         {
             InitializeComponent();
         }
+
+        private void addUnitButton_Click(object sender, RoutedEventArgs e)
+        {
+            new AddOrderWindow().Show();
+            //Hide();
+        }
+
+        private void existedUnitButton_Click(object sender, RoutedEventArgs e)
+        {
+            new UpdateOrderWindow().Show();
+            //Hide();
+        }
     }
 }
