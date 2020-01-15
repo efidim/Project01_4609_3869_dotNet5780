@@ -22,7 +22,7 @@
         <Label Content=":שם משפחה" HorizontalAlignment="Left" Margin="397,58,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content=":מייל" HorizontalAlignment="Left" Margin="170,58,0,0" VerticalAlignment="Top" Width="150"/>
         <TextBox HorizontalAlignment="Left" x:Name="PrivateName" Height="23" Margin="552,62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" x:Name="FamilyName" Height="23" Margin="247,62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145" TextChanged="TextBox_TextChanged"/>
+        <TextBox HorizontalAlignment="Left" x:Name="FamilyName" Height="23" Margin="247,62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145" />
         <TextBox HorizontalAlignment="Left" x:Name="Mail" Height="23" Margin="13,62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151"/>
         <Label Content="מלא פרטי דרישת לקוח" HorizontalAlignment="Center" Margin="281,0,261.6,0" VerticalAlignment="Top" Width="251" FontSize="24" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
@@ -40,12 +40,9 @@
         <Label Content=":אזור" HorizontalAlignment="Left" Margin="694,379,-50.4,0" VerticalAlignment="Top" Width="150"/>
         <Label Content=":סוג" HorizontalAlignment="Left" Margin="454,379,0,0" VerticalAlignment="Top" Width="65"/>
 
-        <ComboBox>
-            <ComboBoxItem Content="North" />
-            <ComboBoxItem Content="Center" />
-            <ComboBoxItem Content="South" />
-            <ComboBoxItem Content="Jerusalem" />
-            HorizontalAlignment="Left" Name="Area" Margin="552,389,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"
+        <ComboBox
+            HorizontalAlignment="Left" x:Name="areaComboBox"  Margin="552,389,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393">
+            <ComboBoxItem Content="{Binding Path=Enums.Area}"/>
         </ComboBox>
         <ComboBox HorizontalAlignment="Left" x:Name="Type" Margin="301,389,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
         <Label Content=":מספר מבוגרים"  HorizontalAlignment="Left" Margin="611,433,0,0" VerticalAlignment="Top" Width="150"/>

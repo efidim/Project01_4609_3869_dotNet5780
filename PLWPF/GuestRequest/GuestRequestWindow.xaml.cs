@@ -29,9 +29,7 @@ namespace PLWPF
             InitializeComponent();
             guest = new BE.GuestRequest();
             bl = BL.FactoryBl.getBl();
-
-            
-
+            this.areaComboBox.ItemsSource =Enum.GetValues(typeof(Enums.Area));
             MyCalendar = CreateCalendar();
             vbCalendar.Child = null;
             vbCalendar.Child = MyCalendar;                                 
@@ -51,15 +49,12 @@ namespace PLWPF
         {
             try
             {
-                //ComboBoxItem newItem = new ComboBoxItem();
-                //newItem.Content = "Jerusalem" + "North" + "Center" + "South";
-                //Area.Items.Add(newItem);
-
+                
                 guest.PrivateName =this.PrivateName.Text;
                 guest.FamilyName = this.FamilyName.Text;
                 guest.MailAddress= this.Mail.Text;
 
-                guest.Area = this.Area.Text;
+                guest.Area = this.areaComboBox.Text;
                 guest.Type = this.Type.Text;
 
                 guest.Adults = int.Parse(this.Adults.Text);
@@ -76,7 +71,7 @@ namespace PLWPF
                 this.FamilyName.ClearValue(TextBox.TextProperty);
                 this.Mail.ClearValue(TextBox.TextProperty);
                 this.vbCalendar.ClearValue(TextBox.TextProperty);
-                this.Area.ClearValue(TextBox.TextProperty);
+                this.areaComboBox.ClearValue(TextBox.TextProperty);
                 this.Type.ClearValue(TextBox.TextProperty);
                 this.Adults.ClearValue(TextBox.TextProperty);
                 this.Children.ClearValue(TextBox.TextProperty);

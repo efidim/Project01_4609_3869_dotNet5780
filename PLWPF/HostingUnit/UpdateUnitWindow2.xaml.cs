@@ -15,25 +15,13 @@ using System.Windows.Shapes;
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for HostingUnitWindow.xaml
+    /// Interaction logic for UpdateUnitWindow2.xaml
     /// </summary>
-    public partial class HostingUnitWindow : Window
+    public partial class UpdateUnitWindow2 : Window
     {
-        public HostingUnitWindow()
+        public UpdateUnitWindow2()
         {
             InitializeComponent();
-        }
-
-        private void addUnitButton_Click(object sender, RoutedEventArgs e)
-        {
-            new AddUnitWindow().Show();
-            Hide();
-        }
-
-        private void existedUnitButton_Click(object sender, RoutedEventArgs e)
-        {
-            new UpdateUnitWindow1().Show();
-            Hide();
         }
     }
 }
