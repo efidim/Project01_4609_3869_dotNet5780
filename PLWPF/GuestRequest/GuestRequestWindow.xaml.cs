@@ -29,7 +29,10 @@ namespace PLWPF
             InitializeComponent();
             guest = new BE.GuestRequest();
             bl = BL.FactoryBl.getBl();
+
             this.areaComboBox.ItemsSource =Enum.GetValues(typeof(Enums.Area));
+            this.Type.ItemsSource = Enum.GetValues(typeof(Enums.HostingUnitType));
+
             MyCalendar = CreateCalendar();
             vbCalendar.Child = null;
             vbCalendar.Child = MyCalendar;                                 
