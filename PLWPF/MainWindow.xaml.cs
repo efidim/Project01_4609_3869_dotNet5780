@@ -28,22 +28,22 @@ namespace PLWPF
         private void guestRequestButton_Click(object sender, RoutedEventArgs e)
         {
             new GuestRequestWindow().Show();
-            //Hide();
+            this.Close();
         }
         private void hostingUnitButton_Click(object sender, RoutedEventArgs e)
         {
             new HostingUnitWindow().Show();
-            //Hide();
+            this.Close();
         }
         private void orderButton_Click(object sender, RoutedEventArgs e)
         {
             new OrderWindow().Show();
-            //Hide();
+            this.Close();
         }
         private void appOwner_Click(object sender, RoutedEventArgs e)
         {
             new AppOwnerWindow().Show();
-            //Hide();
+            this.Close();
         }           
 
         

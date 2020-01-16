@@ -107,7 +107,7 @@ namespace DAL
             {
                 throw new Exception("The hosting unit does not exist");
             }
-            HostingUnit temp2 = temp[0];
+            HostingUnit temp2 = temp1.First();
             return temp2.Clone();
         }
 
@@ -126,7 +126,7 @@ namespace DAL
             {
                 throw new Exception("The hosting unit does not exist");
             }
-            HostingUnit temp2 = temp[0];
+            HostingUnit temp2 = temp1.First();
             return temp2.Clone();
         }
 

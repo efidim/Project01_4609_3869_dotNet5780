@@ -18,6 +18,7 @@
         <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="TextAlignment" Value="Right"/>
         </Style>
         <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
     </Window.Resources>
@@ -54,7 +55,7 @@
                 <TextBox x:Name="nameTextBox" Grid.Column="0" Margin="3" Grid.Row="0" Text="{Binding HostingUnitName}"/>                
 
                 <Label Content=":אזור" Grid.Column="1" Margin="3" Grid.Row="1"/>
-                <ComboBox x:Name="areaComboBox" Grid.Column="0" Margin="3" Grid.Row="1" SelectedItem="{Binding Area}"/>
+                <ComboBox x:Name="areaComboBox" Grid.Column="0" Margin="3" Grid.Row="1" SelectedItem="{Binding Area}" HorizontalAlignment="Right"/>
 
                 <Label Content=":מס' מבוגרים מקסימלי" Grid.Column="1" Margin="3" Grid.Row="2"/>
                 <TextBox x:Name="adultsTextBox" Grid.Column="0" Margin="3" Grid.Row="2" Text="{Binding Adults, Mode=OneWayToSource}"/>
@@ -63,7 +64,7 @@
                 <TextBox x:Name="childrenTextBox" Grid.Column="0" Margin="3" Grid.Row="3" Text="{Binding Children, Mode=OneWayToSource}" />
 
                 <Label Content=":סוג" Grid.Column="1" Margin="3" Grid.Row="4"/>
-                <ComboBox x:Name="typeComboBox" Grid.Column="0" Margin="3" Grid.Row="4" SelectedItem="{Binding Type}" />
+                <ComboBox x:Name="typeComboBox" Grid.Column="0" Margin="3" Grid.Row="4" SelectedItem="{Binding Type}" HorizontalAlignment="Right"/>
 
                 <Label Content=":בריכה" Grid.Column="1" Margin="3" Grid.Row="5"/>
                 <CheckBox x:Name="poolCheckBox" HorizontalAlignment="Left" Margin="640,10,0,0" Grid.Row="5" VerticalAlignment="Top" IsChecked="{Binding Pool}"/>
