@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PLWPF.Order;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,7 @@ namespace PLWPF
 
         private void addUnitButton_Click(object sender, RoutedEventArgs e)
         {
-            new AddOrderWindow().Show();
+            new CreateOrderWindow().Show();
             //Hide();
         }
 

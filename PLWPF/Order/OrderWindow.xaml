@@ -22,10 +22,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="addUnitButton" Content="הוסף הזמנה חדשה"  
+        <Button x:Name="addUnitButton" Content="צור הזמנה חדשה"  
         Margin="40"  Grid.Row="0" Click="addUnitButton_Click"/>
 
-        <Button x:Name="existedUnitButton" Content="הזמנה קיימת"  
+        <Button x:Name="existedUnitButton" Content="עדכון הזמנה קיימת"  
         Margin="40" Grid.Row="1" Click="existedUnitButton_Click"/>
     </Grid>
 </Window>
