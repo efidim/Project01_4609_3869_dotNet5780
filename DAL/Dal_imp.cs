@@ -70,10 +70,11 @@ namespace DAL
         #endregion
         //************************************ Hosting unit *********************************************
         #region Hosting unit
-        public void AddHostUnit(HostingUnit host)
+        public int AddHostUnit(HostingUnit host)
         {
             host.HostingUnitKey = Configuration.unitKey++;     
             DataSource.HostingUnits.Add(host);
+            return host.HostingUnitKey;
         }
 
         public void RemoveHostUnit(HostingUnit host)
@@ -102,6 +103,25 @@ namespace DAL
             IEnumerable<HostingUnit> temp1 = from item in temp
                                              where item.HostingUnitKey == hostingUnitkey
                                               select item;
+            if (temp1.ToList().Count == 0)
+            {
+                throw new Exception("The hosting unit does not exist");
+            }
+            HostingUnit temp2 = temp[0];
+            return temp2.Clone();
+        }
+
+        /// <summary>
+        ///  Returns a hosting unit by the Name
+        /// </summary>
+        /// <param name="hostingUnitName">Unit Name</param>
+        /// <returns>HostingUnit</returns>
+        public HostingUnit GetHostingUnitByName(string hostingUnitName)
+        {
+            List<HostingUnit> temp = DataSource.HostingUnits;
+            IEnumerable<HostingUnit> temp1 = from item in temp
+                                             where item.HostingUnitName == hostingUnitName
+                                             select item;
             if (temp1.ToList().Count == 0)
             {
                 throw new Exception("The hosting unit does not exist");

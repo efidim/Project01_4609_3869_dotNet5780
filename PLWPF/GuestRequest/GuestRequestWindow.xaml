@@ -51,11 +51,11 @@
         <TextBox HorizontalAlignment="Left" x:Name="Adults" Height="23" Margin="540,442,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51"/>
         <TextBox HorizontalAlignment="Left" x:Name="Children" Height="23" Margin="226,442,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51"/>
         <Label Content=":בריכה" HorizontalAlignment="Left" Margin="683,496,0,0" VerticalAlignment="Top" Width="70"/>
-        <ComboBox SelectedItem="{Binding Area}" HorizontalAlignment="Left" x:Name="Pool" Margin="552,505,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
+        <ComboBox SelectedItem="{Binding Response}" HorizontalAlignment="Left" x:Name="Pool" Margin="552,505,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
         <Label Content=":ג'קוזי" HorizontalAlignment="Left" Margin="454,496,0,0" VerticalAlignment="Top" Width="70"/>
-        <ComboBox SelectedItem="{Binding Area}" HorizontalAlignment="Left" x:Name="Jacuuzi" Margin="324,505,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
+        <ComboBox SelectedItem="{Binding Response}" HorizontalAlignment="Left" x:Name="Jacuuzi" Margin="324,505,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
         <Label Content=":פעילות ילדים" HorizontalAlignment="Left" Margin="156,496,0,0" VerticalAlignment="Top" Width="133"/>
-        <ComboBox SelectedItem="{Binding Area}" HorizontalAlignment="Left" x:Name="Atraction" Margin="13,505,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
+        <ComboBox SelectedItem="{Binding Response}" HorizontalAlignment="Left" x:Name="Atraction" Margin="13,505,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
         <Button Content="שלח פרטים" HorizontalAlignment="Center" Margin="0,566,0,-3" VerticalAlignment="Center" Width="792" Height="52" Background="#FF51E824" BorderBrush="#FFA45D5D" FontSize="36" FontFamily="Bookman Old Style" Click="Button_Click"/>
     </Grid>
 </Window>

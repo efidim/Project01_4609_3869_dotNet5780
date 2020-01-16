@@ -34,9 +34,9 @@ namespace PLWPF
 
             this.areaComboBox.ItemsSource =Enum.GetValues(typeof(Enums.Area));
             this.Type.ItemsSource = Enum.GetValues(typeof(Enums.HostingUnitType));
-            this.Pool.ItemsSource = Enum.GetValues(typeof(Enums.HostingUnitType));
-            this.Jacuuzi.ItemsSource = Enum.GetValues(typeof(Enums.HostingUnitType));
-            this.Atraction.ItemsSource = Enum.GetValues(typeof(Enums.HostingUnitType));
+            this.Pool.ItemsSource = Enum.GetValues(typeof(Enums.Response));
+            this.Jacuuzi.ItemsSource = Enum.GetValues(typeof(Enums.Response));
+            this.Atraction.ItemsSource = Enum.GetValues(typeof(Enums.Response));
 
             MyCalendar = CreateCalendar();
             vbCalendar.Child = null;

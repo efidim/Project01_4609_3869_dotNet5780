@@ -80,9 +80,9 @@ namespace BL
 
         #region HostingUnit
        
-        public void AddHostUnit(HostingUnit unit)
+        public int AddHostUnit(HostingUnit unit)
         {
-            dal.AddHostUnit(unit.Clone());
+            return dal.AddHostUnit(unit.Clone());
         }       
         public void UpdateHostUnit(HostingUnit unit)
         {
@@ -98,6 +98,11 @@ namespace BL
         public HostingUnit GetHostingUnit(int hostingUnitkey)
         {
             return dal.GetHostingUnit(hostingUnitkey);
+        }
+
+        public HostingUnit GetHostingUnitByName(string hostingUnitName)
+        {
+            return dal.GetHostingUnitByName(hostingUnitName);
         }
 
         /// <summary>
