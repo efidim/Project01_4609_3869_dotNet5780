@@ -20,11 +20,10 @@ namespace DS
         {
          new HostingUnit() {HostingUnitKey=469834,HostingUnitName="Tsimer",Owner=new Host(){HostKey=12,PrivateName="yo",FamilyName="le",PhoneNumber="054-1234567",MailAddress="yo@org.zehut.il"
          ,BankBranchDetails=new BankBranch(){BankNumber=1,BankName="MyBank",BranchNumber=11,BranchAddress= "MyBank@gmail.com",BranchCity="Jerusalem" },BankAccountNumber=111,CollectionClearance=true }
-<<<<<<< HEAD
+
          ,Area="Jerusalem",Adults=3,Children=5,Jacuzzi=1,Pool=1,Type="zimmer",ChildrenAttractions=0}
-=======
-         ,Area="Jerusalem",subArea="Giloh",Adults=3,Children=5,Jacuzzi=true,Pool=true,Type="zimmer",ChildrenAttractions=false}
->>>>>>> HostingUnitWindow
+
+
         };
         public static List<Order> Orders { get; set; } = new List<Order>()
         {

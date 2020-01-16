@@ -52,7 +52,7 @@
             <TextBox x:Name="nameTextBox" Grid.Column="0" Margin="3" Grid.Row="0" Text="{Binding HostingUnitName}"/>
 
             <Label Content=":אזור" Grid.Column="1" Margin="3" Grid.Row="1"/>
-            <ComboBox x:Name="areaComboBox" Grid.Column="0" Margin="3,3,0,3" Grid.Row="1" SelectedItem="{Binding Area}" HorizontalAlignment="Left" Width="708"/>
+            <ComboBox x:Name="areaComboBox" Grid.Column="0" Margin="3,3,0,3" Grid.Row="1" SelectedItem="{Binding Area}" HorizontalAlignment="Left" Width="708" SelectionChanged="AreaComboBox_SelectionChanged"/>
 
             <Label Content=":מס' מבוגרים" Grid.Column="1" Margin="3" Grid.Row="2"/>
             <TextBox x:Name="adultsTextBox" Grid.Column="0" Margin="3" Grid.Row="2" Text="{Binding Adults}"/>

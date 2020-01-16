@@ -28,10 +28,15 @@ namespace PLWPF
         {
             InitializeComponent();
             guest = new BE.GuestRequest();
+            this.GuestRequestGrid.DataContext = guest;
             bl = BL.FactoryBl.getBl();
+            this.DataContext = guest;
 
             this.areaComboBox.ItemsSource =Enum.GetValues(typeof(Enums.Area));
             this.Type.ItemsSource = Enum.GetValues(typeof(Enums.HostingUnitType));
+            this.Pool.ItemsSource = Enum.GetValues(typeof(Enums.HostingUnitType));
+            this.Jacuuzi.ItemsSource = Enum.GetValues(typeof(Enums.HostingUnitType));
+            this.Atraction.ItemsSource = Enum.GetValues(typeof(Enums.HostingUnitType));
 
             MyCalendar = CreateCalendar();
             vbCalendar.Child = null;
@@ -52,7 +57,7 @@ namespace PLWPF
         {
             try
             {
-                
+                this.GuestRequestGrid.DataContext = guest;
                 guest.PrivateName =this.PrivateName.Text;
                 guest.FamilyName = this.FamilyName.Text;
                 guest.MailAddress= this.Mail.Text;
