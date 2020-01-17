@@ -21,7 +21,7 @@ namespace PLWPF.Order
     /// </summary>
     public partial class CreateOrderWindow : Window
     {
-        BE.Order order;
+       // BE.Order order;
         BE.HostingUnit host;
         BL.IBL bl;
         public CreateOrderWindow()
