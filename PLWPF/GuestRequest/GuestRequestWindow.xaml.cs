@@ -58,6 +58,7 @@ namespace PLWPF
             try
             {
                 this.GuestRequestGrid.DataContext = guest;
+                DataContext = guest;
                 guest.PrivateName =this.PrivateName.Text;
                 guest.FamilyName = this.FamilyName.Text;
                 guest.MailAddress= this.Mail.Text;
@@ -65,15 +66,17 @@ namespace PLWPF
                 guest.Area = this.areaComboBox.Text;
                 guest.Type = this.Type.Text;
 
+                guest.EntryDate = this.vbCalendar.;
+
                 guest.Adults = int.Parse(this.Adults.Text);
                 guest.Children = int.Parse(this.Children.Text);
 
                 guest.Pool = int.Parse(Pool.Text);
                 guest.Jacuzzi = int.Parse(this.Jacuuzi.Text);
                 guest.ChildrenAttractions = int.Parse(this.Atraction.Text);
-                DataContext = guest;
+                
                 bl.AddGuestRequest(guest);
-                guest = new BE.GuestRequest();
+                guest = new GuestRequest();
 
                 this.PrivateName.ClearValue(TextBox.TextProperty);
                 this.FamilyName.ClearValue(TextBox.TextProperty);
