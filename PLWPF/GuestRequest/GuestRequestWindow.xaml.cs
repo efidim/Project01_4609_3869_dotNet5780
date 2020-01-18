@@ -28,10 +28,15 @@ namespace PLWPF
         {
             InitializeComponent();
             guest = new BE.GuestRequest();
+            this.GuestRequestGrid.DataContext = guest;
             bl = BL.FactoryBl.getBl();
+            this.DataContext = guest;
 
             this.areaComboBox.ItemsSource =Enum.GetValues(typeof(Enums.Area));
             this.Type.ItemsSource = Enum.GetValues(typeof(Enums.HostingUnitType));
+            this.Pool.ItemsSource = Enum.GetValues(typeof(Enums.Response));
+            this.Jacuuzi.ItemsSource = Enum.GetValues(typeof(Enums.Response));
+            this.Atraction.ItemsSource = Enum.GetValues(typeof(Enums.Response));
 
             MyCalendar = CreateCalendar();
             vbCalendar.Child = null;
@@ -52,7 +57,8 @@ namespace PLWPF
         {
             try
             {
-                
+                this.GuestRequestGrid.DataContext = guest;
+                DataContext = guest;
                 guest.PrivateName =this.PrivateName.Text;
                 guest.FamilyName = this.FamilyName.Text;
                 guest.MailAddress= this.Mail.Text;
@@ -60,15 +66,17 @@ namespace PLWPF
                 guest.Area = this.areaComboBox.Text;
                 guest.Type = this.Type.Text;
 
+                guest.EntryDate = this.vbCalendar.;
+
                 guest.Adults = int.Parse(this.Adults.Text);
                 guest.Children = int.Parse(this.Children.Text);
 
-                guest.Pool = int.Parse(this.Pool.Text);
+                guest.Pool = int.Parse(Pool.Text);
                 guest.Jacuzzi = int.Parse(this.Jacuuzi.Text);
                 guest.ChildrenAttractions = int.Parse(this.Atraction.Text);
-
+                
                 bl.AddGuestRequest(guest);
-                guest = new BE.GuestRequest();
+                guest = new GuestRequest();
 
                 this.PrivateName.ClearValue(TextBox.TextProperty);
                 this.FamilyName.ClearValue(TextBox.TextProperty);

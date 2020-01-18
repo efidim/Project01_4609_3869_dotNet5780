@@ -40,16 +40,17 @@ namespace PLWPF
         {
             try
             {
-                bl.AddHostUnit(unit);
-                MessageBox.Show("The Hosting Unit has been successfully added");
+                int key;
+                key = bl.AddHostUnit(unit);
+                MessageBox.Show("The Hosting Unit has been successfully added and the unit key code is: " + key);
 
                 unit = new HostingUnit();
                 this.DataContext = unit;
             }
-            catch (FormatException)
-            {
-                MessageBox.Show("check your input and try again");
-            }
+            //catch (FormatException)
+            //{
+            //    MessageBox.Show("check your input and try again");
+            //} 
             catch (Exception ex) 
             {
                 MessageBox.Show(ex.Message);
