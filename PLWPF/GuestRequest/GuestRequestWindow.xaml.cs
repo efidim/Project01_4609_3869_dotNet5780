@@ -68,10 +68,10 @@ namespace PLWPF
                 guest.Adults = int.Parse(this.Adults.Text);
                 guest.Children = int.Parse(this.Children.Text);
 
-                guest.Pool = int.Parse(this.Pool.Text);
+                guest.Pool = int.Parse(Pool.Text);
                 guest.Jacuzzi = int.Parse(this.Jacuuzi.Text);
                 guest.ChildrenAttractions = int.Parse(this.Atraction.Text);
-
+                DataContext = guest;
                 bl.AddGuestRequest(guest);
                 guest = new BE.GuestRequest();
 

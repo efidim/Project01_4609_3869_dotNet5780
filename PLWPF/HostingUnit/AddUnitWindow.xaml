@@ -24,20 +24,14 @@
 
     <ScrollViewer >
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+       
 
             <Label Content="יחידת אירוח חדשה"    FontSize="30" Margin="0"/>
 
-<<<<<<< HEAD
-            <Label Content=":אזור" Grid.Column="1" Margin="3" Grid.Row="1"/>
-            <ComboBox x:Name="areaComboBox" Grid.Column="0" Margin="3,3,0,3" Grid.Row="1" SelectedItem="{Binding Area}" HorizontalAlignment="Left" Width="708" SelectionChanged="AreaComboBox_SelectionChanged"/>
-=======
+
+         
+            
+
             <Grid x:Name="UnitDetailsGrid" Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -53,7 +47,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
->>>>>>> HostingUnitWindow
+
 
                 <Label Content=":שם היחידה" Grid.Column="1"  Margin="3" Grid.Row="0" />
                 <TextBox x:Name="nameTextBox" Grid.Column="0" Margin="3" Grid.Row="0" Text="{Binding HostingUnitName}"/>
