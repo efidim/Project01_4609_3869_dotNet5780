@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,13 +22,13 @@ namespace PLWPF.Order
     /// </summary>
     public partial class CreateOrderWindow : Window
     {
-       // BE.Order order;
+        // BE.Order order;
         BE.HostingUnit host;
         BL.IBL bl;
         public CreateOrderWindow()
         {
             InitializeComponent();
-        //    order = new BE.Order();
+            //    order = new BE.Order();
             host = new BE.HostingUnit();
             bl = BL.FactoryBl.getBl();
         }
@@ -39,10 +40,10 @@ namespace PLWPF.Order
                 host = bl.GetHostingUnit(int.Parse(this.key.Text));
                 IEnumerable<GuestRequest> temp4 = bl.RequestsByCondition(x => x.Area == host.Area
                 && x.Type == host.Type && bl.IsItAvailaible(host, x.EntryDate, bl.DifferenceDays(x.ReleaseDate, x.EntryDate))
-                && (x.Status)&&x.Adults<=host.Adults
-                && x.Children<=host.Children /*&& x.Pool==host.Pool*/);
+                && (x.Status) && x.Adults <= host.Adults
+                && x.Children <= host.Children /*&&(x.Pool)==host.Pool*/);
                 DataContext = temp4;
-             //   this.requests.ItemsSource = temp4;
+                this.requests.ItemsSource = temp4;
 
 
             }
@@ -58,4 +59,21 @@ namespace PLWPF.Order
 
         }
     }
+
+        //private bool IntToBool(int value)
+        //{
+        //    switch (value.ToString().ToLower())
+        //    {
+        //        case "אפשרי":
+        //            return false;
+        //        case "לא_מעוניין":
+        //            return false;
+        //        case "הכרחי":
+        //            return true;
+        //    }
+        //    return false;
+        //}
+
+
+    
 }
