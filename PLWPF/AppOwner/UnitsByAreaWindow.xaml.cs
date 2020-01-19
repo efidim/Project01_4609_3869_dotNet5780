@@ -22,16 +22,21 @@ namespace PLWPF
     public partial class UnitsByAreaWindow : Window
     {
         IBL bl;
+        List<HostingUnit> jerusalem;
+        List<HostingUnit> north;
+        List<HostingUnit> south;
+        List<HostingUnit> center;
+
         public UnitsByAreaWindow()
         {
             InitializeComponent();
             bl = FactoryBl.getBl();           
             IEnumerable<IGrouping<string, HostingUnit>> unitsList = bl.UnitsByArea();
             
-            List<HostingUnit> jerusalem = new List<HostingUnit>();
-            List<HostingUnit> north = new List<HostingUnit>();
-            List<HostingUnit> south = new List<HostingUnit>();
-            List<HostingUnit> center = new List<HostingUnit>();
+            jerusalem = new List<HostingUnit>();
+            north = new List<HostingUnit>();
+            south = new List<HostingUnit>();
+            center = new List<HostingUnit>();
 
             foreach (IGrouping<string, HostingUnit> g in unitsList)
             {
@@ -67,12 +72,32 @@ namespace PLWPF
                 }
             }
 
-            this.DataContext = unitsList;
+            unitsListBox.ItemsSource = north;
+            //unitsListBox.DataContext = jerusalem;
             this.areaComboBox.ItemsSource = Enum.GetValues(typeof(Enums.Area));
         }
 
         private void areaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (areaComboBox.SelectedItem.ToString() == "ירושלים")
+            {
+                unitsListBox.ItemsSource = jerusalem;
+            }
+
+            if (areaComboBox.SelectedItem.ToString() == "מרכז")
+            {
+                unitsListBox.ItemsSource = center;
+            }
+
+            if (areaComboBox.SelectedItem.ToString() == "צפון")
+            {
+                unitsListBox.ItemsSource = north;
+            }
+
+            if (areaComboBox.SelectedItem.ToString() == "דרום")
+            {
+                unitsListBox.ItemsSource = south;
+            }
 
         }
     }

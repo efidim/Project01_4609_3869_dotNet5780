@@ -46,9 +46,9 @@
 
         <Label Name="chooseArea" Content="בחר אזור" Grid.Row="0" VerticalAlignment="Center" Margin="0,45,145.6,45"/>
 
-        <ComboBox Name="areaComboBox" Grid.Row="0" Margin="137,49,356.6,41" HorizontalContentAlignment="Right" SelectionChanged="areaComboBox_SelectionChanged"/>
+        <ComboBox Name="areaComboBox" Grid.Row="0" Margin="137,49,356.6,41" HorizontalContentAlignment="Right" SelectionChanged="areaComboBox_SelectionChanged" />
 
-        <ListBox Name="unitsList" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource unitTemplate}" HorizontalAlignment="Center" Height="100" Margin="217,52,216.6,128" Grid.Row="1" VerticalAlignment="Center" Width="360"/>
+        <ListBox Name="unitsListBox" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource unitTemplate}" HorizontalAlignment="Center" Height="100" Margin="217,52,216.6,128" Grid.Row="1" VerticalAlignment="Center" Width="360"/>
 
 
 
