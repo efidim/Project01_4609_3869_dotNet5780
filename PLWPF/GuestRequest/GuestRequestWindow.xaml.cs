@@ -70,7 +70,7 @@ namespace PLWPF
                 vbCalendar.Child = null;
                 vbCalendar.Child = MyCalendar;
                 addCurrentList(myList);
-                this.GuestRequestGrid.DataContext = guest;
+                this.DataContext = guest;
                 DataContext = guest;
               
                 bl.AddGuestRequest(guest);

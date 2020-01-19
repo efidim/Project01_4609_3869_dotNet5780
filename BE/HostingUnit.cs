@@ -21,7 +21,7 @@ namespace BE
 //        public int Pool;
 //        public int Jacuzzi;
 //        public int ChildrenAttractions;
-//=======
+//
         public string Area { get; set; }
         public string subArea { get; set; }
         public string Type { get; set; }
