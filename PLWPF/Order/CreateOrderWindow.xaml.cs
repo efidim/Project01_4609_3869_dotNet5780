@@ -27,7 +27,7 @@ namespace PLWPF.Order
         public CreateOrderWindow()
         {
             InitializeComponent();
-            order = new BE.Order();
+        //    order = new BE.Order();
             host = new BE.HostingUnit();
             bl = BL.FactoryBl.getBl();
         }
