@@ -8,18 +8,19 @@ namespace BE
 {
     public class HostingUnit
     {
-        public int HostingUnitKey;
-        public Host Owner;
-        public string HostingUnitName;
+        public int HostingUnitKey { get; set; }
+        public Host Owner { get; set; }
+        public string HostingUnitName { get; set; }
+
         public bool[,] Diary = new bool[12, 31];
-        public string Area;
-        public string subArea;
-        public string Type;
-        public int Adults;
-        public int Children;
-        public int Pool;
-        public int Jacuzzi;
-        public int ChildrenAttractions;
+        public string Area { get; set; }
+        public string subArea { get; set; }
+        public string Type { get; set; }
+        public int Adults { get; set; }
+        public int Children { get; set; }
+        public bool Pool { get; set; }
+        public bool Jacuzzi { get; set; }
+        public bool ChildrenAttractions { get; set; }
 
         public override string ToString()
         {

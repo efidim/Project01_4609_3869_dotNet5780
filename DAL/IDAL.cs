@@ -18,10 +18,11 @@ namespace DAL
         #endregion
 
         #region HostingUnit   
-        void AddHostUnit(HostingUnit host);
+        int AddHostUnit(HostingUnit host);
         void RemoveHostUnit(HostingUnit host);
         void UpdateHostUnit(HostingUnit host);
         HostingUnit GetHostingUnit(int hostingUnitkey);
+        HostingUnit GetHostingUnitByName(string hostingUnitName);
         List<HostingUnit> GetAllHostingUnits();
       
         #endregion
@@ -34,7 +35,7 @@ namespace DAL
         DateTime GetRelease(int GuestRequestKey);
         List<Order> GetAllOrders();
         #endregion
-        //************************************ Host **************************************************
+ 
         #region Host
         Host GetHost(int hostKey);
         void UpdateHost(Host host);

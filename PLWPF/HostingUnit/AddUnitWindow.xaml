@@ -1,0 +1,236 @@
+﻿<Window x:Class="PLWPF.AddUnitWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="AddUnitWindow" Height="800" Width="800">
+
+
+
+    <Window.Resources>
+        <Style TargetType="{x:Type Control}" x:Key="baseStyle">
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+        </Style>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="TextAlignment" Value="Right"/>
+        </Style>
+        <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
+    </Window.Resources>
+
+    <ScrollViewer >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="יחידת אירוח חדשה"    FontSize="30" Margin="0"/>
+
+            <Grid x:Name="UnitDetailsGrid" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Content=":שם היחידה" Grid.Column="1"  Margin="3" Grid.Row="0" />
+                <TextBox x:Name="nameTextBox" Grid.Column="0" Margin="3" Grid.Row="0" Text="{Binding HostingUnitName}"/>
+
+                <Label Content=":אזור" Grid.Column="1" Margin="3" Grid.Row="1"/>
+                <ComboBox x:Name="areaComboBox" Grid.Column="0" Margin="3" Grid.Row="1" SelectedItem="{Binding Area}" HorizontalAlignment="Right"/>
+
+                <Label Content=":מס' מבוגרים מקסימלי" Grid.Column="1" Margin="3" Grid.Row="2"/>
+                <TextBox x:Name="adultsTextBox" Grid.Column="0" Margin="3" Grid.Row="2" Text="{Binding Adults, Mode=OneWayToSource}"/>
+
+                <Label Content=":מס' ילדים מקסימלי" Grid.Column="1" Margin="3" Grid.Row="3"/>
+                <TextBox x:Name="childrenTextBox" Grid.Column="0" Margin="3" Grid.Row="3" Text="{Binding Children, Mode=OneWayToSource}" />
+
+                <Label Content=":סוג" Grid.Column="1" Margin="3" Grid.Row="4"/>
+                <ComboBox x:Name="typeComboBox" Grid.Column="0" Margin="3" Grid.Row="4" SelectedItem="{Binding Type}" HorizontalAlignment="Right"/>
+
+                <Label Content=":בריכה" Grid.Column="1" Margin="3" Grid.Row="5"/>
+                <CheckBox x:Name="poolCheckBox" HorizontalAlignment="Left" Margin="640,10,0,0" Grid.Row="5" VerticalAlignment="Top" IsChecked="{Binding Pool}"/>
+
+                <Label Content=":ג'קוזי" Grid.Column="1" Margin="3" Grid.Row="6"/>
+                <CheckBox x:Name="jacuzziCheckBox" HorizontalAlignment="Left" Margin="640,10,0,0" Grid.Row="6" VerticalAlignment="Top" IsChecked="{Binding Jacuzzi}"/>
+
+                <Label Content=":פעילות לילדים" Grid.Column="1" Margin="3" Grid.Row="7"/>
+                <CheckBox x:Name="attractionsCheckBox" HorizontalAlignment="Left" Margin="640,10,0,0" Grid.Row="7" VerticalAlignment="Top" IsChecked="{Binding ChildrenAttractions}" />
+
+            </Grid>
+
+            <Grid x:Name="ownerDetails" Grid.Row="2" Margin="0,40,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="219*"/>
+                    <ColumnDefinition Width="40*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Content=":שם פרטי" Grid.Column="1"  Margin="0,3,2.8,3.2" Grid.Row="0" Width="52" />
+                <TextBox x:Name="privateNameTextBox" Grid.Column="0" Margin="3,3,2.8,3.2" Grid.Row="0" Text="{Binding Owner.PrivateName}"/>
+
+                <Label Content=":שם משפחה" Grid.Column="1" Margin="0,2.8,2.8,2.6" Grid.Row="1" Width="64"/>
+                <TextBox x:Name="familyNameTextBox" Grid.Column="0" Margin="3,2.8,2.8,2.6" Grid.Row="1" Text="{Binding Owner.FamilyName}" />
+
+                <Label Content=":ת-ז" Grid.Column="1" Margin="0,3.4,2.8,3" Grid.Row="2" Width="28"/>
+                <TextBox x:Name="idTextBox" Grid.Column="0" Margin="3,3.4,2.8,3" Grid.Row="2" Text="{Binding Owner.HostKey, Mode=OneWayToSource}" />
+
+                <Label Content=":מס' טלפון" Grid.Column="1" Margin="0,3,2.8,3.4" Grid.Row="3" Width="55" />
+                <TextBox x:Name="phoneTextBox" Grid.Column="0" Margin="3,3,2.8,3.4" Grid.Row="3" Text="{Binding Owner.PhoneNumber}" />
+
+                <Label Content=":מייל" Grid.Column="1" Margin="0,2.6,2.8,2.8" Grid.Row="4" Width="31"/>
+                <TextBox x:Name="mailTextBox" Grid.Column="0" Margin="3,2.6,2.8,2.8" Grid.Row="4" Text="{Binding Owner.MailAddress}" />
+
+            </Grid>
+
+            <Grid x:Name="bankDetails" Grid.Row="3" Margin="0,40,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto" MinWidth="121.6"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Content=":שם הבנק" Grid.Column="1"  Margin="0,3,2.8,2.8" Grid.Row="0" Width="53" />
+                <TextBox x:Name="bankNameTextBox" Grid.Column="0" Margin="3,3,0.2,2.8" Grid.Row="0" Text="{Binding Owner.BankBranchDetails.BankName}"/>
+
+                <Label Content=":מספר הבנק" Grid.Column="1" Margin="0,3.2,2.8,2.6" Grid.Row="1" Width="64"/>
+                <TextBox x:Name="bankNumTextBox" Grid.Column="0" Margin="3,3.2,0.2,2.6" Grid.Row="1" Text="{Binding Owner.BankBranchDetails.BankNumber, Mode=OneWayToSource}"/>
+
+                <Label Content=":מספר הסניף" Grid.Column="1" Margin="0,3.4,2.8,3.4" Grid.Row="2" Width="68"/>
+                <TextBox x:Name="branchNumTextBox" Grid.Column="0" Margin="3,3.4,0.2,3.4" Grid.Row="2" Text="{Binding Owner.BankBranchDetails.BranchNumber, Mode=OneWayToSource}"/>
+
+                <Label Content=":כתובת הסניף" Grid.Column="1" Margin="0,2.6,2.8,3.2" Grid.Row="3" Width="69"/>
+                <TextBox x:Name="addressBranchTextBox" Grid.Column="0" Margin="3,2.6,0.2,3.2" Grid.Row="3" Text="{Binding Owner.BankBranchDetails.BranchAddress}"/>
+
+                <Label Content=":עיר הסניף" Grid.Column="1" Margin="0,2.8,2.8,3" Grid.Row="4" Width="56"/>
+                <TextBox x:Name="cityTextBox" Grid.Column="0" Margin="3,2.8,0.2,3" Grid.Row="4" Text="{Binding Owner.BankBranchDetails.BranchCity}"/>
+
+                <Label Content=":מספר חשבון" Grid.Column="1" Margin="0,3,2.8,2.8" Grid.Row="5" Width="66"/>
+                <TextBox x:Name="accountTextBox" Grid.Column="0" Margin="3,3,0.2,2.8" Grid.Row="5" Text="{Binding Owner.BankAccountNumber, Mode=OneWayToSource}"/>
+
+                <Label Content=":אישור גבייה" Grid.Column="1" Margin="0,3.2,2.8,2.8" Grid.Row="6" Width="63"/>
+                <CheckBox x:Name="collectionCheckBox" HorizontalAlignment="Left" Margin="628,9.6,0,0" Grid.Row="6" VerticalAlignment="Top" IsChecked="{Binding Owner.CollectionClearance}" Grid.Column="0"/>
+
+
+            </Grid>
+
+
+            <Button x:Name="addButton" Content="הוסף"   FontSize="30" Grid.Row="4" Margin="10,10,9.8,46.4" Click="addButton_Click">
+                <Button.Style>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=nameTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=areaComboBox, Path=Visibility}" Value="Collapsed">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=areaComboBox, Path=Visibility}"
+                                           Value="Visible" />
+                                    <Condition Binding="{Binding ElementName=areaComboBox, Path=SelectedValue}"
+                                           Value="{x:Null}" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Button.IsEnabled" Value="false" />
+                            </MultiDataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=adultsTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=childrenTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=typeComboBox, Path=Visibility}" Value="Collapsed">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=areaComboBox, Path=Visibility}"
+                                           Value="Visible" />
+                                    <Condition Binding="{Binding ElementName=areaComboBox, Path=SelectedValue}"
+                                           Value="{x:Null}" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Button.IsEnabled" Value="false" />
+                            </MultiDataTrigger>
+
+
+                            <DataTrigger Binding="{Binding ElementName=privateNameTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=familyNameTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=idTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=phoneTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=mailTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+
+
+                            <DataTrigger Binding="{Binding ElementName=bankNameTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=bankNumTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=branchNumTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=addressBranchTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=cityTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=accountTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            
+            <Button x:Name="backButton" Content="חזרה"  
+                Margin="361,63.8,361.8,0" Height="30" VerticalAlignment="Top" FontSize="18" Grid.Row="4" HorizontalAlignment="Center" Click="backButton_Click_1"/>
+
+        </Grid>
+    </ScrollViewer>
+
+</Window>

@@ -4,31 +4,32 @@
     {
         public enum HostingUnitType
         {
-            Zimmer,
-            Hotel,
-            Camping,
+            צימר,        
+            מלון,
+            קמפינג,
         }
 
         public enum OrderStatus
         {
-            Not_yet_addressed,
-            Mail_sent,
-            Closed_due_to_customer_unresponsiveness,
-            Closed_with_customer_responsiveness,
+           טרם_טופך,
+           נשלח_מייל,
+           נסגרה_מחוסר_הענות_של_הלקוח,
+           נסגרה_כי_פג_תוקף,
         }
 
         public enum RequestStatus
         {
-            Active,
-            Inactive,
+            פתוחה,
+            נסגרה_עסקה_דרך_האתר,
+            נסגרה_כי_פג_תוקף,
         }
 
         public enum Area
         {
-            North,
-            South,
-            Center,
-            Jerusalem,
+            צפון,
+            דרום,
+            מרכז,
+            ירושלים,
         }
     }
 
