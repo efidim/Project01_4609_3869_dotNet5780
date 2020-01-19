@@ -35,7 +35,7 @@ namespace DAL
         DateTime GetRelease(int GuestRequestKey);
         List<Order> GetAllOrders();
         #endregion
-        //************************************ Host **************************************************
+ 
         #region Host
         Host GetHost(int hostKey);
         void UpdateHost(Host host);

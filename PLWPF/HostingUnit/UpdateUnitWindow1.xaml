@@ -8,19 +8,19 @@
         Title="UpdateUnitWindow1" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="5*"/>
 
         </Grid.RowDefinitions>
 
 
 
-        <Label Name="instructionLabel" Content="הזן את קוד היחידה או את שם היחדיה" Margin="149,38,148.6,23.6" Grid.Row="0" FontSize="30" Width="496" HorizontalAlignment="Center" />
+        <Label Name="instructionLabel" Content="הזן את קוד היחידה או את שם היחדיה" Margin="149,38,148.6,24" Grid.Row="0" FontSize="30" Width="496" HorizontalAlignment="Center" />
 
-        <TextBox Name="InputTextBox" HorizontalAlignment="Left" Height="46" Margin="255,8.4,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="284" FontSize="30" BorderBrush="Black" TextAlignment="Right" />
+        <TextBox Name="InputTextBox" HorizontalAlignment="Left" Height="46" Margin="255,8,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="284" FontSize="30" BorderBrush="Black" TextAlignment="Right" />
 
-        <Grid x:Name="GridButton" Grid.Row="1" Margin="0,152.4,-0.4,0" Grid.RowSpan="2">
+        <Grid x:Name="GridButton" Grid.Row="2" Margin="0,15.2,-0.4,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -28,6 +28,8 @@
 
             <Button x:Name="removeButton" Content="מחיקה" FontSize="25" HorizontalAlignment="Center" Grid.Column="0" VerticalAlignment="Top"  Width="189" Height="55" Click="removeButton_Click"/>
             <Button x:Name="updateButton" Content="עדכון" FontSize="25" HorizontalAlignment="Center"  Grid.Column="1" VerticalAlignment="Top" Width="189" Height="55" Click="updateButton_Click"/>
+            <Button x:Name="backButton" Content="חזרה"  
+                Margin="341,107,340.6,0" Height="30" VerticalAlignment="Top" FontSize="18" Click="backButton_Click" Grid.ColumnSpan="2"/>
 
         </Grid>
 

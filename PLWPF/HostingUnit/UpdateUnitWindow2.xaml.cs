@@ -21,21 +21,35 @@ namespace PLWPF
     /// </summary>
     public partial class UpdateUnitWindow2 : Window
     {
-        HostingUnit unit;
+        HostingUnit unitToUpdate;
         IBL bl;
         public UpdateUnitWindow2(HostingUnit unit)
         {
             InitializeComponent();
-
-            unit = new HostingUnit();
+            unitToUpdate = unit;
+            this.DataContext = unit;
             bl = FactoryBl.getBl();
 
 
-
-
+            this.areaComboBox.ItemsSource = Enum.GetValues(typeof(Enums.Area));
+            this.typeComboBox.ItemsSource = Enum.GetValues(typeof(Enums.HostingUnitType));
         }
 
-     
+        private void updateButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bl.UpdateHostUnit(unitToUpdate);
+                   MessageBox.Show("The Hosting Unit has been successfully updated");
+                   new HostingUnitWindow().Show();
+                   this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
     }
 
 }
