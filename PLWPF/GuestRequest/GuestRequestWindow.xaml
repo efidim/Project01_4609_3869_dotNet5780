@@ -15,16 +15,22 @@
         <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
-    </Window.Resources>
 
+        <local:StringTointConverter x:Key="StringTointConverter" />
+    </Window.Resources>
+   
     <Grid x:Name="GuestRequestGrid">
-        <Label Content=":שם פרטי" HorizontalAlignment="Left" Margin="697,58,-53.4,0" VerticalAlignment="Top" Width="150"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition Width="18*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content=":שם פרטי" HorizontalAlignment="Left" Margin="138.5,58,-55,0" VerticalAlignment="Top" Width="150" Grid.Column="1"/>
         <Label Content=":שם משפחה" HorizontalAlignment="Left" Margin="397,58,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content=":מייל" HorizontalAlignment="Left" Margin="170,58,0,0" VerticalAlignment="Top" Width="150"/>
-        <TextBox HorizontalAlignment="Left" x:Name="PrivateName" Height="23" Margin="552,62,0,0" TextWrapping="Wrap" Text="{Binding PrivateName}" VerticalAlignment="Top" Width="145"/>
+        <TextBox HorizontalAlignment="Left" x:Name="PrivateName" Height="23" Margin="552,62,0,0" TextWrapping="Wrap" Text="{Binding PrivateName}" VerticalAlignment="Top" Width="145" Grid.ColumnSpan="2"/>
         <TextBox HorizontalAlignment="Left" x:Name="FamilyName" Height="23" Margin="247,62,0,0" TextWrapping="Wrap" Text="{Binding FamilyName}" VerticalAlignment="Top" Width="145" />
         <TextBox HorizontalAlignment="Left" x:Name="Mail" Height="23" Margin="13,62,0,0" TextWrapping="Wrap" Text="{Binding MaillAddress}" VerticalAlignment="Top" Width="151"/>
-        <Label Content="מלא פרטי דרישת לקוח" HorizontalAlignment="Center" Margin="281,0,261.6,0" VerticalAlignment="Top" Width="251" FontSize="24" RenderTransformOrigin="0.5,0.5">
+        <Label Content="מלא פרטי דרישת לקוח" HorizontalAlignment="Center" Margin="280,0,27.5,0" VerticalAlignment="Top" Width="251" FontSize="24" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -35,27 +41,27 @@
             </Label.RenderTransform>
         </Label>
         <Viewbox Name="vbCalendar" HorizontalAlignment="Left" Height="178" Margin="246,133,0,0" VerticalAlignment="Top" Width="301"/>
-        <Label Content=":תאריכים רצויים" HorizontalAlignment="Left" Margin="567,178,0,0" VerticalAlignment="Top" Width="186" FontSize="24"/>
-        <Label Content=":העדפות" HorizontalAlignment="Left" Margin="633,326,0,0" VerticalAlignment="Top" Width="98" FontSize="24"/>
-        <Label Content=":אזור" HorizontalAlignment="Left" Margin="694,379,-50.4,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content=":תאריכים רצויים" HorizontalAlignment="Left" Margin="8.5,178,0,0" VerticalAlignment="Top" Width="186" FontSize="24" Grid.Column="1"/>
+        <Label Content=":העדפות" HorizontalAlignment="Left" Margin="74.5,326,0,0" VerticalAlignment="Top" Width="98" FontSize="24" Grid.Column="1"/>
+        <Label Content=":אזור" HorizontalAlignment="Left" Margin="135.5,379,-52,0" VerticalAlignment="Top" Width="150" Grid.Column="1"/>
         <Label Content=":סוג" HorizontalAlignment="Left" Margin="454,379,0,0" VerticalAlignment="Top" Width="65"/>
 
         <ComboBox
-            SelectedItem="{Binding Area}"  HorizontalAlignment="Left" x:Name="areaComboBox"  Margin="552,389,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
+            SelectedItem="{Binding Area}"  HorizontalAlignment="Left" x:Name="areaComboBox"  Margin="552,389,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393" Grid.ColumnSpan="2"/>
 
         <ComboBox
           SelectedItem="{Binding HostingUnitType}"  HorizontalAlignment="Left" x:Name="Type" Margin="301,389,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
-        
-        <Label Content=":מספר מבוגרים"  HorizontalAlignment="Left" Margin="611,433,0,0" VerticalAlignment="Top" Width="150"/>
+
+        <Label Content=":מספר מבוגרים"  HorizontalAlignment="Left" Margin="52.5,433,0,0" VerticalAlignment="Top" Width="150" Grid.Column="1"/>
         <Label Content=":מספר ילדים"  HorizontalAlignment="Left" Margin="301,433,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Adults" Height="23" Margin="540,442,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Children" Height="23" Margin="226,442,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51"/>
-        <Label Content=":בריכה" HorizontalAlignment="Left" Margin="683,496,0,0" VerticalAlignment="Top" Width="70"/>
-        <ComboBox SelectedItem="{Binding Response}" HorizontalAlignment="Left" x:Name="Pool" Margin="552,505,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
+        <TextBox Text="{Binding Adults}"  HorizontalAlignment="Left" x:Name="Adults" Height="23" Margin="540,442,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="51" Grid.ColumnSpan="2"/>
+        <TextBox Text="{Binding Children}" HorizontalAlignment="Left" x:Name="Children" Height="23" Margin="226,442,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="51"/>
+        <Label Content=":בריכה" HorizontalAlignment="Left" Margin="124.5,496,0,0" VerticalAlignment="Top" Width="70" Grid.Column="1"/>
+        <ComboBox SelectedItem="{Binding Response}" HorizontalAlignment="Left" x:Name="Pool" Margin="552,505,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393" Grid.ColumnSpan="2"/>
         <Label Content=":ג'קוזי" HorizontalAlignment="Left" Margin="454,496,0,0" VerticalAlignment="Top" Width="70"/>
-        <ComboBox SelectedItem="{Binding Response}" HorizontalAlignment="Left" x:Name="Jacuuzi" Margin="324,505,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
+        <ComboBox SelectedItem="{Binding Response, Converter={StaticResource StringTointConverter}}" HorizontalAlignment="Left" x:Name="Jacuuzi" Margin="324,505,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
         <Label Content=":פעילות ילדים" HorizontalAlignment="Left" Margin="156,496,0,0" VerticalAlignment="Top" Width="133"/>
         <ComboBox SelectedItem="{Binding Response}" HorizontalAlignment="Left" x:Name="Atraction" Margin="13,505,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
-        <Button Content="שלח פרטים" HorizontalAlignment="Center" Margin="0,566,0,-3" VerticalAlignment="Center" Width="792" Height="52" Background="#FF51E824" BorderBrush="#FFA45D5D" FontSize="36" FontFamily="Bookman Old Style" Click="Button_Click"/>
+        <Button Content="שלח פרטים" HorizontalAlignment="Center" Margin="0,566,0,-3" VerticalAlignment="Center" Width="792" Height="52" Background="#FF51E824" BorderBrush="#FFA45D5D" FontSize="36" FontFamily="Bookman Old Style" Click="Button_Click" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>
