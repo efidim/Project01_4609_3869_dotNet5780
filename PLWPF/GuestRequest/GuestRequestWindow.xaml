@@ -63,8 +63,8 @@
         <ComboBox SelectedItem="{Binding jacuzzi, Converter={StaticResource StringTointConverter}}" HorizontalAlignment="Left" x:Name="Jacuuzi" Margin="324,505,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
         <Label Content=":פעילות ילדים" HorizontalAlignment="Left" Margin="156,496,0,0" VerticalAlignment="Top" Width="133"/>
         <ComboBox SelectedItem="{Binding Response}" HorizontalAlignment="Left" x:Name="Atraction" Margin="13,505,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
-        <Button Content="שלח פרטים" HorizontalAlignment="Center" Margin="0,566,0,-3" VerticalAlignment="Center" Width="792" Height="52" Background="#FF51E824" BorderBrush="#FFA45D5D" FontSize="36" FontFamily="Bookman Old Style" Click="Button_Click" Grid.ColumnSpan="2"/>
-        <Button.Style>
+        <Button Content="שלח פרטים" HorizontalAlignment="Center" Margin="0,566,0,-3" VerticalAlignment="Center" Width="792" Height="52" Background="#FF51E824" BorderBrush="#FFA45D5D" FontSize="36" FontFamily="Bookman Old Style" Click="Button_Click" Grid.ColumnSpan="2">
+            <Button.Style>
             <Style>
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding ElementName=PrivateName, Path=Text}" Value="">
@@ -109,7 +109,8 @@
       
                 </Style.Triggers>
             </Style>
-        </Button.Style>
+           </Button.Style>
+        </Button>
 
     </Grid>
 </Window>
