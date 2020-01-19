@@ -52,7 +52,7 @@
                 </Grid.RowDefinitions>
 
                 <Label Content=":שם היחידה" Grid.Column="1"  Margin="3" Grid.Row="0" />
-                <TextBox x:Name="nameTextBox" Grid.Column="0" Margin="3" Grid.Row="0" Text="{Binding HostingUnitName}"/>                
+                <TextBox x:Name="nameTextBox" Grid.Column="0" Margin="3" Grid.Row="0" Text="{Binding HostingUnitName}"/>
 
                 <Label Content=":אזור" Grid.Column="1" Margin="3" Grid.Row="1"/>
                 <ComboBox x:Name="areaComboBox" Grid.Column="0" Margin="3" Grid.Row="1" SelectedItem="{Binding Area}" HorizontalAlignment="Right"/>
@@ -147,86 +147,89 @@
             </Grid>
 
 
-            <Button x:Name="addButton" Content="הוסף"   FontSize="30" Grid.Row="4" Margin="10" Click="addButton_Click">
-            <Button.Style>
-                <Style>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=nameTextBox, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=areaComboBox, Path=Visibility}" Value="Collapsed">
-                            <Setter Property="Button.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
+            <Button x:Name="addButton" Content="הוסף"   FontSize="30" Grid.Row="4" Margin="10,10,9.8,46.4" Click="addButton_Click">
+                <Button.Style>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=nameTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=areaComboBox, Path=Visibility}" Value="Collapsed">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
                                     <Condition Binding="{Binding ElementName=areaComboBox, Path=Visibility}"
                                            Value="Visible" />
                                     <Condition Binding="{Binding ElementName=areaComboBox, Path=SelectedValue}"
                                            Value="{x:Null}" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="Button.IsEnabled" Value="false" />
-                         </MultiDataTrigger>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Button.IsEnabled" Value="false" />
+                            </MultiDataTrigger>
                             <DataTrigger Binding="{Binding ElementName=adultsTextBox, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="false"/>
-                        </DataTrigger>
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
                             <DataTrigger Binding="{Binding ElementName=childrenTextBox, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="false"/>
-                        </DataTrigger>
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
                             <DataTrigger Binding="{Binding ElementName=typeComboBox, Path=Visibility}" Value="Collapsed">
-                            <Setter Property="Button.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
                                     <Condition Binding="{Binding ElementName=areaComboBox, Path=Visibility}"
                                            Value="Visible" />
                                     <Condition Binding="{Binding ElementName=areaComboBox, Path=SelectedValue}"
                                            Value="{x:Null}" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="Button.IsEnabled" Value="false" />
-                         </MultiDataTrigger>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Button.IsEnabled" Value="false" />
+                            </MultiDataTrigger>
 
 
-                        <DataTrigger Binding="{Binding ElementName=privateNameTextBox, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=familyNameTextBox, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=idTextBox, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=phoneTextBox, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=mailTextBox, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="false"/>
-                        </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=privateNameTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=familyNameTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=idTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=phoneTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=mailTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
 
 
-                        <DataTrigger Binding="{Binding ElementName=bankNameTextBox, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=bankNumTextBox, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=branchNumTextBox, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=addressBranchTextBox, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=cityTextBox, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=accountTextBox, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="false"/>
-                        </DataTrigger>          
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-          </Button>
+                            <DataTrigger Binding="{Binding ElementName=bankNameTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=bankNumTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=branchNumTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=addressBranchTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=cityTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=accountTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
             
-            
+            <Button x:Name="backButton" Content="חזרה"  
+                Margin="361,63.8,361.8,0" Height="30" VerticalAlignment="Top" FontSize="18" Grid.Row="4" HorizontalAlignment="Center" Click="backButton_Click_1"/>
+
         </Grid>
     </ScrollViewer>
 

@@ -159,7 +159,7 @@
                             <DataTrigger Binding="{Binding ElementName=nameTextBox, Path=Text}" Value="">
                                 <Setter Property="Button.IsEnabled" Value="false"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=areaComboBox, Path=Visibility}" Value="Collapsed">
+                            <!--<DataTrigger Binding="{Binding ElementName=areaComboBox, Path=Visibility}" Value="Collapsed">
                                 <Setter Property="Button.IsEnabled" Value="false"/>
                             </DataTrigger>
                             <MultiDataTrigger>
@@ -170,17 +170,17 @@
                                            Value="{x:Null}" />
                                 </MultiDataTrigger.Conditions>
                                 <Setter Property="Button.IsEnabled" Value="false" />
-                            </MultiDataTrigger>
+                            </MultiDataTrigger>-->
                             <DataTrigger Binding="{Binding ElementName=adultsTextBox, Path=Text}" Value="">
                                 <Setter Property="Button.IsEnabled" Value="false"/>
                             </DataTrigger>
                             <DataTrigger Binding="{Binding ElementName=childrenTextBox, Path=Text}" Value="">
                                 <Setter Property="Button.IsEnabled" Value="false"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=typeComboBox, Path=Visibility}" Value="Collapsed">
-                                <Setter Property="Button.IsEnabled" Value="false"/>
-                            </DataTrigger>
-                            <MultiDataTrigger>
+                            <!--<DataTrigger Binding="{Binding ElementName=typeComboBox, Path=Visibility}" Value="Collapsed">
+                                <Setter Property="Button.IsEnabled" Value="false"/>-->
+                            <!--</DataTrigger>-->
+                            <!--<MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
                                     <Condition Binding="{Binding ElementName=areaComboBox, Path=Visibility}"
                                            Value="Visible" />
@@ -188,7 +188,7 @@
                                            Value="{x:Null}" />
                                 </MultiDataTrigger.Conditions>
                                 <Setter Property="Button.IsEnabled" Value="false" />
-                            </MultiDataTrigger>
+                            </MultiDataTrigger>-->
 
 
                             <DataTrigger Binding="{Binding ElementName=privateNameTextBox, Path=Text}" Value="">
