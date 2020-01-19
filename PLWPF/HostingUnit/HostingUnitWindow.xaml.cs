@@ -27,13 +27,19 @@ namespace PLWPF
         private void addUnitButton_Click(object sender, RoutedEventArgs e)
         {
             new AddUnitWindow().Show();
-            //Hide();
+            this.Close();
         }
 
         private void existedUnitButton_Click(object sender, RoutedEventArgs e)
         {
             new UpdateUnitWindow1().Show();
-            //Hide();
+            this.Close();
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            this.Close();
         }
     }
 }

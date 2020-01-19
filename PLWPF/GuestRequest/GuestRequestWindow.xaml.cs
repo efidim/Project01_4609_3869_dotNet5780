@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace PLWPF
     {
         BE.GuestRequest guest;
         BL.IBL bl;
-        private Calendar MyCalendar;
+        private System.Windows.Controls.Calendar MyCalendar;
         public GuestRequestWindow()
         {
             InitializeComponent();
@@ -43,52 +44,38 @@ namespace PLWPF
             vbCalendar.Child = MyCalendar;                                 
         }
 
-        private Calendar CreateCalendar()
+        private System.Windows.Controls.Calendar CreateCalendar()
         {
-            Calendar MonthlyCalendar = new Calendar();
+            System.Windows.Controls.Calendar MonthlyCalendar = new System.Windows.Controls.Calendar();
             MonthlyCalendar.Name = "MonthlyCalendar";
             MonthlyCalendar.DisplayMode = CalendarMode.Month;
             MonthlyCalendar.SelectionMode = CalendarSelectionMode.SingleRange;
             MonthlyCalendar.IsTodayHighlighted = true;
             return MonthlyCalendar;
         }
+        private void addCurrentList(List<DateTime> tList)
+        {
+            guest.EntryDate = tList.First();
+            guest.ReleaseDate = tList.Last();
+        }
+
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                this.GuestRequestGrid.DataContext = guest;
+                List<DateTime> myList = MyCalendar.SelectedDates.ToList();
+                MyCalendar = CreateCalendar();
+                vbCalendar.Child = null;
+                vbCalendar.Child = MyCalendar;
+                addCurrentList(myList);
+                this.DataContext = guest;
                 DataContext = guest;
-                guest.PrivateName =this.PrivateName.Text;
-                guest.FamilyName = this.FamilyName.Text;
-                guest.MailAddress= this.Mail.Text;
-
-                guest.Area = this.areaComboBox.Text;
-                guest.Type = this.Type.Text;
-
-                guest.EntryDate = this.vbCalendar.;
-
-                guest.Adults = int.Parse(this.Adults.Text);
-                guest.Children = int.Parse(this.Children.Text);
-
-                guest.Pool = int.Parse(Pool.Text);
-                guest.Jacuzzi = int.Parse(this.Jacuuzi.Text);
-                guest.ChildrenAttractions = int.Parse(this.Atraction.Text);
-                
+              
                 bl.AddGuestRequest(guest);
                 guest = new GuestRequest();
 
-                this.PrivateName.ClearValue(TextBox.TextProperty);
-                this.FamilyName.ClearValue(TextBox.TextProperty);
-                this.Mail.ClearValue(TextBox.TextProperty);
-                this.vbCalendar.ClearValue(TextBox.TextProperty);
-                this.areaComboBox.ClearValue(TextBox.TextProperty);
-                this.Type.ClearValue(TextBox.TextProperty);
-                this.Adults.ClearValue(TextBox.TextProperty);
-                this.Children.ClearValue(TextBox.TextProperty);
-                this.Pool.ClearValue(TextBox.TextProperty);
-                this.Jacuuzi.ClearValue(TextBox.TextProperty);
-                this.Atraction.ClearValue(TextBox.TextProperty);
 
             }
             
@@ -104,4 +91,30 @@ namespace PLWPF
 
         
     }
+
+    public class StringTointConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            switch (value.ToString().ToLower())
+            {
+                case "אפשרי":
+                    return 0;
+                case "לא_מעוניין":
+                    return 1;
+                case "הכרחי":
+                    return 2;
+            }
+            return 0;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+
+      
+    }
 }
+
+

@@ -16,17 +16,21 @@
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
     </Window.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="49.6"/>
         </Grid.RowDefinitions>
 
         <Button x:Name="addUnitButton" Content="הוסף יחידת אירוח"  
-        Margin="40"  Grid.Row="0" Click="addUnitButton_Click"/>
+        Margin="40,40,39.6,40"  Grid.Row="0" Click="addUnitButton_Click"/>
 
         <Button x:Name="existedUnitButton" Content="יחידה קיימת"  
-        Margin="40" Grid.Row="1" Click="existedUnitButton_Click"/>
+        Margin="40,40,39.6,41.4" Grid.Row="1" Click="existedUnitButton_Click"/>
+
+        <Button x:Name="backButton" Content="חזרה"  
+        Margin="334,9.6,333.6,0" Grid.Row="2" Height="30" VerticalAlignment="Top" FontSize="18" Click="backButton_Click"/>
     </Grid>
 </Window>

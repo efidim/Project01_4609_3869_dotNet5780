@@ -38,11 +38,11 @@ namespace PLWPF
                 if (IsDigitsOnly(this.InputTextBox.Text))
                      unit = bl.GetHostingUnit(int.Parse(this.InputTextBox.Text));
 
-                 //else
-                 //    unit = bl.GetHostingUnitByName(this.InputTextBox.Text);
+                else
+                    unit = bl.GetHostingUnitByName(this.InputTextBox.Text);
 
 
-                 new UpdateUnitWindow2(unit).Show();
+                new UpdateUnitWindow2(unit).Show();
             }
             catch (Exception ex)
             {
@@ -61,11 +61,11 @@ namespace PLWPF
                     bl.RemoveHostUnit(unit);
                 }
 
-                //else
-                //{
-                //    unit = bl.GetHostingUnitByName(this.InputTextBox.Text);
-                //    bl.RemoveHostUnit(unit);
-                //}
+                else
+                {
+                    unit = bl.GetHostingUnitByName(this.InputTextBox.Text);
+                    bl.RemoveHostUnit(unit);
+                }
 
                 MessageBox.Show("The Hosting Unit has been successfully removed");
             }
@@ -84,6 +84,12 @@ namespace PLWPF
             }
 
             return true;
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            new HostingUnitWindow().Show();
+            this.Close();
         }
     }
 }

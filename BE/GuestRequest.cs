@@ -8,21 +8,22 @@ namespace BE
 {
     public class GuestRequest:IEnumerable
     {
-        public int GuestRequestKey;
-        public string PrivateName;
-        public string FamilyName;
-        public string MailAddress;
-        public bool Status;
-        public DateTime RegistrationDate;
-        public DateTime EntryDate;
-        public DateTime ReleaseDate;
-        public string Area;
-        public string Type;
-        public int Adults;
-        public int Children;
-        public int Pool;
-        public int Jacuzzi;
-        public int ChildrenAttractions;
+        public int GuestRequestKey{get ; set;}
+        public string PrivateName{get ; set;}
+        public string FamilyName{get ; set;}
+        public string MailAddress { get; set; }
+
+        public bool Status{get ; set;}
+        public DateTime RegistrationDate{get ; set;}
+        public DateTime EntryDate{get ; set;}
+        public DateTime ReleaseDate{get ; set;}
+        public string Area{get ; set;}
+        public string Type{get ; set;}
+        public int Adults{get ; set;}
+        public int Children{get ; set;}
+        public int Pool{get ; set;}
+        public int Jacuzzi{get ; set;}
+        public int ChildrenAttractions{get ; set;}
 
         public override string ToString()
         {
