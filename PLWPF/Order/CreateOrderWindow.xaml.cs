@@ -22,7 +22,7 @@ namespace PLWPF.Order
     /// </summary>
     public partial class CreateOrderWindow : Window
     {
-        // BE.Order order;
+        BE.Order order;
         BE.HostingUnit unit;
         BL.IBL bl;
         public CreateOrderWindow()
@@ -38,9 +38,10 @@ namespace PLWPF.Order
         {
             try
             {
-            
-                
-
+                bl.AddOrder(order);
+                MessageBox.Show("The Order has been successfully created");
+                new OrderWindow().Show();
+                this.Close();
 
             }
             catch (Exception ex)
@@ -63,7 +64,7 @@ namespace PLWPF.Order
         }
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            unit = bl.GetHostingUnit(int.Parse(this.hostUnits.I));
+            unit = bl.GetHostingUnit(int.Parse(this.));
             IEnumerable<GuestRequest> temp4 = bl.RequestsByCondition(x => x.Area == unit.Area
             && x.Type == unit.Type && bl.IsItAvailaible(unit, x.EntryDate, bl.DifferenceDays(x.ReleaseDate, x.EntryDate))
             && (x.Status) && x.Adults <= unit.Adults
@@ -71,6 +72,16 @@ namespace PLWPF.Order
             && (IntToBool(x.Jacuzzi) == unit.Jacuzzi || x.Jacuzzi == 0)
             && (IntToBool(x.ChildrenAttractions) == unit.ChildrenAttractions || x.ChildrenAttractions == 0));
             DataContext = temp4;
+            foreach (var item in temp4)
+            {
+                ListBoxItem newItem = new ListBoxItem();
+                newItem.Content = item;
+                requests.Items.Add(newItem);
+            }
+
+        }
+        private void guest_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
         private bool IntToBool(int value)

@@ -10,16 +10,8 @@
         <Label Content="הכנס תעודת זהות" HorizontalAlignment="Left" Margin="623,24,0,0" VerticalAlignment="Top" Height="42" Width="139" RenderTransformOrigin="0.36,0.994"/>
         <TextBox x:Name="key" HorizontalAlignment="Left" Height="23" Margin="465,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.009,2.103"/>
         <Label Content="בחר דרישת לקוח " HorizontalAlignment="Left" Margin="622,121,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.414,1.4" Width="147"/>
-        <ListBox x:Name="requests"  SelectedItem="{Binding}" HorizontalAlignment="Left" Margin="50,117,0,0" VerticalAlignment="Top" Width="558" Height="33" RenderTransformOrigin="0.5,0.5">
-            <ListBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.028"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </ListBox.RenderTransform>
-        </ListBox>
+        <ListBox x:Name="requests" SelectionMode="Single" SelectionChanged="guest_SelectionChanged" HorizontalAlignment="Left" Margin="50,117,0,0" VerticalAlignment="Top" Width="558" Height="33" RenderTransformOrigin="0.5,0.5"/>
+
         <Button Content="לחץ ליצירת הזמנה" HorizontalAlignment="Left" Margin="4,365,0,0" VerticalAlignment="Top" Width="782" Height="54" Click="Button_Click"/>
         <Button Content="שלח למערכת" HorizontalAlignment="Left" Margin="369,26,0,0" VerticalAlignment="Top" Width="80" Click="Button_Click_1"/>
         <Label HorizontalAlignment="Left" Height="28" Margin="619,66,0,0"  Content="בחר יחידת אירוח" VerticalAlignment="Top" Width="128"/>
