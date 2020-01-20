@@ -28,8 +28,9 @@ namespace PLWPF.Order
         public CreateOrderWindow()
         {
             InitializeComponent();
-            //    order = new BE.Order();
+           // order = new BE.Order();
             unit = new BE.HostingUnit();
+            this.DataContext = unit;
             bl = BL.FactoryBl.getBl();
         }
 
@@ -37,26 +38,39 @@ namespace PLWPF.Order
         {
             try
             {
-                unit = bl.GetHostingUnit(int.Parse(this.key.Text));
-                IEnumerable<GuestRequest> temp4 = bl.RequestsByCondition(x => x.Area == unit.Area
-                && x.Type == unit.Type && bl.IsItAvailaible(unit, x.EntryDate, bl.DifferenceDays(x.ReleaseDate, x.EntryDate))
-                && (x.Status) && x.Adults <= unit.Adults
-                && x.Children <= unit.Children && (IntToBool(x.Pool)==unit.Pool||x.Pool==0)
-                && (IntToBool(x.Jacuzzi) == unit.Jacuzzi|| x.Jacuzzi==0)
-                && (IntToBool(x.ChildrenAttractions) == unit.ChildrenAttractions||x.ChildrenAttractions==0));
-                DataContext = temp4;
-                this.requests.ItemsSource = temp4;
+            
+                
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw ;
+               MessageBox.Show(ex.Message); 
             }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            int hostKey = (int.Parse(this.key.Text));
+            IEnumerable<HostingUnit> temp = bl.UnitsByCondition(x => x.Owner.HostKey==hostKey);
+            foreach (var item in temp)
+            {
+                ListBoxItem newItem = new ListBoxItem();
+                newItem.Content = item;
+                hostUnits.Items.Add(newItem);
+            }
+
+        }
+        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            unit = bl.GetHostingUnit(int.Parse(this.hostUnits.I));
+            IEnumerable<GuestRequest> temp4 = bl.RequestsByCondition(x => x.Area == unit.Area
+            && x.Type == unit.Type && bl.IsItAvailaible(unit, x.EntryDate, bl.DifferenceDays(x.ReleaseDate, x.EntryDate))
+            && (x.Status) && x.Adults <= unit.Adults
+            && x.Children <= unit.Children && (IntToBool(x.Pool) == unit.Pool || x.Pool == 0)
+            && (IntToBool(x.Jacuzzi) == unit.Jacuzzi || x.Jacuzzi == 0)
+            && (IntToBool(x.ChildrenAttractions) == unit.ChildrenAttractions || x.ChildrenAttractions == 0));
+            DataContext = temp4;
 
         }
         private bool IntToBool(int value)

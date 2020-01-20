@@ -7,6 +7,19 @@
         mc:Ignorable="d"
         Title="UpdateOrderWindow" Height="450" Width="800">
     <Grid>
-        
+        <TextBox HorizontalAlignment="Left" Height="32" Margin="256,116,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="280"/>
+        <Label Content="הזן מספר הזמנה" HorizontalAlignment="Left" Margin="324,33,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="450">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.164"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Button Content="עדכן" HorizontalAlignment="Left" Margin="271,223,0,0" VerticalAlignment="Top" Width="253" Height="34" Click="Button_Click_1"/>
+        <Button Content="חזרה" HorizontalAlignment="Left" Margin="328,373,0,0" VerticalAlignment="Top" Width="133" Click="Button_Click"/>
+
     </Grid>
 </Window>

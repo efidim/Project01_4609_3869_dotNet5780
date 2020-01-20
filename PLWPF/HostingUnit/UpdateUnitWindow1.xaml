@@ -29,7 +29,7 @@
             <Button x:Name="removeButton" Content="מחיקה" FontSize="25" HorizontalAlignment="Center" Grid.Column="0" VerticalAlignment="Top"  Width="189" Height="55" Click="removeButton_Click"/>
             <Button x:Name="updateButton" Content="עדכון" FontSize="25" HorizontalAlignment="Center"  Grid.Column="1" VerticalAlignment="Top" Width="189" Height="55" Click="updateButton_Click"/>
             <Button x:Name="backButton" Content="חזרה"  
-                Margin="341,107,340.6,0" Height="30" VerticalAlignment="Top" FontSize="18" Click="backButton_Click" Grid.ColumnSpan="2"/>
+                Margin="341,107,340.6,0" Height="30" VerticalAlignment="Top" FontSize="18" Click="backButton_Click" Grid.ColumnSpan="2" RenderTransformOrigin="0.502,0.5"/>
 
         </Grid>
 

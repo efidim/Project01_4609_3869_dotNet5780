@@ -8,13 +8,13 @@ namespace BE
 {
     public class Order
     {
-        public int HostingUnitKey;
-        public int GuestRequestKey;
-        public int OrderKey;
-        public int Status;
-        public DateTime CreateDate;
-        public DateTime OrderDate;
-        public int CommissionPerDay;
+        public int HostingUnitKey{get;set;}
+        public int GuestRequestKey{get;set;}
+        public int OrderKey{get;set;}
+        public int Status{get;set;}
+        public DateTime CreateDate{get;set;}
+        public DateTime OrderDate{get;set;}
+        public int CommissionPerDay{get;set;}
 
         public override string ToString()
         {

@@ -157,7 +157,14 @@ namespace BL
                                                                 group item by item.Area;
             return temp2;
         }
-
+        public IEnumerable<HostingUnit> UnitsByCondition(Func<HostingUnit, bool> method)
+        {
+            IEnumerable<HostingUnit> temp1 = GetAllHostingUnits();
+            IEnumerable<HostingUnit> temp5 = from item in temp1
+                                              where method(item)
+                                              select item;
+            return temp5;
+        }
         /// <summary>
         /// Returns List with all the available Units on given days
         /// </summary>

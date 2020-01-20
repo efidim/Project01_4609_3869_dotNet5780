@@ -23,5 +23,17 @@ namespace PLWPF.Order
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new OrderWindow().Show();
+            this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            new UpdateOrderWindow2().Show();
+            this.Close();
+        }
     }
 }

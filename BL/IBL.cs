@@ -30,6 +30,7 @@ namespace BL
         bool IsItAvailaible(HostingUnit unit, DateTime entry, int duration);
         List<HostingUnit> GetAllHostingUnits();
         IEnumerable<IGrouping<string, HostingUnit>> UnitsByArea();
+        IEnumerable<HostingUnit> UnitsByCondition(Func<HostingUnit, bool> method);
         List<HostingUnit> AvailableUnits(DateTime entry, int duration);
         #endregion
 
