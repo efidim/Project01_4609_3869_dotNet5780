@@ -16,7 +16,7 @@
 
 
 
-        <Label Name="instructionLabel" Content="הזן את קוד היחידה או את שם היחדיה" Margin="149,38,148.6,24" Grid.Row="0" FontSize="30" Width="496" HorizontalAlignment="Center" />
+        <Label Name="instructionLabel" Content="הזן את קוד היחידה או את שם היחדה" Margin="149,38,148.6,24" Grid.Row="0" FontSize="30" Width="496" HorizontalAlignment="Center" />
 
         <TextBox Name="InputTextBox" HorizontalAlignment="Left" Height="46" Margin="255,8,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="284" FontSize="30" BorderBrush="Black" TextAlignment="Right" />
 

@@ -5,8 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="AppOwnerWindow" Height="450" Width="800">
+        Title="AppOwnerWindow" Height="480" Width="800">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type Control}" x:Key="baseStyle">
+            <Setter Property="FontSize" Value="30" />
+        </Style>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
+    </Window.Resources>
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
         
+        <Label Name="chooseQuery" Content="בחר שאילתא" Grid.Row="0" HorizontalAlignment="Center"/>
+
+        <Button x:Name="unitsByAreaButton" Content="הצג יחידות אירוח לפי אזור"  
+        Margin="15"  Grid.Row="1" Click="unitsByAreaButton_Click"/>
+
+        <Button x:Name="unitsByDayButton" Content="הצג יחידות אירוח פנויות בתקופה מסוימת"  
+        Margin="15"  Grid.Row="2" Click="unitsByDayButton_Click"/>
+
+        <Button x:Name="OrderByRequestButton" Content="הצג מספר הזמנות שנשלחו לדרישות לקוח"  
+        Margin="15"  Grid.Row="3" Click="numOfOrdersButton_Click"/>
+
+        <Button x:Name="HostsByUnitsButton" Content="הצג מארחים לפי מספר יחידות"  
+        Margin="15"  Grid.Row="4" Click="HostsByUnitsButton_Click"/>
+
+        <Button x:Name="backButton" Content="חזרה" Grid.Row="5" Margin="344,10.2,343.6,10.4" FontSize="20" Click="backButton_Click"/>
+
     </Grid>
 </Window>
