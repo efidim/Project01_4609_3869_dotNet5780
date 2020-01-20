@@ -13,15 +13,7 @@ namespace BE
         public string HostingUnitName { get; set; }
 
         public bool[,] Diary = new bool[12, 31];
-//<<<<<<< HEAD
-//        public string Area;
-//        public string Type;
-//        public int Adults;
-//        public int Children;
-//        public int Pool;
-//        public int Jacuzzi;
-//        public int ChildrenAttractions;
-//
+
         public string Area { get; set; }
         public string subArea { get; set; }
         public string Type { get; set; }

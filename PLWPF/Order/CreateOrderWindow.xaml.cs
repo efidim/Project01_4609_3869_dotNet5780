@@ -23,13 +23,13 @@ namespace PLWPF.Order
     public partial class CreateOrderWindow : Window
     {
         // BE.Order order;
-        BE.HostingUnit host;
+        BE.HostingUnit unit;
         BL.IBL bl;
         public CreateOrderWindow()
         {
             InitializeComponent();
             //    order = new BE.Order();
-            host = new BE.HostingUnit();
+            unit = new BE.HostingUnit();
             bl = BL.FactoryBl.getBl();
         }
 
@@ -37,11 +37,13 @@ namespace PLWPF.Order
         {
             try
             {
-                host = bl.GetHostingUnit(int.Parse(this.key.Text));
-                IEnumerable<GuestRequest> temp4 = bl.RequestsByCondition(x => x.Area == host.Area
-                && x.Type == host.Type && bl.IsItAvailaible(host, x.EntryDate, bl.DifferenceDays(x.ReleaseDate, x.EntryDate))
-                && (x.Status) && x.Adults <= host.Adults
-                && x.Children <= host.Children &&(x.Pool)==host.Pool*/);
+                unit = bl.GetHostingUnit(int.Parse(this.key.Text));
+                IEnumerable<GuestRequest> temp4 = bl.RequestsByCondition(x => x.Area == unit.Area
+                && x.Type == unit.Type && bl.IsItAvailaible(unit, x.EntryDate, bl.DifferenceDays(x.ReleaseDate, x.EntryDate))
+                && (x.Status) && x.Adults <= unit.Adults
+                && x.Children <= unit.Children && (IntToBool(x.Pool)==unit.Pool||x.Pool==0)
+                && (IntToBool(x.Jacuzzi) == unit.Jacuzzi|| x.Jacuzzi==0)
+                && (IntToBool(x.ChildrenAttractions) == unit.ChildrenAttractions||x.ChildrenAttractions==0));
                 DataContext = temp4;
                 this.requests.ItemsSource = temp4;
 
@@ -49,8 +51,7 @@ namespace PLWPF.Order
             }
             catch (Exception)
             {
-
-                throw;
+                throw ;
             }
         }
 
@@ -62,11 +63,11 @@ namespace PLWPF.Order
         {
             switch (value.ToString().ToLower())
             {
-                case "אפשרי":
+                case "0"://אפשרי
+                    return true;
+                case "1"://לא מעוניין
                     return false;
-                case "לא_מעוניין":
-                    return false;
-                case "הכרחי":
+                case "2"://הכרחי
                     return true;
             }
             return false;
