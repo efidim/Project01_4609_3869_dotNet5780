@@ -41,7 +41,7 @@ namespace BE
             DateTime current = DateTime.Today.AddMonths(-1); 
             // intialization to the matrice first day
             
-            if (Diary[current.Month, current.Day]) // first day check
+            if (Diary[current.Month -1, current.Day -1]) // first day check
                 str += current.Day + "/" + current.Month + "-";
 
             current = current.AddDays(1);
