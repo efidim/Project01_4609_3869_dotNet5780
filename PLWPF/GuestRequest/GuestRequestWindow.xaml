@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="GuestRequestWindow" Height="646.5" Width="800">
+        Title="GuestRequestWindow" Height="700" Width="800">
 
     <Window.Resources>
         <Style TargetType="{x:Type Control}" x:Key="baseStyle">
@@ -25,20 +25,20 @@
             <ColumnDefinition Width="43*"/>
             <ColumnDefinition Width="18*"/>
         </Grid.ColumnDefinitions>
-        
+
         <Label Content=":שם פרטי" HorizontalAlignment="Left" Margin="138.5,58,-55,0" VerticalAlignment="Top" Width="150" Grid.Column="1"/>
-        
+
         <Label Content=":שם משפחה" HorizontalAlignment="Left" Margin="397,58,0,0" VerticalAlignment="Top" Width="150"/>
-        
+
         <Label Content=":מייל" HorizontalAlignment="Left" Margin="170,58,0,0" VerticalAlignment="Top" Width="150"/>
-        
-        <TextBox x:Name="PrivateName" HorizontalContentAlignment="Right" HorizontalAlignment="Left"  Height="23" Margin="552,66,0,0" TextWrapping="Wrap" Text="{Binding PrivateName}" VerticalAlignment="Top" Width="145" Grid.ColumnSpan="2"/>
 
-        <TextBox x:Name="FamilyName"  HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="23" Margin="247,66,0,0" TextWrapping="Wrap" Text="{Binding FamilyName}" VerticalAlignment="Top" Width="145" />
-        
-        <TextBox HorizontalAlignment="Left" x:Name="Mail" Height="23" Margin="13,66,0,0" TextWrapping="Wrap" Text="{Binding MaillAddress}" VerticalAlignment="Top" Width="151"/>
+        <TextBox x:Name="PrivateName" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" HorizontalAlignment="Left"   Margin="552,66,0,0" TextWrapping="Wrap" Text="{Binding PrivateName}" VerticalAlignment="Top" Width="145" Grid.ColumnSpan="2"/>
 
-        <Label Content="מלא פרטי דרישת לקוח" HorizontalAlignment="Center" Margin="280,0,27.5,0" VerticalAlignment="Top" Width="251" FontSize="24" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name="FamilyName" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" HorizontalAlignment="Left"  Margin="247,66,0,0" TextWrapping="Wrap" Text="{Binding FamilyName}" VerticalAlignment="Top" Width="145" />
+
+        <TextBox x:Name="Mail" HorizontalAlignment="Left"  Margin="13,66,0,0" TextWrapping="Wrap" Text="{Binding MaillAddress}" VerticalAlignment="Top" Width="151"/>
+
+        <Label Content="מלא פרטי דרישת לקוח" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin="280,0,27.5,0" VerticalAlignment="Top" Width="251" FontSize="24" RenderTransformOrigin="0.5,0.5"/>
 
 
         <Viewbox Name="vbCalendar" HorizontalAlignment="Left" Height="178" Margin="246,133,0,0" VerticalAlignment="Top" Width="301"/>
@@ -57,9 +57,9 @@
 
         <Label Content=":מספר ילדים"  HorizontalAlignment="Left" Margin="301,433,0,0" VerticalAlignment="Top" Width="120"/>
 
-        <TextBox Text="{Binding Adults}"  HorizontalAlignment="Left" x:Name="Adults" Height="23" Margin="540,442,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="51" Grid.ColumnSpan="2"/>
+        <TextBox Text="{Binding Adults, Mode=OneWayToSource}" HorizontalContentAlignment="Right"  HorizontalAlignment="Left" x:Name="Adults" Margin="540,442,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="51" Grid.ColumnSpan="2"/>
 
-        <TextBox Text="{Binding Children}" HorizontalAlignment="Left" x:Name="Children" Height="23" Margin="226,442,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="51"/>
+        <TextBox Text="{Binding Children, Mode=OneWayToSource}" HorizontalContentAlignment="Right" HorizontalAlignment="Left" x:Name="Children" Margin="226,442,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="51"/>
 
         <Label Content=":בריכה" HorizontalAlignment="Left" Margin="124.5,496,0,0" VerticalAlignment="Top" Width="70" Grid.Column="1"/>
 
@@ -73,7 +73,7 @@
 
         <ComboBox x:Name="attractionComboBox" HorizontalAlignment="Left"  Margin="13,505,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
 
-        <Button Content="שלח פרטים" HorizontalAlignment="Center" Margin="0,566,0,-3" VerticalAlignment="Center" Width="792" Height="52" Background="#FF51E824" BorderBrush="#FFA45D5D" FontSize="36" FontFamily="Bookman Old Style" Click="Button_Click" Grid.ColumnSpan="2">
+        <Button x:Name="sentDetailsButton" Content="שלח פרטים" HorizontalAlignment="Center" Margin="62,570,61.6,48.4" VerticalAlignment="Center" Width="670" Height="52" FontSize="36"  Click="sentDetailsButton_Click" Grid.ColumnSpan="2">
             <Button.Style>
                 <Style>
                     <Style.Triggers>
@@ -117,10 +117,52 @@
                             <Setter Property="Button.IsEnabled" Value="false"/>
                         </DataTrigger>
 
+                        <DataTrigger Binding="{Binding ElementName=poolComboBox, Path=Visibility}" Value="Collapsed">
+                            <Setter Property="Button.IsEnabled" Value="false"/>
+                        </DataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=poolComboBox, Path=Visibility}"
+                                           Value="Visible" />
+                                <Condition Binding="{Binding ElementName=poolComboBox, Path=SelectedValue}"
+                                           Value="{x:Null}" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Button.IsEnabled" Value="false" />
+                        </MultiDataTrigger>
+
+                        <DataTrigger Binding="{Binding ElementName=jacuzziComboBox, Path=Visibility}" Value="Collapsed">
+                            <Setter Property="Button.IsEnabled" Value="false"/>
+                        </DataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=jacuzziComboBox, Path=Visibility}"
+                                           Value="Visible" />
+                                <Condition Binding="{Binding ElementName=jacuzziComboBox, Path=SelectedValue}"
+                                           Value="{x:Null}" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Button.IsEnabled" Value="false" />
+                        </MultiDataTrigger>
+
+                        <DataTrigger Binding="{Binding ElementName=attractionComboBox, Path=Visibility}" Value="Collapsed">
+                            <Setter Property="Button.IsEnabled" Value="false"/>
+                        </DataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=attractionComboBox, Path=Visibility}"
+                                           Value="Visible" />
+                                <Condition Binding="{Binding ElementName=attractionComboBox, Path=SelectedValue}"
+                                           Value="{x:Null}" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Button.IsEnabled" Value="false" />
+                        </MultiDataTrigger>
+
                     </Style.Triggers>
                 </Style>
             </Button.Style>
         </Button>
+
+        <Button x:Name="backButton" Content="חזרה"  
+                Margin="387,0,127.2,12.4"  VerticalAlignment="Bottom" FontSize="13" HorizontalAlignment="Center" Click="backButton_Click"  />
 
     </Grid>
 </Window>

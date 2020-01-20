@@ -61,7 +61,7 @@ namespace PLWPF
         }
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void sentDetailsButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -92,6 +92,8 @@ namespace PLWPF
                 else if (attractionComboBox.SelectedItem.ToString() == "הכרחי")
                     guest.ChildrenAttractions = 2;
 
+                guest.RegistrationDate = DateTime.Now;
+
                 bl.AddGuestRequest(guest);
                 MessageBox.Show("The Guest Request has been successfully added.");
 
@@ -118,7 +120,11 @@ namespace PLWPF
             }
         }
 
-
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            this.Close();
+        }
     }
 
     //public class StringTointConverter : IValueConverter
