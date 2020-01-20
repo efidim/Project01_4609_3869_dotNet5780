@@ -28,13 +28,13 @@ namespace PLWPF
         private void addUnitButton_Click(object sender, RoutedEventArgs e)
         {
             new CreateOrderWindow().Show();
-            //Hide();
+            this.Close();
         }
 
         private void existedUnitButton_Click(object sender, RoutedEventArgs e)
         {
             new UpdateOrderWindow().Show();
-            //Hide();
+            this.Close();
         }
     }
 }

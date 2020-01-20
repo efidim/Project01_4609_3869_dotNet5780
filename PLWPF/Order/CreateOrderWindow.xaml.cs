@@ -28,18 +28,40 @@ namespace PLWPF.Order
         public CreateOrderWindow()
         {
             InitializeComponent();
-           // order = new BE.Order();
+            order = new BE.Order();
             unit = new BE.HostingUnit();
             this.DataContext = unit;
             bl = BL.FactoryBl.getBl();
         }
+            
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            
+            int hostKey = (int.Parse(this.key.Text));
+            IEnumerable<HostingUnit> temp = bl.UnitsByHostKey(hostKey);
+            hostUnits.ItemsSource = temp;        
+        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void hostsUnitsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            unit = hostUnits.SelectedItem as HostingUnit;
+            IEnumerable<GuestRequest> temp4 = bl.RelevantRequest(unit);
+            requests.ItemsSource = temp4;     
+
+        }
+
+         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                bl.AddOrder(order);
-                MessageBox.Show("The Order has been successfully created");
+                GuestRequest reqTemp = requests.SelectedItem as GuestRequest;
+                order.HostingUnitKey = unit.HostingUnitKey;
+                order.GuestRequestKey = reqTemp.GuestRequestKey;
+                order.Status = 0;
+                order.CreateDate = DateTime.Today;
+                order.CommissionPerDay = Configuration.COMMISSION;
+                int orderKey = bl.AddOrder(order);
+                MessageBox.Show("The Order has been successfully created and the key is: " + orderKey);
                 new OrderWindow().Show();
                 this.Close();
 
@@ -50,52 +72,10 @@ namespace PLWPF.Order
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            int hostKey = (int.Parse(this.key.Text));
-            IEnumerable<HostingUnit> temp = bl.UnitsByCondition(x => x.Owner.HostKey==hostKey);
-            foreach (var item in temp)
-            {
-                ListBoxItem newItem = new ListBoxItem();
-                newItem.Content = item;
-                hostUnits.Items.Add(newItem);
-            }
-
-        }
-        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            unit = bl.GetHostingUnit(int.Parse(this.));
-            IEnumerable<GuestRequest> temp4 = bl.RequestsByCondition(x => x.Area == unit.Area
-            && x.Type == unit.Type && bl.IsItAvailaible(unit, x.EntryDate, bl.DifferenceDays(x.ReleaseDate, x.EntryDate))
-            && (x.Status) && x.Adults <= unit.Adults
-            && x.Children <= unit.Children && (IntToBool(x.Pool) == unit.Pool || x.Pool == 0)
-            && (IntToBool(x.Jacuzzi) == unit.Jacuzzi || x.Jacuzzi == 0)
-            && (IntToBool(x.ChildrenAttractions) == unit.ChildrenAttractions || x.ChildrenAttractions == 0));
-            DataContext = temp4;
-            foreach (var item in temp4)
-            {
-                ListBoxItem newItem = new ListBoxItem();
-                newItem.Content = item;
-                requests.Items.Add(newItem);
-            }
-
-        }
-        private void guest_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-        private bool IntToBool(int value)
-        {
-            switch (value.ToString().ToLower())
-            {
-                case "0"://אפשרי
-                    return true;
-                case "1"://לא מעוניין
-                    return false;
-                case "2"://הכרחי
-                    return true;
-            }
-            return false;
+            new OrderWindow().Show();
+            this.Close();
         }
     }
 

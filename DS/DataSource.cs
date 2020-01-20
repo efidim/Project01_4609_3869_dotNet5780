@@ -21,7 +21,7 @@ namespace DS
          new HostingUnit() {HostingUnitKey=469834,HostingUnitName="Tsimer",Owner=new Host(){HostKey=12,PrivateName="yo",FamilyName="le",PhoneNumber="054-1234567",MailAddress="yo@org.zehut.il"
          ,BankBranchDetails=new BankBranch(){BankNumber=1,BankName="MyBank",BranchNumber=11,BranchAddress= "MyBank@gmail.com",BranchCity="Jerusalem" },BankAccountNumber=111,CollectionClearance=true }
 
-         ,Area="Jerusalem",Adults=3,Children=5,Jacuzzi=true,Pool=false,Type="zimmer",ChildrenAttractions=true}
+         ,Area="Jerusalem",Adults=3,Children=5,Jacuzzi=false,Pool=false,Type="zimmer",ChildrenAttractions=true}
 
 
         };

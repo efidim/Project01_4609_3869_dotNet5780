@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE;
+using BL;
 
 namespace PLWPF.Order
 {
@@ -19,9 +21,14 @@ namespace PLWPF.Order
     /// </summary>
     public partial class UpdateOrderWindow : Window
     {
+        IBL bl;
+        BE.Order ord;
         public UpdateOrderWindow()
         {
             InitializeComponent();
+            bl = FactoryBl.getBl();
+            ord = new BE.Order();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -32,8 +39,17 @@ namespace PLWPF.Order
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            new UpdateOrderWindow2().Show();
-            this.Close();
+            try
+            {
+              ord = bl.GetOrder(int.Parse(keyTextBox.Text));
+              new UpdateOrderWindow2(ord).Show();
+              this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);            
+            }
+          
         }
     }
 }

@@ -27,7 +27,7 @@ namespace PLWPF.Order
         {
             InitializeComponent();
             ord = order;
-            this.DataContext = order;
+            this.DataContext = ord;
             bl = FactoryBl.getBl();
 
             this.ChangeS.ItemsSource = Enum.GetValues(typeof(Enums.OrderStatus));

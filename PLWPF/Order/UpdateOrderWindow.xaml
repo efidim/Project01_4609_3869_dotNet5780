@@ -5,21 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF.Order"
         mc:Ignorable="d"
-        Title="UpdateOrderWindow" Height="450" Width="800">
+        Title="UpdateOrderWindow" Height="400" Width="800">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="32" Margin="256,116,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="280"/>
-        <Label Content="הזן מספר הזמנה" HorizontalAlignment="Left" Margin="324,33,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="450">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.164"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Button Content="עדכן" HorizontalAlignment="Left" Margin="271,223,0,0" VerticalAlignment="Top" Width="253" Height="34" Click="Button_Click_1"/>
-        <Button Content="חזרה" HorizontalAlignment="Left" Margin="328,373,0,0" VerticalAlignment="Top" Width="133" Click="Button_Click"/>
+        <TextBox x:Name="keyTextBox" FontSize="20" HorizontalContentAlignment="Center" HorizontalAlignment="Left"  Margin="256,116,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="280"/>
+
+        <Label Content="הזן מספר הזמנה" HorizontalAlignment="Center" FontSize="20" Margin="319,38,318.6,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="156"/>
+
+        <Button x:Name="updateButton" FontSize="20" Content="עדכן" HorizontalAlignment="Center" Margin="290,210,290.6,0" VerticalAlignment="Top" Width="213"  Click="Button_Click_1"/>
+
+        <Button Content="חזרה" HorizontalAlignment="Left" Margin="348,326,0,0" VerticalAlignment="Top" Width="93" Click="Button_Click"/>
 
     </Grid>
 </Window>

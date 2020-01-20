@@ -140,9 +140,11 @@ namespace DAL
         #endregion
         //************************************ Order *********************************************
         #region Order
-        public void AddOrder(Order ord)
+        public int AddOrder(Order ord)
         {
+            ord.OrderKey = Configuration.orderKey++;
             DataSource.Orders.Add(ord);
+            return ord.OrderKey;
         }
         public void UpdateOrder(Order ord)
         {
@@ -162,7 +164,7 @@ namespace DAL
             {
                 throw new Exception("The order does not exist");
             }
-            Order temp2 = temp[0];
+            Order temp2 = temp1.First();
             return temp2.Clone();
         }
         public DateTime GetEntryDate(int GuestRequestKey)

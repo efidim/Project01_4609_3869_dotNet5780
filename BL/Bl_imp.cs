@@ -75,11 +75,25 @@ namespace BL
                                               select item;
             return temp2;
         }
+
+        public List<GuestRequest> RelevantRequest(HostingUnit unit)
+        {
+            List<GuestRequest> temp1 = GetAllGuests();
+            List<GuestRequest> temp2 = temp1.FindAll(x => x.Area == unit.Area
+            && x.Type == unit.Type && IsItAvailaible(unit, x.EntryDate, DifferenceDays(x.ReleaseDate, x.EntryDate))
+            && (x.Status) && x.Adults <= unit.Adults
+            && x.Children <= unit.Children && (IntToBool(x.Pool) == unit.Pool || x.Pool == 0)
+            && (IntToBool(x.Jacuzzi) == unit.Jacuzzi || x.Jacuzzi == 0)
+            && (IntToBool(x.ChildrenAttractions) == unit.ChildrenAttractions || x.ChildrenAttractions == 0));
+
+            return temp2;
+        }
+
         #endregion
 
 
         #region HostingUnit
-       
+
         public int AddHostUnit(HostingUnit unit)
         {
             return dal.AddHostUnit(unit.Clone());
@@ -157,13 +171,13 @@ namespace BL
                                                                 group item by item.Area;
             return temp2;
         }
-        public IEnumerable<HostingUnit> UnitsByCondition(Func<HostingUnit, bool> method)
+        public IEnumerable<HostingUnit> UnitsByHostKey(int hostKey)
         {
             IEnumerable<HostingUnit> temp1 = GetAllHostingUnits();
-            IEnumerable<HostingUnit> temp5 = from item in temp1
-                                              where method(item)
-                                              select item;
-            return temp5;
+            IEnumerable<HostingUnit> temp2 = from item in temp1
+                                             where item.Owner.HostKey == hostKey
+                                             select item;
+            return temp2;
         }
         /// <summary>
         /// Returns List with all the available Units on given days
@@ -197,11 +211,11 @@ namespace BL
             throw new Exception("The requested dates are not available");               
         }
 
-        public void AddOrder(Order ord)
+        public int AddOrder(Order ord)
         {
             CheckOrder(ord);
             ord.CreateDate = DateTime.Now;
-            dal.AddOrder(ord.Clone());
+            return dal.AddOrder(ord.Clone());
         }
 
         public Order GetOrder(int orderKey)
@@ -402,8 +416,22 @@ namespace BL
         {
             return dal.ListBankBranches();
         }
+
+        public bool IntToBool(int value)
+        {
+            switch (value.ToString())
+            {
+                case "0"://אפשרי
+                    return true;
+                case "1"://לא מעוניין
+                    return false;
+                case "2"://הכרחי
+                    return true;
+            }
+            return false;
+        }
         #endregion
-    
+
     }
 }    
 
