@@ -41,7 +41,7 @@ namespace PLWPF.Order
                 IEnumerable<GuestRequest> temp4 = bl.RequestsByCondition(x => x.Area == host.Area
                 && x.Type == host.Type && bl.IsItAvailaible(host, x.EntryDate, bl.DifferenceDays(x.ReleaseDate, x.EntryDate))
                 && (x.Status) && x.Adults <= host.Adults
-                && x.Children <= host.Children /*&&(x.Pool)==host.Pool*/);
+                && x.Children <= host.Children &&(x.Pool)==host.Pool*/);
                 DataContext = temp4;
                 this.requests.ItemsSource = temp4;
 
@@ -58,22 +58,20 @@ namespace PLWPF.Order
         {
 
         }
+        private bool IntToBool(int value)
+        {
+            switch (value.ToString().ToLower())
+            {
+                case "אפשרי":
+                    return false;
+                case "לא_מעוניין":
+                    return false;
+                case "הכרחי":
+                    return true;
+            }
+            return false;
+        }
     }
 
-        //private bool IntToBool(int value)
-        //{
-        //    switch (value.ToString().ToLower())
-        //    {
-        //        case "אפשרי":
-        //            return false;
-        //        case "לא_מעוניין":
-        //            return false;
-        //        case "הכרחי":
-        //            return true;
-        //    }
-        //    return false;
-        //}
 
-
-    
 }

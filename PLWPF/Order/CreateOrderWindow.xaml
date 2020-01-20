@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="CreateOrderWindow" Height="450" Width="800">
     <Grid>
-        <Label Content="הכנס קוד יחידת אירוח" HorizontalAlignment="Left" Margin="621,27,0,0" VerticalAlignment="Top" Height="42" Width="139" RenderTransformOrigin="0.36,0.994"/>
+        <Label Content="הכנס קוד יחידת אירוח" HorizontalAlignment="Left" Margin="623,24,0,0" VerticalAlignment="Top" Height="42" Width="139" RenderTransformOrigin="0.36,0.994"/>
         <TextBox x:Name="key" HorizontalAlignment="Left" Height="23" Margin="465,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.009,2.103"/>
         <Label Content="בחר דרישת לקוח " HorizontalAlignment="Left" Margin="628,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.414,1.4" Width="147"/>
         <ComboBox x:Name="requests"  SelectedItem="{Binding}" HorizontalAlignment="Left" Margin="467,104,0,0" VerticalAlignment="Top" Width="117"/>
         <Label Content="תיאור דרישה" HorizontalAlignment="Left" Margin="638,168,0,0" VerticalAlignment="Top" Width="83"/>
-        <TextBlock HorizontalAlignment="Left" Margin="189,181,0,0" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Height="83" Width="408" RenderTransformOrigin="0.5,0.5">
+        <TextBlock HorizontalAlignment="Left" Margin="206,175,0,0" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Height="83" Width="408" RenderTransformOrigin="0.5,0.5">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
