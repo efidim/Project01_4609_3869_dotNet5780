@@ -25,6 +25,7 @@ namespace PLWPF
         BE.GuestRequest guest;
         BL.IBL bl;
         private System.Windows.Controls.Calendar MyCalendar;
+
         public GuestRequestWindow()
         {
             InitializeComponent();
@@ -35,9 +36,9 @@ namespace PLWPF
 
             this.areaComboBox.ItemsSource =Enum.GetValues(typeof(Enums.Area));
             this.Type.ItemsSource = Enum.GetValues(typeof(Enums.HostingUnitType));
-            this.Pool.ItemsSource = Enum.GetValues(typeof(Enums.Response));
-            this.Jacuuzi.ItemsSource = Enum.GetValues(typeof(Enums.Response));
-            this.Atraction.ItemsSource = Enum.GetValues(typeof(Enums.Response));
+            this.poolComboBox.ItemsSource = Enum.GetValues(typeof(Enums.Response));
+            this.jacuzziComboBox.ItemsSource = Enum.GetValues(typeof(Enums.Response));
+            this.attractionComboBox.ItemsSource = Enum.GetValues(typeof(Enums.Response));
 
             MyCalendar = CreateCalendar();
             vbCalendar.Child = null;
@@ -60,7 +61,6 @@ namespace PLWPF
         }
 
 
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -70,51 +70,89 @@ namespace PLWPF
                 vbCalendar.Child = null;
                 vbCalendar.Child = MyCalendar;
                 addCurrentList(myList);
-                this.DataContext = guest;
-                DataContext = guest;
-              
+
+                if (poolComboBox.SelectedItem.ToString() == "אפשרי")
+                    guest.Pool = 0;
+                else if (poolComboBox.SelectedItem.ToString() == "לא_מעוניין")
+                    guest.Pool = 1;
+                else if (poolComboBox.SelectedItem.ToString() == "הכרחי")
+                    guest.Pool = 2;
+
+                if (jacuzziComboBox.SelectedItem.ToString() == "אפשרי")
+                    guest.Jacuzzi = 0;
+                else if (jacuzziComboBox.SelectedItem.ToString() == "לא_מעוניין")
+                    guest.Jacuzzi = 1;
+                else if (jacuzziComboBox.SelectedItem.ToString() == "הכרחי")
+                    guest.Jacuzzi = 2;
+
+                if (attractionComboBox.SelectedItem.ToString() == "אפשרי")
+                    guest.ChildrenAttractions = 0;
+                else if (attractionComboBox.SelectedItem.ToString() == "לא_מעוניין")
+                    guest.ChildrenAttractions = 1;
+                else if (attractionComboBox.SelectedItem.ToString() == "הכרחי")
+                    guest.ChildrenAttractions = 2;
+
                 bl.AddGuestRequest(guest);
-                guest = new GuestRequest();
+                MessageBox.Show("The Guest Request has been successfully added.");
 
+                new MainWindow().Show();
+                this.Close();
+            }
 
-            }
-            
-           catch (FormatException)
-            {
-                MessageBox.Show("check your input and try again");
-            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
 
-        
-    }
-
-    public class StringTointConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        /// <summary>
+        /// A function that ensures that the first click will be updated on dates
+        /// </summary>
+        /// <param name="e">Mouse click event</param>
+        protected override void OnPreviewMouseUp(MouseButtonEventArgs e)
         {
-            switch (value.ToString().ToLower())
+            base.OnPreviewMouseUp(e);
+            if (Mouse.Captured is System.Windows.Controls.Calendar || Mouse.Captured is System.Windows.Controls.Primitives.CalendarItem)
             {
-                case "אפשרי":
-                    return 0;
-                case "לא_מעוניין":
-                    return 1;
-                case "הכרחי":
-                    return 2;
+                Mouse.Capture(null);
             }
-            return 0;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
 
-      
     }
+
+    //public class StringTointConverter : IValueConverter
+    //{
+    //    public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+    //    {
+    //        switch (value.ToString())
+    //        {
+    //            case "אפשרי":
+    //                return 0;
+    //            case "לא_מעוניין":
+    //                return 1;
+    //            case "הכרחי":
+    //                return 2;
+    //        }
+    //        return 0;
+    //    }
+
+    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    //    {
+    //        if (value is int)
+    //        {
+    //            if ((int)value == 0)
+    //                return "אפשרי";
+    //            else if ((int)value == 1)
+    //                return "לא_מעוניין";
+    //            else if ((int)value == 2)
+    //                return "הכרחי";
+    //        }
+    //        return "אפשרי";
+    //    }
+    //}
+
+
 }
 
 
