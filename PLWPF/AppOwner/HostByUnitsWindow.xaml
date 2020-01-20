@@ -6,7 +6,42 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="HostByUnitsWindow" Height="450" Width="800">
+    
+    <Window.Resources>
+    <Style TargetType="{x:Type Control}" x:Key="baseStyle">
+        <Setter Property="FontSize" Value="30" />
+    </Style>
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}"></Style>
+    <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}">
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
+    <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
+
+    </Window.Resources>
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Label Name="chooseNum" Content="בחר מספר" Grid.Row="0" VerticalAlignment="Center" Margin="0,45,145.6,45"/>
+
+        <ComboBox Name="numComboBox" Grid.Row="0" Margin="137,49,356.6,41" HorizontalContentAlignment="Center" FontSize="30" SelectionChanged="numComboBox_SelectionChanged">
+            <ComboBoxItem Content="1"/>
+            <ComboBoxItem Content="2"/>
+            <ComboBoxItem Content="3"/>
+            <ComboBoxItem Content="4"/>
+            <ComboBoxItem Content="5"/>            
+        </ComboBox>
+
+        <ListBox Name="hostsListBox" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource hostTemplate}" HorizontalAlignment="Center" Height="152" Margin="217,52,216.6,76" Grid.Row="1" VerticalAlignment="Center" Width="360"/>
+
+        <Button x:Name="backButton" Content="חזרה"  
+            Margin="334,240,333.6,0" Grid.Row="1" Height="30" VerticalAlignment="Top" FontSize="18" Click="backButton_Click"/>
+
+
+
     </Grid>
 </Window>

@@ -18,24 +18,6 @@
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
 
-        <DataTemplate x:Key="unitTemplate" DataType="local:HostingUnit">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="3" Text=":שם היחידה" TextAlignment="Right"/>
-                <TextBlock Grid.Column="2" Text="{Binding Path=HostingUnitName}" TextAlignment="Right"/>
-                <TextBlock Grid.Column="1" Text=":מפתח היחידה" TextAlignment="Right"/>
-                <TextBlock Grid.Column="0" Text="{Binding Path=HostingUnitKey}" TextAlignment="Right"/>
-            </Grid>
-        </DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -46,9 +28,12 @@
 
         <Label Name="chooseArea" Content="בחר אזור" Grid.Row="0" VerticalAlignment="Center" Margin="0,45,145.6,45"/>
 
-        <ComboBox Name="areaComboBox" Grid.Row="0" Margin="137,49,356.6,41" HorizontalContentAlignment="Right" SelectionChanged="areaComboBox_SelectionChanged" />
+        <ComboBox Name="areaComboBox" Grid.Row="0" Margin="137,49,356.6,41" HorizontalContentAlignment="Center" FontSize="30" SelectionChanged="areaComboBox_SelectionChanged" />
 
-        <ListBox Name="unitsListBox" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource unitTemplate}" HorizontalAlignment="Center" Height="100" Margin="217,52,216.6,128" Grid.Row="1" VerticalAlignment="Center" Width="360"/>
+        <ListBox Name="unitsListBox" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource unitTemplate}" HorizontalAlignment="Center" Height="152" Margin="217,52,216.6,76" Grid.Row="1" VerticalAlignment="Center" Width="360"/>
+        
+        <Button x:Name="backButton" Content="חזרה"  
+            Margin="334,240,333.6,0" Grid.Row="1" Height="30" VerticalAlignment="Top" FontSize="18" Click="backButton_Click"/>
 
 
 

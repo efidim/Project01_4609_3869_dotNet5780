@@ -53,7 +53,7 @@ namespace BL
         Host GetHost(int hostKey);
         Host GetHostByUnit(int hostingUnitkey);
         void UpdateHost(Host host);
-        IEnumerable<IGrouping<int, Host>> HostsByUnits();
+        IEnumerable<IGrouping<int, int>> HostsByUnits();
         
         #endregion
         

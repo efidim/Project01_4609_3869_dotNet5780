@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE;
+using BL;
 
 namespace PLWPF
 {
@@ -19,9 +21,54 @@ namespace PLWPF
     /// </summary>
     public partial class UnitsByDayWindow : Window
     {
+        IBL bl;
+        private Calendar MyCalendar;
+
         public UnitsByDayWindow()
         {
             InitializeComponent();
+            bl = FactoryBl.getBl();
+            MyCalendar = CreateCalendar();
+            chooseViewBox.Child = null;
+            chooseViewBox.Child = MyCalendar;
         }
+
+        private Calendar CreateCalendar()
+        {
+           Calendar MonthlyCalendar = new Calendar();
+            MonthlyCalendar.Name = "MonthlyCalendar";
+            MonthlyCalendar.DisplayMode = CalendarMode.Month;
+            MonthlyCalendar.SelectionMode = CalendarSelectionMode.SingleRange;
+            MonthlyCalendar.IsTodayHighlighted = true;
+            return MonthlyCalendar;
+        }
+
+        private void chooseButton_Click(object sender, RoutedEventArgs e)
+        {
+           List<DateTime> selectedDays = MyCalendar.SelectedDates.ToList();
+           List<HostingUnit> available = bl.AvailableUnits(selectedDays.First()
+              , bl.DifferenceDays(selectedDays.First(), selectedDays.Last()));
+           unitsListBox.ItemsSource = available;
+        }
+
+        /// <summary>
+        /// A function that ensures that the first click will be updated on dates
+        /// </summary>
+        /// <param name="e">Mouse click event</param>
+        protected override void OnPreviewMouseUp(MouseButtonEventArgs e)
+        {
+            base.OnPreviewMouseUp(e);
+            if (Mouse.Captured is Calendar || Mouse.Captured is System.Windows.Controls.Primitives.CalendarItem)
+            {
+                Mouse.Capture(null);
+            }
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            new AppOwnerWindow().Show();
+            this.Close();
+        }
+
     }
 }

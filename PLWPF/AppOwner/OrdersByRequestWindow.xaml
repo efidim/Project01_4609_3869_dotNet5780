@@ -5,8 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="OrdersByRequestWindow" Height="450" Width="800">
+        Title="OrdersByRequestWindow" Height="220" Width="800">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type Control}" x:Key="baseStyle">
+            <Setter Property="FontSize" Value="30" />
+        </Style>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
+
+    </Window.Resources>
+
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Name="keyLabel" Content=":מפתח ההזמנה" FontSize="25" Grid.Column="2" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" />
+
+        <TextBox Name="KeyTextBox" Grid.Column="1"  HorizontalContentAlignment="Center"  Margin="66.2,70,66.6,69.4"  Text="" VerticalAlignment="Center"  />
+
+        <Button Name="displayButton" Content="הצג את מספר ההזמנות" FontSize="14" HorizontalAlignment="Center" Margin="25,10,25.4,0" VerticalAlignment="Top" Width="148" Height="23" Click="displayButton_Click"/>
+
+        <TextBox Name="displayTextBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Height="78" Margin="56,42,56.4,50.4" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="86"/>
+
+        <Button x:Name="backButton" Content="חזרה"  
+            Margin="110.2,0,110.6,6.4" Height="30" VerticalAlignment="Bottom" FontSize="15" Click="backButton_Click" Grid.Column="1" HorizontalAlignment="Center"  />
+
+
+
+
     </Grid>
 </Window>

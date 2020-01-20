@@ -32,16 +32,16 @@
         <Button x:Name="unitsByAreaButton" Content="הצג יחידות אירוח לפי אזור"  
         Margin="15"  Grid.Row="1" Click="unitsByAreaButton_Click"/>
 
-        <Button x:Name="unitsByDayButton" Content="הצג יחידות אירוח פנויות ביום מסוים"  
+        <Button x:Name="unitsByDayButton" Content="הצג יחידות אירוח פנויות בתקופה מסוימת"  
         Margin="15"  Grid.Row="2" Click="unitsByDayButton_Click"/>
 
         <Button x:Name="OrderByRequestButton" Content="הצג מספר הזמנות שנשלחו לדרישות לקוח"  
         Margin="15"  Grid.Row="3" Click="numOfOrdersButton_Click"/>
 
-        <Button x:Name="HostsByUnitsButton" Content="הצג מאחרים לפי מספר יחידות"  
+        <Button x:Name="HostsByUnitsButton" Content="הצג מארחים לפי מספר יחידות"  
         Margin="15"  Grid.Row="4" Click="HostsByUnitsButton_Click"/>
 
-        <Button x:Name="backButton" Content="חזרה" Grid.Row="5" Margin="344,10.2,343.6,10.4" FontSize="20"/>
+        <Button x:Name="backButton" Content="חזרה" Grid.Row="5" Margin="344,10.2,343.6,10.4" FontSize="20" Click="backButton_Click"/>
 
     </Grid>
 </Window>

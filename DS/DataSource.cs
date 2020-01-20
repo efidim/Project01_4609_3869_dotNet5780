@@ -18,7 +18,7 @@ namespace DS
         };
         public static List<HostingUnit> HostingUnits { get; set; } = new List<HostingUnit>()
         {
-         new HostingUnit() {HostingUnitKey=469834,HostingUnitName="Tsimer",Owner=new Host(){HostKey=12,PrivateName="yo",FamilyName="le",PhoneNumber="054-1234567",MailAddress="yo@org.zehut.il"
+         new HostingUnit() {HostingUnitKey=469834,HostingUnitName="Tsimer" ,Owner=new Host(){HostKey=332484609,PrivateName="yo",FamilyName="le",PhoneNumber="054-1234567",MailAddress="yo@org.zehut.il"
          ,BankBranchDetails=new BankBranch(){BankNumber=1,BankName="MyBank",BranchNumber=11,BranchAddress= "MyBank@gmail.com",BranchCity="Jerusalem" },BankAccountNumber=111,CollectionClearance=true }
          ,Area="ירושלים",subArea="Giloh",Adults=3,Children=5,Jacuzzi=true,Pool=true,Type="zimmer",ChildrenAttractions=false}
         };

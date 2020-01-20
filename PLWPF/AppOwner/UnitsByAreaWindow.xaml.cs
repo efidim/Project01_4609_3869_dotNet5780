@@ -72,8 +72,6 @@ namespace PLWPF
                 }
             }
 
-            unitsListBox.ItemsSource = north;
-            //unitsListBox.DataContext = jerusalem;
             this.areaComboBox.ItemsSource = Enum.GetValues(typeof(Enums.Area));
         }
 
@@ -99,6 +97,12 @@ namespace PLWPF
                 unitsListBox.ItemsSource = south;
             }
 
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            new AppOwnerWindow().Show();
+            this.Close();
         }
     }
 }

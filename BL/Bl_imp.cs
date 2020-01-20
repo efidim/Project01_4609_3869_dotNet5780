@@ -360,18 +360,18 @@ namespace BL
         /// Returns groups of Hosts By number of Units
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<IGrouping<int, Host>> HostsByUnits()
+        public IEnumerable<IGrouping<int, int>> HostsByUnits()
         {
             IEnumerable<HostingUnit> temp1 = GetAllHostingUnits();
             var temp2 = from item in temp1
-                        group item by item.Owner into g
+                        group item by item.Owner.HostKey into g
                         select new
                         {
-                            owner = g.Key,
+                            ownerKey = g.Key,
                             Count = g.Count()
                         };
-            IEnumerable<IGrouping<int, Host>> temp3 = from item in temp2
-                                                      group item.owner by item.Count;
+            IEnumerable<IGrouping<int, int>> temp3 = from item in temp2
+                                                      group item.ownerKey by item.Count;
             return temp3;
         }
         #endregion
@@ -388,7 +388,7 @@ namespace BL
         public int DifferenceDays(DateTime a, DateTime? b = null)
         {
             DateTime c = b ?? DateTime.Today;
-            return (c - a).Days;
+            return (c - a).Days +1;
         }
 
         public List<BankBranch> ListBankBranches()
