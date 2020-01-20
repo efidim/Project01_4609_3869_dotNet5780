@@ -21,7 +21,6 @@ namespace DAL
             target.EntryDate = original.EntryDate;
             target.ReleaseDate = original.ReleaseDate;
             target.Area = original.Area;
-            target.subArea = original.subArea;
             target.Type = original.Type;
             target.Adults = original.Adults;
             target.Children = original.Children;
@@ -39,7 +38,6 @@ namespace DAL
             target.HostingUnitName = original.HostingUnitName;
             target.Diary = original.Diary;
             target.Area = original.Area;
-            target.subArea = original.subArea;
             target.Type = original.Type;
             target.Adults = original.Adults;
             target.Children = original.Children;

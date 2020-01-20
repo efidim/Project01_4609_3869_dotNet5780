@@ -14,7 +14,6 @@ namespace DS
         {
            new GuestRequest(){ GuestRequestKey=4589, PrivateName="yos",FamilyName="lev",MailAddress="yos@org.zehut.il",Status=true,RegistrationDate=new DateTime(2019,12,01),EntryDate=new DateTime(2019,12,02),
            ReleaseDate=new DateTime(2019,12,03),Area="ירושלים",subArea="Giloh",Adults=3,Children=5,Jacuzzi=1,Pool=1,Type="zimmer",ChildrenAttractions=0 }
-
         };
         public static List<HostingUnit> HostingUnits { get; set; } = new List<HostingUnit>()
         {

@@ -2,7 +2,7 @@
 {
     public static class Enums
     {
-        public enum HostingUnitType
+        public enum HostingUnitType 
         {
             צימר,        
             מלון,
@@ -30,6 +30,12 @@
             דרום,
             מרכז,
             ירושלים,
+        }
+        public enum Response
+        {
+            אפשרי,    
+           לא_מעוניין,
+            הכרחי
         }
     }
 

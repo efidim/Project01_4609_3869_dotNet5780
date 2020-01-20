@@ -28,7 +28,6 @@ namespace PL
             req.EntryDate = new DateTime(2019, 12, 02);
             req.ReleaseDate = new DateTime(2019, 12, 03);
             req.Area = "Tel Aviv";
-            req.subArea = "Habima";
             req.Adults = 3;
             req.Children = 4;
             req.Jacuzzi = 1;
@@ -157,7 +156,6 @@ namespace PL
             //        CollectionClearance = true
             //    },
             //    Area = "Tel Aviv",
-            //    subArea = "Giloh",
             //    Adults = 3,
             //    Children = 5,
             //    Jacuzzi = 1,
@@ -222,7 +220,6 @@ namespace PL
             //        CollectionClearance = true
             //    },
             //    Area = "Jerusalem",
-            //    subArea = "Giloh",
             //    Adults = 3,
             //    Children = 5,
             //    Jacuzzi = 1,
