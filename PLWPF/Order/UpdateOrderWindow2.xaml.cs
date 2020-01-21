@@ -30,13 +30,22 @@ namespace PLWPF.Order
             this.DataContext = ord;
             bl = FactoryBl.getBl();
 
-            this.ChangeS.ItemsSource = Enum.GetValues(typeof(Enums.OrderStatus));
+            this.StatusComboBox.ItemsSource = Enum.GetValues(typeof(Enums.OrderStatus));
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void updateButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                if (StatusComboBox.SelectedItem.ToString() == "טרם_טופל")
+                    ord.Status = 0;
+                else if (StatusComboBox.SelectedItem.ToString() == "נשלח_מייל")
+                    ord.Status = 1;
+                else if (StatusComboBox.SelectedItem.ToString() == "נסגרה_מחוסר_הענות_של_הלקוח")
+                    ord.Status = 2;
+                else if (StatusComboBox.SelectedItem.ToString() == "נסגרה_כי_פג_תוקף")
+                    ord.Status = 3;
+
                 bl.UpdateOrder(ord);
                 MessageBox.Show("The Order has been successfully updated");
                 new OrderWindow().Show();
@@ -50,10 +59,32 @@ namespace PLWPF.Order
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void backButton_Click(object sender, RoutedEventArgs e)
         {
             new UpdateOrderWindow().Show();
             this.Close();
+        }
+
+    }
+
+    public class IntToStatus : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if ((int)value == 0)
+                return "טרם טופל";
+            else if ((int)value == 1)
+                return "נשלח מייל";
+            else if ((int)value == 2)
+                return "נסגרה מחוסר הענות של הלקוח";
+            else if ((int)value == 3)
+                return "נסגרה כי פג תוקף";
+            return "טרם טופל";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return value;
         }
     }
 }

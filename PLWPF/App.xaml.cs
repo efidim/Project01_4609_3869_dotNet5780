@@ -23,7 +23,7 @@ namespace PLWPF
             if ((int)value == 0)
                 return "אפשרי";
             else if ((int)value == 1)
-                return "לא_מעוניין";
+                return "לא מעוניין";
             else if ((int)value == 2)
                 return "הכרחי";
             return "אפשרי";

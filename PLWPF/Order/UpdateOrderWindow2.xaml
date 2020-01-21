@@ -6,18 +6,52 @@
         xmlns:local="clr-namespace:PLWPF.Order"
         mc:Ignorable="d"
         Title="UpdateOrderWindow2" Height="450" Width="800">
+    <Window.Resources>
+        <local:IntToStatus x:Key="IntToStringConverter" />
+    </Window.Resources>
+
     <Grid>
-        <Label Content=":מספר הזמנה" FontSize="20" HorizontalAlignment="Left" Margin="415,58,0,0" VerticalAlignment="Top" Width="123"/>
+        <Label Content=":מספר הזמנה" FontSize="20" HorizontalAlignment="Left" Margin="415,58,0,0" VerticalAlignment="Top" Width="129"/>
 
-        <Label Content="{Binding OrderKey}" FontSize="20" HorizontalAlignment="Left" Margin="231,58,0,0" VerticalAlignment="Top" Width="132" Height="37"/>
+        <Label Content="{Binding OrderKey}" FontSize="20" HorizontalAlignment="Left" Margin="244,58,0,0" VerticalAlignment="Top" Width="132" Height="37"/>
 
 
-        <Label Content="סטטוס" HorizontalAlignment="Left" Height="29" Margin="371,118,0,0" VerticalAlignment="Top" Width="52"/>
-        <TextBox x:Name="Status" HorizontalAlignment="Left" Height="23" Margin="327,162,0,0" TextWrapping="Wrap" Text="{Binding Status}" VerticalAlignment="Top" Width="120"/>
-        <Button Content="עדכן" HorizontalAlignment="Left" Height="32" Margin="309,337,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click"/>
-        <Button Content="חזרה" HorizontalAlignment="Left" Margin="356,387,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
-        <Label Content="שינוי סטטוס" HorizontalAlignment="Left" Margin="459,240,0,0" VerticalAlignment="Top" Width="109"/>
-        <ComboBox x:Name="ChangeS" SelectedItem="{Binding OrderStatus}" HorizontalAlignment="Left" Margin="326,240,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="סטטוס" FontSize="20" 
+               HorizontalAlignment="Center" 
+               Margin="359,118,359.6,0" VerticalAlignment="Top" Width="75"/>
+
+
+        <TextBox x:Name="StatusTextBox" 
+                 HorizontalAlignment="Left"
+                  Margin="261,173,0,0" 
+                 TextWrapping="Wrap" 
+                 Text="{Binding Status, Converter={StaticResource IntToStringConverter}}"
+                 VerticalAlignment="Top" 
+                 FontSize="18"
+                 Width="270"
+                 HorizontalContentAlignment="Center"/>
+
+
+
+        <Label Content="שינוי סטטוס" FontSize="18" HorizontalAlignment="Left" Margin="474,238,0,0" VerticalAlignment="Top" Width="109" RenderTransformOrigin="0.576,0.649"/>
+
+
+
+
+        <ComboBox Name="StatusComboBox" HorizontalContentAlignment="Right" SelectedItem="{Binding OrderStatus}" HorizontalAlignment="Left" Margin="325,244,0,0" VerticalAlignment="Top" Width="120"/>
+
+
+        <Button Name="updateButton"
+                Content="עדכן"
+                FontSize="15"                
+                Margin="336,296,337.6,93" 
+                
+             
+                 Click="updateButton_Click"/>
+
+        <Button Content="חזרה"                
+                Margin="359,366,359.6,27"              
+                Click="backButton_Click"/>
 
     </Grid>
 </Window>

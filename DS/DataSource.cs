@@ -27,7 +27,7 @@ namespace DS
         };
         public static List<Order> Orders { get; set; } = new List<Order>()
         {
-           new Order{HostingUnitKey=469834, GuestRequestKey=4589,OrderKey=123,Status=1,CreateDate=new DateTime(2019, 12, 9), OrderDate=new DateTime(2019, 12, 12),CommissionPerDay=10}
+           new Order{HostingUnitKey=469834, GuestRequestKey=4589,OrderKey=123,Status=0,CreateDate=new DateTime(2019, 12, 9), OrderDate=new DateTime(2019, 12, 12),CommissionPerDay=10}
         };
        
     }
