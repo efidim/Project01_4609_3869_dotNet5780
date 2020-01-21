@@ -43,10 +43,10 @@ namespace PLWPF
                 try
                 {
                     value = int.Parse(this.adultsTextBox.Text);
-                    if (value <= 0)
+                    if (value <=0)
                         throw new Exception();
                     value = int.Parse(this.childrenTextBox.Text);
-                    if (value <= 0)
+                    if (value < 0)
                         throw new Exception();
                     value = int.Parse(this.idTextBox.Text);
                     value = int.Parse(this.phoneTextBox.Text);

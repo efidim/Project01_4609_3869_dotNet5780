@@ -101,7 +101,7 @@ namespace PLWPF
                     if (value <= 0)
                         throw new Exception();
                     value = int.Parse(this.Children.Text);
-                    if (value <= 0)
+                    if (value < 0)
                         throw new Exception();
                 }
                 catch
