@@ -3,8 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:PLWPF"
              StartupUri="MainWindow.xaml">
-    
+
     <Application.Resources>
+
+        <local:IntToStringConverter x:Key="IntToStringConverter" />
+
         <DataTemplate x:Key="unitTemplate" DataType="local:HostingUnit">
             <Grid>
                 <Grid.RowDefinitions>
@@ -17,9 +20,9 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="3" Text=":שם היחידה" TextAlignment="Right"/>
+                <TextBlock Grid.Column="3" Text=":שם היחידה" TextAlignment="Right" FontWeight="Bold"/>
                 <TextBlock Grid.Column="2" Text="{Binding Path=HostingUnitName}" TextAlignment="Right"/>
-                <TextBlock Grid.Column="1" Text=":מפתח היחידה" TextAlignment="Right"/>
+                <TextBlock Grid.Column="1" Text=":מפתח היחידה" TextAlignment="Right" FontWeight="Bold"/>
                 <TextBlock Grid.Column="0" Text="{Binding Path=HostingUnitKey}" TextAlignment="Right"/>
             </Grid>
         </DataTemplate>
@@ -36,10 +39,50 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="3" Text=":שם משפחה" TextAlignment="Right"/>
+                <TextBlock Grid.Column="3" Text=":שם משפחה" TextAlignment="Right" FontWeight="Bold"/>
                 <TextBlock Grid.Column="2" Text="{Binding Path=FamilyName}" TextAlignment="Right"/>
-                <TextBlock Grid.Column="1" Text=":מפתח פרטי" TextAlignment="Right"/>
+                <TextBlock Grid.Column="1" Text=":מפתח פרטי" TextAlignment="Right" FontWeight="Bold"/>
                 <TextBlock Grid.Column="0" Text="{Binding Path=PrivateName}" TextAlignment="Right"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="requestTemplate" DataType="local:GuestRequest">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <TextBlock Grid.Column="13" Text=":תחילת אירוח" TextAlignment="Right" Margin="0,0,5,0" FontWeight="Bold" />
+                <TextBlock Grid.Column="12" Text="{Binding Path=EntryDate, StringFormat=dd-MM-yyyy}" TextAlignment="Right" Margin="5,0,5,0"/>
+                <TextBlock Grid.Column="11" Text=":סיום אירוח" TextAlignment="Right" Margin="5,0,5,0" FontWeight="Bold"/>
+                <TextBlock Grid.Column="10" Text="{Binding Path=ReleaseDate, StringFormat=dd-MM-yyyy}" TextAlignment="Right" Margin="5,0,5,0"/>
+                <TextBlock Grid.Column="9" Text=":מספר מבוגרים" TextAlignment="Right" Margin="5,0,5,0" FontWeight="Bold"/>
+                <TextBlock Grid.Column="8" Text="{Binding Path=Adults}" TextAlignment="Right" Margin="5,0,5,0"/>
+                <TextBlock Grid.Column="7" Text=":מספר ילדים" TextAlignment="Right" Margin="5,0,5,0" FontWeight="Bold"/>
+                <TextBlock Grid.Column="6" Text="{Binding Path=Children}" TextAlignment="Right" Margin="5,0,5,0"/>
+                <TextBlock Grid.Column="5" Text=":בריכה" TextAlignment="Right" Margin="5,0,5,0" FontWeight="Bold"/>
+                <TextBlock Grid.Column="4" Text="{Binding Path=Pool, Converter={StaticResource IntToStringConverter}}" TextAlignment="Right" Margin="5,0,5,0"/>
+                <TextBlock Grid.Column="3" Text=":ג'קוזי" TextAlignment="Right" Margin="5,0,5,0" FontWeight="Bold"/>
+                <TextBlock Grid.Column="2" Text="{Binding Path=Jacuzzi, Converter={StaticResource IntToStringConverter}}" TextAlignment="Right" Margin="5,0,5,0"/>
+                <TextBlock Grid.Column="1" Text=":פעילויות ילדים" TextAlignment="Right" Margin="5,0,5,0" FontWeight="Bold"/>
+                <TextBlock Grid.Column="0" Text="{Binding Path=ChildrenAttractions, Converter={StaticResource IntToStringConverter}}" TextAlignment="Right" Margin="5,0,0,0"/>
             </Grid>
         </DataTemplate>
 

@@ -11,5 +11,6 @@ namespace BE
         public static int COMMISSION = 10;
         public static int guestKey = 10000009;
         public static int unitKey = 20000009;
+        public static int orderKey = 30000009;
     }
 }

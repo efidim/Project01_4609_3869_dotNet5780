@@ -1,0 +1,24 @@
+﻿<Window x:Class="PLWPF.Order.CreateOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF.Order"
+        mc:Ignorable="d"
+        Title="CreateOrderWindow" Height="500" Width="800">
+
+    <Grid>
+        <Label Content="הזן תעודת זהות" HorizontalAlignment="Left" Margin="623,24,0,0" VerticalAlignment="Top" Height="25" Width="139" RenderTransformOrigin="0.36,0.994"/>
+        <TextBox x:Name="key" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="23" Margin="465,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.009,2.103"/>
+        <Label Content="בחר דרישת לקוח " HorizontalAlignment="Left" Margin="622,219,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.414,1.4" Width="147"/>
+
+        <Button Content="לחץ ליצירת הזמנה" FontSize="25" HorizontalAlignment="Left" Margin="65,365,0,0" VerticalAlignment="Top" Width="660" Height="54" Click="Button_Click"/>
+        <Button Content="שלח למערכת" HorizontalAlignment="Left" Margin="369,26,0,0" VerticalAlignment="Top" Width="80" Click="Button_Click_1"/>
+        <Label HorizontalAlignment="Left" Height="28" Margin="619,93,0,0"  Content="בחר יחידת אירוח" VerticalAlignment="Top" Width="128"/>
+        <ListBox x:Name="hostUnits" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource unitTemplate}" SelectionMode="Single" SelectionChanged="hostsUnitsListBox_SelectionChanged" HorizontalAlignment="Left" Margin="41,87,0,0" VerticalAlignment="Top" Width="558" Height="46"/>
+        <ListBox x:Name="requests" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource requestTemplate}" SelectionMode="Single" HorizontalAlignment="Left" Margin="41,153,0,0" VerticalAlignment="Top" Width="558" Height="167" RenderTransformOrigin="0.5,0.5"/>
+        <Button x:Name="backButton" Content="חזרה"  
+            Margin="366,432,383.6,0"  VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Center" Click="backButton_Click" />
+
+    </Grid>
+</Window>

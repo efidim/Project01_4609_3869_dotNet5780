@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PLWPF.Order;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,24 @@ namespace PLWPF
         public OrderWindow()
         {
             InitializeComponent();
+        }
+
+        private void addUnitButton_Click(object sender, RoutedEventArgs e)
+        {
+            new CreateOrderWindow().Show();
+            this.Close();
+        }
+
+        private void existedUnitButton_Click(object sender, RoutedEventArgs e)
+        {
+            new UpdateOrderWindow().Show();
+            this.Close();
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            this.Close();
         }
     }
 }

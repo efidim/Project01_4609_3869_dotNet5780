@@ -18,6 +18,7 @@ namespace BL
         IEnumerable<IGrouping<string, GuestRequest>> RequestsByArea();
         IEnumerable<IGrouping<int, GuestRequest>> RequestsByGuests();
         IEnumerable<GuestRequest> RequestsByCondition(Func<GuestRequest, bool> method);
+        List<GuestRequest> RelevantRequest(HostingUnit unit);
         #endregion
 
         #region Hosting unit
@@ -28,6 +29,7 @@ namespace BL
         HostingUnit GetHostingUnitByName(string hostingUnitName);
         int OrdersByUnit(HostingUnit unit);
         bool IsItAvailaible(HostingUnit unit, DateTime entry, int duration);
+        IEnumerable<HostingUnit> UnitsByHostKey(int hostKey);
         List<HostingUnit> GetAllHostingUnits();
         IEnumerable<IGrouping<string, HostingUnit>> UnitsByArea();
         List<HostingUnit> AvailableUnits(DateTime entry, int duration);
@@ -35,7 +37,7 @@ namespace BL
 
         #region Order
         bool CheckOrder(Order ord);
-        void AddOrder(Order ord);        
+        int AddOrder(Order ord);        
         Order GetOrder(int orderKey);
         bool[,] GetDiary(int HostingUnitKey);
         DateTime GetEntry(int GuestRequestKey);
@@ -60,6 +62,7 @@ namespace BL
         #region Others                         
         int DifferenceDays(DateTime a, DateTime? b = null);              
         List<BankBranch> ListBankBranches();
+        bool IntToBool(int value);
         #endregion
     }
 }

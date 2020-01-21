@@ -118,10 +118,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Order\OrderWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="HostingUnit\UpdateUnitWindow1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,13 +134,38 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Order\CreateOrderWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Order\OrderWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Order\UpdateOrderWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Order\UpdateOrderWindow2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppOwner\OrdersByRequestWindow.xaml.cs">
       <DependentUpon>OrdersByRequestWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Order\CreateOrderWindow.xaml.cs">
+      <DependentUpon>CreateOrderWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Order\OrderWindow.xaml.cs">
       <DependentUpon>OrderWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Order\UpdateOrderWindow.xaml.cs">
+      <DependentUpon>UpdateOrderWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Order\UpdateOrderWindow2.xaml.cs">
+      <DependentUpon>UpdateOrderWindow2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

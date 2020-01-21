@@ -1,0 +1,54 @@
+﻿<Window x:Class="PLWPF.Order.UpdateOrderWindow2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF.Order"
+        mc:Ignorable="d"
+        Title="UpdateOrderWindow2" Height="450" Width="800">
+    
+    <Grid>
+        <Label Content=":מספר הזמנה" FontSize="20" HorizontalAlignment="Left" Margin="415,58,0,0" VerticalAlignment="Top" Width="129"/>
+
+        <Label Name="numLabel" FontSize="20" HorizontalAlignment="Left" Margin="244,58,0,0" VerticalAlignment="Top" Width="132" Height="37"/>
+
+
+        <Label Content="סטטוס" FontSize="20" 
+               HorizontalAlignment="Center" 
+               Margin="359,118,359.6,0" VerticalAlignment="Top" Width="75"/>
+
+
+        <TextBox x:Name="StatusTextBox" 
+                 HorizontalAlignment="Left"
+                  Margin="261,173,0,0" 
+                 TextWrapping="Wrap"                
+                 
+                 VerticalAlignment="Top" 
+                 FontSize="18"
+                 Width="270"
+                 HorizontalContentAlignment="Center"/>
+
+
+
+        <Label Content="שינוי סטטוס" FontSize="18" HorizontalAlignment="Left" Margin="474,238,0,0" VerticalAlignment="Top" Width="109" RenderTransformOrigin="0.576,0.649"/>
+
+
+
+
+        <ComboBox Name="StatusComboBox" HorizontalContentAlignment="Right" SelectedItem="{Binding OrderStatus}" HorizontalAlignment="Left" Margin="325,244,0,0" VerticalAlignment="Top" Width="120"/>
+
+
+        <Button Name="updateButton"
+                Content="עדכן"
+                FontSize="15"                
+                Margin="336,296,337.6,93" 
+                
+             
+                 Click="updateButton_Click"/>
+
+        <Button Content="חזרה"                
+                Margin="359,366,359.6,27"              
+                Click="backButton_Click"/>
+
+    </Grid>
+</Window>
