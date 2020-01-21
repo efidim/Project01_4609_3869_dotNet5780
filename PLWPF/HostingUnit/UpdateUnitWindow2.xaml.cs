@@ -65,7 +65,7 @@ namespace PLWPF
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(" הקלט לא תקין" + ex.Message);
+                    MessageBox.Show(" הקלט לא תקין--" + ex.Message);
                     return;
                 }
 
@@ -85,7 +85,7 @@ namespace PLWPF
             bool hasNUmber = str.Any(char.IsDigit);
             if (hasNUmber)
             {
-                throw new Exception("יש להכניס אותיות בלבד");
+                throw new Exception(" יש להכניס אותיות בלבד בשדות פרטי שמות");
             }
         }
     }

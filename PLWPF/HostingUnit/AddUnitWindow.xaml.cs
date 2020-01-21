@@ -45,10 +45,10 @@ namespace PLWPF
                 {
                     value = int.Parse(this.adultsTextBox.Text);
                     if (value <= 0)
-                        throw new Exception("נא להכניס ערך נכון במספר מבוגרים מקסימלי");
+                        throw new Exception(" נא להכניס ערך נכון במספר מבוגרים מקסימלי");
                     value = int.Parse(this.childrenTextBox.Text);
                     if (value < 0)
-                        throw new Exception("נא להכניס ערך נכון במספר ילדים מקסימלי");
+                        throw new Exception(" נא להכניס ערך נכון במספר ילדים מקסימלי");
                     value = int.Parse(this.idTextBox.Text);
                     value = int.Parse(this.phoneTextBox.Text);
                     value = int.Parse(this.bankNumTextBox.Text);
@@ -68,7 +68,7 @@ namespace PLWPF
                
                 catch (Exception ex)
                 {
-                    MessageBox.Show(" הקלט לא תקין" + ex.Message);
+                    MessageBox.Show(" הקלט לא תקין--" + ex.Message);
                     return;
                 }
                 
@@ -101,7 +101,7 @@ namespace PLWPF
             bool hasNUmber = str.Any(char.IsDigit);
             if (hasNUmber)
             {
-                throw new Exception("יש להכניס אותיות בלבד");
+                throw new Exception("  יש להכניס אותיות בלבד בשדות פרטי שמות ");
             }
         }
     }

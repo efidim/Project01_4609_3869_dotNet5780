@@ -99,10 +99,10 @@ namespace PLWPF
                 {
                     value = int.Parse(this.Adults.Text);
                     if (value <= 0)
-                        throw new Exception("נא הגדר מספר תקין עבור המבוגרים");
+                        throw new Exception(" נא הגדר מספר תקין עבור המבוגרים");
                     value = int.Parse(this.Children.Text);
                     if (value < 0)
-                        throw new Exception("נא הגדר מספר תקין עבור הילדים");
+                        throw new Exception(" נא הגדר מספר תקין עבור הילדים");
                     string str = this.PrivateName.Text;
                     CheckStr(str);
                     string str1 = this.FamilyName.Text;
@@ -110,9 +110,10 @@ namespace PLWPF
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(" הקלט לא תקין" + ex.Message);
+                    MessageBox.Show(" הקלט לא תקין-"+ ex.Message);
                     return;
                 }
+                
 
 
                 bl.AddGuestRequest(guest);
@@ -124,7 +125,7 @@ namespace PLWPF
 
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               MessageBox.Show(ex.Message);
             }
         }
 
@@ -151,42 +152,12 @@ namespace PLWPF
             bool hasNUmber = str.Any(char.IsDigit);
             if (hasNUmber)
             {
-                throw new Exception("יש להכניס אותיות בלבד");
+                throw new Exception("  יש להכניס אותיות בלבד בשדות השם");
             }
         }
     }
 
-    //public class StringTointConverter : IValueConverter
-    //{
-    //    public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-    //    {
-    //        switch (value.ToString())
-    //        {
-    //            case "אפשרי":
-    //                return 0;
-    //            case "לא_מעוניין":
-    //                return 1;
-    //            case "הכרחי":
-    //                return 2;
-    //        }
-    //        return 0;
-    //    }
-
-    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    //    {
-    //        if (value is int)
-    //        {
-    //            if ((int)value == 0)
-    //                return "אפשרי";
-    //            else if ((int)value == 1)
-    //                return "לא_מעוניין";
-    //            else if ((int)value == 2)
-    //                return "הכרחי";
-    //        }
-    //        return "אפשרי";
-    //    }
-    //}
-
+   
 
 }
 
