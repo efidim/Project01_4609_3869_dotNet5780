@@ -49,16 +49,26 @@ namespace PLWPF
                     if (value < 0)
                         throw new Exception();
                     value = int.Parse(this.idTextBox.Text);
-                    value = int.Parse(this.phoneTextBox.Text);
                     value = int.Parse(this.bankNumTextBox.Text);
                     value = int.Parse(this.branchNumTextBox.Text);
                     value = int.Parse(this.accountTextBox.Text);
+                    string str = this.nameTextBox.Text;
+                    CheckStr(str);
+                    string str1 = this.privateNameTextBox.Text;
+                    CheckStr(str1);
+                    string str2 = this.familyNameTextBox.Text;
+                    CheckStr(str2);
+                    string str3 = this.bankNameTextBox.Text;
+                    CheckStr(str3);
+                    string str4 = this.cityTextBox.Text;
+                    CheckStr(str4);
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show(" הקלט לא תקין" + " נא הזן פרטים נכונים");
+                    MessageBox.Show(" הקלט לא תקין" + ex.Message);
                     return;
                 }
+
                 bl.UpdateHostUnit(unitToUpdate);
                    MessageBox.Show("The Hosting Unit has been successfully updated");
                    new HostingUnitWindow().Show();
@@ -69,6 +79,14 @@ namespace PLWPF
                 MessageBox.Show(ex.Message);
             }
             
+        }
+        private void CheckStr(string str)
+        {
+            bool hasNUmber = str.Any(char.IsDigit);
+            if (hasNUmber)
+            {
+                throw new Exception("יש להכניס אותיות בלבד");
+            }
         }
     }
 

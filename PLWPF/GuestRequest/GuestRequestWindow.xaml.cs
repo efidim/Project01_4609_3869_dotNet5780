@@ -99,14 +99,18 @@ namespace PLWPF
                 {
                     value = int.Parse(this.Adults.Text);
                     if (value <= 0)
-                        throw new Exception();
+                        throw new Exception("נא הגדר מספר תקין עבור המבוגרים");
                     value = int.Parse(this.Children.Text);
                     if (value < 0)
-                        throw new Exception();
+                        throw new Exception("נא הגדר מספר תקין עבור הילדים");
+                    string str = this.PrivateName.Text;
+                    CheckStr(str);
+                    string str1 = this.FamilyName.Text;
+                    CheckStr(str1);
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show(" הקלט לא תקין" + " נא הזן פרטים נכונים");
+                    MessageBox.Show(" הקלט לא תקין" + ex.Message);
                     return;
                 }
 
@@ -141,6 +145,14 @@ namespace PLWPF
         {
             new MainWindow().Show();
             this.Close();
+        }
+        private void CheckStr(string str)
+        {
+            bool hasNUmber = str.Any(char.IsDigit);
+            if (hasNUmber)
+            {
+                throw new Exception("יש להכניס אותיות בלבד");
+            }
         }
     }
 

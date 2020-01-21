@@ -45,21 +45,34 @@ namespace PLWPF
                 {
                     value = int.Parse(this.adultsTextBox.Text);
                     if (value <= 0)
-                        throw new Exception();
+                        throw new Exception("נא להכניס ערך נכון במספר מבוגרים מקסימלי");
                     value = int.Parse(this.childrenTextBox.Text);
                     if (value < 0)
-                        throw new Exception();
+                        throw new Exception("נא להכניס ערך נכון במספר ילדים מקסימלי");
                     value = int.Parse(this.idTextBox.Text);
                     value = int.Parse(this.phoneTextBox.Text);
                     value = int.Parse(this.bankNumTextBox.Text);
                     value = int.Parse(this.branchNumTextBox.Text);
                     value = int.Parse(this.accountTextBox.Text);
+                    string str = this.nameTextBox.Text;
+                    CheckStr(str);
+                    string str1 = this.privateNameTextBox.Text;
+                    CheckStr(str1);
+                    string str2 = this.familyNameTextBox.Text;
+                    CheckStr(str2);
+                    string str3 = this.bankNameTextBox.Text;
+                    CheckStr(str3);
+                    string str4 = this.cityTextBox.Text;
+                    CheckStr(str4);
                 }
-                catch
+               
+                catch (Exception ex)
                 {
-                    MessageBox.Show(" הקלט לא תקין" + " נא הזן פרטים נכונים");
+                    MessageBox.Show(" הקלט לא תקין" + ex.Message);
                     return;
                 }
+                
+
 
                 int key;
                 key = bl.AddHostUnit(unit);
@@ -82,6 +95,14 @@ namespace PLWPF
         {
              new HostingUnitWindow().Show();
                         this.Close();
+        }
+        private void CheckStr(string str)
+        {
+            bool hasNUmber = str.Any(char.IsDigit);
+            if (hasNUmber)
+            {
+                throw new Exception("יש להכניס אותיות בלבד");
+            }
         }
     }
 }
