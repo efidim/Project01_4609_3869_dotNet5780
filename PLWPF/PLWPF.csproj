@@ -55,12 +55,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AppOwner\HostByUnitsWindow.xaml.cs">
+      <DependentUpon>HostByUnitsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HostingUnit\UpdateUnitWindow1.xaml.cs">
       <DependentUpon>UpdateUnitWindow1.xaml</DependentUpon>
     </Compile>
     <Compile Include="HostingUnit\UpdateUnitWindow2.xaml.cs">
       <DependentUpon>UpdateUnitWindow2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppOwner\UnitsByAreaWindow.xaml.cs">
+      <DependentUpon>UnitsByAreaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppOwner\UnitsByDayWindow.xaml.cs">
+      <DependentUpon>UnitsByDayWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AppOwner\HostByUnitsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HostingUnit\AddUnitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -101,7 +114,13 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    
+    </Page>
     <Page Include="Order\CreateOrderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppOwner\OrdersByRequestWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,10 +144,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AppOwner\UnitsByAreaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppOwner\UnitsByDayWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+
     <Compile Include="Order\CreateOrderWindow.xaml.cs">
       <DependentUpon>CreateOrderWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppOwner\OrdersByRequestWindow.xaml.cs">
+      <DependentUpon>OrdersByRequestWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Order\OrderWindow.xaml.cs">
       <DependentUpon>OrderWindow.xaml</DependentUpon>

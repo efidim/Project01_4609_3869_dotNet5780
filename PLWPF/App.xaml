@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:PLWPF"
              StartupUri="MainWindow.xaml">
 
+
     <Application.Resources>
 
         <local:IntToStringConverter x:Key="IntToStringConverter" />
@@ -19,6 +20,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+
 
                 <TextBlock Grid.Column="3" Text=":שם היחידה" TextAlignment="Right" FontWeight="Bold"/>
                 <TextBlock Grid.Column="2" Text="{Binding Path=HostingUnitName}" TextAlignment="Right"/>
@@ -45,6 +47,7 @@
                 <TextBlock Grid.Column="0" Text="{Binding Path=PrivateName}" TextAlignment="Right"/>
             </Grid>
         </DataTemplate>
+
 
         <DataTemplate x:Key="requestTemplate" DataType="local:GuestRequest">
             <Grid>
@@ -85,6 +88,7 @@
                 <TextBlock Grid.Column="0" Text="{Binding Path=ChildrenAttractions, Converter={StaticResource IntToStringConverter}}" TextAlignment="Right" Margin="5,0,0,0"/>
             </Grid>
         </DataTemplate>
+
 
     </Application.Resources>
 </Application>
