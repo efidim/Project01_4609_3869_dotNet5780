@@ -27,7 +27,7 @@
         </Grid.RowDefinitions>
 
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Yossef\Google Drive\יוסף\לימודים\מכון לב\שנה ב\מיני פרויקט במערכת חלונות\Project01_4609_3869_dotNet5780\PLWPF\bg_purple.jpg" />
+            <ImageBrush ImageSource="bg_purple.jpg" />
         </Grid.Background>
 
         <Label Name="chooseNum" Content="בחר מספר" Foreground="White" Grid.Row="0" VerticalAlignment="Center" Margin="0,45,145.6,45"/>

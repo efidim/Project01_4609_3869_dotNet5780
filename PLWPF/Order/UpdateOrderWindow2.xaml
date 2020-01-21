@@ -14,7 +14,7 @@
     <Grid>
 
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Yossef\Google Drive\יוסף\לימודים\מכון לב\שנה ב\מיני פרויקט במערכת חלונות\Project01_4609_3869_dotNet5780\PLWPF\bg_red.jpg" />
+            <ImageBrush ImageSource="bg_red.jpg" />
         </Grid.Background>
 
         <Label Name="numLabel" Content=":מספר הזמנה" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="415,58,0,0" VerticalAlignment="Top" Width="129"/>

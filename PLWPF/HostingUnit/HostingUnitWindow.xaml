@@ -27,7 +27,7 @@
         </Grid.RowDefinitions>
 
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Yossef\Google Drive\יוסף\לימודים\מכון לב\שנה ב\מיני פרויקט במערכת חלונות\Project01_4609_3869_dotNet5780\PLWPF\bg_green.jpg" />
+            <ImageBrush ImageSource="bg_green.jpg" />
         </Grid.Background>
 
         <Button x:Name="addUnitButton" Content="הוסף יחידת אירוח"  

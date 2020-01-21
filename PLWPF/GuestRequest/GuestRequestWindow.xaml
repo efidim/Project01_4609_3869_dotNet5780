@@ -29,7 +29,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Yossef\Google Drive\יוסף\לימודים\מכון לב\שנה ב\מיני פרויקט במערכת חלונות\Project01_4609_3869_dotNet5780\PLWPF\bg_yellow.jpg" />
+            <ImageBrush ImageSource="bg_yellow.jpg" />
         </Grid.Background>
 
         <Label Content=":שם פרטי" HorizontalAlignment="Left" Margin="138.5,58,-55,0" VerticalAlignment="Top" Width="150" Grid.Column="1"/>

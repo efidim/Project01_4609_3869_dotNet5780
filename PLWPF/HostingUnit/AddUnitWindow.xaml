@@ -36,7 +36,7 @@
             </Grid.RowDefinitions>
 
             <Grid.Background>
-                <ImageBrush ImageSource="C:\Users\Yossef\Google Drive\יוסף\לימודים\מכון לב\שנה ב\מיני פרויקט במערכת חלונות\Project01_4609_3869_dotNet5780\PLWPF\bg_green.jpg" />
+                <ImageBrush ImageSource="bg_green.jpg" />
             </Grid.Background>
 
             <Label Content="יחידת אירוח חדשה"    FontSize="30" Margin="0"/>
@@ -233,7 +233,7 @@
             </Button>
 
 
-            <Button x:Name="backButton" Content="חזרה"  
+            <Button x:Name="backButton" Content="חזרה" Background="White"  
                 Margin="361,63.8,361.8,0" Height="30" VerticalAlignment="Top" FontSize="18" Grid.Row="4" HorizontalAlignment="Center" Click="backButton_Click_1"/>
 
         </Grid>

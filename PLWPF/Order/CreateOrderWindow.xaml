@@ -10,7 +10,7 @@
     <Grid>
 
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Yossef\Google Drive\יוסף\לימודים\מכון לב\שנה ב\מיני פרויקט במערכת חלונות\Project01_4609_3869_dotNet5780\PLWPF\bg_red.jpg" />
+            <ImageBrush ImageSource="bg_red.jpg" />
         </Grid.Background>
 
         <Label Content="הזן תעודת זהות" HorizontalAlignment="Left" Margin="623,24,0,0" VerticalAlignment="Top" Height="25" Width="139" Foreground="White" RenderTransformOrigin="0.36,0.994"/>

@@ -27,7 +27,7 @@
         </Grid.RowDefinitions>
 
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Yossef\Google Drive\יוסף\לימודים\מכון לב\שנה ב\מיני פרויקט במערכת חלונות\Project01_4609_3869_dotNet5780\PLWPF\bg_purple.jpg" />
+            <ImageBrush ImageSource="bg_purple.jpg" />
         </Grid.Background>
 
         <Label Name="chooseDay" Content=":בחר ימים" Foreground="White" Grid.Row="0" VerticalAlignment="Center" Margin="0,103,181.6,151" Height="50" Width="150"/>

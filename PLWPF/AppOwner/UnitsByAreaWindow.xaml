@@ -27,9 +27,9 @@
         </Grid.RowDefinitions>
 
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Yossef\Google Drive\יוסף\לימודים\מכון לב\שנה ב\מיני פרויקט במערכת חלונות\Project01_4609_3869_dotNet5780\PLWPF\bg_purple.jpg" />
+            <ImageBrush ImageSource="bg_purple.jpg" />
         </Grid.Background>
-
+        
         <Label Name="chooseArea" Content="בחר אזור" Foreground="White" Grid.Row="0" VerticalAlignment="Center" Margin="0,45,145.6,45"/>
 
         <ComboBox Name="areaComboBox" Grid.Row="0" Margin="137,49,356.6,41" HorizontalContentAlignment="Center" FontSize="30" SelectionChanged="areaComboBox_SelectionChanged" />

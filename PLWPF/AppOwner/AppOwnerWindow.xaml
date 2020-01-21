@@ -30,8 +30,9 @@
         </Grid.RowDefinitions>
 
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Yossef\Google Drive\יוסף\לימודים\מכון לב\שנה ב\מיני פרויקט במערכת חלונות\Project01_4609_3869_dotNet5780\PLWPF\bg_purple.jpg" />
+            <ImageBrush ImageSource="bg_purple.jpg" />
         </Grid.Background>
+        
         <Label Name="chooseQuery" Foreground="White" Content="בחר שאילתא" Grid.Row="0" HorizontalAlignment="Center"/>
 
         <Button x:Name="unitsByAreaButton" Content="הצג יחידות אירוח לפי אזור"  
