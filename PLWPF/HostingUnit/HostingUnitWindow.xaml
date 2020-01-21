@@ -11,7 +11,9 @@
         <Style TargetType="{x:Type Control}" x:Key="baseStyle">
             <Setter Property="FontSize" Value="30" />
         </Style>
-        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}">
+            <Setter Property="Background" Value="White"/>
+        </Style>
         <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
@@ -23,6 +25,10 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="49.6"/>
         </Grid.RowDefinitions>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\Yossef\Google Drive\יוסף\לימודים\מכון לב\שנה ב\מיני פרויקט במערכת חלונות\Project01_4609_3869_dotNet5780\PLWPF\bg_green.jpg" />
+        </Grid.Background>
 
         <Button x:Name="addUnitButton" Content="הוסף יחידת אירוח"  
         Margin="40,40,39.6,40"  Grid.Row="0" Click="addUnitButton_Click"/>

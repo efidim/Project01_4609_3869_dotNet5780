@@ -28,7 +28,7 @@ namespace DAL
         #endregion
 
         #region Order
-        void AddOrder(Order ord);
+        int AddOrder(Order ord);
         void UpdateOrder(Order ord);
         Order GetOrder(int orderKey);
         DateTime GetEntryDate(int GuestRequestKey);

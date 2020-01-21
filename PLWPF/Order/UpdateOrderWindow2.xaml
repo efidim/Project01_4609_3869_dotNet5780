@@ -6,23 +6,32 @@
         xmlns:local="clr-namespace:PLWPF.Order"
         mc:Ignorable="d"
         Title="UpdateOrderWindow2" Height="450" Width="800">
-    
-    <Grid>
-        <Label Content=":מספר הזמנה" FontSize="20" HorizontalAlignment="Left" Margin="415,58,0,0" VerticalAlignment="Top" Width="129"/>
 
-        <Label Name="numLabel" FontSize="20" HorizontalAlignment="Left" Margin="244,58,0,0" VerticalAlignment="Top" Width="132" Height="37"/>
+    <Window.Resources>
+        <local:IntToStatus x:Key="IntToStringConverter" />
+    </Window.Resources>
+
+    <Grid>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\Yossef\Google Drive\יוסף\לימודים\מכון לב\שנה ב\מיני פרויקט במערכת חלונות\Project01_4609_3869_dotNet5780\PLWPF\bg_red.jpg" />
+        </Grid.Background>
+
+        <Label Name="numLabel" Content=":מספר הזמנה" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="415,58,0,0" VerticalAlignment="Top" Width="129"/>
+
+        <Label Content="{Binding OrderKey}" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="244,58,0,0" VerticalAlignment="Top" Width="132" Height="37"/>
 
 
         <Label Content="סטטוס" FontSize="20" 
-               HorizontalAlignment="Center" 
+               HorizontalAlignment="Center" Foreground="White" 
                Margin="359,118,359.6,0" VerticalAlignment="Top" Width="75"/>
 
 
         <TextBox x:Name="StatusTextBox" 
                  HorizontalAlignment="Left"
                   Margin="261,173,0,0" 
-                 TextWrapping="Wrap"                
-                 
+                 TextWrapping="Wrap" 
+                 Text="{Binding Status, Converter={StaticResource IntToStringConverter}}"
                  VerticalAlignment="Top" 
                  FontSize="18"
                  Width="270"
@@ -30,7 +39,7 @@
 
 
 
-        <Label Content="שינוי סטטוס" FontSize="18" HorizontalAlignment="Left" Margin="474,238,0,0" VerticalAlignment="Top" Width="109" RenderTransformOrigin="0.576,0.649"/>
+        <Label Content="שינוי סטטוס" Foreground="White" FontSize="18" HorizontalAlignment="Left" Margin="474,238,0,0" VerticalAlignment="Top" Width="109" RenderTransformOrigin="0.576,0.649"/>
 
 
 
@@ -41,14 +50,12 @@
         <Button Name="updateButton"
                 Content="עדכן"
                 FontSize="15"                
-                Margin="336,296,337.6,93" 
-                
-             
-                 Click="updateButton_Click"/>
+                Margin="336,296,337.6,93" Background="White"             
+                Click="updateButton_Click"/>
 
         <Button Content="חזרה"                
                 Margin="359,366,359.6,27"              
-                Click="backButton_Click"/>
+                Click="backButton_Click" Background="White"/>
 
     </Grid>
 </Window>

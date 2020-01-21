@@ -11,7 +11,9 @@
         <Style TargetType="{x:Type Control}" x:Key="baseStyle">
             <Setter Property="FontSize" Value="30" />
         </Style>
-        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}">
+            <Setter Property="Background" Value="White"/>
+        </Style>
         <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}">
             <Setter Property="HorizontalAlignment" Value="Right"/>
         </Style>
@@ -27,7 +29,11 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Name="keyLabel" Content=":מפתח ההזמנה" FontSize="25" Grid.Column="2" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" />
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\Yossef\Google Drive\יוסף\לימודים\מכון לב\שנה ב\מיני פרויקט במערכת חלונות\Project01_4609_3869_dotNet5780\PLWPF\bg_purple.jpg" />
+        </Grid.Background>
+
+        <Label Name="keyLabel" Content=":מפתח ההזמנה" Foreground="White" FontSize="25" Grid.Column="2" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" />
 
         <TextBox Name="KeyTextBox" Grid.Column="1"  HorizontalContentAlignment="Center"  Margin="66.2,70,66.6,69.4"  Text="" VerticalAlignment="Center"  />
 

@@ -202,5 +202,12 @@
       <Name>BL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bg_blue.jpg" />
+    <Resource Include="bg_green.jpg" />
+    <Resource Include="bg_purple.jpg" />
+    <Resource Include="bg_red.jpg" />
+    <Resource Include="bg_yellow.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

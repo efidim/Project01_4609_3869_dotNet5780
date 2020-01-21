@@ -29,16 +29,6 @@ namespace PLWPF.Order
             ord = order;
             this.DataContext = ord;
             bl = FactoryBl.getBl();
-            numLabel.Content = ord.OrderKey;
-            if (ord.Status == 0)
-                StatusTextBox.Text = "טרם טופל";
-            else if (ord.Status == 1)
-                StatusTextBox.Text = "נשלח מייל";
-            else if (ord.Status == 2)
-                StatusTextBox.Text = "נסגרה מחוסר הענות של הלקוח";
-            else if (ord.Status == 3)
-                StatusTextBox.Text = "נסגרה כי פג תוקף";
-
             this.StatusComboBox.ItemsSource = Enum.GetValues(typeof(Enums.OrderStatus));
         }
 
@@ -76,24 +66,24 @@ namespace PLWPF.Order
 
     }
 
-    //public class IntToStatus : IValueConverter
-    //{
-    //    public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-    //    {
-    //        if ((int)value == 0)
-    //            return "טרם טופל";
-    //        else if ((int)value == 1)
-    //            return "נשלח מייל";
-    //        else if ((int)value == 2)
-    //            return "נסגרה מחוסר הענות של הלקוח";
-    //        else if ((int)value == 3)
-    //            return "נסגרה כי פג תוקף";
-    //        return "טרם טופל";
-    //    }
+    public class IntToStatus : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if ((int)value == 0)
+                return "טרם טופל";
+            else if ((int)value == 1)
+                return "נשלח מייל";
+            else if ((int)value == 2)
+                return "נסגרה מחוסר הענות של הלקוח";
+            else if ((int)value == 3)
+                return "נסגרה כי פג תוקף";
+            return "טרם טופל";
+        }
 
-    //    public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-    //    {
-    //        return value;
-    //    }
-    //}
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return value;
+        }
+    }
 }

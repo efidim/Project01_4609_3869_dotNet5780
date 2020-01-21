@@ -13,7 +13,9 @@
             <Setter Property="HorizontalAlignment" Value="Right" />
         </Style>
         <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}"></Style>
-        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
 
@@ -25,6 +27,10 @@
             <ColumnDefinition Width="43*"/>
             <ColumnDefinition Width="18*"/>
         </Grid.ColumnDefinitions>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\Yossef\Google Drive\יוסף\לימודים\מכון לב\שנה ב\מיני פרויקט במערכת חלונות\Project01_4609_3869_dotNet5780\PLWPF\bg_yellow.jpg" />
+        </Grid.Background>
 
         <Label Content=":שם פרטי" HorizontalAlignment="Left" Margin="138.5,58,-55,0" VerticalAlignment="Top" Width="150" Grid.Column="1"/>
 
@@ -162,7 +168,7 @@
         </Button>
 
         <Button x:Name="backButton" Content="חזרה"  
-                Margin="387,0,127.2,12.4"  VerticalAlignment="Bottom" FontSize="13" HorizontalAlignment="Center" Click="backButton_Click"  />
+                Margin="386,0,126.2,9.4"  VerticalAlignment="Bottom" FontSize="15" HorizontalAlignment="Center" Click="backButton_Click" Width="47"   />
 
     </Grid>
 </Window>

@@ -11,8 +11,11 @@
         <Style TargetType="{x:Type Control}" x:Key="baseStyle">
             <Setter Property="FontSize" Value="30" />
         </Style>
-        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}"></Style>
-        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}">
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
+            <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>        
     </Window.Resources>
@@ -25,17 +28,21 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <Grid.Background>
+            <ImageBrush ImageSource="bg_blue.jpg" />
+        </Grid.Background>
+
         <Button x:Name="guestRequestButton" Content="הוסף דרישת לקוח"  
-        Margin="10"  Grid.Row="0" Click="guestRequestButton_Click"/>
+        Margin="50,20,50,20"  Grid.Row="0" Click="guestRequestButton_Click"/>
 
         <Button x:Name="hostingUnitButton" Content="הוסף/עדכן יחידת אירוח"  
-        Margin="10" Grid.Row="1" Click="hostingUnitButton_Click"/>
+        Margin="50,20,50,20" Grid.Row="1" Click="hostingUnitButton_Click"/>
 
         <Button x:Name="orderButton" Content="הוסף/עדכן הזמנה"  
-        Margin="10" Grid.Row="2" Click="orderButton_Click"/>
+        Margin="50,20,50,20" Grid.Row="2" Click="orderButton_Click"/>
 
         <Button x:Name="appOwner" Content="בעל האתר"  
-        Margin="10" Grid.Row="3" Click="appOwner_Click"/>
+        Margin="50,20,50,20" Grid.Row="3" Click="appOwner_Click"/>
 
     </Grid>
 </Window>

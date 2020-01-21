@@ -13,7 +13,9 @@
             <Setter Property="HorizontalAlignment" Value="Right" />
         </Style>
         <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}"></Style>
-        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="TextAlignment" Value="Right"/>
@@ -30,6 +32,10 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
+
+            <Grid.Background>
+                <ImageBrush ImageSource="C:\Users\Yossef\Google Drive\יוסף\לימודים\מכון לב\שנה ב\מיני פרויקט במערכת חלונות\Project01_4609_3869_dotNet5780\PLWPF\bg_green.jpg" />
+            </Grid.Background>
 
             <Label Content=" :יחידת אירוח מספר"    FontSize="30" Margin="0"/>
             <Label Content="{Binding HostingUnitKey}" FontSize="30" Margin="0,0,265.8,242.8" Grid.RowSpan="2" Width="208"/>

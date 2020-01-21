@@ -26,15 +26,19 @@
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
 
-        <Label Name="chooseDay" Content=":בחר ימים" Grid.Row="0" VerticalAlignment="Center" Margin="0,103,181.6,151" Height="50" Width="150"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\Yossef\Google Drive\יוסף\לימודים\מכון לב\שנה ב\מיני פרויקט במערכת חלונות\Project01_4609_3869_dotNet5780\PLWPF\bg_purple.jpg" />
+        </Grid.Background>
+
+        <Label Name="chooseDay" Content=":בחר ימים" Foreground="White" Grid.Row="0" VerticalAlignment="Center" Margin="0,103,181.6,151" Height="50" Width="150"/>
 
         <Viewbox Name="chooseViewBox" Grid.Row="0" HorizontalAlignment="Left" Height="234" Margin="169,21,0,0" VerticalAlignment="Top" Width="196"/>
 
-        <Button x:Name="chooseButton" Content="בחר" HorizontalAlignment="Left" Margin="235,239,0,0" VerticalAlignment="Top" Width="75"  FontSize="20" VerticalContentAlignment="Center" Click="chooseButton_Click" Height="30"/>
+        <Button x:Name="chooseButton" Content="בחר" Background="White" HorizontalAlignment="Left" Margin="235,239,0,0" VerticalAlignment="Top" Width="75"  FontSize="20" VerticalContentAlignment="Center" Click="chooseButton_Click" Height="30"/>
 
         <ListBox Name="unitsListBox" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource unitTemplate}" HorizontalAlignment="Center" Height="160" Margin="217,33,216.6,73.4" Grid.Row="1" VerticalAlignment="Center" Width="360"/>
 
-        <Button x:Name="backButton" Content="חזרה"  
+        <Button x:Name="backButton" Content="חזרה" Background="White" 
             Margin="337,214,330.6,0" Grid.Row="1" Height="30" VerticalAlignment="Top" FontSize="18" Click="backButton_Click"/>
     </Grid>
 </Window>

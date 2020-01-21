@@ -11,7 +11,9 @@
         <Style TargetType="{x:Type Control}" x:Key="baseStyle">
             <Setter Property="FontSize" Value="30" />
         </Style>
-        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}">
+            <Setter Property="Background" Value="White"></Setter>
+        </Style>
         <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
@@ -26,8 +28,11 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        
-        <Label Name="chooseQuery" Content="בחר שאילתא" Grid.Row="0" HorizontalAlignment="Center"/>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\Yossef\Google Drive\יוסף\לימודים\מכון לב\שנה ב\מיני פרויקט במערכת חלונות\Project01_4609_3869_dotNet5780\PLWPF\bg_purple.jpg" />
+        </Grid.Background>
+        <Label Name="chooseQuery" Foreground="White" Content="בחר שאילתא" Grid.Row="0" HorizontalAlignment="Center"/>
 
         <Button x:Name="unitsByAreaButton" Content="הצג יחידות אירוח לפי אזור"  
         Margin="15"  Grid.Row="1" Click="unitsByAreaButton_Click"/>
