@@ -40,6 +40,27 @@ namespace PLWPF
         {
             try
             {
+                int value;
+               try
+                {
+                    value = int.Parse(this.adultsTextBox.Text);
+                    if (value <= 0)
+                        throw new Exception();
+                    value = int.Parse(this.childrenTextBox.Text);
+                    if (value <= 0)
+                        throw new Exception();
+                    value = int.Parse(this.idTextBox.Text);
+                    value = int.Parse(this.phoneTextBox.Text);
+                    value = int.Parse(this.bankNumTextBox.Text);
+                    value = int.Parse(this.branchNumTextBox.Text);
+                    value = int.Parse(this.accountTextBox.Text);
+                }
+                catch
+                {
+                    MessageBox.Show(" הקלט לא תקין" + " נא הזן פרטים נכונים");
+                    return;
+                }
+
                 int key;
                 key = bl.AddHostUnit(unit);
                 MessageBox.Show("The Hosting Unit has been successfully added and the unit key code is: " + key);

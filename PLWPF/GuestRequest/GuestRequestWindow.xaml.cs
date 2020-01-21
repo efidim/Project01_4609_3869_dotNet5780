@@ -94,6 +94,23 @@ namespace PLWPF
 
                 guest.RegistrationDate = DateTime.Now;
 
+                int value;
+                try
+                {
+                    value = int.Parse(this.Adults.Text);
+                    if (value <= 0)
+                        throw new Exception();
+                    value = int.Parse(this.Children.Text);
+                    if (value <= 0)
+                        throw new Exception();
+                }
+                catch
+                {
+                    MessageBox.Show(" הקלט לא תקין" + " נא הזן פרטים נכונים");
+                    return;
+                }
+
+
                 bl.AddGuestRequest(guest);
                 MessageBox.Show("The Guest Request has been successfully added.");
 

@@ -39,6 +39,26 @@ namespace PLWPF
         {
             try
             {
+                int value;
+                try
+                {
+                    value = int.Parse(this.adultsTextBox.Text);
+                    if (value <= 0)
+                        throw new Exception();
+                    value = int.Parse(this.childrenTextBox.Text);
+                    if (value <= 0)
+                        throw new Exception();
+                    value = int.Parse(this.idTextBox.Text);
+                    value = int.Parse(this.phoneTextBox.Text);
+                    value = int.Parse(this.bankNumTextBox.Text);
+                    value = int.Parse(this.branchNumTextBox.Text);
+                    value = int.Parse(this.accountTextBox.Text);
+                }
+                catch
+                {
+                    MessageBox.Show(" הקלט לא תקין" + " נא הזן פרטים נכונים");
+                    return;
+                }
                 bl.UpdateHostUnit(unitToUpdate);
                    MessageBox.Show("The Hosting Unit has been successfully updated");
                    new HostingUnitWindow().Show();
