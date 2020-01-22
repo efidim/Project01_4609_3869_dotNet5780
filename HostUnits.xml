@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HostUnits>
+  <HostUnit>
+    <HostingUnitKey>123</HostingUnitKey>
+    <Owner>
+      <HostKey>1234</HostKey>
+      <Name>
+        <FirstName>יצחק</FirstName>
+        <LastName>יצחקי</LastName>
+      </Name>
+      <PhoneNumber>052-1234567</PhoneNumber>
+      <MailAddress>its@gmail.com</MailAddress>
+      <BankBranchDetails>
+        <BankNumber>13</BankNumber>
+        <BankName> בנק אגוד לישראל בע"מ</BankName>
+        <BranchNumber>63</BranchNumber>
+        <BranchAddress>אחוזת בית 6 </BranchAddress>
+        <BranchCity>תל אביב -יפו</BranchCity>
+      </BankBranchDetails>
+      <BankAccountNumber>34134</BankAccountNumber>
+      <CollectionClearance>true</CollectionClearance>
+    </Owner>
+    <HostingUnitName>צחנה טבעית</HostingUnitName>
+    <Area>מרכז</Area>
+    <Type>מלון</Type>
+    <People>
+      <Adults>2</Adults>
+      <Children>4</Children>
+    </People>
+    <Attractions>
+      <Pool>0</Pool>
+      <Jacuzzi>1</Jacuzzi>
+      <ChildrenAttractions>0</ChildrenAttractions>
+    </Attractions>
+  </HostUnit>
+</HostUnits>

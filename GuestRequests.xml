@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GuestsRequests>
+ <GuestsRequest>
+  <GuestRequestKey>12</GuestRequestKey>
+  <Name>
+    <FirstName>אברהם</FirstName>
+    <LastName>אברהמי</LastName>
+  </Name>
+  <Mail>av@gmail.com</Mail>
+  <Status>true</Status>
+  <Dates>
+    <RegistrationDate>
+      <Year>2020</Year>
+      <Month>1</Month>
+      <Day>1</Day>
+    </RegistrationDate>
+    <EntryDate>
+      <Year>2020</Year>
+      <Month>1</Month>
+      <Day>3</Day>
+    </EntryDate>
+    <ReleaseDate>
+      <Year>2020</Year>
+      <Month>1</Month>
+      <Day>7</Day>
+    </ReleaseDate>
+  </Dates>
+  <Area>מרכז</Area>
+  <Type>מלון</Type>
+  <People>
+    <Adults>2</Adults>
+    <Children>4</Children>
+  </People>
+  <Attractions>
+    <Pool>0</Pool>
+    <Jacuzzi>1</Jacuzzi>
+    <ChildrenAttractions>0</ChildrenAttractions>
+  </Attractions>
+ </GuestsRequest>
+</GuestsRequests>

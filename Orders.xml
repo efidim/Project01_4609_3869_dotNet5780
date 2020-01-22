@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Orders>
+  <Order>
+    <HostingUnitKey>123</HostingUnitKey>
+    <GuestRequestKey>12</GuestRequestKey>
+    <OrderKey>1212</OrderKey>
+    <Status>0</Status>
+    <Dates>
+      <CreateDate>
+        <Year>2020</Year>
+        <Month>1</Month>
+        <Day>1</Day>
+      </CreateDate>
+      <OrderDate>
+        <Year>2020</Year>
+        <Month>1</Month>
+        <Day>3</Day>
+      </OrderDate>
+    </Dates>
+    <CommissionPerDay>10</CommissionPerDay>
+  </Order>
+</Orders>
