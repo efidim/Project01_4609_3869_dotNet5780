@@ -44,26 +44,19 @@ namespace DAL
                 for (int i = 0; i < 3; i++)
                     localPath = Path.GetDirectoryName(localPath);
 
-                testerPath = localPath + @"\TesterXml.xml";
-                traineePath = localPath + @"\TraineeXml.xml";
-                testPath = localPath + @"\TestXml.xml";
-                configPath = localPath + @"\ConfigXml.xml";
-                schedulePath = localPath + @"\Schedule.xml";
+                GuestRequestsPath = localPath + @"\GuestRequestsXml.xml";
+                HostingUnitsPath = localPath + @"\HostingUnitsXml.xml";
+                OrdersPath = localPath + @"\OrdersXml.xml";
+                
                 //creation of the files
-                if (!File.Exists(testerPath))
+                if (!File.Exists(GuestRequestsPath))
                     CreateTesterFile();
 
-                if (!File.Exists(traineePath))
+                if (!File.Exists(HostingUnitsPath))
                     CreateTraineeFile();
 
-                if (!File.Exists(testPath))
+                if (!File.Exists(OrdersPath))
                     CreateTestFile();
-
-                if (!File.Exists(configPath))
-                    CreateConfigFile();
-
-                if (!File.Exists(schedulePath))
-                    CreateScheduleFile();
             }
             catch (FileLoadException a)//if couldn't create
             {
