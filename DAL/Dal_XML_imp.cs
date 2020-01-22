@@ -50,13 +50,13 @@ namespace DAL
                 
                 //creation of the files
                 if (!File.Exists(GuestRequestsPath))
-                    CreateTesterFile();
+                    CreateGuestRequestsFile();
 
                 if (!File.Exists(HostingUnitsPath))
-                    CreateTraineeFile();
+                    CreateHostingUnitsFile();
 
                 if (!File.Exists(OrdersPath))
-                    CreateTestFile();
+                    CreateOrderFile();
             }
             catch (FileLoadException a)//if couldn't create
             {
