@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 using BE;
 
 namespace DAL
@@ -125,16 +126,19 @@ namespace DAL
                 throw r;
             }
 
-            int key = int.Parse(GuestRequestsRoot.Element("guestKey").Value) + 1;
+            int key = int.Parse(ConfigRoot.Element("guestKey").Value);
+            XElement guestKey = new XElement("guestKey", key+1); 
 
             XElement GuestRequestKey = new XElement("GuestRequestKey", guest.GuestRequestKey);
             XElement PrivateName = new XElement("PrivateName", guest.PrivateName);
             XElement FamilyName = new XElement("FamilyName", guest.FamilyName);
             XElement MailAddress = new XElement("Mail Address", guest.MailAddress);
+            XElement Name = new XElement("Name", PrivateName, FamilyName);
             XElement Status = new XElement("Status", guest.Status);
             XElement RegistrationDate = new XElement("Registration Date", guest.RegistrationDate);
             XElement EntryDate = new XElement("Entry Date", guest.EntryDate);
             XElement ReleaseDate = new XElement("Release Date", guest.ReleaseDate);
+            XElement Dates = new XElement("Dates", RegistrationDate, EntryDate, ReleaseDate);
             XElement Area = new XElement("Area", guest.Area);
             XElement Type = new XElement("Type", guest.Type);
             XElement Adults = new XElement("Adults", guest.Adults);
@@ -142,9 +146,10 @@ namespace DAL
             XElement Pool = new XElement("Pool", guest.Pool);
             XElement Jacuzzi = new XElement("Jacuzzi", guest.Jacuzzi);
             XElement ChildrenAttractions = new XElement("ChildrenAttractions", guest.ChildrenAttractions);
+            XElement Attractions = new XElement("Attractions", ChildrenAttractions, Jacuzzi, Pool);
 
-            GuestRequestsRoot.Add("Guest Request", GuestRequestKey, PrivateName, FamilyName, MailAddress,
-                Status, RegistrationDate, EntryDate, ReleaseDate, Area, Type, Adults, Children, Pool, Jacuzzi, ChildrenAttractions);
+            GuestRequestsRoot.Add("Guest Request", GuestRequestKey,Name, MailAddress,
+                Status, Dates, Area, Type, Adults,Attractions, ChildrenAttractions);
             GuestRequestsRoot.Save(GuestRequestsPath);
         }
 
@@ -308,17 +313,61 @@ namespace DAL
         #region Hosting unit
         public int AddHostUnit(HostingUnit host)
         {
-            host.HostingUnitKey = Configuration.unitKey++;
-            DataSource.HostingUnits.Add(host);
-            return host.HostingUnitKey;
+            try
+            {
+                Load(ref HostingUnitsRoot, HostingUnitsPath);
+            }
+            catch (DirectoryNotFoundException r)
+            {
+                throw r;
+            };
+            saveToXML<HostingUnit>( host, HostingUnitsPath);
+            int key = int.Parse(ConfigRoot.Element("guestKey").Value);
+            XElement guestKey = new XElement("guestKey", key + 1);
+
+            return key;
+        }
+        public static void saveToXML<T>(T source, string path)
+        {
+            FileStream file = new FileStream(path, FileMode.Create);
+            XmlSerializer xmlSer = new XmlSerializer(source.GetType());
+            xmlSer.Serialize(file, source);
+            file.Close();
         }
 
+
         public void RemoveHostUnit(HostingUnit host)
+        {  
+            try
+            {
+                Load(ref HostingUnitsRoot, HostingUnitsPath);
+                XElement host1; 
+                host1 = (from hos in HostingUnitsRoot.Elements()
+                         where int.Parse(hos.Element("HostingUnitKey").Value) == host.HostingUnitKey
+                         select hos).FirstOrDefault();
+
+                if (host1 == null)
+                    throw new KeyNotFoundException("שגיאה! לא קיימת במערכת דרישה עם מפתח זה");
+
+                host1.Remove();
+                HostingUnitsRoot.Save(HostingUnitsPath);
+            }
+            catch (DirectoryNotFoundException r)
+            {
+                throw r;
+            }
+            catch (KeyNotFoundException r)
+            {
+                throw r;
+            }
+        }
+        public static T LoadFromXML<T>(string path)
         {
-            int id = host.HostingUnitKey;
-            int count = DataSource.HostingUnits.RemoveAll(x => x.HostingUnitKey == id);
-            if (count == 0)
-                throw new Exception("The hosting unit does not exist");
+            FileStream file = new FileStream(path, FileMode.Open);
+            XmlSerializer xmlSer = new XmlSerializer(typeof(T));
+            T result = (T)xmlSer.Deserialize(file);
+            file.Close();
+            return result;
         }
 
         public void UpdateHostUnit(HostingUnit host)
@@ -327,7 +376,17 @@ namespace DAL
             if (index == -1)
                 DataSource.HostingUnits.Add(host);
             DataSource.HostingUnits[index] = host;
+
+            try
+            {
+                Load(ref HostingUnitsRoot, HostingUnitsPath);
+            }
+            catch (DirectoryNotFoundException r)
+            {
+                throw r;
+            };
         }
+
         /// <summary>
         ///  Returns a hosting unit by the ID
         /// </summary>
@@ -369,9 +428,25 @@ namespace DAL
 
         public List<HostingUnit> GetAllHostingUnits()
         {
-            if (DataSource.HostingUnits == null)
-                throw new Exception("The HostingUnits list is empty");
-            return DataSource.HostingUnits.Select(hu => (HostingUnit)hu.Clone()).ToList();
+            try
+            {
+                Load(ref HostingUnitsRoot, HostingUnitsPath);
+            }
+            catch (DirectoryNotFoundException r)
+            {
+                throw r;
+            }
+            List<HostingUnit> hostingUnits = LoadListFromXML(HostingUnitsPath);
+            return hostingUnits;
+        }
+        public static List<HostingUnit> LoadListFromXML(string path)
+            {
+                FileStream file = new FileStream(path, FileMode.Open);
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<HostingUnit>));
+                List<HostingUnit> list = (List<HostingUnit>)xmlSerializer.Deserialize(file);
+                file.Close();
+                return list;
+            }
         }
         #endregion
     
