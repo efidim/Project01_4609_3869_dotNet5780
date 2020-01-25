@@ -326,14 +326,7 @@ namespace DAL
             XElement guestKey = new XElement("guestKey", key + 1);
 
             return key;
-        }
-        public static void saveToXML<T>(T source, string path)
-        {
-            FileStream file = new FileStream(path, FileMode.Create);
-            XmlSerializer xmlSer = new XmlSerializer(source.GetType());
-            xmlSer.Serialize(file, source);
-            file.Close();
-        }
+        }    
 
 
         public void RemoveHostUnit(HostingUnit host)
@@ -361,14 +354,7 @@ namespace DAL
                 throw r;
             }
         }
-        public static T LoadFromXML<T>(string path)
-        {
-            FileStream file = new FileStream(path, FileMode.Open);
-            XmlSerializer xmlSer = new XmlSerializer(typeof(T));
-            T result = (T)xmlSer.Deserialize(file);
-            file.Close();
-            return result;
-        }
+
 
         public void UpdateHostUnit(HostingUnit host)
         {
@@ -447,7 +433,7 @@ namespace DAL
                 file.Close();
                 return list;
             }
-        }
+        
         #endregion
     
 
@@ -533,5 +519,23 @@ namespace DAL
         };
             return TheFiveBanks;
         }
+        
+        public static void saveToXML<T>(T source, string path)
+        {
+            FileStream file = new FileStream(path, FileMode.Create);
+            XmlSerializer xmlSer = new XmlSerializer(source.GetType());
+            xmlSer.Serialize(file, source);
+            file.Close();
+        }
+
+        public static T LoadFromXML<T>(string path)
+        {
+            FileStream file = new FileStream(path, FileMode.Open);
+            XmlSerializer xmlSer = new XmlSerializer(typeof(T));
+            T result = (T)xmlSer.Deserialize(file);
+            file.Close();
+            return result;
+        }
+
     }
 }
