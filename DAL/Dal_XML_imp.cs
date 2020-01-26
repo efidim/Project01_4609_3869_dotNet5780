@@ -126,10 +126,11 @@ namespace DAL
                 throw r;
             }
 
-            int key = int.Parse(ConfigRoot.Element("guestKey").Value);
-            XElement guestKey = new XElement("guestKey", key+1); 
+            int key = int.Parse(ConfigRoot.Element("guestKey").Value) + 1;
+            XElement guestKey = ConfigRoot;
+            guestKey.Element("guestKey").Value = key.ToString();
 
-            XElement GuestRequestKey = new XElement("GuestRequestKey", guest.GuestRequestKey);
+            XElement GuestRequestKey = new XElement("GuestRequestKey", key);
             XElement PrivateName = new XElement("PrivateName", guest.PrivateName);
             XElement FamilyName = new XElement("FamilyName", guest.FamilyName);
             XElement MailAddress = new XElement("Mail Address", guest.MailAddress);
@@ -149,7 +150,7 @@ namespace DAL
             XElement Attractions = new XElement("Attractions", ChildrenAttractions, Jacuzzi, Pool);
 
             GuestRequestsRoot.Add("Guest Request", GuestRequestKey,Name, MailAddress,
-                Status, Dates, Area, Type, Adults,Attractions, ChildrenAttractions);
+                Status, Dates, Area, Type, Adults,Attractions);
             GuestRequestsRoot.Save(GuestRequestsPath);
         }
 
