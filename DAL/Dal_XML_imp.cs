@@ -554,6 +554,23 @@ namespace DAL
             //if (index == -1)
             //    throw new Exception("The host does not exist");
             //return DataSource.HostingUnits[index].Owner;
+
+            XElement host1;
+            host1 = (from hos in HostingUnitsRoot.Elements()
+                     where int.Parse(hos.Element("Owner").Element("HostKey")) == hostKey
+                     select hos).FirstOrDefault();
+            if (host1 == null)
+                throw new KeyNotFoundException(" לא קיים במערכת יחידה עם מפתח שמספרו"+ hostKey);
+            List<HostingUnit> hostunits = LoadListFromXML(HostingUnitsPath);
+            Host host = new Host();
+            foreach (var item in hostunits)
+            {
+                if (item.HostingUnitKey == hostingUnitkey)
+                { host = item.Clone(); break; }
+
+            }
+            return host.Clone();
+
         }
         public void UpdateHost(Host host)
         {
