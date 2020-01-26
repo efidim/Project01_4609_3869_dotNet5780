@@ -314,9 +314,21 @@ namespace DAL
         #region Hosting unit
         public int AddHostUnit(HostingUnit host)
         {
-            saveToXML<HostingUnit>( host, HostingUnitsPath);
-            int key = int.Parse(ConfigRoot.Element("guestKey").Value);
-            XElement guestKey = new XElement("guestKey", key + 1);
+            XElement host1;
+            host1 = (from hos in HostingUnitsRoot.Elements()
+                     where int.Parse(hos.Element("HostingUnitKey").Value) == host.HostingUnitKey
+                     select hos).FirstOrDefault();
+            if (host1 != null)
+            {
+                throw new KeyNotFoundException("יחידת אירוח זו קיימת כבר במערכת");
+            }
+
+            int key = int.Parse(ConfigRoot.Element("HostingUnitKey").Value) + 1;
+            XElement HostingUnitKey = ConfigRoot;
+            HostingUnitKey.Element("HostingUnitKey").Value = key.ToString();
+        
+            HostingUnitsRoot.Add(host);
+            saveToXML<HostingUnit>(host, HostingUnitsPath);
 
             return key;
         }    
@@ -326,14 +338,13 @@ namespace DAL
         {  
             try
             {
-                Load(ref HostingUnitsRoot, HostingUnitsPath);
                 XElement host1; 
                 host1 = (from hos in HostingUnitsRoot.Elements()
                          where int.Parse(hos.Element("HostingUnitKey").Value) == host.HostingUnitKey
                          select hos).FirstOrDefault();
 
                 if (host1 == null)
-                    throw new KeyNotFoundException("שגיאה! לא קיימת במערכת דרישה עם מפתח זה");
+                    throw new KeyNotFoundException("שגיאה! לא קיימת במערכת יחידה עם מפתח זה");
 
                 host1.Remove();
                 HostingUnitsRoot.Save(HostingUnitsPath);
@@ -351,19 +362,19 @@ namespace DAL
 
         public void UpdateHostUnit(HostingUnit host)
         {
-            int index = DataSource.HostingUnits.FindIndex(h => h.HostingUnitKey == host.HostingUnitKey);
-            if (index == -1)
-                DataSource.HostingUnits.Add(host);
-            DataSource.HostingUnits[index] = host;
-
-            try
+            XElement host1;
+            host1 = (from hos in HostingUnitsRoot.Elements()
+                     where int.Parse(hos.Element("HostingUnitKey").Value) == host.HostingUnitKey
+                     select hos).FirstOrDefault();
+            if (host1 == null)
             {
-                Load(ref HostingUnitsRoot, HostingUnitsPath);
+                AddHostUnit(host);
+                return;
             }
-            catch (DirectoryNotFoundException r)
-            {
-                throw r;
-            };
+            host1.Remove();
+            List<HostingUnit> HostUnits = LoadListFromXML(HostingUnitsPath);
+            HostUnits.Add(host);
+            saveToXML<HostingUnit>(host, HostingUnitsPath);
         }
 
         /// <summary>
@@ -373,16 +384,24 @@ namespace DAL
         /// <returns>HostingUnit</returns>
         public HostingUnit GetHostingUnit(int hostingUnitkey)
         {
-            List<HostingUnit> temp = DataSource.HostingUnits;
-            IEnumerable<HostingUnit> temp1 = from item in temp
-                                             where item.HostingUnitKey == hostingUnitkey
-                                             select item;
-            if (temp1.ToList().Count == 0)
+           
+            XElement host1;
+            host1 = (from hos in HostingUnitsRoot.Elements()
+                     where int.Parse(hos.Element("HostingUnitKey").Value) == hostingUnitkey
+                     select hos).FirstOrDefault();
+            if (host1 == null)
+                throw new KeyNotFoundException("שגיאה! לא קיימת במערכת יחידה עם מפתח זה");
+           List <HostingUnit> hostunits = LoadListFromXML(HostingUnitsPath);
+            HostingUnit host = new HostingUnit();
+            foreach (var item in hostunits)
             {
-                throw new Exception("The hosting unit does not exist");
+                if (item.HostingUnitKey == hostingUnitkey)
+                { host = item.Clone(); break; }
+
             }
-            HostingUnit temp2 = temp1.First();
-            return temp2.Clone();
+            return host.Clone();
+
+
         }
 
         /// <summary>
@@ -392,31 +411,29 @@ namespace DAL
         /// <returns>HostingUnit</returns>
         public HostingUnit GetHostingUnitByName(string hostingUnitName)
         {
-            List<HostingUnit> temp = DataSource.HostingUnits;
-            IEnumerable<HostingUnit> temp1 = from item in temp
-                                             where item.HostingUnitName == hostingUnitName
-                                             select item;
-            if (temp1.ToList().Count == 0)
+            XElement host1;
+            host1 = (from hos in HostingUnitsRoot.Elements()
+                     where hos.Element("HostingUnitName").Value == hostingUnitName
+                     select hos).FirstOrDefault();
+            if (host1 == null)
+                throw new KeyNotFoundException("שגיאה! לא קיימת במערכת יחידה עם שם זה");
+            List<HostingUnit> HostUnits = LoadListFromXML(HostingUnitsPath);
+            HostingUnit host=new HostingUnit();
+            foreach (var item in HostUnits)
             {
-                throw new Exception("The hosting unit does not exist");
-            }
-            HostingUnit temp2 = temp1.First();
-            return temp2.Clone();
-        }
+                if (item.HostingUnitName == hostingUnitName)
+                { host = item.Clone(); break; }
 
+            }
+            return host.Clone();
+        }
 
         public List<HostingUnit> GetAllHostingUnits()
         {
-            try
-            {
-                Load(ref HostingUnitsRoot, HostingUnitsPath);
-            }
-            catch (DirectoryNotFoundException r)
-            {
-                throw r;
-            }
             List<HostingUnit> hostingUnits = LoadListFromXML(HostingUnitsPath);
-            return hostingUnits;
+            if (hostingUnits == null)
+                throw new KeyNotFoundException("אין יחידות אירוח במאגר הנתונים");
+            return hostingUnits.Select(hu => (HostingUnit)hu.Clone()).ToList();
         }
         public static List<HostingUnit> LoadListFromXML(string path)
             {
@@ -433,57 +450,92 @@ namespace DAL
         #region Order
         public int AddOrder(Order ord)
         {
-            ord.OrderKey = Configuration.orderKey++;
-            DataSource.Orders.Add(ord);
-            return ord.OrderKey;
+            XElement ord1 = (from hos in HostingUnitsRoot.Elements()
+                     where int.Parse(hos.Element("OrderKey").Value) == ord.OrderKey
+                     select hos).FirstOrDefault();
+            if (ord1 != null)
+            {
+                throw new KeyNotFoundException("הזמנה זו קיימת כבר במערכת");
+            }
+            int key = int.Parse(ConfigRoot.Element("orderKey").Value) + 1;
+            XElement orderKey = ConfigRoot;
+            orderKey.Element("orderKey").Value = key.ToString();
+            OrdersRoot.Add(ord);
+            saveToXML<Order>(ord, OrdersPath);
+
+            return key;
         }
         public void UpdateOrder(Order ord)
         {
-            int index = DataSource.Orders.FindIndex(o => o.OrderKey == ord.OrderKey);
-            if (index == -1)
-                DataSource.Orders.Add(ord);
-
-            DataSource.Orders[index] = ord;
+            
+           XElement ord1 = (from or in HostingUnitsRoot.Elements()
+                     where int.Parse(or.Element("orderKey").Value) == ord.OrderKey
+                     select or).FirstOrDefault();
+            if (ord1 == null)
+            {
+                AddOrder(ord);
+                return;
+            }
+            ord1.Remove();
+            OrdersRoot.Add(ord);
+            saveToXML<Order>(ord, HostingUnitsPath);
         }
         public Order GetOrder(int orderKey)
         {
-            List<Order> temp = DataSource.Orders;
-            IEnumerable<Order> temp1 = from item in temp
-                                       where item.OrderKey == orderKey
-                                       select item;
-            if (temp1.ToList().Count == 0)
-            {
-                throw new Exception("The order does not exist");
-            }
-            Order temp2 = temp1.First();
-            return temp2.Clone();
+            XElement ord1 = (from or in HostingUnitsRoot.Elements()
+                             where int.Parse(or.Element("orderKey").Value) == orderKey
+                             select or).FirstOrDefault();
+            if (ord1 == null)
+                throw new KeyNotFoundException("שגיאה! לא קיימת במערכת הזמנה עם מפתח זה");
+            List<Order> ord = LoadListFromXML1(OrdersPath);
+            return ord.FirstOrDefault(x => x.OrderKey==orderKey);
         }
         public DateTime GetEntryDate(int GuestRequestKey)
         {
-            int index = DataSource.GuestRequests.FindIndex(o => o.GuestRequestKey == GuestRequestKey);
-            return DataSource.GuestRequests[index].EntryDate;
-        }
+            //int index = DataSource.GuestRequests.FindIndex(o => o.GuestRequestKey == GuestRequestKey);
+            //return DataSource.GuestRequests[index].EntryDate;
+            DateTime EntryDate;
+            EntryDate = (from req in GuestRequestsRoot.Elements()
+                         where int.Parse(req.Element("GuestRequestKey").Value) == GuestRequestKey
+                         select DateTime.Parse(req.Element("Dates").Element("Entry Date").Value)
+                         ).FirstOrDefault();
+            return EntryDate;
+         }
         public DateTime GetRelease(int GuestRequestKey)
         {
-            int index = DataSource.GuestRequests.FindIndex(o => o.GuestRequestKey == GuestRequestKey);
-            return DataSource.GuestRequests[index].ReleaseDate;
+            DateTime Release;
+            Release = (from req in GuestRequestsRoot.Elements()
+                        where int.Parse(req.Element("GuestRequestKey").Value) == GuestRequestKey
+                       select DateTime.Parse(req.Element("Dates").Element("ReleaseDate").Value)
+                         ).FirstOrDefault();
+            return Release;
         }
         public List<Order> GetAllOrders()
         {
-            if (DataSource.Orders == null)
-                throw new Exception("The Orders list is empty");
-            return DataSource.Orders.Select(Or => (Order)Or.Clone()).ToList();
+         
+            List<Order> hostingUnits = LoadListFromXML1(OrdersPath);
+            if (hostingUnits == null)
+                throw new KeyNotFoundException("אין הזמנות במאגר הנתונים");
+            return hostingUnits.Select(hu => (Order)hu.Clone()).ToList();
+        }
+        public static List<Order> LoadListFromXML1(string path)
+        {
+            FileStream file = new FileStream(path, FileMode.Open);
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<HostingUnit>));
+            List<Order> list = (List<Order>)xmlSerializer.Deserialize(file);
+            file.Close();
+            return list;
         }
         #endregion
-        
+
 
         #region Host
         public Host GetHost(int hostKey)
         {
-            int index = DataSource.HostingUnits.FindIndex(h => h.Owner.HostKey == hostKey);
-            if (index == -1)
-                throw new Exception("The host does not exist");
-            return DataSource.HostingUnits[index].Owner;
+            //int index = DataSource.HostingUnits.FindIndex(h => h.Owner.HostKey == hostKey);
+            //if (index == -1)
+            //    throw new Exception("The host does not exist");
+            //return DataSource.HostingUnits[index].Owner;
         }
         public void UpdateHost(Host host)
         {
