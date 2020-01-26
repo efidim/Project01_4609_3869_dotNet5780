@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using System.Net;
 using BE;
 
 namespace DAL
@@ -36,11 +37,13 @@ namespace DAL
         private XElement OrdersRoot;
         private const string OrdersPath = @"..\..\..\xml files\Orders.xml";
 
-        private XElement BankBranchDetailsRoot;
-        private string BankBranchDetailsPath = @"..\..\..\xml files\BankBranchDetails.xml";
+        private XElement BankBranchesRoot;
+        private string BankBranchesPath = @"..\..\..\xml files\BankBranchDetails.xml";
 
         private XElement ConfigRoot;
         private const string ConfigPath = @"..\..\..\xml files\Config.xml";
+
+        public bool isFileLoaded;
 
         protected Dal_XML_imp()
         {
@@ -78,16 +81,30 @@ namespace DAL
                 Load(ref OrdersRoot, OrdersPath);
             }
 
-            // BankBranchDetails Loading
-            if (!File.Exists(BankBranchDetailsPath))
+            // ATM Loading
+            isFileLoaded = false;
+            new Thread((obj) =>
             {
-                BankBranchDetailsRoot = new XElement("BankBranchDetails");
-                BankBranchDetailsRoot.Save(BankBranchDetailsPath);
-            }
-            else
-            {
-                Load(ref BankBranchDetailsRoot, BankBranchDetailsPath);
-            }
+                const string xmlLocalPath = @"atm.xml";
+                WebClient wc = new WebClient();
+                try
+                {
+                    string xmlServerPath = @"http://www.boi.org.il/he/BankingSupervision/BanksAndBranchLocations/Lists/BoiBankBranchesDocs/atm.xml";
+                    wc.DownloadFile(xmlServerPath, xmlLocalPath);
+                }
+                catch (Exception)
+                {
+                    string xmlServerPath = @"http://www.jct.ac.il/~coshri/atm.xml";
+                    wc.DownloadFile(xmlServerPath, xmlLocalPath);
+                }
+                finally
+                {
+                    wc.Dispose();
+                }
+                Load(ref BankBranchesRoot, BankBranchesPath);
+                obj = true;
+            }).Start(isFileLoaded);
+
 
             // Config Loading
             if (!File.Exists(ConfigPath))
@@ -546,25 +563,37 @@ namespace DAL
         }
 
         #endregion
-       
+
 
         /// <summary>
-        /// returns list of the five banks
+        /// returns list of Israel branchBanks
         /// </summary>
         /// <returns>list of banks</returns>
         public List<BankBranch> ListBankBranches()
         {
-            List<BankBranch> TheFiveBanks = new List<BankBranch>()
-        {
-           new BankBranch() {BankNumber=1,BankName="MyBank",BranchNumber=11,BranchAddress= "MyBank@gmail.com",BranchCity="Jerusalem"},
-           new BankBranch() {BankNumber=2,BankName="Mizrahi",BranchNumber=22,BranchAddress= "Mizrahi@gmail.com",BranchCity="Jerusalem"},
-           new BankBranch() {BankNumber=3,BankName="Discont",BranchNumber=33,BranchAddress= "Discont@gmail.com",BranchCity="Jerusalem"},
-           new BankBranch() {BankNumber=4,BankName="Pagi",BranchNumber=44,BranchAddress= "Pagi@gmail.com",BranchCity="Jerusalem"},
-           new BankBranch() {BankNumber=5,BankName="Leumi",BranchNumber=55,BranchAddress= "Leumi@gmail.com",BranchCity="Jerusalem"}
-        };
-            return TheFiveBanks;
+            List<BankBranch> branches = new List<BankBranch>();
+            try
+            {
+                if (isFileLoaded)
+                {
+                    branches = (from bra in BankBranchesRoot.Elements()
+                                select new BankBranch()
+                                {
+                                    BankNumber = int.Parse(bra.Element("קוד_בנק").Value),
+                                    BankName = bra.Element("שם_בנק").Value,
+                                    BranchNumber = int.Parse(bra.Element("קוד_סניף").Value),
+                                    BranchAddress = bra.Element("כתובת_ה-ATM").Value,
+                                    BranchCity = bra.Element("ישוב").Value,
+                                }).ToList();
+                }
+            }
+            catch
+            {
+                branches = null;
+            }
+            return branches;
         }
-        
+
         public static void saveToXML<T>(T source, string path)
         {
             FileStream file = new FileStream(path, FileMode.Create);

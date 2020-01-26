@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContinuousNumber>
-   <guestKey>10000009</guestKey>
-  <unitKey>20000009</unitKey>
-  <orderKey>30000009</orderKey>
-</ContinuousNumber>
+<Config>
+    <guestKey>10000009</guestKey>
+    <unitKey>20000009</unitKey>
+    <orderKey>30000009</orderKey>
+    <COMMISSION>10</COMMISSION>
+</Config>
