@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -107,6 +108,8 @@ namespace PLWPF
                     CheckStr(str);
                     string str1 = this.FamilyName.Text;
                     CheckStr(str1);
+                    string mail = this.Mail.Text;
+                    CheckMail(mail);
                 }
                 catch (Exception ex)
                 {
@@ -154,6 +157,11 @@ namespace PLWPF
             {
                 throw new Exception("  יש להכניס אותיות בלבד בשדות השם");
             }
+        }
+        private void CheckMail(string str)
+        {
+            if (!(Regex.IsMatch(str, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*")))
+                throw new KeyNotFoundException("המייל שהוזן אינו תקין");
         }
     }
 
