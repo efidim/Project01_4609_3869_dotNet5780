@@ -313,14 +313,6 @@ namespace DAL
         #region Hosting unit
         public int AddHostUnit(HostingUnit host)
         {
-            try
-            {
-                Load(ref HostingUnitsRoot, HostingUnitsPath);
-            }
-            catch (DirectoryNotFoundException r)
-            {
-                throw r;
-            };
             saveToXML<HostingUnit>( host, HostingUnitsPath);
             int key = int.Parse(ConfigRoot.Element("guestKey").Value);
             XElement guestKey = new XElement("guestKey", key + 1);
