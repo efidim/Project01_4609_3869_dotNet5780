@@ -38,7 +38,7 @@ namespace DAL
         private const string OrdersPath = @"..\..\..\xml files\Orders.xml";
 
         private XElement BankBranchesRoot;
-        private string BankBranchesPath = @"..\..\..\xml files\BankBranchDetails.xml";
+        private string BankBranchesPath = @"..\..\..\xml files\atm.xml";
 
         private XElement ConfigRoot;
         private const string ConfigPath = @"..\..\..\xml files\Config.xml";
@@ -100,9 +100,10 @@ namespace DAL
                 finally
                 {
                     wc.Dispose();
+                    Load(ref BankBranchesRoot, BankBranchesPath);
+                    obj = true;
                 }
-                Load(ref BankBranchesRoot, BankBranchesPath);
-                obj = true;
+                
             }).Start(isFileLoaded);
 
 
@@ -571,27 +572,23 @@ namespace DAL
         /// <returns>list of banks</returns>
         public List<BankBranch> ListBankBranches()
         {
-            List<BankBranch> branches = new List<BankBranch>();
-            try
-            {
+            List<BankBranch> branches = new List<BankBranch>();            
+           
+            
                 if (isFileLoaded)
                 {
-                    branches = (from bra in BankBranchesRoot.Elements()
+                    branches = (from br in BankBranchesRoot.Elements()
                                 select new BankBranch()
                                 {
-                                    BankNumber = int.Parse(bra.Element("קוד_בנק").Value),
-                                    BankName = bra.Element("שם_בנק").Value,
-                                    BranchNumber = int.Parse(bra.Element("קוד_סניף").Value),
-                                    BranchAddress = bra.Element("כתובת_ה-ATM").Value,
-                                    BranchCity = bra.Element("ישוב").Value,
+                                    BankNumber = int.Parse(br.Element("קוד_בנק").Value),
+                                    BankName = br.Element("שם_בנק").Value,
+                                    BranchNumber = int.Parse(br.Element("קוד_סניף").Value),
+                                    BranchAddress = br.Element("כתובת_ה-ATM").Value,
+                                    BranchCity = br.Element("ישוב").Value,
                                 }).ToList();
-                }
+                return branches;
             }
-            catch
-            {
-                branches = null;
-            }
-            return branches;
+           throw new DirectoryNotFoundException("ישנה בעיה בטעינת הנתונים, נא נסה במועד מאוחר יותר"); 
         }
 
         public static void saveToXML<T>(T source, string path)
