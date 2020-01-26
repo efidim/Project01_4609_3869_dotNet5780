@@ -63,6 +63,7 @@ namespace BL
         int DifferenceDays(DateTime a, DateTime? b = null);              
         List<BankBranch> ListBankBranches();
         bool IntToBool(int value);
+        string GetFromConfig(string s);
         #endregion
     }
 }

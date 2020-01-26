@@ -607,6 +607,10 @@ namespace DAL
             file.Close();
             return result;
         }
-
+        
+        public string GetFromConfig(string s)
+        {
+            return ConfigRoot.Element(s).Value;
+        }
     }
 }

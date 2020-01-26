@@ -303,7 +303,7 @@ namespace BL
             {
                 int days = DifferenceDays(GetRequest(ord.GuestRequestKey).ReleaseDate,
                 GetRequest(ord.GuestRequestKey).EntryDate) + 1;
-                ord.CommissionPerDay = Configuration.COMMISSION * days;
+                ord.CommissionPerDay = int.Parse(GetFromConfig("COMMISSION")) * days;
             }
             if (originStatus == 0 && ord.Status == 1)
             {
@@ -430,6 +430,11 @@ namespace BL
                     return true;
             }
             return false;
+        }
+
+        public string GetFromConfig(string s)
+        {
+            return dal.GetFromConfig(s);
         }
         #endregion
 

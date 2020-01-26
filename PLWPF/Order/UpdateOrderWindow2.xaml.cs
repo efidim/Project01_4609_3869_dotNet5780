@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Net.Mail;
+using System.ComponentModel;
 using BE;
 using BL;
 
@@ -23,6 +25,8 @@ namespace PLWPF.Order
     {
         BE.Order ord;
         IBL bl;
+        BackgroundWorker worker;
+        
         public UpdateOrderWindow2(BE.Order order)
         {
             InitializeComponent();
@@ -30,6 +34,36 @@ namespace PLWPF.Order
             this.DataContext = ord;
             bl = FactoryBl.getBl();
             this.StatusComboBox.ItemsSource = Enum.GetValues(typeof(Enums.OrderStatus));
+
+            worker.DoWork += Worker_DoWork;
+            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;            
+        }
+
+        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            MailMessage mail = new MailMessage();            
+            mail.To.Add(bl.GetRequest(ord.GuestRequestKey).MailAddress);            
+            mail.From = new MailAddress("Tsimerim@gmail.com");
+            mail.Subject = "!הצעה לחופשה הבאה שלך";
+            mail.Body = "mailBody";
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Credentials = new System.Net.NetworkCredential("Tsimerim@gmail.com", "myGmailPassword");
+            smtp.EnableSsl = true;
+            try
+            {
+                smtp.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
         }
 
         private void updateButton_Click(object sender, RoutedEventArgs e)

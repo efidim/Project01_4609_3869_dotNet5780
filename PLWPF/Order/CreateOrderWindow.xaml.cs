@@ -59,7 +59,7 @@ namespace PLWPF.Order
                 order.GuestRequestKey = reqTemp.GuestRequestKey;
                 order.Status = 0;
                 order.CreateDate = DateTime.Today;
-                order.CommissionPerDay = Configuration.COMMISSION;
+                order.CommissionPerDay = int.Parse(bl.GetFromConfig("COMMISSION"));
                 int orderKey = bl.AddOrder(order);
                 MessageBox.Show("The Order has been successfully created and the key is: " + orderKey);
                 new OrderWindow().Show();

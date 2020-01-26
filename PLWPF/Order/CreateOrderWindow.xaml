@@ -21,7 +21,7 @@
         <Button Content="שלח למערכת" Background="White" HorizontalAlignment="Left" Margin="369,26,0,0" VerticalAlignment="Top" Width="80" Click="Button_Click_1"/>
         <Label HorizontalAlignment="Left" Foreground="White" Height="28" Margin="619,93,0,0"  Content="בחר יחידת אירוח" VerticalAlignment="Top" Width="128"/>
         <ListBox x:Name="hostUnits" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource unitTemplate}" SelectionMode="Single" SelectionChanged="hostsUnitsListBox_SelectionChanged" HorizontalAlignment="Left" Margin="41,87,0,0" VerticalAlignment="Top" Width="558" Height="46"/>
-        <ListBox x:Name="requests" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource requestTemplate}" SelectionMode="Single" HorizontalAlignment="Left" Margin="41,153,0,0" VerticalAlignment="Top" Width="558" Height="167" RenderTransformOrigin="0.5,0.5" SelectionChanged="Requests_SelectionChanged"/>
+        <ListBox x:Name="requests" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource requestTemplate}" SelectionMode="Single" HorizontalAlignment="Left" Margin="41,153,0,0" VerticalAlignment="Top" Width="558" Height="167" RenderTransformOrigin="0.5,0.5"/>
         <Button x:Name="backButton" Background="White" Content="חזרה"  
             Margin="366,432,383.6,0"  VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Center" Click="backButton_Click" />
 

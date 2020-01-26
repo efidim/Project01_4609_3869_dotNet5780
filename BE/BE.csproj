@@ -46,7 +46,6 @@
     <Compile Include="HostingUnit.cs" />
     <Compile Include="Host.cs" />
     <Compile Include="Order.cs" />
-    <Compile Include="Configuration.cs" />
     <Compile Include="GuestRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
