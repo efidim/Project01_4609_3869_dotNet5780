@@ -549,24 +549,19 @@ namespace DAL
 
         #region Host
         public Host GetHost(int hostKey)
-        {
-            //int index = DataSource.HostingUnits.FindIndex(h => h.Owner.HostKey == hostKey);
-            //if (index == -1)
-            //    throw new Exception("The host does not exist");
-            //return DataSource.HostingUnits[index].Owner;
-
-            XElement host1;
+        { 
+          XElement host1;
             host1 = (from hos in HostingUnitsRoot.Elements()
-                     where int.Parse(hos.Element("Owner").Element("HostKey")) == hostKey
+                     where int.Parse(hos.Element("Owner").Element("HostKey").Value) == hostKey
                      select hos).FirstOrDefault();
             if (host1 == null)
-                throw new KeyNotFoundException(" לא קיים במערכת יחידה עם מפתח שמספרו"+ hostKey);
+                throw new KeyNotFoundException(" לא קיים במערכת מארח עם מפתח שמספרו"+ hostKey);
             List<HostingUnit> hostunits = LoadListFromXML(HostingUnitsPath);
             Host host = new Host();
             foreach (var item in hostunits)
             {
-                if (item.HostingUnitKey == hostingUnitkey)
-                { host = item.Clone(); break; }
+                if (item.Owner.HostKey == hostKey)
+                { host = item.Owner; break; }
 
             }
             return host.Clone();
@@ -574,10 +569,15 @@ namespace DAL
         }
         public void UpdateHost(Host host)
         {
-            int index = DataSource.HostingUnits.FindIndex(h => h.Owner.HostKey == host.HostKey);
-            if (index == -1)
-                throw new Exception("The host does not exist");
-            DataSource.HostingUnits[index].Owner = host;
+            XElement host1;
+            host1 = (from h in HostingUnitsRoot.Elements()
+                     where int.Parse(h.Element("Owner").Element("HostKey").Value) == host.HostKey
+                     select h).FirstOrDefault();
+            if (host1 == null)
+                throw new KeyNotFoundException(" לא קיים במערכת מארח שמספרו" + host.HostKey);
+            HostingUnit hos = new HostingUnit();
+            hos.Owner = host;
+            AddHostUnit(hos);
         }
 
         #endregion

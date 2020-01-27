@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace BE
 {
@@ -11,8 +12,44 @@ namespace BE
         public int HostingUnitKey { get; set; }
         public Host Owner { get; set; }
         public string HostingUnitName { get; set; }
-
+        [XmlIgnore]
         public bool[,] Diary = new bool[12, 31];
+        [XmlArray("Diary")]
+        public string TempDiary
+        {
+            get
+            {
+                if (Diary == null)
+                    return null;
+                string result = "";
+                if (Diary != null)
+                {
+
+                    int sizeA = Diary.GetLength(0);
+                    int sizeB = Diary.GetLength(1);
+                    result += "" + sizeA + "," + sizeB;
+                    for (int i = 0; i < sizeA; i++)
+                        for (int j = 0; j < sizeB; j++)
+                            result += "," + Diary[i, j];
+                }
+                return result;
+            }
+            set
+            {
+                if (value != null && value.Length > 0)
+                {
+                string[] values = value.Split(',');
+                
+                Diary = new bool[12,31];
+                int index = 2;
+                for (int i = 0; i < 12; i++)
+                    for (int j = 0; j < 31; j++)
+                        Diary[i, j] = bool.Parse(values[index++]);
+            }
+        }
+    }
+
+
 
         public string Area { get; set; }
         public string subArea { get; set; }
@@ -65,4 +102,6 @@ namespace BE
             return str;
         }
     }
-}
+ 
+} 
+
