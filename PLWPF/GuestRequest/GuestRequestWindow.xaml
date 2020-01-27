@@ -42,7 +42,7 @@
 
         <TextBox x:Name="FamilyName" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" HorizontalAlignment="Left"  Margin="247,66,0,0" TextWrapping="Wrap" Text="{Binding FamilyName}" VerticalAlignment="Top" Width="145" />
 
-        <TextBox x:Name="Mail" HorizontalAlignment="Left"  Margin="13,66,0,0" TextWrapping="Wrap" Text="{Binding MaillAddress}" VerticalAlignment="Top" Width="151"/>
+        <TextBox x:Name="Mail" HorizontalAlignment="Left"  Margin="13,66,0,0" TextWrapping="Wrap" Text="{Binding MailAddress}" VerticalAlignment="Top" Width="151"/>
 
         <Label Content="מלא פרטי דרישת לקוח" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin="280,0,27.5,0" VerticalAlignment="Top" Width="251" FontSize="24" RenderTransformOrigin="0.5,0.5"/>
 

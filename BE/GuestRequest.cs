@@ -12,7 +12,6 @@ namespace BE
         public string PrivateName{get ; set;}
         public string FamilyName{get ; set;}
         public string MailAddress { get; set; }
-
         public bool Status{get ; set;}
         public DateTime RegistrationDate{get ; set;}
         public DateTime EntryDate{get ; set;}

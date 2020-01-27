@@ -132,18 +132,18 @@ namespace PLWPF
             }
         }
 
-        /// <summary>
-        /// A function that ensures that the first click will be updated on dates
-        /// </summary>
-        /// <param name="e">Mouse click event</param>
-        protected override void OnPreviewMouseUp(MouseButtonEventArgs e)
-        {
-            base.OnPreviewMouseUp(e);
-            if (Mouse.Captured is System.Windows.Controls.Calendar || Mouse.Captured is System.Windows.Controls.Primitives.CalendarItem)
-            {
-                Mouse.Capture(null);
-            }
-        }
+        ///// <summary>
+        ///// A function that ensures that the first click will be updated on dates
+        ///// </summary>
+        ///// <param name="e">Mouse click event</param>
+        //protected override void OnPreviewMouseUp(MouseButtonEventArgs e)
+        //{
+        //    base.OnPreviewMouseUp(e);
+        //    if (Mouse.Captured is System.Windows.Controls.Calendar || Mouse.Captured is System.Windows.Controls.Primitives.CalendarItem)
+        //    {
+        //        Mouse.Capture(null);
+        //    }
+        //}
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {

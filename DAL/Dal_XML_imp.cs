@@ -167,9 +167,10 @@ namespace DAL
             XElement Jacuzzi = new XElement("Jacuzzi", guest.Jacuzzi);
             XElement ChildrenAttractions = new XElement("ChildrenAttractions", guest.ChildrenAttractions);
             XElement Attractions = new XElement("Attractions", ChildrenAttractions, Jacuzzi, Pool);
-
-            GuestRequestsRoot.Add("GuestRequest", GuestRequestKey,Name, MailAddress,
+            XElement GuestRequest = new XElement("GuestRequest", GuestRequestKey, Name, MailAddress,
                 Status, Dates, Area, Type, Guests, Attractions);
+
+            GuestRequestsRoot.Add(GuestRequest);
             GuestRequestsRoot.Save(GuestRequestsPath);
         }
 
