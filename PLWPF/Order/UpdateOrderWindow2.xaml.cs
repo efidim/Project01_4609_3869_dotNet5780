@@ -35,35 +35,48 @@ namespace PLWPF.Order
             bl = FactoryBl.getBl();
             this.StatusComboBox.ItemsSource = Enum.GetValues(typeof(Enums.OrderStatus));
 
+            worker = new BackgroundWorker();
             worker.DoWork += Worker_DoWork;
             worker.RunWorkerCompleted += Worker_RunWorkerCompleted;            
         }
 
+        private bool quit = false;
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
             MailMessage mail = new MailMessage();            
             mail.To.Add(bl.GetRequest(ord.GuestRequestKey).MailAddress);            
-            mail.From = new MailAddress("Tsimerim@gmail.com");
+            mail.From = new MailAddress(bl.GetFromConfig("MailAddress"));
             mail.Subject = "!הצעה לחופשה הבאה שלך";
             mail.Body = "mailBody";
             mail.IsBodyHtml = true;
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
-            smtp.Credentials = new System.Net.NetworkCredential("Tsimerim@gmail.com", "myGmailPassword");
+            smtp.Credentials = new System.Net.NetworkCredential(bl.GetFromConfig("MailAddress") , bl.GetFromConfig("MailPassword"));
             smtp.EnableSsl = true;
-            try
+
+            while (!quit)
             {
-                smtp.Send(mail);
+                try
+                {
+                    smtp.Send(mail);
+                    quit = true;
+                    System.Threading.Thread.Sleep(2000);
+                }
+                catch (Exception ex)
+                {
+                     MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+          
         }
 
+        private bool mailIsSent = false;
         private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
+            if (e.Error == null)
+                mailIsSent = true;         
+            else
+                MessageBox.Show("שליחת המייל נכשלה");
         }
 
         private void updateButton_Click(object sender, RoutedEventArgs e)
@@ -71,16 +84,36 @@ namespace PLWPF.Order
             try
             {
                 if (StatusComboBox.SelectedItem.ToString() == "טרם_טופל")
+                {
                     ord.Status = 0;
-                else if (StatusComboBox.SelectedItem.ToString() == "נשלח_מייל")
-                    ord.Status = 1;
-                else if (StatusComboBox.SelectedItem.ToString() == "נסגרה_מחוסר_הענות_של_הלקוח")
-                    ord.Status = 2;
-                else if (StatusComboBox.SelectedItem.ToString() == "נסגרה_כי_פג_תוקף")
-                    ord.Status = 3;
+                    bl.UpdateOrder(ord);
+                    MessageBox.Show("ההזמנה עודכנה בהצלחה");
+                }
 
-                bl.UpdateOrder(ord);
-                MessageBox.Show("The Order has been successfully updated");
+                else if (StatusComboBox.SelectedItem.ToString() == "נשלח_מייל")
+                {
+                    ord.Status = 1;
+                    worker.RunWorkerAsync();
+                    if (mailIsSent)
+                    {
+                        bl.UpdateOrder(ord);
+                        MessageBox.Show("המייל נשלח וההזמנה עודכנה בהצלחה");
+                    }
+                }
+
+
+                else if (StatusComboBox.SelectedItem.ToString() == "נסגרה_מחוסר_הענות_של_הלקוח")
+                {
+                    ord.Status = 2;
+                    MessageBox.Show("ההזמנה עודכנה בהצלחה");
+                }
+                    
+                else if (StatusComboBox.SelectedItem.ToString() == "נסגרה_כי_פג_תוקף")
+                {
+                    ord.Status = 3;
+                    MessageBox.Show("ההזמנה עודכנה בהצלחה");
+                }
+
                 new OrderWindow().Show();
                 this.Close();
             }
@@ -88,8 +121,6 @@ namespace PLWPF.Order
             {
                 MessageBox.Show(ex.Message);
             }
-           
-
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
