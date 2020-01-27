@@ -15,11 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLWPF", "PLWPF\PLWPF.csproj
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XML_Files", "XML_Files", "{1CAF0511-C32C-48D2-9E94-A16CDEF1A5A4}"
 	ProjectSection(SolutionItems) = preProject
-		atm.xml = atm.xml
-		Config.xml = Config.xml
-		GuestRequests.xml = GuestRequests.xml
-		HostingUnits.xml = HostingUnits.xml
-		Orders.xml = Orders.xml
+		XML_Files\atm.xml = XML_Files\atm.xml
+		XML_Files\config.xml = XML_Files\config.xml
+		XML_Files\GuestRequests.xml = XML_Files\GuestRequests.xml
+		XML_Files\HostingUnits.xml = XML_Files\HostingUnits.xml
+		XML_Files\Orders.xml = XML_Files\Orders.xml
 	EndProjectSection
 EndProject
 Global

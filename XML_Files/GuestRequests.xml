@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GuestsRequests>
+  <GuestsRequest>
+    <GuestRequestKey>12</GuestRequestKey>
+    <Name>
+      <FirstName>אברהם</FirstName>
+      <LastName>אברהמי</LastName>
+    </Name>
+    <Mail>av@gmail.com</Mail>
+    <Status>true</Status>
+    <Dates>
+      <RegistrationDate>
+        <Year>2020</Year>
+        <Month>1</Month>
+        <Day>1</Day>
+      </RegistrationDate>
+      <EntryDate>
+        <Year>2020</Year>
+        <Month>1</Month>
+        <Day>3</Day>
+      </EntryDate>
+      <ReleaseDate>
+        <Year>2020</Year>
+        <Month>1</Month>
+        <Day>7</Day>
+      </ReleaseDate>
+    </Dates>
+    <Area>מרכז</Area>
+    <Type>מלון</Type>
+    <People>
+      <Adults>2</Adults>
+      <Children>4</Children>
+    </People>
+    <Attractions>
+      <Pool>0</Pool>
+      <Jacuzzi>1</Jacuzzi>
+      <ChildrenAttractions>0</ChildrenAttractions>
+    </Attractions>
+  </GuestsRequest>GuestRequest<GuestRequestKey>10000010</GuestRequestKey><Name><PrivateName>יוסף</PrivateName><FamilyName>לברן</FamilyName></Name><MailAddress /><Status>false</Status><Dates><RegistrationDate>2020-01-27T17:22:55.3250614+02:00</RegistrationDate><EntryDate>2020-01-22T00:00:00</EntryDate><ReleaseDate>2020-01-30T00:00:00</ReleaseDate></Dates><Area>צפון</Area><Type /><Guests><Adults>2</Adults><Children>2</Children></Guests><Attractions><ChildrenAttractions>2</ChildrenAttractions><Jacuzzi>1</Jacuzzi><Pool>0</Pool></Attractions></GuestsRequests>

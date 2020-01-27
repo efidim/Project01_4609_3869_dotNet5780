@@ -29,19 +29,19 @@ namespace DAL
 
         //Roots and paths of the files
         private XElement GuestRequestsRoot;
-        private const string GuestRequestsPath = @"..\..\..\xml files\GuestRequest.xml";
+        private const string GuestRequestsPath = @"..\..\..\XML_Files\GuestRequests.xml";
 
         private XElement HostingUnitsRoot;
-        private const string HostingUnitsPath = @"..\..\..\xml files\HostingUnits.xml";
+        private const string HostingUnitsPath = @"..\..\..\XML_Files\HostingUnits.xml";
 
         private XElement OrdersRoot;
-        private const string OrdersPath = @"..\..\..\xml files\Orders.xml";
+        private const string OrdersPath = @"..\..\..\XML_Files\Orders.xml";
 
         private XElement BankBranchesRoot;
-        private string BankBranchesPath = @"..\..\..\xml files\atm.xml";
+        private string BankBranchesPath = @"..\..\..\XML_Files\atm.xml";
 
         private XElement ConfigRoot;
-        private const string ConfigPath = @"..\..\..\xml files\Config.xml";
+        private const string ConfigPath = @"..\..\..\XML_Files\Config.xml";
 
         public bool isFileLoaded;
 
