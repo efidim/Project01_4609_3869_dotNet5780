@@ -58,12 +58,12 @@ namespace DAL
                 Load(ref GuestRequestsRoot, GuestRequestsPath);
             }
 
-                
+
             // HostingUnits Loading
             if (!File.Exists(HostingUnitsPath))
             {
-               HostingUnitsRoot = new XElement("HostingUnits");
-                        HostingUnitsRoot.Save(HostingUnitsPath);
+                HostingUnitsRoot = new XElement("HostingUnits");
+                HostingUnitsRoot.Save(HostingUnitsPath);
             }
             else
             {
@@ -103,7 +103,7 @@ namespace DAL
                     Load(ref BankBranchesRoot, BankBranchesPath);
                     obj = true;
                 }
-                
+
             }).Start(isFileLoaded);
 
 
@@ -189,7 +189,7 @@ namespace DAL
                                        where int.Parse(req.Element("GuestRequestKey").Value) == guest.GuestRequestKey
                                        select req).FirstOrDefault();
 
-            if (requestElement == null) 
+            if (requestElement == null)
             {
                 AddGuestRequest(guest);
                 return;
@@ -244,7 +244,7 @@ namespace DAL
                          Adults = int.Parse(req.Element("Guests").Element("Adults").Value),
                          Children = int.Parse(req.Element("Guests").Element("Children").Value),
                          Pool = int.Parse(req.Element("Attractions").Element("Pool").Value),
-                         Jacuzzi= int.Parse(req.Element("Attractions").Element("Jacuzzi").Value),
+                         Jacuzzi = int.Parse(req.Element("Attractions").Element("Jacuzzi").Value),
                          ChildrenAttractions = int.Parse(req.Element("Attractions").Element("ChildrenAttractions").Value),
                      }).FirstOrDefault();
 
@@ -272,12 +272,12 @@ namespace DAL
                     throw new KeyNotFoundException("שגיאה! לא קיימת במערכת דרישה עם מפתח זה");
 
                 guest.Remove();
-                GuestRequestsRoot.Save(GuestRequestsPath);                
+                GuestRequestsRoot.Save(GuestRequestsPath);
             }
             catch (DirectoryNotFoundException r)
             {
                 throw r;
-            }         
+            }
             catch (KeyNotFoundException r)
             {
                 throw r;
@@ -304,22 +304,22 @@ namespace DAL
             try
             {
                 requests = (from req in GuestRequestsRoot.Elements()
-                         select new GuestRequest()
-                         {
-                             GuestRequestKey = int.Parse(req.Element("GuestRequestKey").Value),
-                             MailAddress = req.Element("Mail Address").Value,
-                             RegistrationDate = DateTime.Parse(req.Element("Dates").Element("Registration Date").Value),
-                             Status = bool.Parse(req.Element("Status").Value),
-                             EntryDate = DateTime.Parse(req.Element("Dates").Element("Entry Date").Value),
-                             ReleaseDate = DateTime.Parse(req.Element("Dates").Element("Release Date").Value),
-                             Area = req.Element("Area").Value,
-                             Type = req.Element("Type").Value,
-                             Adults = int.Parse(req.Element("Guests").Element("Adults").Value),
-                             Children = int.Parse(req.Element("Guests").Element("Children").Value),
-                             Pool = int.Parse(req.Element("Attractions").Element("Pool").Value),
-                             Jacuzzi = int.Parse(req.Element("Attractions").Element("Jacuzzi").Value),
-                             ChildrenAttractions = int.Parse(req.Element("Attractions").Element("ChildrenAttractions").Value),
-                         }).ToList();
+                            select new GuestRequest()
+                            {
+                                GuestRequestKey = int.Parse(req.Element("GuestRequestKey").Value),
+                                MailAddress = req.Element("Mail Address").Value,
+                                RegistrationDate = DateTime.Parse(req.Element("Dates").Element("Registration Date").Value),
+                                Status = bool.Parse(req.Element("Status").Value),
+                                EntryDate = DateTime.Parse(req.Element("Dates").Element("Entry Date").Value),
+                                ReleaseDate = DateTime.Parse(req.Element("Dates").Element("Release Date").Value),
+                                Area = req.Element("Area").Value,
+                                Type = req.Element("Type").Value,
+                                Adults = int.Parse(req.Element("Guests").Element("Adults").Value),
+                                Children = int.Parse(req.Element("Guests").Element("Children").Value),
+                                Pool = int.Parse(req.Element("Attractions").Element("Pool").Value),
+                                Jacuzzi = int.Parse(req.Element("Attractions").Element("Jacuzzi").Value),
+                                ChildrenAttractions = int.Parse(req.Element("Attractions").Element("ChildrenAttractions").Value),
+                            }).ToList();
             }
             catch
             {
@@ -336,29 +336,30 @@ namespace DAL
         {
             XElement host1;
             host1 = (from hos in HostingUnitsRoot.Elements()
-                     where int.Parse(hos.Element("HostingUnitKey").Value) == host.HostingUnitKey
+                     where hos.Element("HostingUnitKey").Value == host.HostingUnitName
                      select hos).FirstOrDefault();
             if (host1 != null)
             {
                 throw new KeyNotFoundException("יחידת אירוח זו קיימת כבר במערכת");
             }
 
-            int key = int.Parse(ConfigRoot.Element("HostingUnitKey").Value) + 1;
+            int key = int.Parse(ConfigRoot.Element("unitKey").Value) + 1;
             XElement HostingUnitKey = ConfigRoot;
-            HostingUnitKey.Element("HostingUnitKey").Value = key.ToString();
-        
-            HostingUnitsRoot.Add(host);
-            saveToXML<HostingUnit>(host, HostingUnitsPath);
+            HostingUnitKey.Element("unitKey").Value = key.ToString();
+
+            List<HostingUnit> temp = LoadFromXML<List<HostingUnit>>(HostingUnitsPath);
+            temp.Add(host);
+            saveToXML<List<HostingUnit>>(temp, HostingUnitsPath);
 
             return key;
-        }    
+        }
 
 
         public void RemoveHostUnit(HostingUnit host)
-        {  
+        {
             try
             {
-                XElement host1; 
+                XElement host1;
                 host1 = (from hos in HostingUnitsRoot.Elements()
                          where int.Parse(hos.Element("HostingUnitKey").Value) == host.HostingUnitKey
                          select hos).FirstOrDefault();
@@ -391,10 +392,11 @@ namespace DAL
                 AddHostUnit(host);
                 return;
             }
-            host1.Remove();
-            List<HostingUnit> HostUnits = LoadListFromXML(HostingUnitsPath);
-            HostUnits.Add(host);
-            saveToXML<HostingUnit>(host, HostingUnitsPath);
+
+            List<HostingUnit> temp = LoadFromXML<List<HostingUnit>>(HostingUnitsPath);
+            temp.RemoveAll(x => x.HostingUnitKey == host.HostingUnitKey);
+            temp.Add(host);
+            saveToXML<List<HostingUnit>>(temp, HostingUnitsPath);
         }
 
         /// <summary>
@@ -404,14 +406,14 @@ namespace DAL
         /// <returns>HostingUnit</returns>
         public HostingUnit GetHostingUnit(int hostingUnitkey)
         {
-           
+
             XElement host1;
             host1 = (from hos in HostingUnitsRoot.Elements()
                      where int.Parse(hos.Element("HostingUnitKey").Value) == hostingUnitkey
                      select hos).FirstOrDefault();
             if (host1 == null)
                 throw new KeyNotFoundException("שגיאה! לא קיימת במערכת יחידה עם מפתח זה");
-           List <HostingUnit> hostunits = LoadListFromXML(HostingUnitsPath);
+            List<HostingUnit> hostunits = LoadFromXML<List<HostingUnit>>(HostingUnitsPath);
             HostingUnit host = new HostingUnit();
             foreach (var item in hostunits)
             {
@@ -437,8 +439,8 @@ namespace DAL
                      select hos).FirstOrDefault();
             if (host1 == null)
                 throw new KeyNotFoundException("שגיאה! לא קיימת במערכת יחידה עם שם זה");
-            List<HostingUnit> HostUnits = LoadListFromXML(HostingUnitsPath);
-            HostingUnit host=new HostingUnit();
+            List<HostingUnit> HostUnits = LoadFromXML<List<HostingUnit>>(HostingUnitsPath);
+            HostingUnit host = new HostingUnit();
             foreach (var item in HostUnits)
             {
                 if (item.HostingUnitName == hostingUnitName)
@@ -450,29 +452,21 @@ namespace DAL
 
         public List<HostingUnit> GetAllHostingUnits()
         {
-            List<HostingUnit> hostingUnits = LoadListFromXML(HostingUnitsPath);
+            List<HostingUnit> hostingUnits = LoadFromXML<List<HostingUnit>>(HostingUnitsPath);
             if (hostingUnits == null)
                 throw new KeyNotFoundException("אין יחידות אירוח במאגר הנתונים");
             return hostingUnits.Select(hu => (HostingUnit)hu.Clone()).ToList();
         }
-        public static List<HostingUnit> LoadListFromXML(string path)
-            {
-                FileStream file = new FileStream(path, FileMode.Open);
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<HostingUnit>));
-                List<HostingUnit> list = (List<HostingUnit>)xmlSerializer.Deserialize(file);
-                file.Close();
-                return list;
-            }
-        
+
         #endregion
-    
+
 
         #region Order
         public int AddOrder(Order ord)
         {
             XElement ord1 = (from hos in HostingUnitsRoot.Elements()
-                     where int.Parse(hos.Element("OrderKey").Value) == ord.OrderKey
-                     select hos).FirstOrDefault();
+                             where int.Parse(hos.Element("OrderKey").Value) == ord.OrderKey
+                             select hos).FirstOrDefault();
             if (ord1 != null)
             {
                 throw new KeyNotFoundException("הזמנה זו קיימת כבר במערכת");
@@ -480,24 +474,26 @@ namespace DAL
             int key = int.Parse(ConfigRoot.Element("orderKey").Value) + 1;
             XElement orderKey = ConfigRoot;
             orderKey.Element("orderKey").Value = key.ToString();
-            OrdersRoot.Add(ord);
-            saveToXML<Order>(ord, OrdersPath);
+            List<Order> temp = LoadFromXML<List<Order>>(OrdersPath);
+            temp.Add(ord);
+            saveToXML<List<Order>>(temp, HostingUnitsPath);
 
             return key;
         }
         public void UpdateOrder(Order ord)
-        {            
-           XElement ord1 = (from or in HostingUnitsRoot.Elements()
-                     where int.Parse(or.Element("orderKey").Value) == ord.OrderKey
-                     select or).FirstOrDefault();
+        {
+            XElement ord1 = (from or in HostingUnitsRoot.Elements()
+                             where int.Parse(or.Element("orderKey").Value) == ord.OrderKey
+                             select or).FirstOrDefault();
             if (ord1 == null)
             {
                 AddOrder(ord);
                 return;
             }
-            ord1.Remove();
-            OrdersRoot.Add(ord);
-            saveToXML<Order>(ord, HostingUnitsPath);
+            List<Order> temp = LoadFromXML<List<Order>>(OrdersPath);
+            temp.RemoveAll(x => x.OrderKey == ord.OrderKey);
+            temp.Add(ord);
+            saveToXML<List<Order>>(temp, OrdersPath);
         }
         public Order GetOrder(int orderKey)
         {
@@ -506,8 +502,8 @@ namespace DAL
                              select or).FirstOrDefault();
             if (ord1 == null)
                 throw new KeyNotFoundException("שגיאה! לא קיימת במערכת הזמנה עם מפתח זה");
-            List<Order> ord = LoadListFromXML1(OrdersPath);
-            return ord.FirstOrDefault(x => x.OrderKey==orderKey);
+            List<Order> ord = LoadFromXML<List<Order>>(OrdersPath);
+            return ord.FirstOrDefault(x => x.OrderKey == orderKey);
         }
         public DateTime GetEntryDate(int GuestRequestKey)
         {
@@ -519,45 +515,38 @@ namespace DAL
                          select DateTime.Parse(req.Element("Dates").Element("Entry Date").Value)
                          ).FirstOrDefault();
             return EntryDate;
-         }
+        }
         public DateTime GetRelease(int GuestRequestKey)
         {
             DateTime Release;
             Release = (from req in GuestRequestsRoot.Elements()
-                        where int.Parse(req.Element("GuestRequestKey").Value) == GuestRequestKey
+                       where int.Parse(req.Element("GuestRequestKey").Value) == GuestRequestKey
                        select DateTime.Parse(req.Element("Dates").Element("ReleaseDate").Value)
                          ).FirstOrDefault();
             return Release;
         }
         public List<Order> GetAllOrders()
         {
-         
-            List<Order> hostingUnits = LoadListFromXML1(OrdersPath);
-            if (hostingUnits == null)
+
+            List<Order> orders = LoadFromXML<List<Order>>(OrdersPath);
+            if (orders == null)
                 throw new KeyNotFoundException("אין הזמנות במאגר הנתונים");
-            return hostingUnits.Select(hu => (Order)hu.Clone()).ToList();
+            return orders.Select(hu => (Order)hu.Clone()).ToList();
         }
-        public static List<Order> LoadListFromXML1(string path)
-        {
-            FileStream file = new FileStream(path, FileMode.Open);
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<HostingUnit>));
-            List<Order> list = (List<Order>)xmlSerializer.Deserialize(file);
-            file.Close();
-            return list;
-        }
+
         #endregion
 
 
         #region Host
         public Host GetHost(int hostKey)
-        { 
-          XElement host1;
+        {
+            XElement host1;
             host1 = (from hos in HostingUnitsRoot.Elements()
                      where int.Parse(hos.Element("Owner").Element("HostKey").Value) == hostKey
                      select hos).FirstOrDefault();
             if (host1 == null)
-                throw new KeyNotFoundException(" לא קיים במערכת מארח עם מפתח שמספרו"+ hostKey);
-            List<HostingUnit> hostunits = LoadListFromXML(HostingUnitsPath);
+                throw new KeyNotFoundException(" לא קיים במערכת מארח עם מפתח שמספרו" + hostKey);
+            List<HostingUnit> hostunits = LoadFromXML<List<HostingUnit>>(HostingUnitsPath);
             Host host = new Host();
             foreach (var item in hostunits)
             {
@@ -592,23 +581,23 @@ namespace DAL
         /// <returns>list of banks</returns>
         public List<BankBranch> ListBankBranches()
         {
-            List<BankBranch> branches = new List<BankBranch>();            
-           
-            
-                if (isFileLoaded)
-                {
-                    branches = (from br in BankBranchesRoot.Elements()
-                                select new BankBranch()
-                                {
-                                    BankNumber = int.Parse(br.Element("קוד_בנק").Value),
-                                    BankName = br.Element("שם_בנק").Value,
-                                    BranchNumber = int.Parse(br.Element("קוד_סניף").Value),
-                                    BranchAddress = br.Element("כתובת_ה-ATM").Value,
-                                    BranchCity = br.Element("ישוב").Value,
-                                }).ToList();
+            List<BankBranch> branches = new List<BankBranch>();
+
+
+            if (isFileLoaded)
+            {
+                branches = (from br in BankBranchesRoot.Elements()
+                            select new BankBranch()
+                            {
+                                BankNumber = int.Parse(br.Element("קוד_בנק").Value),
+                                BankName = br.Element("שם_בנק").Value,
+                                BranchNumber = int.Parse(br.Element("קוד_סניף").Value),
+                                BranchAddress = br.Element("כתובת_ה-ATM").Value,
+                                BranchCity = br.Element("ישוב").Value,
+                            }).ToList();
                 return branches;
             }
-           throw new DirectoryNotFoundException("ישנה בעיה בטעינת הנתונים, נא נסה במועד מאוחר יותר"); 
+            throw new DirectoryNotFoundException("ישנה בעיה בטעינת הנתונים, נא נסה במועד מאוחר יותר");
         }
 
         public static void saveToXML<T>(T source, string path)
@@ -627,7 +616,7 @@ namespace DAL
             file.Close();
             return result;
         }
-        
+
         public string GetFromConfig(string s)
         {
             return ConfigRoot.Element(s).Value;
