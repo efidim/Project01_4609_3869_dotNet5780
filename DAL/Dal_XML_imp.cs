@@ -147,6 +147,7 @@ namespace DAL
             int key = int.Parse(ConfigRoot.Element("guestKey").Value) + 1;
             XElement guestKey = ConfigRoot;
             guestKey.Element("guestKey").Value = key.ToString();
+            ConfigRoot.Save(ConfigPath);
 
             XElement GuestRequestKey = new XElement("GuestRequestKey", key);
             XElement PrivateName = new XElement("PrivateName", guest.PrivateName);
@@ -196,10 +197,10 @@ namespace DAL
             }
             requestElement.Element("Name").Element("PrivateName").Value = guest.PrivateName;
             requestElement.Element("Name").Element("FamilyName").Value = guest.FamilyName;
-            requestElement.Element("Mail Address").Value = guest.MailAddress;
+            requestElement.Element("MailAddress").Value = guest.MailAddress;
             requestElement.Element("Status").Value = guest.Status.ToString();
-            requestElement.Element("Dates").Element("Entry Date").Value = guest.EntryDate.ToString();
-            requestElement.Element("Dates").Element("Release Date").Value = guest.ReleaseDate.ToString();
+            requestElement.Element("Dates").Element("EntryDate").Value = guest.EntryDate.ToString();
+            requestElement.Element("Dates").Element("ReleaseDate").Value = guest.ReleaseDate.ToString();
             requestElement.Element("Area").Value = guest.Area;
             requestElement.Element("Type").Value = guest.Type;
             requestElement.Element("Guests").Element("Adults").Value = guest.Adults.ToString();
@@ -234,11 +235,13 @@ namespace DAL
                      select new GuestRequest()
                      {
                          GuestRequestKey = int.Parse(req.Element("GuestRequestKey").Value),
-                         MailAddress = req.Element("Mail Address").Value,
-                         RegistrationDate = DateTime.Parse(req.Element("Dates").Element("Registration Date").Value),
+                         PrivateName = req.Element("Name").Element("PrivateName").Value,
+                         FamilyName = req.Element("Name").Element("FamilyName").Value,
+                         MailAddress = req.Element("MailAddress").Value,
+                         RegistrationDate = DateTime.Parse(req.Element("Dates").Element("RegistrationDate").Value),
                          Status = bool.Parse(req.Element("Status").Value),
-                         EntryDate = DateTime.Parse(req.Element("Dates").Element("Entry Date").Value),
-                         ReleaseDate = DateTime.Parse(req.Element("Dates").Element("Release Date").Value),
+                         EntryDate = DateTime.Parse(req.Element("Dates").Element("EntryDate").Value),
+                         ReleaseDate = DateTime.Parse(req.Element("Dates").Element("ReleaseDate").Value),
                          Area = req.Element("Area").Value,
                          Type = req.Element("Type").Value,
                          Adults = int.Parse(req.Element("Guests").Element("Adults").Value),
@@ -299,7 +302,7 @@ namespace DAL
                 throw r;
             }
 
-            List<GuestRequest> requests;
+            List<GuestRequest> requests = new List<GuestRequest>();
 
             try
             {
@@ -307,11 +310,13 @@ namespace DAL
                             select new GuestRequest()
                             {
                                 GuestRequestKey = int.Parse(req.Element("GuestRequestKey").Value),
-                                MailAddress = req.Element("Mail Address").Value,
-                                RegistrationDate = DateTime.Parse(req.Element("Dates").Element("Registration Date").Value),
+                                PrivateName = req.Element("Name").Element("PrivateName").Value,
+                                FamilyName = req.Element("Name").Element("FamilyName").Value,
+                                MailAddress = req.Element("MailAddress").Value,
+                                RegistrationDate = DateTime.Parse(req.Element("Dates").Element("RegistrationDate").Value),
                                 Status = bool.Parse(req.Element("Status").Value),
-                                EntryDate = DateTime.Parse(req.Element("Dates").Element("Entry Date").Value),
-                                ReleaseDate = DateTime.Parse(req.Element("Dates").Element("Release Date").Value),
+                                EntryDate = DateTime.Parse(req.Element("Dates").Element("EntryDate").Value),
+                                ReleaseDate = DateTime.Parse(req.Element("Dates").Element("ReleaseDate").Value),
                                 Area = req.Element("Area").Value,
                                 Type = req.Element("Type").Value,
                                 Adults = int.Parse(req.Element("Guests").Element("Adults").Value),
@@ -334,6 +339,15 @@ namespace DAL
         #region Hosting unit
         public int AddHostUnit(HostingUnit host)
         {
+            try
+            {
+                Load(ref HostingUnitsRoot, HostingUnitsPath);
+            }
+            catch (DirectoryNotFoundException r)
+            {
+                throw r;
+            }
+
             XElement host1;
             host1 = (from hos in HostingUnitsRoot.Elements()
                      where hos.Element("HostingUnitKey").Value == host.HostingUnitName
@@ -344,10 +358,18 @@ namespace DAL
             }
 
             int key = int.Parse(ConfigRoot.Element("unitKey").Value) + 1;
+            host.HostingUnitKey = key;
             XElement HostingUnitKey = ConfigRoot;
             HostingUnitKey.Element("unitKey").Value = key.ToString();
+            ConfigRoot.Save(ConfigPath);
 
-            List<HostingUnit> temp = LoadFromXML<List<HostingUnit>>(HostingUnitsPath);
+            List<HostingUnit> temp = new List<HostingUnit>();
+            host1 = (from hos in HostingUnitsRoot.Elements()
+                     select hos).FirstOrDefault();
+            if (host1 != null)
+            {
+                temp = LoadFromXML<List<HostingUnit>>(HostingUnitsPath);
+            }
             temp.Add(host);
             saveToXML<List<HostingUnit>>(temp, HostingUnitsPath);
 
@@ -357,6 +379,15 @@ namespace DAL
 
         public void RemoveHostUnit(HostingUnit host)
         {
+            try
+            {
+                Load(ref HostingUnitsRoot, HostingUnitsPath);
+            }
+            catch (DirectoryNotFoundException r)
+            {
+                throw r;
+            }
+
             try
             {
                 XElement host1;
@@ -383,6 +414,15 @@ namespace DAL
 
         public void UpdateHostUnit(HostingUnit host)
         {
+            try
+            {
+                Load(ref HostingUnitsRoot, HostingUnitsPath);
+            }
+            catch (DirectoryNotFoundException r)
+            {
+                throw r;
+            }
+
             XElement host1;
             host1 = (from hos in HostingUnitsRoot.Elements()
                      where int.Parse(hos.Element("HostingUnitKey").Value) == host.HostingUnitKey
@@ -406,6 +446,14 @@ namespace DAL
         /// <returns>HostingUnit</returns>
         public HostingUnit GetHostingUnit(int hostingUnitkey)
         {
+            try
+            {
+                Load(ref HostingUnitsRoot, HostingUnitsPath);
+            }
+            catch (DirectoryNotFoundException r)
+            {
+                throw r;
+            }
 
             XElement host1;
             host1 = (from hos in HostingUnitsRoot.Elements()
@@ -433,6 +481,15 @@ namespace DAL
         /// <returns>HostingUnit</returns>
         public HostingUnit GetHostingUnitByName(string hostingUnitName)
         {
+            try
+            {
+                Load(ref HostingUnitsRoot, HostingUnitsPath);
+            }
+            catch (DirectoryNotFoundException r)
+            {
+                throw r;
+            }
+
             XElement host1;
             host1 = (from hos in HostingUnitsRoot.Elements()
                      where hos.Element("HostingUnitName").Value == hostingUnitName
@@ -464,51 +521,100 @@ namespace DAL
         #region Order
         public int AddOrder(Order ord)
         {
-            XElement ord1 = (from hos in HostingUnitsRoot.Elements()
-                             where int.Parse(hos.Element("OrderKey").Value) == ord.OrderKey
-                             select hos).FirstOrDefault();
+            try
+            {
+                Load(ref OrdersRoot, OrdersPath);
+            }
+            catch (DirectoryNotFoundException r)
+            {
+                throw r;
+            }
+
+            XElement ord1;
+            ord1 = (from or in OrdersRoot.Elements()
+                    where int.Parse(or.Element("HostingUnitKey").Value) == ord.HostingUnitKey &&
+                    int.Parse(or.Element("GuestRequestKey").Value) == ord.GuestRequestKey
+                    select or).FirstOrDefault();
             if (ord1 != null)
             {
                 throw new KeyNotFoundException("הזמנה זו קיימת כבר במערכת");
             }
             int key = int.Parse(ConfigRoot.Element("orderKey").Value) + 1;
+            ord.OrderKey = key;
             XElement orderKey = ConfigRoot;
             orderKey.Element("orderKey").Value = key.ToString();
-            List<Order> temp = LoadFromXML<List<Order>>(OrdersPath);
+            ConfigRoot.Save(ConfigPath);
+
+            List<Order> temp = new List<Order>();
+            ord1 = (from or in OrdersRoot.Elements()
+                    select or).FirstOrDefault();
+            if (ord1 != null)
+            {
+                temp = LoadFromXML<List<Order>>(OrdersPath);
+            }
             temp.Add(ord);
-            saveToXML<List<Order>>(temp, HostingUnitsPath);
+            saveToXML<List<Order>>(temp, OrdersPath);
 
             return key;
         }
+
         public void UpdateOrder(Order ord)
         {
-            XElement ord1 = (from or in HostingUnitsRoot.Elements()
-                             where int.Parse(or.Element("orderKey").Value) == ord.OrderKey
+            try
+            {
+                Load(ref OrdersRoot, OrdersPath);
+            }
+            catch (DirectoryNotFoundException r)
+            {
+                throw r;
+            }
+
+            XElement ord1 = (from or in OrdersRoot.Elements()
+                             where int.Parse(or.Element("OrderKey").Value) == ord.OrderKey
                              select or).FirstOrDefault();
             if (ord1 == null)
             {
                 AddOrder(ord);
                 return;
             }
+
             List<Order> temp = LoadFromXML<List<Order>>(OrdersPath);
             temp.RemoveAll(x => x.OrderKey == ord.OrderKey);
             temp.Add(ord);
             saveToXML<List<Order>>(temp, OrdersPath);
         }
+
         public Order GetOrder(int orderKey)
         {
-            XElement ord1 = (from or in HostingUnitsRoot.Elements()
-                             where int.Parse(or.Element("orderKey").Value) == orderKey
+            try
+            {
+                Load(ref OrdersRoot, OrdersPath);
+            }
+            catch (DirectoryNotFoundException r)
+            {
+                throw r;
+            }
+
+            XElement ord1 = (from or in OrdersRoot.Elements()
+                             where int.Parse(or.Element("OrderKey").Value) == orderKey
                              select or).FirstOrDefault();
             if (ord1 == null)
                 throw new KeyNotFoundException("שגיאה! לא קיימת במערכת הזמנה עם מפתח זה");
             List<Order> ord = LoadFromXML<List<Order>>(OrdersPath);
             return ord.FirstOrDefault(x => x.OrderKey == orderKey);
         }
+
         public DateTime GetEntryDate(int GuestRequestKey)
         {
-            //int index = DataSource.GuestRequests.FindIndex(o => o.GuestRequestKey == GuestRequestKey);
-            //return DataSource.GuestRequests[index].EntryDate;
+            try
+            {
+                Load(ref OrdersRoot, OrdersPath);
+            }
+            catch (DirectoryNotFoundException r)
+            {
+                throw r;
+            }
+
             DateTime EntryDate;
             EntryDate = (from req in GuestRequestsRoot.Elements()
                          where int.Parse(req.Element("GuestRequestKey").Value) == GuestRequestKey
@@ -516,8 +622,18 @@ namespace DAL
                          ).FirstOrDefault();
             return EntryDate;
         }
+
         public DateTime GetRelease(int GuestRequestKey)
         {
+            try
+            {
+                Load(ref OrdersRoot, OrdersPath);
+            }
+            catch (DirectoryNotFoundException r)
+            {
+                throw r;
+            }
+
             DateTime Release;
             Release = (from req in GuestRequestsRoot.Elements()
                        where int.Parse(req.Element("GuestRequestKey").Value) == GuestRequestKey
@@ -525,12 +641,25 @@ namespace DAL
                          ).FirstOrDefault();
             return Release;
         }
+
         public List<Order> GetAllOrders()
         {
+            try
+            {
+                Load(ref OrdersRoot, OrdersPath);
+            }
+            catch (DirectoryNotFoundException r)
+            {
+                throw r;
+            }
 
-            List<Order> orders = LoadFromXML<List<Order>>(OrdersPath);
-            if (orders == null)
-                throw new KeyNotFoundException("אין הזמנות במאגר הנתונים");
+            List<Order> orders = new List<Order>();
+            XElement temp = (from t in OrdersRoot.Elements()
+                             select t).FirstOrDefault();
+            if (temp != null)
+            {
+                orders = LoadFromXML<List<Order>>(OrdersPath);
+            }
             return orders.Select(hu => (Order)hu.Clone()).ToList();
         }
 
@@ -545,7 +674,7 @@ namespace DAL
                      where int.Parse(hos.Element("Owner").Element("HostKey").Value) == hostKey
                      select hos).FirstOrDefault();
             if (host1 == null)
-                throw new KeyNotFoundException(" לא קיים במערכת מארח עם מפתח שמספרו" + hostKey);
+                throw new KeyNotFoundException("לא קיים במערכת מארח עם מפתח שמספרו" + hostKey);
             List<HostingUnit> hostunits = LoadFromXML<List<HostingUnit>>(HostingUnitsPath);
             Host host = new Host();
             foreach (var item in hostunits)

@@ -18,6 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XML_Files", "XML_Files", "{
 		XML_Files\atm.xml = XML_Files\atm.xml
 		XML_Files\config.xml = XML_Files\config.xml
 		XML_Files\GuestRequests.xml = XML_Files\GuestRequests.xml
+		XML_Files\HostingUnits.xml = XML_Files\HostingUnits.xml
 		XML_Files\Orders.xml = XML_Files\Orders.xml
 	EndProjectSection
 EndProject

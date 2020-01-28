@@ -44,7 +44,7 @@ namespace BL
         DateTime GetRelease(int GuestRequestKey);
         void SetDiary(Order ord);
         void DisactivateRequest(int requestKey);
-        void UpdateOtherOrders(int hostKey, int orderKey);
+        void UpdateOtherOrders(string mail, int orderKey);
         void UpdateOrder(Order ord);
         int OrdersByRequest(GuestRequest request);
         List<Order> GetAllOrders();

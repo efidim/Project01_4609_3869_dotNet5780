@@ -7,7 +7,7 @@
       <FamilyName>לברן</FamilyName>
     </Name>
     <MailAddress>yossef.levran@gmail.com</MailAddress>
-    <Status>false</Status>
+    <Status>true</Status>
     <Dates>
       <RegistrationDate>2020-01-27T20:24:27.1447899+02:00</RegistrationDate>
       <EntryDate>2020-01-29T00:00:00</EntryDate>
@@ -23,6 +23,31 @@
       <ChildrenAttractions>2</ChildrenAttractions>
       <Jacuzzi>1</Jacuzzi>
       <Pool>0</Pool>
+    </Attractions>
+  </GuestRequest>
+  <GuestRequest>
+    <GuestRequestKey>10000011</GuestRequestKey>
+    <Name>
+      <PrivateName>אפי</PrivateName>
+      <FamilyName>דימנטמן</FamilyName>
+    </Name>
+    <MailAddress>yossef.levran@gmail.com</MailAddress>
+    <Status>True</Status>
+    <Dates>
+      <RegistrationDate>2020-01-28T00:35:18.7322369+02:00</RegistrationDate>
+      <EntryDate>29/01/2020 0:00:00</EntryDate>
+      <ReleaseDate>31/01/2020 0:00:00</ReleaseDate>
+    </Dates>
+    <Area>צפון</Area>
+    <Type>צימר</Type>
+    <Guests>
+      <Adults>2</Adults>
+      <Children>2</Children>
+    </Guests>
+    <Attractions>
+      <ChildrenAttractions>1</ChildrenAttractions>
+      <Jacuzzi>1</Jacuzzi>
+      <Pool>1</Pool>
     </Attractions>
   </GuestRequest>
 </GuestsRequests>

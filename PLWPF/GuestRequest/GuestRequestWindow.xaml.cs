@@ -94,6 +94,7 @@ namespace PLWPF
                     guest.ChildrenAttractions = 2;
 
                 guest.RegistrationDate = DateTime.Now;
+                guest.Status = true;
 
                 int value;
                 try

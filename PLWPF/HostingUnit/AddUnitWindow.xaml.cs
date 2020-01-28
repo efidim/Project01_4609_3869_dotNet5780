@@ -49,7 +49,6 @@ namespace PLWPF
                     value = int.Parse(this.childrenTextBox.Text);
                     if (value < 0)
                         throw new Exception(" נא להכניס ערך נכון במספר ילדים מקסימלי");
-                    value = int.Parse(this.idTextBox.Text);
                     value = int.Parse(this.phoneTextBox.Text);
                     value = int.Parse(this.bankNumTextBox.Text);
                     value = int.Parse(this.branchNumTextBox.Text);

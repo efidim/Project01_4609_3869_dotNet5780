@@ -80,7 +80,7 @@ namespace BL
         {
             List<GuestRequest> temp1 = GetAllGuests();
             List<GuestRequest> temp2 = temp1.FindAll(x => x.Area == unit.Area
-            && x.Type == unit.Type && IsItAvailaible(unit, x.EntryDate, DifferenceDays(x.ReleaseDate, x.EntryDate))
+            && x.Type == unit.Type && IsItAvailaible(unit, x.EntryDate, DifferenceDays(x.EntryDate, x.ReleaseDate))
             && (x.Status) && x.Adults <= unit.Adults
             && x.Children <= unit.Children && (IntToBool(x.Pool) == unit.Pool || x.Pool == 0)
             && (IntToBool(x.Jacuzzi) == unit.Jacuzzi || x.Jacuzzi == 0)
@@ -275,15 +275,15 @@ namespace BL
         /// </summary>
         /// <param name="hostKey"></param>
         /// <param name="orderKey"> Closed Order Key</param>
-        public void UpdateOtherOrders(int hostKey, int orderKey)
+        public void UpdateOtherOrders(string mail, int orderKey)
         {
             List<Order> temp1 = GetAllOrders();
-            List<Order> temp2 = temp1.FindAll(x => GetHostByUnit(x.HostingUnitKey).HostKey == hostKey
+            List<Order> temp2 = temp1.FindAll(x => GetRequest(x.GuestRequestKey).MailAddress == mail
                                        && x.OrderKey != orderKey);
 
             foreach (var item in temp2)
             {
-                item.Status = 2;
+                item.Status = 3;
                 UpdateOrder(item.Clone());
             }
         }
@@ -315,7 +315,7 @@ namespace BL
             if (ord.Status == 2 || ord.Status == 3)
             {
                 DisactivateRequest(ord.GuestRequestKey);
-                UpdateOtherOrders(GetHostByUnit(ord.HostingUnitKey).HostKey, ord.OrderKey);
+                UpdateOtherOrders(GetRequest(ord.GuestRequestKey).MailAddress, ord.OrderKey);
             }                   
         }
 

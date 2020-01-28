@@ -15,41 +15,11 @@ namespace BE
         [XmlIgnore]
         public bool[,] Diary = new bool[12, 31];
         [XmlArray("Diary")]
-        public string TempDiary
+        public bool[] BoardDto
         {
-            get
-            {
-                if (Diary == null)
-                    return null;
-                string result = "";
-                if (Diary != null)
-                {
-
-                    int sizeA = Diary.GetLength(0);
-                    int sizeB = Diary.GetLength(1);
-                    result += "" + sizeA + "," + sizeB;
-                    for (int i = 0; i < sizeA; i++)
-                        for (int j = 0; j < sizeB; j++)
-                            result += "," + Diary[i, j];
-                }
-                return result;
-            }
-            set
-            {
-                if (value != null && value.Length > 0)
-                {
-                string[] values = value.Split(',');
-                
-                Diary = new bool[12,31];
-                int index = 2;
-                for (int i = 0; i < 12; i++)
-                    for (int j = 0; j < 31; j++)
-                        Diary[i, j] = bool.Parse(values[index++]);
-            }
-        }
-    }
-
-
+            get { return Diary.Flatten(); }
+            set { Diary = value.Expand(12); }
+        }    
 
         public string Area { get; set; }
         public string subArea { get; set; }
@@ -102,6 +72,38 @@ namespace BE
             return str;
         }
     }
- 
+
+    public static class Tools
+    {
+        public static T[] Flatten<T>(this T[,] arr)
+        {
+            int rows = arr.GetLength(0);
+            int columns = arr.GetLength(1);
+            T[] arrFlattened = new T[rows * columns];
+            for (int j = 0; j < columns; j++)
+            {
+                for (int i = 0; i < rows; i++)
+                {
+                    var test = arr[i, j];
+                    arrFlattened[i + j * rows] = arr[i, j];
+                }
+            }
+            return arrFlattened;
+        }
+        public static T[,] Expand<T>(this T[] arr, int rows)
+        {
+            int length = arr.GetLength(0);
+            int columns = length / rows;
+            T[,] arrExpanded = new T[rows, columns];
+            for (int j = 0; j < rows; j++)
+            {
+                for (int i = 0; i < columns; i++)
+                {
+                    arrExpanded[j, i] = arr[i + j * rows];
+                }
+            }
+            return arrExpanded;
+        }
+    }
 } 
 
