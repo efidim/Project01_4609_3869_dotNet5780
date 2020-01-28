@@ -350,7 +350,7 @@ namespace DAL
 
             XElement host1;
             host1 = (from hos in HostingUnitsRoot.Elements()
-                     where hos.Element("HostingUnitKey").Value == host.HostingUnitName
+                     where hos.Element("HostingUnitName").Value == host.HostingUnitName
                      select hos).FirstOrDefault();
             if (host1 != null)
             {
