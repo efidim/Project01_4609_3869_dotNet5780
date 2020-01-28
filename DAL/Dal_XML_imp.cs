@@ -530,11 +530,10 @@ namespace DAL
                 throw r;
             }
 
-            XElement ord1;
-            ord1 = (from or in OrdersRoot.Elements()
-                    where int.Parse(or.Element("HostingUnitKey").Value) == ord.HostingUnitKey &&
-                    int.Parse(or.Element("GuestRequestKey").Value) == ord.GuestRequestKey
-                    select or).FirstOrDefault();
+            XElement ord1 = (from or in OrdersRoot.Elements()
+                             where int.Parse(or.Element("HostingUnitKey").Value) == ord.HostingUnitKey &&
+                             int.Parse(or.Element("GuestRequestKey").Value) == ord.GuestRequestKey
+                             select or).FirstOrDefault();
             if (ord1 != null)
             {
                 throw new KeyNotFoundException("הזמנה זו קיימת כבר במערכת");
