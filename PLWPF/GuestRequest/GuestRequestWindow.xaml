@@ -42,7 +42,7 @@
 
         <TextBox x:Name="FamilyName" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" HorizontalAlignment="Left"  Margin="247,66,0,0" TextWrapping="Wrap" Text="{Binding FamilyName}" VerticalAlignment="Top" Width="145" />
 
-        <TextBox x:Name="Mail" HorizontalAlignment="Left"  Margin="13,66,0,0" TextWrapping="Wrap" Text="{Binding MaillAddress}" VerticalAlignment="Top" Width="151"/>
+        <TextBox x:Name="Mail" HorizontalAlignment="Left"  Margin="13,66,0,0" TextWrapping="Wrap" Text="{Binding MailAddress}" VerticalAlignment="Top" Width="151"/>
 
         <Label Content="מלא פרטי דרישת לקוח" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin="280,0,27.5,0" VerticalAlignment="Top" Width="251" FontSize="24" RenderTransformOrigin="0.5,0.5"/>
 
@@ -57,7 +57,7 @@
             SelectedItem="{Binding Area}"  HorizontalAlignment="Left" x:Name="areaComboBox"  Margin="552,389,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393" Grid.ColumnSpan="2"/>
 
         <ComboBox
-          SelectedItem="{Binding HostingUnitType}"  HorizontalAlignment="Left" x:Name="Type" Margin="301,389,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
+          SelectedItem="{Binding Type}"  HorizontalAlignment="Left" x:Name="Type" Margin="301,389,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
 
         <Label Content=":מספר מבוגרים"  HorizontalAlignment="Left" Margin="52.5,433,0,0" VerticalAlignment="Top" Width="150" Grid.Column="1"/>
 

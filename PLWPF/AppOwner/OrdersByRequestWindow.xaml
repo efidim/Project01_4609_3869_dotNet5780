@@ -33,7 +33,7 @@
             <ImageBrush ImageSource="bg_purple.jpg" />
         </Grid.Background>
         
-        <Label Name="keyLabel" Content=":מפתח ההזמנה" Foreground="White" FontSize="25" Grid.Column="2" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" />
+        <Label Name="keyLabel" Content=":מפתח הדרישה" Foreground="White" FontSize="25" Grid.Column="2" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" />
 
         <TextBox Name="KeyTextBox" Grid.Column="1"  HorizontalContentAlignment="Center"  Margin="66.2,70,66.6,69.4"  Text="" VerticalAlignment="Center"  />
 

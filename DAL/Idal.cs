@@ -42,5 +42,9 @@ namespace DAL
         #endregion
         List<BankBranch> ListBankBranches();
 
+        String GetFromConfig(string s);
+
+        
+
     }
 }

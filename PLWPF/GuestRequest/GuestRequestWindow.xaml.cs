@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -93,6 +94,7 @@ namespace PLWPF
                     guest.ChildrenAttractions = 2;
 
                 guest.RegistrationDate = DateTime.Now;
+                guest.Status = true;
 
                 int value;
                 try
@@ -107,6 +109,8 @@ namespace PLWPF
                     CheckStr(str);
                     string str1 = this.FamilyName.Text;
                     CheckStr(str1);
+                    string mail = this.Mail.Text;
+                    CheckMail(mail);
                 }
                 catch (Exception ex)
                 {
@@ -129,18 +133,18 @@ namespace PLWPF
             }
         }
 
-        /// <summary>
-        /// A function that ensures that the first click will be updated on dates
-        /// </summary>
-        /// <param name="e">Mouse click event</param>
-        protected override void OnPreviewMouseUp(MouseButtonEventArgs e)
-        {
-            base.OnPreviewMouseUp(e);
-            if (Mouse.Captured is System.Windows.Controls.Calendar || Mouse.Captured is System.Windows.Controls.Primitives.CalendarItem)
-            {
-                Mouse.Capture(null);
-            }
-        }
+        ///// <summary>
+        ///// A function that ensures that the first click will be updated on dates
+        ///// </summary>
+        ///// <param name="e">Mouse click event</param>
+        //protected override void OnPreviewMouseUp(MouseButtonEventArgs e)
+        //{
+        //    base.OnPreviewMouseUp(e);
+        //    if (Mouse.Captured is System.Windows.Controls.Calendar || Mouse.Captured is System.Windows.Controls.Primitives.CalendarItem)
+        //    {
+        //        Mouse.Capture(null);
+        //    }
+        //}
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
@@ -154,6 +158,11 @@ namespace PLWPF
             {
                 throw new Exception("  יש להכניס אותיות בלבד בשדות השם");
             }
+        }
+        private void CheckMail(string str)
+        {
+            if (!(Regex.IsMatch(str, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*")))
+                throw new KeyNotFoundException("המייל שהוזן אינו תקין");
         }
     }
 

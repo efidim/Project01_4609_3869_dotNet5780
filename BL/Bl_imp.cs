@@ -3,29 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using BE;
 using DAL;
 
 namespace BL
 {
-    class Bl_imp : IBL
+    public class Bl_imp : IBL
     {
         IDAL dal = FactoryDal.getdal();
 
+        public Bl_imp()
+        {
+            Thread updateOrders = new Thread(UpdateOldOrdersDaily);
+            updateOrders.Start();
+        }
 
         #region GuestRequest
         public void AddGuestRequest(GuestRequest guest)
         {
-           if (guest.ReleaseDate <= guest.EntryDate)
-               throw new Exception("The Entry Date must be at least one day before the Release Date");
-           dal.AddGuestRequest(guest.Clone());
+            if (guest.ReleaseDate <= guest.EntryDate)
+                throw new Exception("The Entry Date must be at least one day before the Release Date");
+            dal.AddGuestRequest(guest.Clone());
         }
 
         public void UpdateGuestRequest(GuestRequest guest)
         {
-          if (guest.ReleaseDate <= guest.EntryDate)
-             throw new Exception("The Entry Date must be at least one day before the Release Date");
-          dal.UpdateGuestRequest(guest.Clone());
+            if (guest.ReleaseDate <= guest.EntryDate)
+                throw new Exception("The Entry Date must be at least one day before the Release Date");
+            dal.UpdateGuestRequest(guest.Clone());
         }
 
         public GuestRequest GetRequest(int keyRequest)
@@ -80,7 +86,7 @@ namespace BL
         {
             List<GuestRequest> temp1 = GetAllGuests();
             List<GuestRequest> temp2 = temp1.FindAll(x => x.Area == unit.Area
-            && x.Type == unit.Type && IsItAvailaible(unit, x.EntryDate, DifferenceDays(x.ReleaseDate, x.EntryDate))
+            && x.Type == unit.Type && IsItAvailaible(unit, x.EntryDate, DifferenceDays(x.EntryDate, x.ReleaseDate))
             && (x.Status) && x.Adults <= unit.Adults
             && x.Children <= unit.Children && (IntToBool(x.Pool) == unit.Pool || x.Pool == 0)
             && (IntToBool(x.Jacuzzi) == unit.Jacuzzi || x.Jacuzzi == 0)
@@ -96,7 +102,7 @@ namespace BL
         public int AddHostUnit(HostingUnit unit)
         {
             return dal.AddHostUnit(unit.Clone());
-        }       
+        }
         public void UpdateHostUnit(HostingUnit unit)
         {
             dal.UpdateHostUnit(unit.Clone());
@@ -107,7 +113,7 @@ namespace BL
             if (temp.Any(x => x.HostingUnitKey == unit.HostingUnitKey && x.Status >= 0 && x.Status < 2))
                 throw new Exception("Cannot Remove Hosting Unit while Order linked to this Unit is opened");
             dal.RemoveHostUnit(unit);
-        } 
+        }
         public HostingUnit GetHostingUnit(int hostingUnitkey)
         {
             return dal.GetHostingUnit(hostingUnitkey);
@@ -147,7 +153,7 @@ namespace BL
             DateTime current = entry;
             for (int i = 0; i < duration; i++)
             {
-                if (unit.Diary[current.Month-1, current.Day-1])
+                if (unit.Diary[current.Month - 1, current.Day - 1])
                     return false;
                 current = current.AddDays(1);
             }
@@ -189,7 +195,7 @@ namespace BL
         public List<HostingUnit> AvailableUnits(DateTime entry, int duration)
         {
             List<HostingUnit> temp1 = GetAllHostingUnits();
-            List<HostingUnit> temp2 = temp1.FindAll(x => IsItAvailaible(x, entry, duration)); 
+            List<HostingUnit> temp2 = temp1.FindAll(x => IsItAvailaible(x, entry, duration));
             return temp2;
         }
         #endregion
@@ -209,7 +215,7 @@ namespace BL
             int duration = DifferenceDays(entry, release);
             if (IsItAvailaible(GetHostingUnit(ord.HostingUnitKey), entry, duration))
                 return true;
-            throw new Exception("The requested dates are not available");               
+            throw new Exception("The requested dates are not available");
         }
 
         public int AddOrder(Order ord)
@@ -250,10 +256,10 @@ namespace BL
             DateTime end = GetRelease(ord.GuestRequestKey);
             end = end.AddDays(1);
 
-            for (; current < end; )
+            for (; current < end;)
             {
-               temp.Diary[current.Month-1,current.Day-1] = true;
-               current=current.AddDays(1);   
+                temp.Diary[current.Month - 1, current.Day - 1] = true;
+                current = current.AddDays(1);
             }
 
             UpdateHostUnit(temp);
@@ -275,15 +281,15 @@ namespace BL
         /// </summary>
         /// <param name="hostKey"></param>
         /// <param name="orderKey"> Closed Order Key</param>
-        public void UpdateOtherOrders(int hostKey, int orderKey)
+        public void UpdateOtherOrders(string mail, int orderKey)
         {
             List<Order> temp1 = GetAllOrders();
-            List<Order> temp2 = temp1.FindAll(x => GetHostByUnit(x.HostingUnitKey).HostKey == hostKey
+            List<Order> temp2 = temp1.FindAll(x => GetRequest(x.GuestRequestKey).MailAddress == mail
                                        && x.OrderKey != orderKey);
 
             foreach (var item in temp2)
             {
-                item.Status = 2;
+                item.Status = 3;
                 UpdateOrder(item.Clone());
             }
         }
@@ -303,11 +309,10 @@ namespace BL
             {
                 int days = DifferenceDays(GetRequest(ord.GuestRequestKey).ReleaseDate,
                 GetRequest(ord.GuestRequestKey).EntryDate) + 1;
-                ord.CommissionPerDay = Configuration.COMMISSION * days;
+                ord.CommissionPerDay = int.Parse(GetFromConfig("COMMISSION")) * days;
             }
             if (originStatus == 0 && ord.Status == 1)
             {
-                Console.WriteLine("Mail sent to the Guest");
                 ord.OrderDate = DateTime.Now;
             }
             dal.UpdateOrder(ord);
@@ -315,8 +320,8 @@ namespace BL
             if (ord.Status == 2 || ord.Status == 3)
             {
                 DisactivateRequest(ord.GuestRequestKey);
-                UpdateOtherOrders(GetHostByUnit(ord.HostingUnitKey).HostKey, ord.OrderKey);
-            }                   
+                UpdateOtherOrders(GetRequest(ord.GuestRequestKey).MailAddress, ord.OrderKey);
+            }
         }
 
         public List<Order> GetAllOrders()
@@ -331,9 +336,9 @@ namespace BL
         /// <returns></returns>
         public List<Order> OlderOrders(int days)
         {
-           List<Order> temp1 = GetAllOrders();
-           List<Order> temp2 = temp1.FindAll(x => DifferenceDays(x.CreateDate) >= days
-                                        || DifferenceDays(x.OrderDate) >= days);
+            List<Order> temp1 = GetAllOrders();
+            List<Order> temp2 = temp1.FindAll(x => DifferenceDays(x.CreateDate) >= days
+                                         || DifferenceDays(x.OrderDate) >= days);
             return temp2;
         }
 
@@ -353,6 +358,26 @@ namespace BL
             }
             return count;
         }
+
+        public void UpdateOldOrders()
+        {
+            List<Order> temp1 = GetAllOrders();
+            List<Order> temp2 = temp1.FindAll(x => DifferenceDays(x.OrderDate) >= 30);
+            foreach (var item in temp2)
+            {
+                item.Status = 3;
+                dal.UpdateOrder(item);
+            }
+        }
+
+        public void UpdateOldOrdersDaily()
+        {
+            while (true)
+            {
+                UpdateOldOrders();
+                Thread.Sleep(86400000);
+            }
+        }
         #endregion
 
 
@@ -361,7 +386,7 @@ namespace BL
         {
             return dal.GetHost(hostKey);
         }
-        
+
         public Host GetHostByUnit(int hostingUnitkey)
         {
             return GetHostingUnit(hostingUnitkey).Owner;
@@ -393,7 +418,7 @@ namespace BL
                             Count = g.Count()
                         };
             IEnumerable<IGrouping<int, int>> temp3 = from item in temp2
-                                                      group item.ownerKey by item.Count;
+                                                     group item.ownerKey by item.Count;
             return temp3;
         }
         #endregion
@@ -410,12 +435,24 @@ namespace BL
         public int DifferenceDays(DateTime a, DateTime? b = null)
         {
             DateTime c = b ?? DateTime.Today;
-            return (c - a).Days +1;
+            return (c - a).Days + 1;
         }
 
         public List<BankBranch> ListBankBranches()
         {
             return dal.ListBankBranches();
+        }
+
+        public bool CheckBranch(int codeBank, int codeBranch)
+        {
+            List<BankBranch> list = ListBankBranches();
+            BankBranch temp = (from item in list
+                               where item.BankNumber == codeBank && item.BranchNumber == codeBranch
+                               select item).FirstOrDefault();
+
+            if (temp == null)
+                return false;
+            return true;
         }
 
         public bool IntToBool(int value)
@@ -431,9 +468,14 @@ namespace BL
             }
             return false;
         }
+
+        public string GetFromConfig(string s)
+        {
+            return dal.GetFromConfig(s);
+        }
         #endregion
 
     }
-}    
+}
 
 

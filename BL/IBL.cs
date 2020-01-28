@@ -44,11 +44,13 @@ namespace BL
         DateTime GetRelease(int GuestRequestKey);
         void SetDiary(Order ord);
         void DisactivateRequest(int requestKey);
-        void UpdateOtherOrders(int hostKey, int orderKey);
+        void UpdateOtherOrders(string mail, int orderKey);
         void UpdateOrder(Order ord);
         int OrdersByRequest(GuestRequest request);
         List<Order> GetAllOrders();
-        List<Order> OlderOrders(int days);        
+        List<Order> OlderOrders(int days);
+        void UpdateOldOrders();
+        void UpdateOldOrdersDaily();
         #endregion
 
         #region Host
@@ -62,7 +64,10 @@ namespace BL
         #region Others                         
         int DifferenceDays(DateTime a, DateTime? b = null);              
         List<BankBranch> ListBankBranches();
+        bool CheckBranch(int codeBank, int codeBranch);
         bool IntToBool(int value);
+        string GetFromConfig(string s);
+
         #endregion
     }
 }

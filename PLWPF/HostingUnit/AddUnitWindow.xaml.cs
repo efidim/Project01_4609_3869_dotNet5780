@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -49,7 +50,6 @@ namespace PLWPF
                     value = int.Parse(this.childrenTextBox.Text);
                     if (value < 0)
                         throw new Exception(" נא להכניס ערך נכון במספר ילדים מקסימלי");
-                    value = int.Parse(this.idTextBox.Text);
                     value = int.Parse(this.phoneTextBox.Text);
                     value = int.Parse(this.bankNumTextBox.Text);
                     value = int.Parse(this.branchNumTextBox.Text);
@@ -64,6 +64,11 @@ namespace PLWPF
                     CheckStr(str3);
                     string str4 = this.cityTextBox.Text;
                     CheckStr(str4);
+                    string mail = this.mailTextBox.Text;
+                    CheckMail(mail);
+                    int codeBank = int.Parse(this.bankNumTextBox.Text);
+                    int codeBranch = int.Parse(this.branchNumTextBox.Text);
+                    CheckBranch(codeBank, codeBranch);
                 }
                
                 catch (Exception ex)
@@ -103,6 +108,17 @@ namespace PLWPF
             {
                 throw new Exception("  יש להכניס אותיות בלבד בשדות פרטי שמות ");
             }
+        }
+        private void CheckMail(string str)
+        {
+            if (!(Regex.IsMatch(str, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*")))
+                throw new KeyNotFoundException("המייל שהוזן אינו תקין");
+        }
+
+        private void CheckBranch(int codeBank, int codeBranch)
+        {
+            if (!bl.CheckBranch(codeBank, codeBranch))
+                throw new KeyNotFoundException("סניף הבנק שהוזן אינו קיים במערכת");
         }
     }
 }
