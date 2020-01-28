@@ -44,8 +44,8 @@ namespace PLWPF
         {
             new AppOwnerWindow().Show();
             this.Close();
-        }           
+        }
 
-        
+
     }
 }

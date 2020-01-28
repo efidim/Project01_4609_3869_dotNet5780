@@ -66,6 +66,9 @@ namespace PLWPF
                     CheckStr(str4);
                     string mail = this.mailTextBox.Text;
                     CheckMail(mail);
+                    int codeBank = int.Parse(this.bankNumTextBox.Text);
+                    int codeBranch = int.Parse(this.branchNumTextBox.Text);
+                    CheckBranch(codeBank, codeBranch);
                 }
                
                 catch (Exception ex)
@@ -110,6 +113,12 @@ namespace PLWPF
         {
             if (!(Regex.IsMatch(str, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*")))
                 throw new KeyNotFoundException("המייל שהוזן אינו תקין");
+        }
+
+        private void CheckBranch(int codeBank, int codeBranch)
+        {
+            if (!bl.CheckBranch(codeBank, codeBranch))
+                throw new KeyNotFoundException("סניף הבנק שהוזן אינו קיים במערכת");
         }
     }
 }

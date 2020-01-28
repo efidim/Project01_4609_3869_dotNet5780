@@ -74,7 +74,10 @@ namespace PLWPF.Order
         private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Error == null)
+            {
                 MessageBox.Show("!המייל נשלח בהצלחה");
+            }
+
             else
             {
                 MessageBox.Show("שליחת המייל נכשלה");

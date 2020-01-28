@@ -48,7 +48,9 @@ namespace BL
         void UpdateOrder(Order ord);
         int OrdersByRequest(GuestRequest request);
         List<Order> GetAllOrders();
-        List<Order> OlderOrders(int days);        
+        List<Order> OlderOrders(int days);
+        void UpdateOldOrders();
+        void UpdateOldOrdersDaily();
         #endregion
 
         #region Host
@@ -62,8 +64,10 @@ namespace BL
         #region Others                         
         int DifferenceDays(DateTime a, DateTime? b = null);              
         List<BankBranch> ListBankBranches();
+        bool CheckBranch(int codeBank, int codeBranch);
         bool IntToBool(int value);
         string GetFromConfig(string s);
+
         #endregion
     }
 }

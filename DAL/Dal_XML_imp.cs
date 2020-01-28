@@ -83,7 +83,7 @@ namespace DAL
 
             // ATM Loading
             isFileLoaded = false;
-            new Thread((obj) =>
+            new Thread( () =>
             {
                 const string xmlLocalPath = @"atm.xml";
                 WebClient wc = new WebClient();
@@ -101,10 +101,10 @@ namespace DAL
                 {
                     wc.Dispose();
                     Load(ref BankBranchesRoot, BankBranchesPath);
-                    obj = true;
+                    isFileLoaded = true;
                 }
 
-            }).Start(isFileLoaded);
+            }).Start();
 
 
             // Config Loading
@@ -354,7 +354,7 @@ namespace DAL
                      select hos).FirstOrDefault();
             if (host1 != null)
             {
-                throw new KeyNotFoundException("יחידת אירוח זו קיימת כבר במערכת");
+                throw new KeyNotFoundException("יחידת אירוח זו כבר קיימת במערכת");
             }
 
             int key = int.Parse(ConfigRoot.Element("unitKey").Value) + 1;
