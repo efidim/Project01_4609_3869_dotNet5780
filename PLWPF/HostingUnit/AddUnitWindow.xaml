@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-               Title="W" Height="503.2" Width="376">
+               Title="AddUnit" Height="558.4" Width="376">
     <Window.Resources>
         <Style TargetType="{x:Type Control}" x:Key="baseStyle">
             <Setter Property="FontSize" Value="10" />
@@ -14,45 +14,51 @@
         <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}">
             <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="15"/>
         </Style>
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="TextAlignment" Value="Right"/>
+            <Setter Property="FontSize" Value="15"/>
         </Style>
         <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
     </Window.Resources>
     <Grid Background="#FF1B336B">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250*"/>
+            <ColumnDefinition Width="119*"/>
+        </Grid.ColumnDefinitions>
 
 
 
 
 
-        <TabControl x:Name="tabs" BorderBrush="CornflowerBlue"  ContextMenuOpening="Tabs_ContextMenuOpening" 
-                   BorderThickness="3"  SelectionChanged="Tabs_SelectionChanged" Margin="0,0,-0.4,-24.6" Height="479" VerticalAlignment="Top"  >
+        <TabControl x:Name="tabs" BorderBrush="CornflowerBlue" SelectionChanged="tabs_SelectionChanged" 
+                   BorderThickness="3" Margin="0,0,-0.4,-0.2" Height="529" VerticalAlignment="Top" Grid.ColumnSpan="2"  >
 
             <TabControl.Background>
                 <ImageBrush ImageSource="villa2.png" />
             </TabControl.Background>
 
             <TabControl.Items>
-                <TabItem Header="פרטי יחידה" Background="White" TabIndex="3"  VerticalAlignment="Stretch" FontWeight="Bold" RenderTransformOrigin="8.339,0.38" Margin="293,0,-293.2,0" Width="77">
+                <TabItem Header="פרטי יחידה" Background="White" TabIndex="3"  VerticalAlignment="Stretch" FontWeight="Bold" Margin="286,0,-286.2,0" Width="77">
 
                     <TabItem.Content>
-                        <StackPanel Margin="96,5,65.2,25">
+                        <StackPanel Margin="88,0,71.2,-0.2" HorizontalAlignment="Center" Width="200" >
                             <Label Content=":שם היחידה"  Margin="0,3,3.4,3"  HorizontalContentAlignment="Center" />
-                            <TextBox x:Name="nameTextBox"  Margin="0"  Text="{Binding HostingUnitName}" HorizontalContentAlignment="Right" FlowDirection="RightToLeft"/>
+                            <TextBox x:Name="nameTextBox" HorizontalContentAlignment="Right" Margin="0"  Text="{Binding HostingUnitName}" />
 
                             <Label Content=":אזור" Grid.Column="1" Margin="3" Grid.Row="1" VerticalContentAlignment="Stretch" HorizontalAlignment="Right"/>
-                            <ComboBox x:Name="areaComboBox" Margin="0,3,3,3" SelectedItem="{Binding Area}" HorizontalAlignment="Right" Width="72" RenderTransformOrigin="-0.385,0.409"/>
+                            <ComboBox x:Name="areaComboBox" Margin="0,3,3,3" HorizontalContentAlignment="Right" SelectedItem="{Binding Area}" HorizontalAlignment="Right" Width="72" RenderTransformOrigin="-0.385,0.409"/>
 
                             <Label Content=":מס' מבוגרים מקסימלי" Grid.Column="1" Margin="3" Grid.Row="2" HorizontalContentAlignment="Right"/>
-                            <TextBox x:Name="adultsTextBox" Margin="0" Text="{Binding Adults, Mode=OneWayToSource}"/>
+                            <TextBox x:Name="adultsTextBox" Margin="0" Text="{Binding Adults, Mode=OneWayToSource}" HorizontalContentAlignment="Right"/>
 
                             <Label Content=":מס' ילדים מקסימלי" Grid.Column="1" Margin="3" Grid.Row="3" HorizontalAlignment="Right"/>
-                            <TextBox x:Name="childrenTextBox" Grid.Column="0" Margin="0" Grid.Row="3" Text="{Binding Children, Mode=OneWayToSource}" />
+                            <TextBox x:Name="childrenTextBox" HorizontalContentAlignment="Right" Margin="0" Text="{Binding Children, Mode=OneWayToSource}" />
 
                             <Label Content=":סוג" Grid.Column="1" Margin="3" Grid.Row="4" HorizontalAlignment="Right"/>
-                            <ComboBox x:Name="typeComboBox" Grid.Column="0" Margin="0,3,3,3" Grid.Row="4" SelectedItem="{Binding Type}" HorizontalAlignment="Right" Width="69"/>
+                            <ComboBox x:Name="typeComboBox" HorizontalContentAlignment="Right" Grid.Column="0" Margin="0,3,3,3" Grid.Row="4" SelectedItem="{Binding Type}" HorizontalAlignment="Right" Width="69"/>
                             <Label Content=":בריכה" Margin="0,-3,-0.4,0" RenderTransformOrigin="-12.479,-9.865"/>
                             <CheckBox x:Name="poolCheckBox" HorizontalAlignment="Center" Margin="54,0,54.4,0" VerticalAlignment="Top" IsChecked="{Binding Pool}" RenderTransformOrigin="0.694,-0.485"/>
 
@@ -60,47 +66,47 @@
                             <CheckBox x:Name="jacuzziCheckBox" HorizontalAlignment="Center" Margin="0" Grid.Row="6" VerticalAlignment="Top" IsChecked="{Binding Jacuzzi}"/>
 
                             <Label Content=":פעילות לילדים" Grid.Column="1" Margin="3" Grid.Row="7" HorizontalAlignment="Right"/>
-                            <CheckBox x:Name="attractionsCheckBox" Margin="0,0,91.6,0" VerticalAlignment="Top" IsChecked="{Binding ChildrenAttractions}" RenderTransformOrigin="0.75,-0.897" HorizontalAlignment="Right" Width="14" />
+                            <CheckBox x:Name="attractionsCheckBox" Margin="0" VerticalAlignment="Top" IsChecked="{Binding ChildrenAttractions}"  HorizontalAlignment="Center" />
                             <!--<Button Content="המשך" Height="25" Margin="368,0,0,0" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto" Panel.ZIndex="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="50" RenderTransformOrigin="0.36,1.17" Click="Button_Click"/>-->
                         </StackPanel>
                     </TabItem.Content>
                 </TabItem>
-                <TabItem x:Name="host" Header="פרטי מארח" Background="White" MenuItem.Click="TabItem_Click1" HorizontalAlignment="Center" RenderTransformOrigin="15.681,0.465" Margin="143.2,0,-143,0" FlowDirection="RightToLeft" FontWeight="Bold">
+                <TabItem x:Name="host" Header="פרטי מארח" Background="White" HorizontalAlignment="Center" RenderTransformOrigin="15.681,0.465" Margin="136.2,0,-136,0" FontWeight="Bold" Height="20" VerticalAlignment="Top">
                     <TabItem.Content>
                         <StackPanel Margin="94,45,94.2,95">
-                            <Label Content="שם פרטי:"  Margin="0" HorizontalAlignment="Left" />
-                            <TextBox x:Name="privateNameTextBox" Grid.Column="0" Margin="3,3,2.8,3.2" Grid.Row="0" Text="{Binding Owner.PrivateName}" Width="200"/>
+                            <Label Content=":שם פרטי"  Margin="0" HorizontalAlignment="Right" />
+                            <TextBox x:Name="privateNameTextBox" Grid.Column="0" Margin="0" Grid.Row="0" Text="{Binding Owner.PrivateName}" HorizontalContentAlignment="Right"/>
 
-                            <Label Content="שם משפחה:" Grid.Column="1" Margin="0" HorizontalAlignment="Left" Grid.Row="1"/>
-                            <TextBox x:Name="familyNameTextBox" Grid.Column="0" Margin="3,2.8,2.8,2.6" Grid.Row="1" Text="{Binding Owner.FamilyName}" Width="200" />
+                            <Label Content=":שם משפחה" Grid.Column="1" Margin="0" HorizontalAlignment="Right" Grid.Row="1"/>
+                            <TextBox x:Name="familyNameTextBox" Grid.Column="0" Margin="0" Grid.Row="1" Text="{Binding Owner.FamilyName}" HorizontalContentAlignment="Right" />
 
-                            <Label Content="ת-ז:" Grid.Column="1" Margin="0" Grid.Row="2" HorizontalAlignment="Left"/>
-                            <TextBox x:Name="idTextBox" Margin="3,3.4,2,3" Text="{Binding Owner.HostKey}" VerticalAlignment="Center" Width="200" />
+                            <Label Content=":ת-ז" Grid.Column="1" Margin="0" Grid.Row="2" HorizontalAlignment="Right"/>
+                            <TextBox x:Name="idTextBox" Margin="0" Text="{Binding Owner.HostKey, Mode=OneWayToSource}" VerticalAlignment="Center" HorizontalContentAlignment="Right"/>
 
-                            <Label Content="מס' טלפון:" Grid.Column="1" Margin="0" HorizontalAlignment="Left" Grid.Row="3" />
-                            <TextBox x:Name="phoneTextBox" Grid.Column="0" Margin="3,3,2.8,3.4" Grid.Row="3" Text="{Binding Owner.PhoneNumber}" Width="200" />
+                            <Label Content=":מס' טלפון" Grid.Column="1" Margin="0" HorizontalAlignment="Right" Grid.Row="3" />
+                            <TextBox x:Name="phoneTextBox" Grid.Column="0" Margin="0" Grid.Row="3" Text="{Binding Owner.PhoneNumber}" HorizontalContentAlignment="Right"/>
 
-                            <Label Content="מייל:" Grid.Column="1" Margin="0" HorizontalAlignment="Left" Grid.Row="4"/>
-                            <TextBox x:Name="mailTextBox" Grid.Column="0" Margin="3,2.6,2.8,2.8" Grid.Row="4" Text="{Binding Owner.MailAddress}" Width="201" HorizontalAlignment="Center" />
+                            <Label Content=":מייל" Grid.Column="1" Margin="0" HorizontalAlignment="Right" Grid.Row="4"/>
+                            <TextBox x:Name="mailTextBox" Margin="0"  Text="{Binding Owner.MailAddress}" HorizontalContentAlignment="Right" />
                         </StackPanel>
                     </TabItem.Content>
                 </TabItem>
-                <TabItem Header="פרטי בנק" MenuItem.Click="TabItem_Click" Background="White" RenderTransformOrigin="16.351,0.368" Margin="8,0,-8,0" HorizontalAlignment="Left" Width="64" FontWeight="Bold">
+                <TabItem Header="פרטי בנק" Background="White" Margin="-2,0,0,0" HorizontalContentAlignment="Right" HorizontalAlignment="Left" FontWeight="Bold">
                     <TabItem.Content>
-                        <StackPanel Margin="94,45,94.2,95">
+                        <StackPanel Margin="94,45,94.2,95" HorizontalAlignment="Center">
 
                             <Label Content=":מספר הבנק" Margin="0"/>
-                            <TextBox x:Name="bankNumTextBox" Margin="0,0,0.2,0" Text="{Binding Owner.BankBranchDetails.BankNumber}" Width="171" HorizontalAlignment="Center"/>
+                            <TextBox x:Name="bankNumTextBox" HorizontalContentAlignment="Right" Margin="0,0,0.2,0" Text="{Binding Owner.BankBranchDetails.BankNumber, Mode=OneWayToSource}" HorizontalAlignment="Center" Width="171"/>
 
                             <Label Content=":מספר הסניף" Grid.Column="1" Margin="0" Grid.Row="2"/>
-                            <TextBox x:Name="branchNumTextBox" Margin="0" Text="{Binding Owner.BankBranchDetails.BranchNumber}" RenderTransformOrigin="0.212,0.28"/>
+                            <TextBox x:Name="branchNumTextBox" HorizontalContentAlignment="Right" Margin="0" Text="{Binding Owner.BankBranchDetails.BranchNumber, Mode=OneWayToSource}" />
 
                             <Label Content=":מספר חשבון" Grid.Column="1" Margin="0" Grid.Row="5"/>
-                            <TextBox x:Name="accountTextBox" Margin="0" Text="{Binding Owner.BankAccountNumber}"/>
+                            <TextBox x:Name="accountTextBox" HorizontalContentAlignment="Right" Margin="0" Text="{Binding Owner.BankAccountNumber, Mode=OneWayToSource}"/>
 
                             <Label Content=":אישור גבייה" Grid.Column="1" Margin="0" Grid.Row="6"/>
                             <CheckBox x:Name="collectionCheckBox" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding Owner.CollectionClearance}" RenderTransformOrigin="-2.094,0.533" Height="23"/>
-                            <Button Content="שלח פרטים"  Height="50" Margin="39,34,39.2,0">
+                            <Button Content="שלח פרטים"  Height="50" Margin="39,34,39.2,0" Click="Button_Click_1">
                                 <Button.Style>
                                     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle2}">
                                         <Style.Triggers>
@@ -178,6 +184,6 @@
 
             </TabControl.Items>
         </TabControl>
-        <Button x:Name="backButton" Style="{StaticResource ButtonStyle2}" Content="חזרה" HorizontalAlignment="Left" Margin="154,435,0,-7.6" VerticalAlignment="Top" Width="93" Click="backButton_Click" Height="27" FontWeight="Bold"/>
+        <Button x:Name="backButton" Style="{StaticResource ButtonStyle2}" Content="חזרה" HorizontalAlignment="Center" Margin="140,492,17.4,0" VerticalAlignment="Top" Width="93" Click="backButton_Click" Height="27" FontWeight="Bold"/>
     </Grid>
 </Window>

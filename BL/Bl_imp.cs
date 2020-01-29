@@ -443,16 +443,14 @@ namespace BL
             return dal.ListBankBranches();
         }
 
-        public bool CheckBranch(int codeBank, int codeBranch)
+        public BankBranch CheckBranch(int codeBank, int codeBranch)
         {
             List<BankBranch> list = ListBankBranches();
             BankBranch temp = (from item in list
                                where item.BankNumber == codeBank && item.BranchNumber == codeBranch
                                select item).FirstOrDefault();
 
-            if (temp == null)
-                return false;
-            return true;
+            return temp;
         }
 
         public bool IntToBool(int value)

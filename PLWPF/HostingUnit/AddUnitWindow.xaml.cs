@@ -27,6 +27,13 @@ namespace PLWPF
         public AddUnitWindow()
         {
             InitializeComponent();
+            double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
+            double screenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+            double windowWidth = this.Width;
+            double windowHeight = this.Height;
+            this.Left = (screenWidth / 2) - (windowWidth / 2);
+            this.Top = (screenHeight / 2) - (windowHeight / 2);
+
             unit = new BE.HostingUnit();
             unit.Owner = new Host();
             unit.Owner.BankBranchDetails = new BankBranch();
@@ -37,60 +44,70 @@ namespace PLWPF
             this.typeComboBox.ItemsSource = Enum.GetValues(typeof(Enums.HostingUnitType));
         }
 
-        private void TabItem_Click1(object sender, RoutedEventArgs e)
+        private void tabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-
             int value;
             try
             {
-                value = int.Parse(this.adultsTextBox.Text);
-                if (value <= 0)
-                    throw new Exception(" נא להכניס ערך נכון במספר מבוגרים מקסימלי");
-                value = int.Parse(this.childrenTextBox.Text);
-                if (value < 0)
-                    throw new Exception(" נא להכניס ערך נכון במספר ילדים מקסימלי");
-                string str = this.nameTextBox.Text;
-                CheckStr(str);
+                if (tabs.SelectedIndex == 1)
+                {
+                    value = int.Parse(this.adultsTextBox.Text);
+                    if (value <= 0)
+                        throw new Exception(" נא להכניס ערך נכון במספר מבוגרים מקסימלי");
+                    value = int.Parse(this.childrenTextBox.Text);
+                    if (value < 0)
+                        throw new Exception(" נא להכניס ערך נכון במספר ילדים מקסימלי");
+                    string str = this.nameTextBox.Text;
+                    CheckStr(str);
+
+
+                }
+
+                if (tabs.SelectedIndex == 2)
+                {
+                    string str1 = this.privateNameTextBox.Text;
+                    CheckStr(str1);
+                    string str2 = this.familyNameTextBox.Text;
+                    CheckStr(str2);
+                    string mail = this.mailTextBox.Text;
+                    CheckMail(mail);
+                    string Id = this.idTextBox.Text;
+                    CheckId(Id);
+                }
+               
             }
             catch (Exception ex)
             {
+                if (tabs.SelectedIndex == 1)
+                {
+                    tabs.SelectedIndex = 0;
+                }
+                if (tabs.SelectedIndex == 2)
+                {
+                    tabs.SelectedIndex = 1;
+                }
                 MessageBox.Show(" הקלט לא תקין--" + ex.Message);
+
                 return;
             }
-
         }
-        private void TabItem_Click(object sender, RoutedEventArgs e)
-        {
+        
 
-            try
-            {
-                string str1 = this.privateNameTextBox.Text;
-                CheckStr(str1);
-                string str2 = this.familyNameTextBox.Text;
-                CheckStr(str2);
-                string mail = this.mailTextBox.Text;
-                CheckMail(mail);
-                string Id = this.idTextBox.Text;
-                CheckId(Id);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(" הקלט לא תקין--" + ex.Message);
-                return;
-            }
-
-        }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
                 int value;
+                BankBranch temp = new BankBranch();
                 try
                 {
                     value = int.Parse(this.bankNumTextBox.Text);
                     value = int.Parse(this.branchNumTextBox.Text);
                     value = int.Parse(this.accountTextBox.Text);
+                    temp = CheckBranch(int.Parse(this.bankNumTextBox.Text), int.Parse(this.branchNumTextBox.Text));
+                    unit.Owner.BankBranchDetails.BankName = temp.BankName;
+                    unit.Owner.BankBranchDetails.BranchAddress = temp.BranchAddress;
+                    unit.Owner.BankBranchDetails.BranchCity = temp.BranchCity;
 
                 }
 
@@ -139,7 +156,20 @@ namespace PLWPF
             }
         }
 
+        private BankBranch CheckBranch(int codeBank, int codeBranch)
+        {
+            BankBranch temp = bl.CheckBranch(codeBank, codeBranch);
+            if (temp == null)
+                throw new KeyNotFoundException("סניף הבנק שהוזן אינו קיים במערכת");
+            return temp;
+        }
 
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            new HostingUnitWindow().Show();
+            this.Close();
+        }
     }
 
 }
+
