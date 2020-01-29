@@ -210,7 +210,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="HostingUnit\bg_green.jpg" />
     <Resource Include="AppOwner\bg_purple.jpg" />
     <Resource Include="Order\bg_red.jpg" />
   </ItemGroup>
@@ -231,6 +230,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="pool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="HostingUnit\villa1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
