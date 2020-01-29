@@ -203,11 +203,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="bg_blue.jpg" />
     <Resource Include="HostingUnit\bg_green.jpg" />
     <Resource Include="AppOwner\bg_purple.jpg" />
     <Resource Include="Order\bg_red.jpg" />
     <Resource Include="GuestRequest\bg_yellow.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="blackBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="hotel.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="beachBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="intro.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
