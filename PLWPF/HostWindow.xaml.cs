@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for HostWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class HostWindow : Window
     {
-        public MainWindow()
+        public HostWindow()
         {
             InitializeComponent();
             double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
@@ -31,27 +30,22 @@ namespace PLWPF
             this.Top = (screenHeight / 2) - (windowHeight / 2);
         }
 
-        private void guestRequestButton_Click(object sender, RoutedEventArgs e)
+        private void unitsButton_Click(object sender, RoutedEventArgs e)
         {
-            new GuestRequestWindow().Show();
+            new HostingUnitWindow().Show();
             this.Close();
         }
-        private void hostingUnitButton_Click(object sender, RoutedEventArgs e)
-        {
-            new HostWindow().Show();
-            this.Close();
-        }
-        private void orderButton_Click(object sender, RoutedEventArgs e)
+
+        private void ordersButton_Click(object sender, RoutedEventArgs e)
         {
             new OrderWindow().Show();
             this.Close();
         }
-        private void appOwner_Click(object sender, RoutedEventArgs e)
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            new AppOwnerWindow().Show();
+            new MainWindow().Show();
             this.Close();
         }
-
-
     }
 }

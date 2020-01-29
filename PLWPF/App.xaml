@@ -8,6 +8,17 @@
 
         <local:IntToStringConverter x:Key="IntToStringConverter" />
 
+        <ControlTemplate x:Key="backButton" TargetType="Button">
+            <Button Content="חזרה" 
+            HorizontalAlignment="Left" Margin="348,156.6,0,0" 
+            VerticalAlignment="Top" Width="93"/>
+        </ControlTemplate>
+
+        <!--x:Name="backButton" Content="חזרה" 
+            HorizontalAlignment="Left" Margin="348,156.6,0,0" 
+            VerticalAlignment="Top" Width="93"
+            Grid.Row="1" Click="backButton_Click"/>-->
+
         <Style x:Key="ButtonStyle1" TargetType="Button">
             <Setter Property="BorderBrush">
                 <Setter.Value>
@@ -33,7 +44,7 @@
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontSize" Value="15" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="Opacity" Value="0.85"/>            
+            <Setter Property="Opacity" Value="0.85"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -47,7 +58,7 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="#E59400" />
-                                <Setter Property="Foreground" Value="White" />                                
+                                <Setter Property="Foreground" Value="White" />
                                 <!--<Setter TargetName="PathIcon" Property="Fill" Value="Black" />-->
                             </Trigger>
 

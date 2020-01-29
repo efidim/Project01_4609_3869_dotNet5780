@@ -90,6 +90,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="HostWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -109,6 +113,9 @@
     </Compile>
     <Compile Include="HostingUnit\HostingUnitWindow.xaml.cs">
       <DependentUpon>HostingUnitWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HostWindow.xaml.cs">
+      <DependentUpon>HostWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -206,7 +213,6 @@
     <Resource Include="HostingUnit\bg_green.jpg" />
     <Resource Include="AppOwner\bg_purple.jpg" />
     <Resource Include="Order\bg_red.jpg" />
-    <Resource Include="GuestRequest\bg_yellow.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="blackBackground.jpg" />
@@ -219,6 +225,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="intro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GuestRequest\bell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pool.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
