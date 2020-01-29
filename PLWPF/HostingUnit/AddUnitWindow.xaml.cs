@@ -27,7 +27,7 @@ namespace PLWPF
         public AddUnitWindow()
         {
             InitializeComponent();
-            unit = new HostingUnit();
+            unit = new BE.HostingUnit();
             unit.Owner = new Host();
             unit.Owner.BankBranchDetails = new BankBranch();
             this.DataContext = unit;
@@ -37,76 +37,92 @@ namespace PLWPF
             this.typeComboBox.ItemsSource = Enum.GetValues(typeof(Enums.HostingUnitType));
         }
 
-        private void addButton_Click(object sender, RoutedEventArgs e)
+        private void TabItem_Click1(object sender, RoutedEventArgs e)
+        {
+
+
+            int value;
+            try
+            {
+                value = int.Parse(this.adultsTextBox.Text);
+                if (value <= 0)
+                    throw new Exception(" נא להכניס ערך נכון במספר מבוגרים מקסימלי");
+                value = int.Parse(this.childrenTextBox.Text);
+                if (value < 0)
+                    throw new Exception(" נא להכניס ערך נכון במספר ילדים מקסימלי");
+                string str = this.nameTextBox.Text;
+                CheckStr(str);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(" הקלט לא תקין--" + ex.Message);
+                return;
+            }
+
+        }
+        private void TabItem_Click(object sender, RoutedEventArgs e)
+        {
+
+            try
+            {
+                string str1 = this.privateNameTextBox.Text;
+                CheckStr(str1);
+                string str2 = this.familyNameTextBox.Text;
+                CheckStr(str2);
+                string mail = this.mailTextBox.Text;
+                CheckMail(mail);
+                string Id = this.idTextBox.Text;
+                CheckId(Id);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(" הקלט לא תקין--" + ex.Message);
+                return;
+            }
+
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 int value;
-               try
+                try
                 {
-                    value = int.Parse(this.adultsTextBox.Text);
-                    if (value <= 0)
-                        throw new Exception(" נא להכניס ערך נכון במספר מבוגרים מקסימלי");
-                    value = int.Parse(this.childrenTextBox.Text);
-                    if (value < 0)
-                        throw new Exception(" נא להכניס ערך נכון במספר ילדים מקסימלי");
-                    value = int.Parse(this.phoneTextBox.Text);
                     value = int.Parse(this.bankNumTextBox.Text);
                     value = int.Parse(this.branchNumTextBox.Text);
                     value = int.Parse(this.accountTextBox.Text);
-                    string str = this.nameTextBox.Text;
-                    CheckStr(str);
-                    string str1 = this.privateNameTextBox.Text;
-                    CheckStr(str1);
-                    string str2 = this.familyNameTextBox.Text;
-                    CheckStr(str2);
-                    string str3 = this.bankNameTextBox.Text;
-                    CheckStr(str3);
-                    string str4 = this.cityTextBox.Text;
-                    CheckStr(str4);
-                    string mail = this.mailTextBox.Text;
-                    CheckMail(mail);
-                    int codeBank = int.Parse(this.bankNumTextBox.Text);
-                    int codeBranch = int.Parse(this.branchNumTextBox.Text);
-                    CheckBranch(codeBank, codeBranch);
+
                 }
-               
+
                 catch (Exception ex)
                 {
                     MessageBox.Show(" הקלט לא תקין--" + ex.Message);
                     return;
                 }
-                
+
 
 
                 int key;
                 key = bl.AddHostUnit(unit);
                 MessageBox.Show("The Hosting Unit has been successfully added and the unit key code is: " + key);
 
-                //unit = new HostingUnit();
-                //this.DataContext = unit;
 
                 new HostingUnitWindow().Show();
                 this.Close();
             }
 
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-        }
 
-        private void backButton_Click_1(object sender, RoutedEventArgs e)
-        {
-             new HostingUnitWindow().Show();
-                        this.Close();
         }
         private void CheckStr(string str)
         {
             bool hasNUmber = str.Any(char.IsDigit);
             if (hasNUmber)
             {
-                throw new Exception("  יש להכניס אותיות בלבד בשדות פרטי שמות ");
+                throw new KeyNotFoundException("  יש להכניס אותיות בלבד בשדות פרטי שמות ");
             }
         }
         private void CheckMail(string str)
@@ -114,11 +130,16 @@ namespace PLWPF
             if (!(Regex.IsMatch(str, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*")))
                 throw new KeyNotFoundException("המייל שהוזן אינו תקין");
         }
-
-        private void CheckBranch(int codeBank, int codeBranch)
+        private void CheckId(string str)
         {
-            if (!bl.CheckBranch(codeBank, codeBranch))
-                throw new KeyNotFoundException("סניף הבנק שהוזן אינו קיים במערכת");
+            bool res = str.Any(char.IsLetter);
+            if (res)
+            {
+                throw new KeyNotFoundException("  יש להכניס מספר בלבד בשדה תעודת זהות ");
+            }
         }
+
+
     }
+
 }
