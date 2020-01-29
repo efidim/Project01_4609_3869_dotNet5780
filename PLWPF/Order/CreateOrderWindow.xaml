@@ -17,13 +17,12 @@
         <TextBox x:Name="key" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="23" Margin="465,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.009,2.103"/>
         <Label Content="בחר דרישת לקוח " Foreground="White" HorizontalAlignment="Left" Margin="622,219,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.414,1.4" Width="147"/>
 
-        <Button Content="צור הזמנה" Background="White" FontSize="25" HorizontalAlignment="Left" Margin="65,365,0,0" VerticalAlignment="Top" Width="660" Height="54" Click="Button_Click"/>
-        <Button Content="שלח למערכת" Background="White" HorizontalAlignment="Left" Margin="369,26,0,0" VerticalAlignment="Top" Width="80" Click="Button_Click_1"/>
+        <Button Content="צור הזמנה" Style="{StaticResource ButtonStyle2}"  FontSize="30" HorizontalAlignment="Left" Margin="65,365,0,0" VerticalAlignment="Top" Width="660" Height="54" Click="Button_Click"/>
+        <Button Content="שלח למערכת" Style="{StaticResource ButtonStyle2}" HorizontalAlignment="Left" Margin="325,24,0,0" VerticalAlignment="Top" Width="124" Click="Button_Click_1" Height="25"/>
         <Label HorizontalAlignment="Left" Foreground="White" Height="28" Margin="619,93,0,0"  Content="בחר יחידת אירוח" VerticalAlignment="Top" Width="128"/>
         <ListBox x:Name="hostUnits" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource unitTemplate}" SelectionMode="Single" SelectionChanged="hostsUnitsListBox_SelectionChanged" HorizontalAlignment="Left" Margin="41,87,0,0" VerticalAlignment="Top" Width="558" Height="46"/>
         <ListBox x:Name="requests" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource requestTemplate}" SelectionMode="Single" HorizontalAlignment="Left" Margin="41,153,0,0" VerticalAlignment="Top" Width="558" Height="167" RenderTransformOrigin="0.5,0.5"/>
-        <Button x:Name="backButton" Background="White" Content="חזרה"  
-            Margin="366,432,383.6,0"  VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Center" Click="backButton_Click" />
+        <Button x:Name="backButton" Style="{StaticResource ButtonStyle2}" Content="חזרה" HorizontalAlignment="Left" Margin="356,433,0,0" VerticalAlignment="Top" Width="93" Click="backButton_Click" Height="27" FontWeight="Bold"/>
 
     </Grid>
 </Window>

@@ -211,7 +211,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="AppOwner\bg_purple.jpg" />
-    <Resource Include="Order\bg_red.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="blackBackground.jpg" />
@@ -236,6 +235,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="HostingUnit\villa2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Order\shake.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

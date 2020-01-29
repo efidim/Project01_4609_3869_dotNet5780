@@ -19,9 +19,6 @@
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
-        <Grid.Background>
-            <ImageBrush ImageSource="bg_green.jpg" />
-        </Grid.Background>
 
         <Label Name="instructionLabel" Foreground="White" Content="הזן את קוד היחידה או את שם היחידה" Margin="149,38,148.6,24" Grid.Row="0" FontSize="30" Width="496" HorizontalAlignment="Center" />
 

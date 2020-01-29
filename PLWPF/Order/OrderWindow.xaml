@@ -10,9 +10,9 @@
     <Style TargetType="{x:Type Control}" x:Key="baseStyle">
         <Setter Property="FontSize" Value="30" />
     </Style>
-    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}">
-            <Setter Property="Background" Value="White"></Setter>
-    </Style>
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle2}">
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
     <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
     <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
     <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
@@ -25,16 +25,15 @@
         </Grid.RowDefinitions>
 
         <Grid.Background>
-            <ImageBrush ImageSource="bg_red.jpg" />
+            <ImageBrush ImageSource="shake.png" />
         </Grid.Background>
 
-        <Button x:Name="addUnitButton" Content="צור הזמנה חדשה"  
+        <Button x:Name="addUnitButton" Content="יצירת הזמנה חדשה"  
         Margin="40"  Grid.Row="0" Click="addUnitButton_Click"/>
 
         <Button x:Name="existedUnitButton" Content="עדכון הזמנה קיימת"  
         Margin="40,9.6,39.6,70" Grid.Row="1" Click="existedUnitButton_Click"/>
-        
-        <Button x:Name="backButton" Content="חזרה" HorizontalAlignment="Left" Margin="348,156.6,0,0" VerticalAlignment="Top" Width="93"  Grid.Row="1" Click="backButton_Click"/>
+        <Button x:Name="backButton" Style="{StaticResource ButtonStyle2}" Content="חזרה" HorizontalAlignment="Left" Margin="351,162.6,0,0" VerticalAlignment="Top" Width="93" Click="backButton_Click" Height="27" FontWeight="Bold" Grid.Row="1"/>
     </Grid>
 </Window>
 
