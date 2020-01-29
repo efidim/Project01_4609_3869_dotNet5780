@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-               Title="W" Height="484" Width="376">
+               Title="W" Height="503.2" Width="376">
     <Window.Resources>
         <Style TargetType="{x:Type Control}" x:Key="baseStyle">
             <Setter Property="FontSize" Value="10" />
@@ -28,7 +28,7 @@
 
 
         <TabControl x:Name="tabs" BorderBrush="CornflowerBlue"  ContextMenuOpening="Tabs_ContextMenuOpening" 
-                   BorderThickness="3"  SelectionChanged="Tabs_SelectionChanged" Margin="0,10,-0.4,-0.4" Height="444" VerticalAlignment="Top"  >
+                   BorderThickness="3"  SelectionChanged="Tabs_SelectionChanged" Margin="0,0,-0.4,-24.6" Height="479" VerticalAlignment="Top"  >
 
             <TabControl.Background>
                 <ImageBrush ImageSource="villa2.png" />
@@ -38,7 +38,7 @@
                 <TabItem Header="פרטי יחידה" Background="White" TabIndex="3"  VerticalAlignment="Stretch" FontWeight="Bold" RenderTransformOrigin="8.339,0.38" Margin="293,0,-293.2,0" Width="77">
 
                     <TabItem.Content>
-                        <StackPanel Margin="96,15,65.2,10">
+                        <StackPanel Margin="96,5,65.2,25">
                             <Label Content=":שם היחידה"  Margin="0,3,3.4,3"  HorizontalContentAlignment="Center" />
                             <TextBox x:Name="nameTextBox"  Margin="0"  Text="{Binding HostingUnitName}" HorizontalContentAlignment="Right" FlowDirection="RightToLeft"/>
 
@@ -178,5 +178,6 @@
 
             </TabControl.Items>
         </TabControl>
+        <Button x:Name="backButton" Style="{StaticResource ButtonStyle2}" Content="חזרה" HorizontalAlignment="Left" Margin="154,435,0,-7.6" VerticalAlignment="Top" Width="93" Click="backButton_Click" Height="27" FontWeight="Bold"/>
     </Grid>
 </Window>
