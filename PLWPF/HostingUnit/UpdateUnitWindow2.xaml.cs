@@ -132,7 +132,6 @@ namespace PLWPF
 
 
 
-                int key;
                 bl.UpdateHostUnit(unitToUpdate);
                 MessageBox.Show(" היחידה עודכנה בהצלחה ");
 

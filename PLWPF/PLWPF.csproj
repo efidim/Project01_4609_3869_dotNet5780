@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>home_house_10811.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -217,9 +220,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="AppOwner\bg_purple.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="blackBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -257,6 +257,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Order\calendar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppOwner\data.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppOwner\data1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppOwner\data2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="home_house_10811.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

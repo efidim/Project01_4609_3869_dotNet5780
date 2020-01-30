@@ -21,6 +21,10 @@
     </Window.Resources>
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="203*"/>
+            <ColumnDefinition Width="990*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
@@ -30,15 +34,14 @@
             <ImageBrush ImageSource="beachBackground.png" />
         </Grid.Background>
 
-        <Border Canvas.Left="55"
-            Canvas.Top="30"
+        <Border
             Width="600"
             Height="Auto"
-            Margin="12,12,8,0"
+            Margin="95.6,12,294.6,0"
             VerticalAlignment="Top"
             BorderBrush="#FF3B5998"
             BorderThickness=".5"
-            CornerRadius="18">
+            CornerRadius="18" Grid.Column="1">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="5"
                               Opacity=".5"
@@ -66,12 +69,12 @@
             </Border>
         </Border>
 
-        <Grid x:Name="Buttons" Grid.Row="1">
+        <Grid x:Name="Buttons" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0.4,-0.4,0.4">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>               
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <Button x:Name="guestRequestButton" Style="{StaticResource ButtonStyle2}" Content="!אני מחפש חופשה"  
@@ -84,6 +87,8 @@
         Margin="49.8,97,49.6,96.8"  Grid.Column="0" FontSize="20" Click="appOwner_Click" FontWeight="Bold"/>
 
         </Grid>
+        <Label Content="יוסף לברן" FontSize="20" HorizontalAlignment="Left" Margin="71,65,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="אפרים דימנטמן"  FontSize="20" HorizontalAlignment="Left" Margin="44,28,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
 
 
 

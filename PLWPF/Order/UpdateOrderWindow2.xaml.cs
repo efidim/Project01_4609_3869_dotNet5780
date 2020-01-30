@@ -122,7 +122,7 @@ namespace PLWPF.Order
                     MessageBox.Show("ההזמנה עודכנה בהצלחה");
                 }
 
-                else if (StatusComboBox.SelectedItem.ToString() == "נסגרה_כי_פג_תוקף")
+                else if (StatusComboBox.SelectedItem.ToString() == "נסגרה_בהצלחה")
                 {
                     ord.Status = 3;
                     bl.UpdateOrder(ord);
@@ -157,6 +157,8 @@ namespace PLWPF.Order
             else if ((int)value == 2)
                 return "נסגרה מחוסר הענות של הלקוח";
             else if ((int)value == 3)
+                return "נסגרה בהצלחה";
+            else if ((int)value == 4)
                 return "נסגרה כי פג תוקף";
             return "טרם טופל";
         }

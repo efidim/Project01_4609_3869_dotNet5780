@@ -36,7 +36,13 @@ namespace DAL
             target.HostingUnitKey = original.HostingUnitKey;
             target.Owner = original.Owner;
             target.HostingUnitName = original.HostingUnitName;
-            target.Diary = original.Diary;
+            for (int j = 0; j < 12; j++)
+            {
+                for (int i = 0; i < 31; i++)
+                {
+                    target.Diary[j, i] = original.Diary[j, i];
+                }
+            }
             target.Area = original.Area;
             target.Type = original.Type;
             target.Adults = original.Adults;

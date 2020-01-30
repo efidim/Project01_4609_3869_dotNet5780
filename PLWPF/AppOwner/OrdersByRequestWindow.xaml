@@ -30,19 +30,17 @@
         </Grid.ColumnDefinitions>
 
         <Grid.Background>
-            <ImageBrush ImageSource="bg_purple.jpg" />
+            <ImageBrush ImageSource="data2.png" />
         </Grid.Background>
-        
-        <Label Name="keyLabel" Content=":מפתח הדרישה" Foreground="White" FontSize="25" Grid.Column="2" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" />
 
-        <TextBox Name="KeyTextBox" Grid.Column="1"  HorizontalContentAlignment="Center"  Margin="66.2,70,66.6,69.4"  Text="" VerticalAlignment="Center"  />
+        <Label Name="keyLabel" Content=":מפתח הדרישה" Foreground="White" FontSize="25" Grid.Column="2" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold" />
 
-        <Button Name="displayButton" Content="הצג את מספר ההזמנות" FontSize="14" HorizontalAlignment="Center" Margin="25,10,25.4,0" VerticalAlignment="Top" Width="148" Height="23" Click="displayButton_Click"/>
+        <TextBox Name="KeyTextBox" Opacity="0.8" Grid.Column="1"  HorizontalContentAlignment="Center"  Margin="66.2,70,66.6,69.4"  Text="" VerticalAlignment="Center"  />
 
-        <TextBox Name="displayTextBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Height="78" Margin="56,42,56.4,50.4" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="86"/>
+        <Button Name="displayButton" Style="{StaticResource ButtonStyle2}" Content="הצג את מספר ההזמנות" FontSize="14" HorizontalAlignment="Center" Margin="54,10,52.8,0" VerticalAlignment="Top" Width="158" Height="23" Click="displayButton_Click" FontWeight="Bold"/>
 
-        <Button x:Name="backButton" Content="חזרה"  
-            Margin="110.2,0,110.6,6.4" Height="30" VerticalAlignment="Bottom" FontSize="15" Click="backButton_Click" Grid.Column="1" HorizontalAlignment="Center"  />
+        <TextBox Name="displayTextBox" Opacity="0.8" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Height="78" Margin="56,42,56.4,50.4" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="86"/>
+        <Button x:Name="backButton_Copy" HorizontalAlignment="Center" Style="{StaticResource ButtonStyle2}" Content="חזרה" VerticalAlignment="Top" Width="93" Click="backButton_Click" Height="27" FontWeight="Bold" Margin="85.2,146,86.6,0" Grid.Column="1"/>
 
 
 

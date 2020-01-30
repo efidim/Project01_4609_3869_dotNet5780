@@ -30,6 +30,8 @@ namespace BE
                 str += "\nClosed due to customer unresponsiveness";
             if (Status == 3)
                 str += "\nClosed with customer responsiveness";
+            if (Status == 4)
+                str += "\nClosed because expired date";
 
             str += "Create Date: " + CreateDate +
                 "\nOrder Date: " + OrderDate;
