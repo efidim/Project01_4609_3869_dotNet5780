@@ -17,11 +17,12 @@ using BL;
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for AppOwnerWindow.xaml
+    /// Interaction logic for PasswordWindow.xaml
     /// </summary>
-    public partial class AppOwnerWindow : Window
+    public partial class PasswordWindow : Window
     {
-        public AppOwnerWindow()
+        IBL bl;
+        public PasswordWindow()
         {
             InitializeComponent();
             double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
@@ -30,30 +31,19 @@ namespace PLWPF
             double windowHeight = this.Height;
             this.Left = (screenWidth / 2) - (windowWidth / 2);
             this.Top = (screenHeight / 2) - (windowHeight / 2);
+
+            bl = FactoryBl.getBl();
         }
 
-        private void unitsByAreaButton_Click(object sender, RoutedEventArgs e)
+        private void passwordButton_Click(object sender, RoutedEventArgs e)
         {
-            new UnitsByAreaWindow().Show();
-            this.Close();
-        }
-
-        private void unitsByDayButton_Click(object sender, RoutedEventArgs e)
-        {
-            new UnitsByDayWindow().Show();
-            this.Close();
-        }
-
-        private void numOfOrdersButton_Click(object sender, RoutedEventArgs e)
-        {
-            new OrdersByRequestWindow().Show();
-            this.Close();
-        }
-
-        private void HostsByUnitsButton_Click(object sender, RoutedEventArgs e)
-        {
-            new HostByUnitsWindow().Show();
-            this.Close();
+            if (Name.Text == bl.GetFromConfig("OwnerUser") && Pass.Password.ToString() == bl.GetFromConfig("OwnerPassword"))
+            {
+                new AppOwnerWindow().Show();
+                this.Close();                
+            }
+            else
+                MessageBox.Show("שם משתמש או סיסמא שהוזנו שגויים");
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)

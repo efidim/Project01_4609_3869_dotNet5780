@@ -48,7 +48,7 @@ namespace PLWPF
         }
         private void appOwner_Click(object sender, RoutedEventArgs e)
         {
-            new AppOwnerWindow().Show();
+            new PasswordWindow().Show();
             this.Close();
         }
 

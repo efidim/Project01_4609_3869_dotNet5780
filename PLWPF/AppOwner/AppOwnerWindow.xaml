@@ -11,8 +11,8 @@
         <Style TargetType="{x:Type Control}" x:Key="baseStyle">
             <Setter Property="FontSize" Value="30" />
         </Style>
-        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}">
-            <Setter Property="Background" Value="White"></Setter>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle2}">
+            <Setter Property="FontSize" Value="20"/>
         </Style>
         <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
