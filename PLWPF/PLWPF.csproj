@@ -239,5 +239,8 @@
   <ItemGroup>
     <Resource Include="Order\shake.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="HostingUnit\villa3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

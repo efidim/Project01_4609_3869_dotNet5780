@@ -61,8 +61,16 @@
                             <ComboBox x:Name="typeComboBox" HorizontalContentAlignment="Right" Grid.Column="0" Margin="0,3,3,3" Grid.Row="4" SelectedItem="{Binding Type}" HorizontalAlignment="Right" Width="69"/>
                             <Label Content=":בריכה" Margin="0,-3,-0.4,0" RenderTransformOrigin="-12.479,-9.865"/>
                             <CheckBox x:Name="poolCheckBox" HorizontalAlignment="Center" Margin="54,0,54.4,0" VerticalAlignment="Top" IsChecked="{Binding Pool}" RenderTransformOrigin="0.694,-0.485"/>
-
-                            <Label Content=":ג'קוזי" Grid.Column="2" Margin="0,3,3,3" Grid.Row="6" HorizontalAlignment="Right" Width="43"/>
+                            <Label Content=":ג'קוזי" Margin="0,3" HorizontalAlignment="Right" Width="52" RenderTransformOrigin="0.5,0.5">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform AngleY="0.318"/>
+                                        <RotateTransform/>
+                                        <TranslateTransform Y="-0.128"/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                             <CheckBox x:Name="jacuzziCheckBox" HorizontalAlignment="Center" Margin="0" Grid.Row="6" VerticalAlignment="Top" IsChecked="{Binding Jacuzzi}"/>
 
                             <Label Content=":פעילות לילדים" Grid.Column="1" Margin="3" Grid.Row="7" HorizontalAlignment="Right"/>
