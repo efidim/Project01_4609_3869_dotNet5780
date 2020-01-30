@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <GuestsRequests>
   <GuestRequest>
-    <GuestRequestKey>10000010</GuestRequestKey>
+    <GuestRequestKey>10000013</GuestRequestKey>
     <Name>
       <PrivateName>יוסף</PrivateName>
       <FamilyName>לברן</FamilyName>
@@ -9,34 +9,9 @@
     <MailAddress>yossef.levran@gmail.com</MailAddress>
     <Status>true</Status>
     <Dates>
-      <RegistrationDate>2020-01-27T20:24:27.1447899+02:00</RegistrationDate>
-      <EntryDate>2020-01-29T00:00:00</EntryDate>
-      <ReleaseDate>2020-01-31T00:00:00</ReleaseDate>
-    </Dates>
-    <Area>דרום</Area>
-    <Type />
-    <Guests>
-      <Adults>2</Adults>
-      <Children>2</Children>
-    </Guests>
-    <Attractions>
-      <ChildrenAttractions>2</ChildrenAttractions>
-      <Jacuzzi>1</Jacuzzi>
-      <Pool>0</Pool>
-    </Attractions>
-  </GuestRequest>
-  <GuestRequest>
-    <GuestRequestKey>10000011</GuestRequestKey>
-    <Name>
-      <PrivateName>אפי</PrivateName>
-      <FamilyName>דימנטמן</FamilyName>
-    </Name>
-    <MailAddress>yossef.levran@gmail.com</MailAddress>
-    <Status>True</Status>
-    <Dates>
-      <RegistrationDate>2020-01-28T00:35:18.7322369+02:00</RegistrationDate>
-      <EntryDate>29/01/2020 0:00:00</EntryDate>
-      <ReleaseDate>31/01/2020 0:00:00</ReleaseDate>
+      <RegistrationDate>2020-01-30T16:32:08.2429642+02:00</RegistrationDate>
+      <EntryDate>2020-02-25T00:00:00</EntryDate>
+      <ReleaseDate>2020-02-27T00:00:00</ReleaseDate>
     </Dates>
     <Area>צפון</Area>
     <Type>צימר</Type>
@@ -48,31 +23,6 @@
       <ChildrenAttractions>1</ChildrenAttractions>
       <Jacuzzi>1</Jacuzzi>
       <Pool>1</Pool>
-    </Attractions>
-  </GuestRequest>
-  <GuestRequest>
-    <GuestRequestKey>10000012</GuestRequestKey>
-    <Name>
-      <PrivateName>sg</PrivateName>
-      <FamilyName>hfgh</FamilyName>
-    </Name>
-    <MailAddress>efid@fgd.g</MailAddress>
-    <Status>true</Status>
-    <Dates>
-      <RegistrationDate>2020-01-28T08:27:03.4733689+02:00</RegistrationDate>
-      <EntryDate>2020-01-14T00:00:00</EntryDate>
-      <ReleaseDate>2020-01-22T00:00:00</ReleaseDate>
-    </Dates>
-    <Area>צפון</Area>
-    <Type>מלון</Type>
-    <Guests>
-      <Adults>4</Adults>
-      <Children>2</Children>
-    </Guests>
-    <Attractions>
-      <ChildrenAttractions>0</ChildrenAttractions>
-      <Jacuzzi>1</Jacuzzi>
-      <Pool>0</Pool>
     </Attractions>
   </GuestRequest>
 </GuestsRequests>

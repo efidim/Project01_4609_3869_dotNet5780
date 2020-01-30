@@ -29,10 +29,10 @@
         </Grid.Background>
 
         <Button x:Name="addUnitButton" Content="יצירת הזמנה חדשה"  
-        Margin="40"  Grid.Row="0" Click="addUnitButton_Click"/>
+        Margin="40"  Grid.Row="0" Click="addUnitButton_Click" FontWeight="Bold"/>
 
         <Button x:Name="existedUnitButton" Content="עדכון הזמנה קיימת"  
-        Margin="40,9.6,39.6,70" Grid.Row="1" Click="existedUnitButton_Click"/>
+        Margin="40,9.6,39.6,70" Grid.Row="1" Click="existedUnitButton_Click" FontWeight="Bold"/>
         <Button x:Name="backButton" Style="{StaticResource ButtonStyle2}" Content="חזרה" HorizontalAlignment="Left" Margin="351,162.6,0,0" VerticalAlignment="Top" Width="93" Click="backButton_Click" Height="27" FontWeight="Bold" Grid.Row="1"/>
     </Grid>
 </Window>

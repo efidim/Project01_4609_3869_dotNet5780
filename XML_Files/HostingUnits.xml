@@ -309,6 +309,7 @@
       <boolean>false</boolean>
       <boolean>false</boolean>
       <boolean>false</boolean>
+      <boolean>true</boolean>
       <boolean>false</boolean>
       <boolean>false</boolean>
       <boolean>false</boolean>
@@ -320,6 +321,7 @@
       <boolean>false</boolean>
       <boolean>false</boolean>
       <boolean>false</boolean>
+      <boolean>true</boolean>
       <boolean>false</boolean>
       <boolean>false</boolean>
       <boolean>false</boolean>
@@ -331,9 +333,7 @@
       <boolean>false</boolean>
       <boolean>false</boolean>
       <boolean>false</boolean>
-      <boolean>false</boolean>
-      <boolean>false</boolean>
-      <boolean>false</boolean>
+      <boolean>true</boolean>
       <boolean>false</boolean>
       <boolean>false</boolean>
       <boolean>false</boolean>
@@ -393,11 +393,11 @@
       <boolean>false</boolean>
       <boolean>false</boolean>
     </Diary>
-    <Area>דרום</Area>
+    <Area>צפון</Area>
     <Type>צימר</Type>
     <Adults>2</Adults>
     <Children>2</Children>
-    <Pool>true</Pool>
+    <Pool>false</Pool>
     <Jacuzzi>false</Jacuzzi>
     <ChildrenAttractions>false</ChildrenAttractions>
   </HostingUnit>

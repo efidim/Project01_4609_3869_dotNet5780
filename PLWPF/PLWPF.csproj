@@ -242,5 +242,14 @@
   <ItemGroup>
     <Resource Include="HostingUnit\villa3.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Order\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Order\calendar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Order\calendar2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

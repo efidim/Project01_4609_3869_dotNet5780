@@ -26,15 +26,16 @@ namespace PLWPF.Order
         public UpdateOrderWindow()
         {
             InitializeComponent();
+            double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
+            double screenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+            double windowWidth = this.Width;
+            double windowHeight = this.Height;
+            this.Left = (screenWidth / 2) - (windowWidth / 2);
+            this.Top = (screenHeight / 2) - (windowHeight / 2);
+
             bl = FactoryBl.getBl();
             ord = new BE.Order();
 
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            new OrderWindow().Show();
-            this.Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -50,6 +51,12 @@ namespace PLWPF.Order
                 MessageBox.Show(ex.Message);            
             }
           
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            new OrderWindow().Show();
+            this.Close();
         }
     }
 }

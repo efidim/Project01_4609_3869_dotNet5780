@@ -362,7 +362,7 @@ namespace BL
         public void UpdateOldOrders()
         {
             List<Order> temp1 = GetAllOrders();
-            List<Order> temp2 = temp1.FindAll(x => DifferenceDays(x.OrderDate) >= 30);
+            List<Order> temp2 = temp1.FindAll(x => DifferenceDays(x.OrderDate) >= 30 && x.OrderDate.ToString() != "01/01/0001 0:00:00");
             foreach (var item in temp2)
             {
                 item.Status = 3;

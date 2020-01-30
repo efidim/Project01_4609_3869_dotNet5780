@@ -14,17 +14,17 @@
     <Grid>
 
         <Grid.Background>
-            <ImageBrush ImageSource="bg_red.jpg" />
+            <ImageBrush ImageSource="calendar2.png" />
         </Grid.Background>
 
-        <Label Name="numLabel" Content=":מספר הזמנה" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="415,58,0,0" VerticalAlignment="Top" Width="129"/>
+        <Label Name="numLabel" Content=":מספר הזמנה" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="415,58,0,0" VerticalAlignment="Top" Width="139" FontWeight="Bold"/>
 
         <Label Content="{Binding OrderKey}" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="244,58,0,0" VerticalAlignment="Top" Width="132" Height="37"/>
 
 
         <Label Content="סטטוס" FontSize="20" 
                HorizontalAlignment="Center" Foreground="White" 
-               Margin="359,118,359.6,0" VerticalAlignment="Top" Width="75"/>
+               Margin="359,118,359.6,0" VerticalAlignment="Top" Width="75" FontWeight="Bold"/>
 
 
         <TextBox x:Name="StatusTextBox" 
@@ -39,23 +39,22 @@
 
 
 
-        <Label Content="שינוי סטטוס" Foreground="White" FontSize="18" HorizontalAlignment="Left" Margin="474,238,0,0" VerticalAlignment="Top" Width="109" RenderTransformOrigin="0.576,0.649"/>
+        <Label Content="שינוי סטטוס" Foreground="White" FontSize="18" HorizontalAlignment="Left" Margin="487,243,0,0" VerticalAlignment="Top" Width="115" RenderTransformOrigin="0.576,0.649" FontWeight="Bold"/>
 
 
 
 
-        <ComboBox Name="StatusComboBox" HorizontalContentAlignment="Right" SelectedItem="{Binding OrderStatus}" HorizontalAlignment="Left" Margin="325,244,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox Name="StatusComboBox" HorizontalContentAlignment="Right" SelectedItem="{Binding OrderStatus}" HorizontalAlignment="Left" Margin="325,249,0,0" VerticalAlignment="Top" Width="139"/>
 
 
         <Button Name="updateButton"
+                Style="{StaticResource ButtonStyle2}"
                 Content="עדכן"
                 FontSize="15"                
-                Margin="336,296,337.6,93" Background="White"             
-                Click="updateButton_Click"/>
+                Margin="336,296,337.6,93"             
+                Click="updateButton_Click" FontWeight="Bold"/>
+        <Button x:Name="backButton" Style="{StaticResource ButtonStyle2}" Content="חזרה" HorizontalAlignment="Left" Margin="352,363,0,0" VerticalAlignment="Top" Width="93" Click="backButton_Click" Height="27" FontWeight="Bold"/>
 
-        <Button Content="חזרה"                
-                Margin="359,366,359.6,27"              
-                Click="backButton_Click" Background="White"/>
 
     </Grid>
 </Window>
