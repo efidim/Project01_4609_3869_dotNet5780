@@ -28,10 +28,19 @@ namespace PLWPF.Order
         public CreateOrderWindow()
         {
             InitializeComponent();
+            double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
+            double screenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+            double windowWidth = this.Width;
+            double windowHeight = this.Height;
+            this.Left = (screenWidth / 2) - (windowWidth / 2);
+            this.Top = (screenHeight / 2) - (windowHeight / 2);
+
             order = new BE.Order();
             unit = new BE.HostingUnit();
             this.DataContext = unit;
             bl = BL.FactoryBl.getBl();
+
+            this.commission.Text =  "שח " + bl.GetFromConfig("COMMISSION") ;
         }
             
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -77,6 +86,7 @@ namespace PLWPF.Order
             new OrderWindow().Show();
             this.Close();
         }
+
     }
 
 

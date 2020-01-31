@@ -64,7 +64,7 @@ namespace BL
         #region Others                         
         int DifferenceDays(DateTime a, DateTime? b = null);              
         List<BankBranch> ListBankBranches();
-        bool CheckBranch(int codeBank, int codeBranch);
+        BankBranch CheckBranch(int codeBank, int codeBranch);
         bool IntToBool(int value);
         string GetFromConfig(string s);
 

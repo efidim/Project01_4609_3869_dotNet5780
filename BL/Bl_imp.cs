@@ -299,7 +299,7 @@ namespace BL
             int originStatus = GetOrder(ord.OrderKey).Status;
             // Order Status before the update
             if (originStatus == 0 && ord.Status == 1 && !GetHostByUnit(ord.HostingUnitKey).CollectionClearance)
-                throw new Exception("Cannot sent order to the Guest without authorization " +
+                throw new Exception("Cannot sent mail to the Guest without authorization " +
                     "for Collection Clearance");
             if (originStatus == 2 || originStatus == 3)
                 throw new Exception("Cannot update order after closing");
@@ -315,10 +315,10 @@ namespace BL
             {
                 ord.OrderDate = DateTime.Now;
             }
-            dal.UpdateOrder(ord);
-            SetDiary(ord);
-            if (ord.Status == 2 || ord.Status == 3)
+            dal.UpdateOrder(ord);            
+            if (ord.Status == 1 || ord.Status == 3)
             {
+                SetDiary(ord);
                 DisactivateRequest(ord.GuestRequestKey);
                 UpdateOtherOrders(GetRequest(ord.GuestRequestKey).MailAddress, ord.OrderKey);
             }
@@ -362,10 +362,10 @@ namespace BL
         public void UpdateOldOrders()
         {
             List<Order> temp1 = GetAllOrders();
-            List<Order> temp2 = temp1.FindAll(x => DifferenceDays(x.OrderDate) >= 30);
+            List<Order> temp2 = temp1.FindAll(x => DifferenceDays(x.OrderDate) >= 30 && x.OrderDate.ToString() != "01/01/0001 0:00:00");
             foreach (var item in temp2)
             {
-                item.Status = 3;
+                item.Status = 4;
                 dal.UpdateOrder(item);
             }
         }
@@ -443,16 +443,14 @@ namespace BL
             return dal.ListBankBranches();
         }
 
-        public bool CheckBranch(int codeBank, int codeBranch)
+        public BankBranch CheckBranch(int codeBank, int codeBranch)
         {
             List<BankBranch> list = ListBankBranches();
             BankBranch temp = (from item in list
                                where item.BankNumber == codeBank && item.BranchNumber == codeBranch
                                select item).FirstOrDefault();
 
-            if (temp == null)
-                return false;
-            return true;
+            return temp;
         }
 
         public bool IntToBool(int value)

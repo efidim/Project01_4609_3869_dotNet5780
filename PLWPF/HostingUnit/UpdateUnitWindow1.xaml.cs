@@ -27,6 +27,13 @@ namespace PLWPF
         public UpdateUnitWindow1()
         {
             InitializeComponent();
+            double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
+            double screenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+            double windowWidth = this.Width;
+            double windowHeight = this.Height;
+            this.Left = (screenWidth / 2) - (windowWidth / 2);
+            this.Top = (screenHeight / 2) - (windowHeight / 2);
+
             unit = new HostingUnit();
             bl = FactoryBl.getBl();
         }
@@ -43,6 +50,7 @@ namespace PLWPF
 
 
                 new UpdateUnitWindow2(unit).Show();
+                this.Close();
             }
             catch (Exception ex)
             {

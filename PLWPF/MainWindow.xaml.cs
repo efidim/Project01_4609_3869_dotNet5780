@@ -23,6 +23,12 @@ namespace PLWPF
         public MainWindow()
         {
             InitializeComponent();
+            double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
+            double screenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+            double windowWidth = this.Width;
+            double windowHeight = this.Height;
+            this.Left = (screenWidth / 2) - (windowWidth / 2);
+            this.Top = (screenHeight / 2) - (windowHeight / 2);
         }
 
         private void guestRequestButton_Click(object sender, RoutedEventArgs e)
@@ -32,7 +38,7 @@ namespace PLWPF
         }
         private void hostingUnitButton_Click(object sender, RoutedEventArgs e)
         {
-            new HostingUnitWindow().Show();
+            new HostWindow().Show();
             this.Close();
         }
         private void orderButton_Click(object sender, RoutedEventArgs e)
@@ -42,7 +48,7 @@ namespace PLWPF
         }
         private void appOwner_Click(object sender, RoutedEventArgs e)
         {
-            new AppOwnerWindow().Show();
+            new PasswordWindow().Show();
             this.Close();
         }
 

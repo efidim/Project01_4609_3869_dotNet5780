@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>home_house_10811.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -90,6 +93,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="HostWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -109,6 +116,9 @@
     </Compile>
     <Compile Include="HostingUnit\HostingUnitWindow.xaml.cs">
       <DependentUpon>HostingUnitWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HostWindow.xaml.cs">
+      <DependentUpon>HostWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -150,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="AppOwner\PasswordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppOwner\OrdersByRequestWindow.xaml.cs">
@@ -166,6 +180,9 @@
     </Compile>
     <Compile Include="Order\UpdateOrderWindow2.xaml.cs">
       <DependentUpon>UpdateOrderWindow2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppOwner\PasswordWindow.xaml.cs">
+      <DependentUpon>PasswordWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -203,11 +220,55 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="bg_blue.jpg" />
-    <Resource Include="HostingUnit\bg_green.jpg" />
-    <Resource Include="AppOwner\bg_purple.jpg" />
-    <Resource Include="Order\bg_red.jpg" />
-    <Resource Include="GuestRequest\bg_yellow.jpg" />
+    <Resource Include="blackBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="hotel.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="beachBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="intro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GuestRequest\bell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="HostingUnit\villa1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="HostingUnit\villa2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Order\shake.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="HostingUnit\villa3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Order\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Order\calendar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Order\calendar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppOwner\data.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppOwner\data1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppOwner\data2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="home_house_10811.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

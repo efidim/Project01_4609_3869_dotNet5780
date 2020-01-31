@@ -23,6 +23,12 @@ namespace PLWPF
         public OrderWindow()
         {
             InitializeComponent();
+            double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
+            double screenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+            double windowWidth = this.Width;
+            double windowHeight = this.Height;
+            this.Left = (screenWidth / 2) - (windowWidth / 2);
+            this.Top = (screenHeight / 2) - (windowHeight / 2);
         }
 
         private void addUnitButton_Click(object sender, RoutedEventArgs e)
@@ -39,7 +45,7 @@ namespace PLWPF
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            new MainWindow().Show();
+            new HostWindow().Show();
             this.Close();
         }
     }

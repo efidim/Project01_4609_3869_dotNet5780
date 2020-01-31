@@ -19,7 +19,7 @@ namespace BE
         {
             get { return Diary.Flatten(); }
             set { Diary = value.Expand(12); }
-        }    
+        }
 
         public string Area { get; set; }
         public string subArea { get; set; }
@@ -46,15 +46,15 @@ namespace BE
                 "\nOwner:\n " + Owner +
                 "\nList of occupied dates:\n";
 
-            DateTime current = DateTime.Today.AddMonths(-1); 
+            DateTime current = DateTime.Today.AddMonths(-1);
             // intialization to the matrice first day
-            
-            if (Diary[current.Month -1, current.Day -1]) // first day check
+
+            if (Diary[current.Month - 1, current.Day - 1]) // first day check
                 str += current.Day + "/" + current.Month + "-";
 
             current = current.AddDays(1);
 
-            for (;current < DateTime.Today.AddYears(1).AddMonths(-1).AddDays(-1); current = current.AddDays(1))
+            for (; current < DateTime.Today.AddYears(1).AddMonths(-1).AddDays(-1); current = current.AddDays(1))
             {
                 if (Diary[current.Month - 1, current.Day - 1] &&
                     !Diary[current.AddDays(-1).Month - 1, current.AddDays(-1).Day - 1])
@@ -77,21 +77,22 @@ namespace BE
     {
         public static T[] Flatten<T>(this T[,] arr)
         {
+            int k = 0;
             int rows = arr.GetLength(0);
             int columns = arr.GetLength(1);
             T[] arrFlattened = new T[rows * columns];
-            for (int j = 0; j < columns; j++)
+            for (int j = 0; j < rows; j++)
             {
-                for (int i = 0; i < rows; i++)
+                for (int i = 0; i < columns; i++)
                 {
-                    var test = arr[i, j];
-                    arrFlattened[i + j * rows] = arr[i, j];
+                    arrFlattened[k++] = arr[j, i];
                 }
             }
             return arrFlattened;
         }
         public static T[,] Expand<T>(this T[] arr, int rows)
         {
+            int k = 0;
             int length = arr.GetLength(0);
             int columns = length / rows;
             T[,] arrExpanded = new T[rows, columns];
@@ -99,11 +100,11 @@ namespace BE
             {
                 for (int i = 0; i < columns; i++)
                 {
-                    arrExpanded[j, i] = arr[i + j * rows];
+                    arrExpanded[j, i] = arr[k++];
                 }
             }
             return arrExpanded;
         }
     }
-} 
+}
 

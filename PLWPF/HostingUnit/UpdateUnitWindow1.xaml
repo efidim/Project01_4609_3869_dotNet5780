@@ -11,7 +11,7 @@
             <Setter Property="Background" Value="White"/>
         </Style>
     </Window.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
@@ -20,12 +20,11 @@
         </Grid.RowDefinitions>
 
         <Grid.Background>
-            <ImageBrush ImageSource="bg_green.jpg" />
+            <ImageBrush ImageSource="villa3.png"/>
         </Grid.Background>
+        <Label Name="instructionLabel" Foreground="White" Content="הזן את קוד היחידה או את שם היחידה" Margin="143,38,142.6,24" Grid.Row="0" FontSize="30" Width="508" HorizontalAlignment="Center" FontWeight="Bold" />
 
-        <Label Name="instructionLabel" Foreground="White" Content="הזן את קוד היחידה או את שם היחידה" Margin="149,38,148.6,24" Grid.Row="0" FontSize="30" Width="496" HorizontalAlignment="Center" />
-
-        <TextBox Name="InputTextBox" HorizontalAlignment="Left" Height="46" Margin="255,8,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="284" FontSize="30" BorderBrush="Black" TextAlignment="Right" />
+        <TextBox Name="InputTextBox" HorizontalAlignment="Left" Height="46" Margin="255,8,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="284" FontSize="30" BorderBrush="Black" TextAlignment="Center" />
 
         <Grid x:Name="GridButton" Grid.Row="2" Margin="0,15.2,-0.4,0">
             <Grid.ColumnDefinitions>
@@ -33,12 +32,11 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="removeButton" Content="מחיקה" FontSize="25" HorizontalAlignment="Center" Grid.Column="0" VerticalAlignment="Top"  Width="189" Height="55" Click="removeButton_Click"/>
-            <Button x:Name="updateButton" Content="עדכון" FontSize="25" HorizontalAlignment="Center"  Grid.Column="1" VerticalAlignment="Top" Width="189" Height="55" Click="updateButton_Click"/>
-            <Button x:Name="backButton" Content="חזרה"  
-                Margin="341,107,340.6,0" Height="30" VerticalAlignment="Top" FontSize="18" Click="backButton_Click" Grid.ColumnSpan="2"/>
+            <Button x:Name="removeButton" Style="{StaticResource ButtonStyle2}" Content="מחיקה" FontSize="25" HorizontalAlignment="Center" Grid.Column="0" VerticalAlignment="Top"  Width="189" Height="55" Click="removeButton_Click" FontWeight="Bold"/>
+            <Button x:Name="updateButton" Style="{StaticResource ButtonStyle2}" Content="עדכון" FontSize="25" HorizontalAlignment="Center"  Grid.Column="1" VerticalAlignment="Top" Width="189" Height="55" Click="updateButton_Click" FontWeight="Bold"/>
 
         </Grid>
+        <Button x:Name="backButton" Style="{StaticResource ButtonStyle2}" Content="חזרה" HorizontalAlignment="Left" Margin="351,128.2,0,0" VerticalAlignment="Top" Width="93" Click="backButton_Click" Height="27" FontWeight="Bold" Grid.Row="2"/>
 
 
     </Grid>

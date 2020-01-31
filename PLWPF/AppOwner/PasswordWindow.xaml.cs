@@ -11,15 +11,18 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE;
+using BL;
 
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for HostingUnitWindow.xaml
+    /// Interaction logic for PasswordWindow.xaml
     /// </summary>
-    public partial class HostingUnitWindow : Window
+    public partial class PasswordWindow : Window
     {
-        public HostingUnitWindow()
+        IBL bl;
+        public PasswordWindow()
         {
             InitializeComponent();
             double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
@@ -28,23 +31,24 @@ namespace PLWPF
             double windowHeight = this.Height;
             this.Left = (screenWidth / 2) - (windowWidth / 2);
             this.Top = (screenHeight / 2) - (windowHeight / 2);
+
+            bl = FactoryBl.getBl();
         }
 
-        private void addUnitButton_Click(object sender, RoutedEventArgs e)
+        private void passwordButton_Click(object sender, RoutedEventArgs e)
         {
-            new AddUnitWindow().Show();
-            this.Close();
-        }
-
-        private void existedUnitButton_Click(object sender, RoutedEventArgs e)
-        {
-            new UpdateUnitWindow1().Show();
-            this.Close();
+            if (Name.Text == bl.GetFromConfig("OwnerUser") && Pass.Password.ToString() == bl.GetFromConfig("OwnerPassword"))
+            {
+                new AppOwnerWindow().Show();
+                this.Close();                
+            }
+            else
+                MessageBox.Show("שם משתמש או סיסמא שהוזנו שגויים");
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            new HostWindow().Show();
+            new MainWindow().Show();
             this.Close();
         }
     }

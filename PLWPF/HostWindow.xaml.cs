@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for HostingUnitWindow.xaml
+    /// Interaction logic for HostWindow.xaml
     /// </summary>
-    public partial class HostingUnitWindow : Window
+    public partial class HostWindow : Window
     {
-        public HostingUnitWindow()
+        public HostWindow()
         {
             InitializeComponent();
             double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
@@ -30,21 +30,21 @@ namespace PLWPF
             this.Top = (screenHeight / 2) - (windowHeight / 2);
         }
 
-        private void addUnitButton_Click(object sender, RoutedEventArgs e)
+        private void unitsButton_Click(object sender, RoutedEventArgs e)
         {
-            new AddUnitWindow().Show();
+            new HostingUnitWindow().Show();
             this.Close();
         }
 
-        private void existedUnitButton_Click(object sender, RoutedEventArgs e)
+        private void ordersButton_Click(object sender, RoutedEventArgs e)
         {
-            new UpdateUnitWindow1().Show();
+            new OrderWindow().Show();
             this.Close();
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            new HostWindow().Show();
+            new MainWindow().Show();
             this.Close();
         }
     }
