@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:PLWPF"
              StartupUri="MainWindow.xaml">
 
+   
     <Application.Resources>
 
         <local:IntToStringConverter x:Key="IntToStringConverter" />
