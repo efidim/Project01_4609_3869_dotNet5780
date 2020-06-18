@@ -17,7 +17,6 @@
         </Style>
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
-
     </Window.Resources>
 
     <Grid>
