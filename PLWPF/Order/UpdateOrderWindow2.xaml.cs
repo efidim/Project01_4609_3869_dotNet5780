@@ -40,7 +40,7 @@ namespace PLWPF.Order
 
             ord = order;
             this.DataContext = ord;
-            bl = FactoryBl.getBl();
+            bl = FactoryBL.getBL();
             this.StatusComboBox.ItemsSource = Enum.GetValues(typeof(Enums.orderStatus));
 
             worker = new BackgroundWorker();

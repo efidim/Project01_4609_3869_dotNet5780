@@ -38,7 +38,7 @@ namespace PLWPF.Order
             order = new BE.Order();
             unit = new BE.HostingUnit();
             this.DataContext = unit;
-            bl = BL.FactoryBl.getBl();
+            bl = BL.FactoryBL.getBL();
 
             this.commission.Text =  "שח " + bl.GetFromConfig("COMMISSION") ;
         }

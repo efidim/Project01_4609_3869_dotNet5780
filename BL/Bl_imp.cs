@@ -10,11 +10,11 @@ using DAL;
 
 namespace BL
 {
-    public class Bl_imp : IBL
+    public class BL_imp : IBL
     {
         IDAL dal = FactoryDal.getdal();
 
-        public Bl_imp()
+        public BL_imp()
         {
             Thread updateOrders = new Thread(UpdateOldOrdersDaily);
             updateOrders.Start();
@@ -40,7 +40,7 @@ namespace BL
             return dal.GetRequest(keyRequest);
         }
 
-        public List<GuestRequest> GetAllGuests()
+        public List<GuestRequest> GetAllRequests()
         {
             return dal.GetAllGuests();
         }
@@ -51,7 +51,7 @@ namespace BL
         /// <returns></returns>
         public IEnumerable<IGrouping<string, GuestRequest>> RequestsByArea()
         {
-            IEnumerable<GuestRequest> temp1 = GetAllGuests();
+            IEnumerable<GuestRequest> temp1 = GetAllRequests();
             IEnumerable<IGrouping<string, GuestRequest>> temp2 = from item in temp1
                                                                  group item by item.area;
             return temp2;
@@ -63,7 +63,7 @@ namespace BL
         /// <returns></returns>
         public IEnumerable<IGrouping<int, GuestRequest>> RequestsByGuests()
         {
-            IEnumerable<GuestRequest> temp1 = GetAllGuests();
+            IEnumerable<GuestRequest> temp1 = GetAllRequests();
             IEnumerable<IGrouping<int, GuestRequest>> temp2 = from item in temp1
                                                               group item by item.adults + item.children;
             return temp2;
@@ -76,7 +76,7 @@ namespace BL
         /// <returns></returns>
         public IEnumerable<GuestRequest> RequestsByCondition(Func<GuestRequest, bool> method)
         {
-            IEnumerable<GuestRequest> temp1 = GetAllGuests();
+            IEnumerable<GuestRequest> temp1 = GetAllRequests();
             IEnumerable<GuestRequest> temp2 = from item in temp1
                                               where method(item)
                                               select item;
@@ -85,7 +85,7 @@ namespace BL
 
         public List<GuestRequest> RelevantRequest(HostingUnit unit)
         {
-            List<GuestRequest> temp1 = GetAllGuests();
+            List<GuestRequest> temp1 = GetAllRequests();
             List<GuestRequest> temp2 = temp1.FindAll(x => x.area == unit.area
             && x.type == unit.type && IsItAvailaible(unit, x.entryDate, DifferenceDays(x.entryDate, x.releaseDate))
             && (x.status) && x.adults <= unit.adults

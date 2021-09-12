@@ -37,7 +37,7 @@ namespace PLWPF
 
             unitToUpdate = unit;
             this.DataContext = unit;
-            bl = FactoryBl.getBl();
+            bl = FactoryBL.getBL();
 
 
             this.areaComboBox.ItemsSource = Enum.GetValues(typeof(Enums.area));

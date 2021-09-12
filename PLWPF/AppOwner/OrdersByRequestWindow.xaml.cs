@@ -34,7 +34,7 @@ namespace PLWPF
             this.Left = (screenWidth / 2) - (windowWidth / 2);
             this.Top = (screenHeight / 2) - (windowHeight / 2);
 
-            bl = FactoryBl.getBl();
+            bl = FactoryBL.getBL();
             req = new GuestRequest();          
         }
 

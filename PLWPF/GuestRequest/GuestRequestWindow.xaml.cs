@@ -39,7 +39,7 @@ namespace PLWPF
 
             guest = new BE.GuestRequest();
             this.GuestRequestGrid.DataContext = guest;
-            bl = BL.FactoryBl.getBl();
+            bl = BL.FactoryBL.getBL();
             this.DataContext = guest;
 
             this.areaComboBox.ItemsSource =Enum.GetValues(typeof(Enums.area));

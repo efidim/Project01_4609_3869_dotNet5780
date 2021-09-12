@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-    public class FactoryBl
+    public class FactoryBL
     {
-        public static IBL getBl()
+        public static IBL getBL()
         {
-            return new Bl_imp();
+            return new BL_imp();
         }
     }
 }

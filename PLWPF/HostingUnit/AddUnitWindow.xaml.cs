@@ -38,7 +38,7 @@ namespace PLWPF
             unit.owner = new Host();
             unit.owner.bankBranchDetails = new BankBranch();
             this.DataContext = unit;
-            bl = FactoryBl.getBl();
+            bl = FactoryBL.getBL();
 
             this.areaComboBox.ItemsSource = Enum.GetValues(typeof(Enums.area));
             this.typeComboBox.ItemsSource = Enum.GetValues(typeof(Enums.hostingUnitType));

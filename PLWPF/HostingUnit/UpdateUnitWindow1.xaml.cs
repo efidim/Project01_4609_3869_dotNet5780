@@ -35,7 +35,7 @@ namespace PLWPF
             this.Top = (screenHeight / 2) - (windowHeight / 2);
 
             unit = new HostingUnit();
-            bl = FactoryBl.getBl();
+            bl = FactoryBL.getBL();
         }
 
         private void updateButton_Click(object sender, RoutedEventArgs e)

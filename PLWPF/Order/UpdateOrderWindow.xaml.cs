@@ -33,7 +33,7 @@ namespace PLWPF.Order
             this.Left = (screenWidth / 2) - (windowWidth / 2);
             this.Top = (screenHeight / 2) - (windowHeight / 2);
 
-            bl = FactoryBl.getBl();
+            bl = FactoryBL.getBL();
             ord = new BE.Order();
 
         }
