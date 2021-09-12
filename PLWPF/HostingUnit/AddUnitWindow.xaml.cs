@@ -35,13 +35,13 @@ namespace PLWPF
             this.Top = (screenHeight / 2) - (windowHeight / 2);
 
             unit = new BE.HostingUnit();
-            unit.Owner = new Host();
-            unit.Owner.BankBranchDetails = new BankBranch();
+            unit.owner = new Host();
+            unit.owner.bankBranchDetails = new BankBranch();
             this.DataContext = unit;
             bl = FactoryBl.getBl();
 
-            this.areaComboBox.ItemsSource = Enum.GetValues(typeof(Enums.Area));
-            this.typeComboBox.ItemsSource = Enum.GetValues(typeof(Enums.HostingUnitType));
+            this.areaComboBox.ItemsSource = Enum.GetValues(typeof(Enums.area));
+            this.typeComboBox.ItemsSource = Enum.GetValues(typeof(Enums.hostingUnitType));
         }
 
         private void tabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -105,9 +105,9 @@ namespace PLWPF
                     value = int.Parse(this.branchNumTextBox.Text);
                     value = int.Parse(this.accountTextBox.Text);
                     temp = CheckBranch(int.Parse(this.bankNumTextBox.Text), int.Parse(this.branchNumTextBox.Text));
-                    unit.Owner.BankBranchDetails.BankName = temp.BankName;
-                    unit.Owner.BankBranchDetails.BranchAddress = temp.BranchAddress;
-                    unit.Owner.BankBranchDetails.BranchCity = temp.BranchCity;
+                    unit.owner.bankBranchDetails.bankName = temp.bankName;
+                    unit.owner.bankBranchDetails.branchAddress = temp.branchAddress;
+                    unit.owner.bankBranchDetails.branchCity = temp.branchCity;
 
                 }
 

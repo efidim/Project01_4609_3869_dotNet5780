@@ -8,24 +8,24 @@ namespace BE
 {
     public class Host
     {
-        public int HostKey{ get; set; }
-        public string PrivateName{ get; set; }
-        public string FamilyName{ get; set; }
-        public string PhoneNumber{ get; set; }
-        public string MailAddress{ get; set; }
-        public BankBranch BankBranchDetails { get; set; }
-        public int BankAccountNumber{ get; set; }
-        public bool CollectionClearance{ get; set; }
+        public int hostKey{ get; set; }
+        public string privateName{ get; set; }
+        public string familyName{ get; set; }
+        public string phoneNumber{ get; set; }
+        public string mailAddress{ get; set; }
+        public BankBranch bankBranchDetails { get; set; }
+        public int bankAccountNumber{ get; set; }
+        public bool collectionClearance{ get; set; }
 
         public override string ToString()
         {
-            string str = "Host Key: " + HostKey +
-                "\n Private Name: " + PrivateName +
-                "\n Family Name: " + FamilyName +
-                "\n Phone Number: " + PhoneNumber +
-                "\n Mail Address: " + MailAddress +
-                "\n Bank Account: " + BankBranchDetails.ToString() +
-                "\n Collection Clearance: " + CollectionClearance;
+            string str = "Host Key: " + hostKey +
+                "\n Private Name: " + privateName +
+                "\n Family Name: " + familyName +
+                "\n Phone Number: " + phoneNumber +
+                "\n Mail Address: " + mailAddress +
+                "\n Bank Account: " + bankBranchDetails.ToString() +
+                "\n Collection Clearance: " + collectionClearance;
              return str;
         }
     }

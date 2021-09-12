@@ -80,7 +80,7 @@ namespace PLWPF
                 }
             }
 
-            this.areaComboBox.ItemsSource = Enum.GetValues(typeof(Enums.Area));
+            this.areaComboBox.ItemsSource = Enum.GetValues(typeof(Enums.area));
         }
 
         private void areaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

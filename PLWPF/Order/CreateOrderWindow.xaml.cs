@@ -64,11 +64,11 @@ namespace PLWPF.Order
             try
             {
                 GuestRequest reqTemp = requests.SelectedItem as GuestRequest;
-                order.HostingUnitKey = unit.hostingUnitKey;
-                order.GuestRequestKey = reqTemp.GuestRequestKey;
-                order.Status = 0;
-                order.CreateDate = DateTime.Today;
-                order.CommissionPerDay = int.Parse(bl.GetFromConfig("COMMISSION"));
+                order.hostingUnitKey = unit.hostingUnitKey;
+                order.guestRequestKey = reqTemp.guestRequestKey;
+                order.status = 0;
+                order.createDate = DateTime.Today;
+                order.commissionPerDay = int.Parse(bl.GetFromConfig("COMMISSION"));
                 int orderKey = bl.AddOrder(order);
                 MessageBox.Show("The Order has been successfully created and the key is: " + orderKey);
                 new OrderWindow().Show();

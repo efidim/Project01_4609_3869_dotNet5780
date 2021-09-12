@@ -2,14 +2,14 @@
 {
     public static class Enums
     {
-        public enum HostingUnitType 
+        public enum hostingUnitType 
         {
             צימר,        
             מלון,
             קמפינג,
         }
 
-        public enum OrderStatus
+        public enum orderStatus
         {
            טרם_טופל,
            נשלח_מייל,
@@ -17,21 +17,21 @@
            נסגרה_בהצלחה
         }
 
-        public enum RequestStatus
+        public enum requestStatus
         {
             פתוחה,
             נסגרה_עסקה_דרך_האתר,
             נסגרה_כי_פג_תוקף,
         }
 
-        public enum Area
+        public enum area
         {
             צפון,
             דרום,
             מרכז,
             ירושלים,
         }
-        public enum Response
+        public enum response
         {
             אפשרי,    
            לא_מעוניין,

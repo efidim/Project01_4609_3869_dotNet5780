@@ -41,7 +41,7 @@ namespace PLWPF.Order
             ord = order;
             this.DataContext = ord;
             bl = FactoryBl.getBl();
-            this.StatusComboBox.ItemsSource = Enum.GetValues(typeof(Enums.OrderStatus));
+            this.StatusComboBox.ItemsSource = Enum.GetValues(typeof(Enums.orderStatus));
 
             worker = new BackgroundWorker();
             worker.DoWork += Worker_DoWork;
@@ -52,7 +52,7 @@ namespace PLWPF.Order
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
             MailMessage mail = new MailMessage();
-            mail.To.Add(bl.GetRequest(ord.GuestRequestKey).MailAddress);
+            mail.To.Add(bl.GetRequest(ord.guestRequestKey).mailAddress);
             mail.From = new MailAddress(bl.GetFromConfig("MailAddress"));
             mail.Subject = "!הצעה לחופשה הבאה שלך";
             mail.Body = "mailBody";
@@ -89,7 +89,7 @@ namespace PLWPF.Order
             else
             {
                 MessageBox.Show("שליחת המייל נכשלה");
-                ord.Status = 0;
+                ord.status = 0;
                 bl.UpdateOrder(ord);
             }
 
@@ -102,14 +102,14 @@ namespace PLWPF.Order
             {
                 if (StatusComboBox.SelectedItem.ToString() == "טרם_טופל")
                 {
-                    ord.Status = 0;
+                    ord.status = 0;
                     bl.UpdateOrder(ord);
                     MessageBox.Show("ההזמנה עודכנה בהצלחה");
                 }
 
                 else if (StatusComboBox.SelectedItem.ToString() == "נשלח_מייל")
                 {
-                    ord.Status = 1;
+                    ord.status = 1;
                     worker.RunWorkerAsync();
                     bl.UpdateOrder(ord);
                     MessageBox.Show("סטטוס ההזמנה יעודכן ברגע שיישלח המייל");                   
@@ -118,14 +118,14 @@ namespace PLWPF.Order
 
                 else if (StatusComboBox.SelectedItem.ToString() == "נסגרה_מחוסר_הענות_של_הלקוח")
                 {
-                    ord.Status = 2;
+                    ord.status = 2;
                     bl.UpdateOrder(ord);
                     MessageBox.Show("ההזמנה עודכנה בהצלחה");
                 }
 
                 else if (StatusComboBox.SelectedItem.ToString() == "נסגרה_בהצלחה")
                 {
-                    ord.Status = 3;
+                    ord.status = 3;
                     bl.UpdateOrder(ord);
                     MessageBox.Show("ההזמנה עודכנה בהצלחה");
                 }

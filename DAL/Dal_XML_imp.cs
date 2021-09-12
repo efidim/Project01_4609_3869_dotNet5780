@@ -150,23 +150,23 @@ namespace DAL
             ConfigRoot.Save(ConfigPath);
 
             XElement GuestRequestKey = new XElement("GuestRequestKey", key);
-            XElement PrivateName = new XElement("PrivateName", guest.PrivateName);
-            XElement FamilyName = new XElement("FamilyName", guest.FamilyName);
-            XElement MailAddress = new XElement("MailAddress", guest.MailAddress);
+            XElement PrivateName = new XElement("PrivateName", guest.privateName);
+            XElement FamilyName = new XElement("FamilyName", guest.familyName);
+            XElement MailAddress = new XElement("MailAddress", guest.mailAddress);
             XElement Name = new XElement("Name", PrivateName, FamilyName);
-            XElement Status = new XElement("Status", guest.Status);
-            XElement RegistrationDate = new XElement("RegistrationDate", guest.RegistrationDate);
-            XElement EntryDate = new XElement("EntryDate", guest.EntryDate);
-            XElement ReleaseDate = new XElement("ReleaseDate", guest.ReleaseDate);
+            XElement Status = new XElement("Status", guest.status);
+            XElement RegistrationDate = new XElement("RegistrationDate", guest.registrationDate);
+            XElement EntryDate = new XElement("EntryDate", guest.entryDate);
+            XElement ReleaseDate = new XElement("ReleaseDate", guest.releaseDate);
             XElement Dates = new XElement("Dates", RegistrationDate, EntryDate, ReleaseDate);
-            XElement Area = new XElement("Area", guest.Area);
-            XElement Type = new XElement("Type", guest.Type);
-            XElement Adults = new XElement("Adults", guest.Adults);
-            XElement Children = new XElement("Children", guest.Children);
+            XElement Area = new XElement("Area", guest.area);
+            XElement Type = new XElement("Type", guest.type);
+            XElement Adults = new XElement("Adults", guest.adults);
+            XElement Children = new XElement("Children", guest.children);
             XElement Guests = new XElement("Guests", Adults, Children);
-            XElement Pool = new XElement("Pool", guest.Pool);
-            XElement Jacuzzi = new XElement("Jacuzzi", guest.Jacuzzi);
-            XElement ChildrenAttractions = new XElement("ChildrenAttractions", guest.ChildrenAttractions);
+            XElement Pool = new XElement("Pool", guest.pool);
+            XElement Jacuzzi = new XElement("Jacuzzi", guest.jacuzzi);
+            XElement ChildrenAttractions = new XElement("ChildrenAttractions", guest.childrenAttractions);
             XElement Attractions = new XElement("Attractions", ChildrenAttractions, Jacuzzi, Pool);
             XElement GuestRequest = new XElement("GuestRequest", GuestRequestKey, Name, MailAddress,
                 Status, Dates, Area, Type, Guests, Attractions);
@@ -187,7 +187,7 @@ namespace DAL
             }
 
             XElement requestElement = (from req in GuestRequestsRoot.Elements()
-                                       where int.Parse(req.Element("GuestRequestKey").Value) == guest.GuestRequestKey
+                                       where int.Parse(req.Element("GuestRequestKey").Value) == guest.guestRequestKey
                                        select req).FirstOrDefault();
 
             if (requestElement == null)
@@ -195,19 +195,19 @@ namespace DAL
                 AddGuestRequest(guest);
                 return;
             }
-            requestElement.Element("Name").Element("PrivateName").Value = guest.PrivateName;
-            requestElement.Element("Name").Element("FamilyName").Value = guest.FamilyName;
-            requestElement.Element("MailAddress").Value = guest.MailAddress;
-            requestElement.Element("Status").Value = guest.Status.ToString();
-            requestElement.Element("Dates").Element("EntryDate").Value = guest.EntryDate.ToString();
-            requestElement.Element("Dates").Element("ReleaseDate").Value = guest.ReleaseDate.ToString();
-            requestElement.Element("Area").Value = guest.Area;
-            requestElement.Element("Type").Value = guest.Type;
-            requestElement.Element("Guests").Element("Adults").Value = guest.Adults.ToString();
-            requestElement.Element("Guests").Element("Children").Value = guest.Children.ToString();
-            requestElement.Element("Attractions").Element("Pool").Value = guest.Pool.ToString();
-            requestElement.Element("Attractions").Element("Jacuzzi").Value = guest.Jacuzzi.ToString();
-            requestElement.Element("Attractions").Element("ChildrenAttractions").Value = guest.ChildrenAttractions.ToString();
+            requestElement.Element("Name").Element("PrivateName").Value = guest.privateName;
+            requestElement.Element("Name").Element("FamilyName").Value = guest.familyName;
+            requestElement.Element("MailAddress").Value = guest.mailAddress;
+            requestElement.Element("Status").Value = guest.status.ToString();
+            requestElement.Element("Dates").Element("EntryDate").Value = guest.entryDate.ToString();
+            requestElement.Element("Dates").Element("ReleaseDate").Value = guest.releaseDate.ToString();
+            requestElement.Element("Area").Value = guest.area;
+            requestElement.Element("Type").Value = guest.type;
+            requestElement.Element("Guests").Element("Adults").Value = guest.adults.ToString();
+            requestElement.Element("Guests").Element("Children").Value = guest.children.ToString();
+            requestElement.Element("Attractions").Element("Pool").Value = guest.pool.ToString();
+            requestElement.Element("Attractions").Element("Jacuzzi").Value = guest.jacuzzi.ToString();
+            requestElement.Element("Attractions").Element("ChildrenAttractions").Value = guest.childrenAttractions.ToString();
 
             GuestRequestsRoot.Save(GuestRequestsPath);
         }
@@ -234,21 +234,21 @@ namespace DAL
                      where int.Parse(req.Element("GuestRequestKey").Value) == keyRequest
                      select new GuestRequest()
                      {
-                         GuestRequestKey = int.Parse(req.Element("GuestRequestKey").Value),
-                         PrivateName = req.Element("Name").Element("PrivateName").Value,
-                         FamilyName = req.Element("Name").Element("FamilyName").Value,
-                         MailAddress = req.Element("MailAddress").Value,
-                         RegistrationDate = DateTime.Parse(req.Element("Dates").Element("RegistrationDate").Value),
-                         Status = bool.Parse(req.Element("Status").Value),
-                         EntryDate = DateTime.Parse(req.Element("Dates").Element("EntryDate").Value),
-                         ReleaseDate = DateTime.Parse(req.Element("Dates").Element("ReleaseDate").Value),
-                         Area = req.Element("Area").Value,
-                         Type = req.Element("Type").Value,
-                         Adults = int.Parse(req.Element("Guests").Element("Adults").Value),
-                         Children = int.Parse(req.Element("Guests").Element("Children").Value),
-                         Pool = int.Parse(req.Element("Attractions").Element("Pool").Value),
-                         Jacuzzi = int.Parse(req.Element("Attractions").Element("Jacuzzi").Value),
-                         ChildrenAttractions = int.Parse(req.Element("Attractions").Element("ChildrenAttractions").Value),
+                         guestRequestKey = int.Parse(req.Element("GuestRequestKey").Value),
+                         privateName = req.Element("Name").Element("PrivateName").Value,
+                         familyName = req.Element("Name").Element("FamilyName").Value,
+                         mailAddress = req.Element("MailAddress").Value,
+                         registrationDate = DateTime.Parse(req.Element("Dates").Element("RegistrationDate").Value),
+                         status = bool.Parse(req.Element("Status").Value),
+                         entryDate = DateTime.Parse(req.Element("Dates").Element("EntryDate").Value),
+                         releaseDate = DateTime.Parse(req.Element("Dates").Element("ReleaseDate").Value),
+                         area = req.Element("Area").Value,
+                         type = req.Element("Type").Value,
+                         adults = int.Parse(req.Element("Guests").Element("Adults").Value),
+                         children = int.Parse(req.Element("Guests").Element("Children").Value),
+                         pool = int.Parse(req.Element("Attractions").Element("Pool").Value),
+                         jacuzzi = int.Parse(req.Element("Attractions").Element("Jacuzzi").Value),
+                         childrenAttractions = int.Parse(req.Element("Attractions").Element("ChildrenAttractions").Value),
                      }).FirstOrDefault();
 
             if (guest == null)
@@ -309,21 +309,21 @@ namespace DAL
                 requests = (from req in GuestRequestsRoot.Elements()
                             select new GuestRequest()
                             {
-                                GuestRequestKey = int.Parse(req.Element("GuestRequestKey").Value),
-                                PrivateName = req.Element("Name").Element("PrivateName").Value,
-                                FamilyName = req.Element("Name").Element("FamilyName").Value,
-                                MailAddress = req.Element("MailAddress").Value,
-                                RegistrationDate = DateTime.Parse(req.Element("Dates").Element("RegistrationDate").Value),
-                                Status = bool.Parse(req.Element("Status").Value),
-                                EntryDate = DateTime.Parse(req.Element("Dates").Element("EntryDate").Value),
-                                ReleaseDate = DateTime.Parse(req.Element("Dates").Element("ReleaseDate").Value),
-                                Area = req.Element("Area").Value,
-                                Type = req.Element("Type").Value,
-                                Adults = int.Parse(req.Element("Guests").Element("Adults").Value),
-                                Children = int.Parse(req.Element("Guests").Element("Children").Value),
-                                Pool = int.Parse(req.Element("Attractions").Element("Pool").Value),
-                                Jacuzzi = int.Parse(req.Element("Attractions").Element("Jacuzzi").Value),
-                                ChildrenAttractions = int.Parse(req.Element("Attractions").Element("ChildrenAttractions").Value),
+                                guestRequestKey = int.Parse(req.Element("GuestRequestKey").Value),
+                                privateName = req.Element("Name").Element("PrivateName").Value,
+                                familyName = req.Element("Name").Element("FamilyName").Value,
+                                mailAddress = req.Element("MailAddress").Value,
+                                registrationDate = DateTime.Parse(req.Element("Dates").Element("RegistrationDate").Value),
+                                status = bool.Parse(req.Element("Status").Value),
+                                entryDate = DateTime.Parse(req.Element("Dates").Element("EntryDate").Value),
+                                releaseDate = DateTime.Parse(req.Element("Dates").Element("ReleaseDate").Value),
+                                area = req.Element("Area").Value,
+                                type = req.Element("Type").Value,
+                                adults = int.Parse(req.Element("Guests").Element("Adults").Value),
+                                children = int.Parse(req.Element("Guests").Element("Children").Value),
+                                pool = int.Parse(req.Element("Attractions").Element("Pool").Value),
+                                jacuzzi = int.Parse(req.Element("Attractions").Element("Jacuzzi").Value),
+                                childrenAttractions = int.Parse(req.Element("Attractions").Element("ChildrenAttractions").Value),
                             }).ToList();
             }
             catch
@@ -350,7 +350,7 @@ namespace DAL
 
             XElement host1;
             host1 = (from hos in HostingUnitsRoot.Elements()
-                     where hos.Element("HostingUnitName").Value == host.HostingUnitName
+                     where hos.Element("HostingUnitName").Value == host.hostingUnitName
                      select hos).FirstOrDefault();
             if (host1 != null)
             {
@@ -500,7 +500,7 @@ namespace DAL
             HostingUnit host = new HostingUnit();
             foreach (var item in HostUnits)
             {
-                if (item.HostingUnitName == hostingUnitName)
+                if (item.hostingUnitName == hostingUnitName)
                 { host = item.Clone(); break; }
 
             }
@@ -531,15 +531,15 @@ namespace DAL
             }
 
             XElement ord1 = (from or in OrdersRoot.Elements()
-                             where int.Parse(or.Element("HostingUnitKey").Value) == ord.HostingUnitKey &&
-                             int.Parse(or.Element("GuestRequestKey").Value) == ord.GuestRequestKey
+                             where int.Parse(or.Element("HostingUnitKey").Value) == ord.hostingUnitKey &&
+                             int.Parse(or.Element("GuestRequestKey").Value) == ord.guestRequestKey
                              select or).FirstOrDefault();
             if (ord1 != null)
             {
                 throw new KeyNotFoundException("הזמנה זו קיימת כבר במערכת");
             }
             int key = int.Parse(ConfigRoot.Element("orderKey").Value) + 1;
-            ord.OrderKey = key;
+            ord.orderKey = key;
             XElement orderKey = ConfigRoot;
             orderKey.Element("orderKey").Value = key.ToString();
             ConfigRoot.Save(ConfigPath);
@@ -569,7 +569,7 @@ namespace DAL
             }
 
             XElement ord1 = (from or in OrdersRoot.Elements()
-                             where int.Parse(or.Element("OrderKey").Value) == ord.OrderKey
+                             where int.Parse(or.Element("OrderKey").Value) == ord.orderKey
                              select or).FirstOrDefault();
             if (ord1 == null)
             {
@@ -578,7 +578,7 @@ namespace DAL
             }
 
             List<Order> temp = LoadFromXML<List<Order>>(OrdersPath);
-            temp.RemoveAll(x => x.OrderKey == ord.OrderKey);
+            temp.RemoveAll(x => x.orderKey == ord.orderKey);
             temp.Add(ord);
             saveToXML<List<Order>>(temp, OrdersPath);
         }
@@ -600,7 +600,7 @@ namespace DAL
             if (ord1 == null)
                 throw new KeyNotFoundException("שגיאה! לא קיימת במערכת הזמנה עם מפתח זה");
             List<Order> ord = LoadFromXML<List<Order>>(OrdersPath);
-            return ord.FirstOrDefault(x => x.OrderKey == orderKey);
+            return ord.FirstOrDefault(x => x.orderKey == orderKey);
         }
 
         public DateTime GetEntryDate(int GuestRequestKey)
@@ -678,8 +678,8 @@ namespace DAL
             Host host = new Host();
             foreach (var item in hostunits)
             {
-                if (item.Owner.HostKey == hostKey)
-                { host = item.Owner; break; }
+                if (item.owner.hostKey == hostKey)
+                { host = item.owner; break; }
 
             }
             return host.Clone();
@@ -689,12 +689,12 @@ namespace DAL
         {
             XElement host1;
             host1 = (from h in HostingUnitsRoot.Elements()
-                     where int.Parse(h.Element("Owner").Element("HostKey").Value) == host.HostKey
+                     where int.Parse(h.Element("Owner").Element("HostKey").Value) == host.hostKey
                      select h).FirstOrDefault();
             if (host1 == null)
-                throw new KeyNotFoundException(" לא קיים במערכת מארח שמספרו" + host.HostKey);
+                throw new KeyNotFoundException(" לא קיים במערכת מארח שמספרו" + host.hostKey);
             HostingUnit hos = new HostingUnit();
-            hos.Owner = host;
+            hos.owner = host;
             AddHostUnit(hos);
         }
 
@@ -717,11 +717,11 @@ namespace DAL
                 branches = (from br in BankBranchesRoot.Elements()
                             select new BankBranch()
                             {
-                                BankNumber = int.Parse(br.Element("קוד_בנק").Value),
-                                BankName = br.Element("שם_בנק").Value,
-                                BranchNumber = int.Parse(br.Element("קוד_סניף").Value),
-                                BranchAddress = br.Element("כתובת_ה-ATM").Value,
-                                BranchCity = br.Element("ישוב").Value,
+                                bankNumber = int.Parse(br.Element("קוד_בנק").Value),
+                                bankName = br.Element("שם_בנק").Value,
+                                branchNumber = int.Parse(br.Element("קוד_סניף").Value),
+                                branchAddress = br.Element("כתובת_ה-ATM").Value,
+                                branchCity = br.Element("ישוב").Value,
                             }).ToList();
                 return branches;
             }

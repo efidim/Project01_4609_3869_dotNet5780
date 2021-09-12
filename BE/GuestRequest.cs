@@ -8,64 +8,64 @@ namespace BE
 {
     public class GuestRequest:IEnumerable
     {
-        public int GuestRequestKey{get ; set;}
-        public string PrivateName{get ; set;}
-        public string FamilyName{get ; set;}
-        public string MailAddress { get; set; }
-        public bool Status{get ; set;}
-        public DateTime RegistrationDate{get ; set;}
-        public DateTime EntryDate{get ; set;}
-        public DateTime ReleaseDate{get ; set;}
-        public string Area{get ; set;}
-        public string Type{get ; set;}
-        public int Adults{get ; set;}
-        public int Children{get ; set;}
-        public int Pool{get ; set;}
-        public int Jacuzzi{get ; set;}
-        public int ChildrenAttractions{get ; set;}
+        public int guestRequestKey{get ; set;}
+        public string privateName{get ; set;}
+        public string familyName{get ; set;}
+        public string mailAddress { get; set; }
+        public bool status{get ; set;}
+        public DateTime registrationDate{get ; set;}
+        public DateTime entryDate{get ; set;}
+        public DateTime releaseDate{get ; set;}
+        public string area{get ; set;}
+        public string type{get ; set;}
+        public int adults{get ; set;}
+        public int children{get ; set;}
+        public int pool{get ; set;}
+        public int jacuzzi{get ; set;}
+        public int childrenAttractions{get ; set;}
 
         public override string ToString()
         {
-            string str = "Guest Request Key: " + GuestRequestKey +
-                "\n Private Name: " + PrivateName +
-                "\n Family Name: " + FamilyName +
-                "\n Mail Address: " + MailAddress;
+            string str = "Guest Request Key: " + guestRequestKey +
+                "\n Private Name: " + privateName +
+                "\n Family Name: " + familyName +
+                "\n Mail Address: " + mailAddress;
 
             string temp;
-            if (Status)
+            if (status)
                 temp = "Active";
             else
                 temp = "Inactive";
             str += "\n Status? " + temp +
-                "\n RegistrationDate: " + RegistrationDate +
-                "\n EntryDate: " + EntryDate +
-                "\n ReleaseDate: " + ReleaseDate +
-                "\n Area: " + Area +
-                "\n Type: " + Type +
-                "\n Adults: " + Adults +
-                "\n Children: " + Children;
+                "\n RegistrationDate: " + registrationDate +
+                "\n EntryDate: " + entryDate +
+                "\n ReleaseDate: " + releaseDate +
+                "\n Area: " + area +
+                "\n Type: " + type +
+                "\n Adults: " + adults +
+                "\n Children: " + children;
 
-            if (Pool == -1)
+            if (pool == -1)
                 temp = "Not interested";
-            else if (Pool == 0)
+            else if (pool == 0)
                 temp = "Possible";
-            else if (Pool == 1)
+            else if (pool == 1)
                 temp = "Necessary";
             str += "\n Pool? " + temp;
 
-            if (Jacuzzi == -1)
+            if (jacuzzi == -1)
                 temp = "Not interested";
-            else if (Jacuzzi == 0)
+            else if (jacuzzi == 0)
                 temp = "Possible";
-            else if (Jacuzzi == 1)
+            else if (jacuzzi == 1)
                 temp = "Necessary";
             str += "\n Jacuzzi? " + temp;
 
-            if (ChildrenAttractions == -1)
+            if (childrenAttractions == -1)
                 temp = "Not interested";
-            else if (ChildrenAttractions == 0)
+            else if (childrenAttractions == 0)
                 temp = "Possible";
-            else if (ChildrenAttractions == 1)
+            else if (childrenAttractions == 1)
                 temp = "Necessary";
 
             str += "\n Children Attractions: " + temp;
