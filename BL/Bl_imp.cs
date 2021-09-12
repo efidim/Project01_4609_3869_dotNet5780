@@ -12,7 +12,7 @@ namespace BL
 {
     public class BL_imp : IBL
     {
-        IDAL dal = FactoryDal.getdal();
+        IDAL dal = FactoryDAL.getDAL();
 
         public BL_imp()
         {
@@ -42,7 +42,7 @@ namespace BL
 
         public List<GuestRequest> GetAllRequests()
         {
-            return dal.GetAllGuests();
+            return dal.GetAllRequests();
         }
 
         /// <summary>

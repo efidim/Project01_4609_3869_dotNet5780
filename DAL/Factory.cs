@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class FactoryDal
+    public class FactoryDAL
     {
-        public static IDAL getdal()
+        public static IDAL getDAL()
         {
             return Dal_XML_imp.GetInstance();
         }
