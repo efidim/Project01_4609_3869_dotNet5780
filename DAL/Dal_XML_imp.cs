@@ -358,7 +358,7 @@ namespace DAL
             }
 
             int key = int.Parse(ConfigRoot.Element("unitKey").Value) + 1;
-            host.HostingUnitKey = key;
+            host.hostingUnitKey = key;
             XElement HostingUnitKey = ConfigRoot;
             HostingUnitKey.Element("unitKey").Value = key.ToString();
             ConfigRoot.Save(ConfigPath);
@@ -392,7 +392,7 @@ namespace DAL
             {
                 XElement host1;
                 host1 = (from hos in HostingUnitsRoot.Elements()
-                         where int.Parse(hos.Element("HostingUnitKey").Value) == host.HostingUnitKey
+                         where int.Parse(hos.Element("HostingUnitKey").Value) == host.hostingUnitKey
                          select hos).FirstOrDefault();
 
                 if (host1 == null)
@@ -425,7 +425,7 @@ namespace DAL
 
             XElement host1;
             host1 = (from hos in HostingUnitsRoot.Elements()
-                     where int.Parse(hos.Element("HostingUnitKey").Value) == host.HostingUnitKey
+                     where int.Parse(hos.Element("HostingUnitKey").Value) == host.hostingUnitKey
                      select hos).FirstOrDefault();
             if (host1 == null)
             {
@@ -434,7 +434,7 @@ namespace DAL
             }
 
             List<HostingUnit> temp = LoadFromXML<List<HostingUnit>>(HostingUnitsPath);
-            temp.RemoveAll(x => x.HostingUnitKey == host.HostingUnitKey);
+            temp.RemoveAll(x => x.hostingUnitKey == host.hostingUnitKey);
             temp.Add(host);
             saveToXML<List<HostingUnit>>(temp, HostingUnitsPath);
         }
@@ -465,7 +465,7 @@ namespace DAL
             HostingUnit host = new HostingUnit();
             foreach (var item in hostunits)
             {
-                if (item.HostingUnitKey == hostingUnitkey)
+                if (item.hostingUnitKey == hostingUnitkey)
                 { host = item.Clone(); break; }
 
             }

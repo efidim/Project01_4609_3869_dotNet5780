@@ -10,7 +10,7 @@ namespace BE
 {
     public class HostingUnit
     {
-        public int HostingUnitKey { get; set; }
+        public int hostingUnitKey { get; set; }
         public Host Owner { get; set; }
         public string HostingUnitName { get; set; }
         [XmlIgnore]
@@ -35,7 +35,7 @@ namespace BE
         public override string ToString()
         {
 
-            string str = "Hosting Unit Number:" + this.HostingUnitKey.ToString() +
+            string str = "Hosting Unit Number:" + this.hostingUnitKey.ToString() +
                 "\nHosting Unit Name: " + HostingUnitName +
                 "\nArea: " + Area +
                 "\nType: " + Type +

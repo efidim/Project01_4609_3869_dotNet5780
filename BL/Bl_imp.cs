@@ -111,7 +111,7 @@ namespace BL
         public void RemoveHostUnit(HostingUnit unit)
         {
             IEnumerable<Order> temp = GetAllOrders();
-            if (temp.Any(x => x.HostingUnitKey == unit.HostingUnitKey && x.Status >= 0 && x.Status < 2))
+            if (temp.Any(x => x.HostingUnitKey == unit.hostingUnitKey && x.Status >= 0 && x.Status < 2))
                 throw new Exception("Cannot Remove Hosting Unit while Order linked to this Unit is opened");
             dal.RemoveHostUnit(unit);
         }
@@ -136,7 +136,7 @@ namespace BL
             IEnumerable<Order> temp1 = GetAllOrders();
             foreach (var item in temp1)
             {
-                if (item.HostingUnitKey == unit.HostingUnitKey && item.Status > 0 && item.Status < 3)
+                if (item.HostingUnitKey == unit.hostingUnitKey && item.Status > 0 && item.Status < 3)
                     count++;
             }
             return count;

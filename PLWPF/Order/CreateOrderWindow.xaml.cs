@@ -64,7 +64,7 @@ namespace PLWPF.Order
             try
             {
                 GuestRequest reqTemp = requests.SelectedItem as GuestRequest;
-                order.HostingUnitKey = unit.HostingUnitKey;
+                order.HostingUnitKey = unit.hostingUnitKey;
                 order.GuestRequestKey = reqTemp.GuestRequestKey;
                 order.Status = 0;
                 order.CreateDate = DateTime.Today;
