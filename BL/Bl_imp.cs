@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
 using BE;
 using DAL;
@@ -458,11 +456,11 @@ namespace BL
         {
             switch (value.ToString())
             {
-                case "0"://אפשרי
+                case "0"://possible
                     return true;
-                case "1"://לא מעוניין
+                case "1"://not interested
                     return false;
-                case "2"://הכרחי
+                case "2"://mandatory
                     return true;
             }
             return false;

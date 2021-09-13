@@ -350,7 +350,7 @@ namespace DAL
 
             XElement host1;
             host1 = (from hos in hostingUnitsRoot.Elements()
-                     where hos.Element("HostingUnitName").Value == host.hostingUnitName
+                     where hos.Element("hostingUnitName").Value == host.hostingUnitName
                      select hos).FirstOrDefault();
             if (host1 != null)
             {
@@ -392,7 +392,7 @@ namespace DAL
             {
                 XElement host1;
                 host1 = (from hos in hostingUnitsRoot.Elements()
-                         where int.Parse(hos.Element("HostingUnitKey").Value) == host.hostingUnitKey
+                         where int.Parse(hos.Element("hostingUnitKey").Value) == host.hostingUnitKey
                          select hos).FirstOrDefault();
 
                 if (host1 == null)
@@ -425,7 +425,7 @@ namespace DAL
 
             XElement host1;
             host1 = (from hos in hostingUnitsRoot.Elements()
-                     where int.Parse(hos.Element("HostingUnitKey").Value) == host.hostingUnitKey
+                     where int.Parse(hos.Element("hostingUnitKey").Value) == host.hostingUnitKey
                      select hos).FirstOrDefault();
             if (host1 == null)
             {
@@ -457,7 +457,7 @@ namespace DAL
 
             XElement host1;
             host1 = (from hos in hostingUnitsRoot.Elements()
-                     where int.Parse(hos.Element("HostingUnitKey").Value) == hostingUnitkey
+                     where int.Parse(hos.Element("hostingUnitKey").Value) == hostingUnitkey
                      select hos).FirstOrDefault();
             if (host1 == null)
                 throw new KeyNotFoundException("Error! Host Unit with specific key not found");
@@ -492,7 +492,7 @@ namespace DAL
 
             XElement host1;
             host1 = (from hos in hostingUnitsRoot.Elements()
-                     where hos.Element("HostingUnitName").Value == hostingUnitName
+                     where hos.Element("hostingUnitName").Value == hostingUnitName
                      select hos).FirstOrDefault();
             if (host1 == null)
                 throw new KeyNotFoundException("Error! Host Unit with specific name not found");
@@ -569,7 +569,7 @@ namespace DAL
             }
 
             XElement ord1 = (from or in ordersRoot.Elements()
-                             where int.Parse(or.Element("OrderKey").Value) == ord.orderKey
+                             where int.Parse(or.Element("orderKey").Value) == ord.orderKey
                              select or).FirstOrDefault();
             if (ord1 == null)
             {
@@ -595,7 +595,7 @@ namespace DAL
             }
 
             XElement ord1 = (from or in ordersRoot.Elements()
-                             where int.Parse(or.Element("OrderKey").Value) == orderKey
+                             where int.Parse(or.Element("orderKey").Value) == orderKey
                              select or).FirstOrDefault();
             if (ord1 == null)
                 throw new KeyNotFoundException("Error! Order with specific key not found");
@@ -670,10 +670,10 @@ namespace DAL
         {
             XElement host1;
             host1 = (from hos in hostingUnitsRoot.Elements()
-                     where int.Parse(hos.Element("Owner").Element("HostKey").Value) == hostKey
+                     where int.Parse(hos.Element("owner").Element("hostKey").Value) == hostKey
                      select hos).FirstOrDefault();
             if (host1 == null)
-                throw new KeyNotFoundException("לא קיים במערכת מארח עם מפתח שמספרו" + hostKey);
+                throw new KeyNotFoundException("There is no host with id: " + hostKey);
             List<HostingUnit> hostunits = LoadFromXML<List<HostingUnit>>(hostingUnitsPath);
             Host host = new Host();
             foreach (var item in hostunits)
@@ -692,7 +692,7 @@ namespace DAL
                      where int.Parse(h.Element("Owner").Element("HostKey").Value) == host.hostKey
                      select h).FirstOrDefault();
             if (host1 == null)
-                throw new KeyNotFoundException(" לא קיים במערכת מארח שמספרו" + host.hostKey);
+                throw new KeyNotFoundException("There is no host with id: " + host.hostKey);
             HostingUnit hos = new HostingUnit();
             hos.owner = host;
             AddHostUnit(hos);

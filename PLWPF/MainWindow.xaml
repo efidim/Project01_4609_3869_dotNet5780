@@ -89,7 +89,7 @@
 
         </Grid>
         <Label Content="יוסף לברן" FontSize="20" HorizontalAlignment="Left" Margin="71,65,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label Content="אפרים דימנטמן"  FontSize="20" HorizontalAlignment="Left" Margin="44,28,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="אפי דימנטמן"  FontSize="20" HorizontalAlignment="Left" Margin="44,28,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
 
 
 

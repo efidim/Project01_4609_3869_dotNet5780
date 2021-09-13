@@ -46,21 +46,21 @@
                     <TabItem.Content>
                         <StackPanel Margin="88,0,71.2,-0.2" HorizontalAlignment="Center" Width="200" >
                             <Label Content=":שם היחידה"  Margin="0,3,3.4,3"  HorizontalContentAlignment="Center" />
-                            <TextBox x:Name="nameTextBox" HorizontalContentAlignment="Right" Margin="0"  Text="{Binding HostingUnitName}" />
+                            <TextBox x:Name="nameTextBox" HorizontalContentAlignment="Right" Margin="0"  Text="{Binding hostingUnitName}" />
 
                             <Label Content=":אזור" Grid.Column="1" Margin="3" Grid.Row="1" VerticalContentAlignment="Stretch" HorizontalAlignment="Right"/>
-                            <ComboBox x:Name="areaComboBox" Margin="0,3,3,3" HorizontalContentAlignment="Right" SelectedItem="{Binding Area}" HorizontalAlignment="Right" Width="72" RenderTransformOrigin="-0.385,0.409"/>
+                            <ComboBox x:Name="areaComboBox" Margin="0,3,3,3" HorizontalContentAlignment="Right" SelectedItem="{Binding area}" HorizontalAlignment="Right" Width="72" RenderTransformOrigin="-0.385,0.409"/>
 
                             <Label Content=":מס' מבוגרים מקסימלי" Grid.Column="1" Margin="3" Grid.Row="2" HorizontalContentAlignment="Right"/>
-                            <TextBox x:Name="adultsTextBox" Margin="0" Text="{Binding Adults, Mode=OneWayToSource}" HorizontalContentAlignment="Right"/>
+                            <TextBox x:Name="adultsTextBox" Margin="0" Text="{Binding adults, Mode=OneWayToSource}" HorizontalContentAlignment="Right"/>
 
                             <Label Content=":מס' ילדים מקסימלי" Grid.Column="1" Margin="3" Grid.Row="3" HorizontalAlignment="Right"/>
-                            <TextBox x:Name="childrenTextBox" HorizontalContentAlignment="Right" Margin="0" Text="{Binding Children, Mode=OneWayToSource}" />
+                            <TextBox x:Name="childrenTextBox" HorizontalContentAlignment="Right" Margin="0" Text="{Binding children, Mode=OneWayToSource}" />
 
                             <Label Content=":סוג" Grid.Column="1" Margin="3" Grid.Row="4" HorizontalAlignment="Right"/>
-                            <ComboBox x:Name="typeComboBox" HorizontalContentAlignment="Right" Grid.Column="0" Margin="0,3,3,3" Grid.Row="4" SelectedItem="{Binding Type}" HorizontalAlignment="Right" Width="69"/>
+                            <ComboBox x:Name="typeComboBox" HorizontalContentAlignment="Right" Grid.Column="0" Margin="0,3,3,3" Grid.Row="4" SelectedItem="{Binding type}" HorizontalAlignment="Right" Width="69"/>
                             <Label Content=":בריכה" Margin="0,-3,-0.4,0" RenderTransformOrigin="-12.479,-9.865"/>
-                            <CheckBox x:Name="poolCheckBox" HorizontalAlignment="Center" Margin="54,0,54.4,0" VerticalAlignment="Top" IsChecked="{Binding Pool}" RenderTransformOrigin="0.694,-0.485"/>
+                            <CheckBox x:Name="poolCheckBox" HorizontalAlignment="Center" Margin="54,0,54.4,0" VerticalAlignment="Top" IsChecked="{Binding pool}" RenderTransformOrigin="0.694,-0.485"/>
                             <Label Content=":ג'קוזי" Margin="0,3" HorizontalAlignment="Right" Width="52" RenderTransformOrigin="0.5,0.5">
                                 <Label.RenderTransform>
                                     <TransformGroup>
@@ -71,10 +71,10 @@
                                     </TransformGroup>
                                 </Label.RenderTransform>
                             </Label>
-                            <CheckBox x:Name="jacuzziCheckBox" HorizontalAlignment="Center" Margin="0" Grid.Row="6" VerticalAlignment="Top" IsChecked="{Binding Jacuzzi}"/>
+                            <CheckBox x:Name="jacuzziCheckBox" HorizontalAlignment="Center" Margin="0" Grid.Row="6" VerticalAlignment="Top" IsChecked="{Binding jacuzzi}"/>
 
                             <Label Content=":פעילות לילדים" Grid.Column="1" Margin="3" Grid.Row="7" HorizontalAlignment="Right"/>
-                            <CheckBox x:Name="attractionsCheckBox" Margin="0" VerticalAlignment="Top" IsChecked="{Binding ChildrenAttractions}"  HorizontalAlignment="Center" />
+                            <CheckBox x:Name="attractionsCheckBox" Margin="0" VerticalAlignment="Top" IsChecked="{Binding childrenAttractions}"  HorizontalAlignment="Center" />
                             <!--<Button Content="המשך" Height="25" Margin="368,0,0,0" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto" Panel.ZIndex="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="50" RenderTransformOrigin="0.36,1.17" Click="Button_Click"/>-->
                         </StackPanel>
                     </TabItem.Content>
@@ -83,19 +83,19 @@
                     <TabItem.Content>
                         <StackPanel Margin="94,45,94.2,95">
                             <Label Content=":שם פרטי"  Margin="0" HorizontalAlignment="Right" />
-                            <TextBox x:Name="privateNameTextBox" Grid.Column="0" Margin="0" Grid.Row="0" Text="{Binding Owner.PrivateName}" HorizontalContentAlignment="Right"/>
+                            <TextBox x:Name="privateNameTextBox" Grid.Column="0" Margin="0" Grid.Row="0" Text="{Binding owner.privateName}" HorizontalContentAlignment="Right"/>
 
                             <Label Content=":שם משפחה" Grid.Column="1" Margin="0" HorizontalAlignment="Right" Grid.Row="1"/>
-                            <TextBox x:Name="familyNameTextBox" Grid.Column="0" Margin="0" Grid.Row="1" Text="{Binding Owner.FamilyName}" HorizontalContentAlignment="Right" />
+                            <TextBox x:Name="familyNameTextBox" Grid.Column="0" Margin="0" Grid.Row="1" Text="{Binding owner.familyName}" HorizontalContentAlignment="Right" />
 
                             <Label Content=":ת-ז" Grid.Column="1" Margin="0" Grid.Row="2" HorizontalAlignment="Right"/>
-                            <TextBox x:Name="idTextBox" Margin="0" Text="{Binding Owner.HostKey, Mode=OneWayToSource}" VerticalAlignment="Center" HorizontalContentAlignment="Right"/>
+                            <TextBox x:Name="idTextBox" Margin="0" Text="{Binding owner.hostKey, Mode=OneWayToSource}" VerticalAlignment="Center" HorizontalContentAlignment="Right"/>
 
                             <Label Content=":מס' טלפון" Grid.Column="1" Margin="0" HorizontalAlignment="Right" Grid.Row="3" />
-                            <TextBox x:Name="phoneTextBox" Grid.Column="0" Margin="0" Grid.Row="3" Text="{Binding Owner.PhoneNumber}" HorizontalContentAlignment="Right"/>
+                            <TextBox x:Name="phoneTextBox" Grid.Column="0" Margin="0" Grid.Row="3" Text="{Binding owner.PhoneNumber}" HorizontalContentAlignment="Right"/>
 
                             <Label Content=":מייל" Grid.Column="1" Margin="0" HorizontalAlignment="Right" Grid.Row="4"/>
-                            <TextBox x:Name="mailTextBox" Margin="0"  Text="{Binding Owner.MailAddress}" HorizontalContentAlignment="Right" />
+                            <TextBox x:Name="mailTextBox" Margin="0"  Text="{Binding owner.mailAddress}" HorizontalContentAlignment="Right" />
                         </StackPanel>
                     </TabItem.Content>
                 </TabItem>
@@ -104,16 +104,16 @@
                         <StackPanel Margin="94,45,94.2,95" HorizontalAlignment="Center">
 
                             <Label Content=":מספר הבנק" Margin="0"/>
-                            <TextBox x:Name="bankNumTextBox" HorizontalContentAlignment="Right" Margin="0,0,0.2,0" Text="{Binding Owner.BankBranchDetails.BankNumber, Mode=OneWayToSource}" HorizontalAlignment="Center" Width="171"/>
+                            <TextBox x:Name="bankNumTextBox" HorizontalContentAlignment="Right" Margin="0,0,0.2,0" Text="{Binding owner.bankBranchDetails.bankNumber, Mode=OneWayToSource}" HorizontalAlignment="Center" Width="171"/>
 
                             <Label Content=":מספר הסניף" Grid.Column="1" Margin="0" Grid.Row="2"/>
-                            <TextBox x:Name="branchNumTextBox" HorizontalContentAlignment="Right" Margin="0" Text="{Binding Owner.BankBranchDetails.BranchNumber, Mode=OneWayToSource}" />
+                            <TextBox x:Name="branchNumTextBox" HorizontalContentAlignment="Right" Margin="0" Text="{Binding owner.bankBranchDetails.branchNumber, Mode=OneWayToSource}" />
 
                             <Label Content=":מספר חשבון" Grid.Column="1" Margin="0" Grid.Row="5"/>
-                            <TextBox x:Name="accountTextBox" HorizontalContentAlignment="Right" Margin="0" Text="{Binding Owner.BankAccountNumber, Mode=OneWayToSource}"/>
+                            <TextBox x:Name="accountTextBox" HorizontalContentAlignment="Right" Margin="0" Text="{Binding owner.bankAccountNumber, Mode=OneWayToSource}"/>
 
                             <Label Content=":אישור גבייה" Grid.Column="1" Margin="0" Grid.Row="6"/>
-                            <CheckBox x:Name="collectionCheckBox" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding Owner.CollectionClearance}" RenderTransformOrigin="-2.094,0.533" Height="23"/>
+                            <CheckBox x:Name="collectionCheckBox" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding owner.collectionClearance}" RenderTransformOrigin="-2.094,0.533" Height="23"/>
                             <Button Content="שלח פרטים"  Height="50" Margin="39,34,39.2,0" Click="Button_Click_1">
                                 <Button.Style>
                                     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle2}">
