@@ -10,4 +10,4 @@ The project was completed as part of the "Mini-project in .NET" at Lev Academic 
 
 Project Class Diagram:
 
-![alt text](https://github.com/Ylevran/dotNet_Project_vacation_management_system/blob/changes/UML.jpg?raw=true)
+![alt text](https://github.com/Ylevran/dotNet_Project_vacation_management_system/blob/master/UML.jpg?raw=true)
