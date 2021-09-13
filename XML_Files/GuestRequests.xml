@@ -1,28 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <GuestsRequests>
-  <GuestRequest>
-    <GuestRequestKey>10000016</GuestRequestKey>
-    <Name>
-      <PrivateName>יוסף</PrivateName>
-      <FamilyName>לברן</FamilyName>
-    </Name>
-    <MailAddress>yossef.levran@gmail.com</MailAddress>
-    <Status>False</Status>
-    <Dates>
-      <RegistrationDate>2021-09-12T21:25:22.237902+03:00</RegistrationDate>
-      <EntryDate>21/09/2021 0:00:00</EntryDate>
-      <ReleaseDate>23/09/2021 0:00:00</ReleaseDate>
-    </Dates>
-    <Area>צפון</Area>
-    <Type>צימר</Type>
-    <Guests>
-      <Adults>2</Adults>
-      <Children>2</Children>
-    </Guests>
-    <Attractions>
-      <ChildrenAttractions>0</ChildrenAttractions>
-      <Jacuzzi>0</Jacuzzi>
-      <Pool>0</Pool>
-    </Attractions>
-  </GuestRequest>
+ 
 </GuestsRequests>
