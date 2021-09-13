@@ -10,64 +10,64 @@ namespace BE
 {
     public class HostingUnit
     {
-        public int HostingUnitKey { get; set; }
-        public Host Owner { get; set; }
-        public string HostingUnitName { get; set; }
+        public int hostingUnitKey { get; set; }
+        public Host owner { get; set; }
+        public string hostingUnitName { get; set; }
         [XmlIgnore]
-        public bool[,] Diary = new bool[12, 31];
+        public bool[,] diary = new bool[12, 31];
         [XmlArray("Diary")]
         public bool[] BoardDto
         {
-            get { return Diary.Flatten(); }
-            set { Diary = value.Expand(12); }
+            get { return diary.Flatten(); }
+            set { diary = value.Expand(12); }
         }
 
-        public string Area { get; set; }
+        public string area { get; set; }
         public string subArea { get; set; }
-        public string Type { get; set; }
-        public int Adults { get; set; }
-        public int Children { get; set; }
-        public bool Pool { get; set; }
-        public bool Jacuzzi { get; set; }
-        public bool ChildrenAttractions { get; set; }
+        public string type { get; set; }
+        public int adults { get; set; }
+        public int children { get; set; }
+        public bool pool { get; set; }
+        public bool jacuzzi { get; set; }
+        public bool childrenAttractions { get; set; }
 
 
         public override string ToString()
         {
 
-            string str = "Hosting Unit Number:" + this.HostingUnitKey.ToString() +
-                "\nHosting Unit Name: " + HostingUnitName +
-                "\nArea: " + Area +
-                "\nType: " + Type +
-                "\nAdults: " + Adults +
-                "\nChildren: " + Children +
-                "\nPool: " + Pool +
-                "\nJacuzzi: " + Jacuzzi +
-                "\nChildrenAttractions: " + ChildrenAttractions +
-                "\nOwner:\n " + Owner +
+            string str = "Hosting Unit Number:" + this.hostingUnitKey.ToString() +
+                "\nHosting Unit Name: " + hostingUnitName +
+                "\nArea: " + area +
+                "\nType: " + type +
+                "\nAdults: " + adults +
+                "\nChildren: " + children +
+                "\nPool: " + pool +
+                "\nJacuzzi: " + jacuzzi +
+                "\nChildrenAttractions: " + childrenAttractions +
+                "\nOwner:\n " + owner +
                 "\nList of occupied dates:\n";
 
             DateTime current = DateTime.Today.AddMonths(-1);
             // intialization to the matrice first day
 
-            if (Diary[current.Month - 1, current.Day - 1]) // first day check
+            if (diary[current.Month - 1, current.Day - 1]) // first day check
                 str += current.Day + "/" + current.Month + "-";
 
             current = current.AddDays(1);
 
             for (; current < DateTime.Today.AddYears(1).AddMonths(-1).AddDays(-1); current = current.AddDays(1))
             {
-                if (Diary[current.Month - 1, current.Day - 1] &&
-                    !Diary[current.AddDays(-1).Month - 1, current.AddDays(-1).Day - 1])
+                if (diary[current.Month - 1, current.Day - 1] &&
+                    !diary[current.AddDays(-1).Month - 1, current.AddDays(-1).Day - 1])
                     str += current.Day + "/" + current.Month + "-";
 
-                if (Diary[current.Month - 1, current.Day - 1] &&
-                    !Diary[current.AddDays(-1).Month - 1, current.AddDays(1).Day - 1])
+                if (diary[current.Month - 1, current.Day - 1] &&
+                    !diary[current.AddDays(-1).Month - 1, current.AddDays(1).Day - 1])
                     str += current.Day + "/" + current.Month + "\n";
             }
 
             current = current.AddDays(1); // last day check
-            if (Diary[current.Month - 1, current.Day - 1])
+            if (diary[current.Month - 1, current.Day - 1])
                 str += current.Day + "/" + current.Month + "\n";
 
             return str;

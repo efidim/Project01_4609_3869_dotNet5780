@@ -13,82 +13,82 @@ namespace DAL
         public static GuestRequest Clone(this GuestRequest original)
             {
             GuestRequest target = new GuestRequest();
-            target.GuestRequestKey = original.GuestRequestKey;
-            target.PrivateName = original.PrivateName;
-            target.FamilyName = original.FamilyName;
-            target.MailAddress = original.MailAddress;
-            target.Status = original.Status;
-            target.RegistrationDate = original.RegistrationDate;
-            target.EntryDate = original.EntryDate;
-            target.ReleaseDate = original.ReleaseDate;
-            target.Area = original.Area;
-            target.Type = original.Type;
-            target.Adults = original.Adults;
-            target.Children = original.Children;
-            target.Pool = original.Pool;
-            target.Jacuzzi = original.Jacuzzi;
-            target.ChildrenAttractions = original.ChildrenAttractions;
+            target.guestRequestKey = original.guestRequestKey;
+            target.privateName = original.privateName;
+            target.familyName = original.familyName;
+            target.mailAddress = original.mailAddress;
+            target.status = original.status;
+            target.registrationDate = original.registrationDate;
+            target.entryDate = original.entryDate;
+            target.releaseDate = original.releaseDate;
+            target.area = original.area;
+            target.type = original.type;
+            target.adults = original.adults;
+            target.children = original.children;
+            target.pool = original.pool;
+            target.jacuzzi = original.jacuzzi;
+            target.childrenAttractions = original.childrenAttractions;
             
              return target;
         }
         public static HostingUnit Clone(this HostingUnit original)
         {
             HostingUnit target = new HostingUnit();
-            target.HostingUnitKey = original.HostingUnitKey;
-            target.Owner = original.Owner;
-            target.HostingUnitName = original.HostingUnitName;
+            target.hostingUnitKey = original.hostingUnitKey;
+            target.owner = original.owner;
+            target.hostingUnitName = original.hostingUnitName;
             for (int j = 0; j < 12; j++)
             {
                 for (int i = 0; i < 31; i++)
                 {
-                    target.Diary[j, i] = original.Diary[j, i];
+                    target.diary[j, i] = original.diary[j, i];
                 }
             }
-            target.Area = original.Area;
-            target.Type = original.Type;
-            target.Adults = original.Adults;
-            target.Children = original.Children;
-            target.Pool = original.Pool;
-            target.Jacuzzi = original.Jacuzzi;
-            target.ChildrenAttractions = original.ChildrenAttractions;
+            target.area = original.area;
+            target.type = original.type;
+            target.adults = original.adults;
+            target.children = original.children;
+            target.pool = original.pool;
+            target.jacuzzi = original.jacuzzi;
+            target.childrenAttractions = original.childrenAttractions;
 
             return target;
         }
         public static Order Clone(this Order original)
         {
             Order target = new Order();
-            target.HostingUnitKey = original.HostingUnitKey;
-            target.GuestRequestKey = original.GuestRequestKey;
-            target.OrderKey = original.OrderKey;
-            target.Status = original.Status;
-            target.CreateDate = original.CreateDate;
-            target.OrderDate = original.OrderDate;
-            target.CommissionPerDay = original.CommissionPerDay;
+            target.hostingUnitKey = original.hostingUnitKey;
+            target.guestRequestKey = original.guestRequestKey;
+            target.orderKey = original.orderKey;
+            target.status = original.status;
+            target.createDate = original.createDate;
+            target.orderDate = original.orderDate;
+            target.commissionPerDay = original.commissionPerDay;
 
             return target;
         }
         public static BankBranch Clone(this BankBranch original)
         {
             BankBranch target = new BankBranch();
-            target.BankNumber = original.BankNumber;
-            target.BankName = original.BankName;
-            target.BranchNumber = original.BranchNumber;
-            target.BranchAddress = original.BranchAddress;
-            target.BranchCity = original.BranchCity;          
+            target.bankNumber = original.bankNumber;
+            target.bankName = original.bankName;
+            target.branchNumber = original.branchNumber;
+            target.branchAddress = original.branchAddress;
+            target.branchCity = original.branchCity;          
 
             return target;
         }
         public static Host Clone(this Host original)
         {
             Host target = new Host();
-            target.HostKey = original.HostKey;
-            target.PrivateName = original.PrivateName;
-            target.FamilyName = original.FamilyName;
-            target.PhoneNumber = original.PhoneNumber;
-            target.MailAddress = original.MailAddress;
-            target.BankBranchDetails = original.BankBranchDetails;
-            target.BankAccountNumber = original.BankAccountNumber;
-            target.CollectionClearance = original.CollectionClearance;
+            target.hostKey = original.hostKey;
+            target.privateName = original.privateName;
+            target.familyName = original.familyName;
+            target.phoneNumber = original.phoneNumber;
+            target.mailAddress = original.mailAddress;
+            target.bankBranchDetails = original.bankBranchDetails;
+            target.bankAccountNumber = original.bankAccountNumber;
+            target.collectionClearance = original.collectionClearance;
 
             return target;
         }

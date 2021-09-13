@@ -1,4 +1,12 @@
 <?xml version="1.0"?>
 <ArrayOfOrder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-
+  <Order>
+    <hostingUnitKey>20000023</hostingUnitKey>
+    <guestRequestKey>10000016</guestRequestKey>
+    <orderKey>30000017</orderKey>
+    <status>1</status>
+    <createDate>2021-09-12T22:09:43.4546528+03:00</createDate>
+    <orderDate>2021-09-13T09:52:07.6363786+03:00</orderDate>
+    <commissionPerDay>10</commissionPerDay>
+  </Order>
 </ArrayOfOrder>

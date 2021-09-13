@@ -14,7 +14,7 @@ namespace DAL
         void AddGuestRequest(GuestRequest guest);
         void UpdateGuestRequest(GuestRequest guest);
         GuestRequest GetRequest(int keyRequest);
-        List<GuestRequest> GetAllGuests();
+        List<GuestRequest> GetAllRequests();
         #endregion
 
         #region HostingUnit   
@@ -31,7 +31,7 @@ namespace DAL
         int AddOrder(Order ord);
         void UpdateOrder(Order ord);
         Order GetOrder(int orderKey);
-        DateTime GetEntryDate(int GuestRequestKey);
+        DateTime GetEntry(int GuestRequestKey);
         DateTime GetRelease(int GuestRequestKey);
         List<Order> GetAllOrders();
         #endregion

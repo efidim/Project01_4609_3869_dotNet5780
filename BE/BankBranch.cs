@@ -8,19 +8,19 @@ namespace BE
 {
     public class BankBranch
     {
-        public int BankNumber { get; set; }
-        public string BankName { get; set; }
-        public int BranchNumber { get; set; }
-        public string BranchAddress { get; set; }
-        public string BranchCity { get; set; }
+        public int bankNumber { get; set; }
+        public string bankName { get; set; }
+        public int branchNumber { get; set; }
+        public string branchAddress { get; set; }
+        public string branchCity { get; set; }
 
         public override string ToString()
         {
-            string str = "Bank Number: " + BankNumber +
-                "\n Bank Name: " + BankName +
-                "\n Branch Number: " + BranchNumber +
-                "\n Branch Address: " + BranchAddress +
-                "\n Branch City: " + BranchCity;
+            string str = "Bank Number: " + bankNumber +
+                "\n Bank Name: " + bankName +
+                "\n Branch Number: " + branchNumber +
+                "\n Branch Address: " + branchAddress +
+                "\n Branch City: " + branchCity;
             return str;
         }
     }

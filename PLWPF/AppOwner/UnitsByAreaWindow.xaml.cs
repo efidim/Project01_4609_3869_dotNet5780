@@ -38,7 +38,7 @@ namespace PLWPF
             this.Left = (screenWidth / 2) - (windowWidth / 2);
             this.Top = (screenHeight / 2) - (windowHeight / 2);
 
-            bl = FactoryBl.getBl();           
+            bl = FactoryBL.getBL();           
             IEnumerable<IGrouping<string, HostingUnit>> unitsList = bl.UnitsByArea();
             
             jerusalem = new List<HostingUnit>();
@@ -80,7 +80,7 @@ namespace PLWPF
                 }
             }
 
-            this.areaComboBox.ItemsSource = Enum.GetValues(typeof(Enums.Area));
+            this.areaComboBox.ItemsSource = Enum.GetValues(typeof(Enums.area));
         }
 
         private void areaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

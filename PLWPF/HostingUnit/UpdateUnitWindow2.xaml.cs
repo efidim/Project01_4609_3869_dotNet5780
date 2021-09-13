@@ -37,24 +37,24 @@ namespace PLWPF
 
             unitToUpdate = unit;
             this.DataContext = unit;
-            bl = FactoryBl.getBl();
+            bl = FactoryBL.getBL();
 
 
-            this.areaComboBox.ItemsSource = Enum.GetValues(typeof(Enums.Area));
-            if (unitToUpdate.Area == "צפון")
+            this.areaComboBox.ItemsSource = Enum.GetValues(typeof(Enums.area));
+            if (unitToUpdate.area == "צפון")
                 this.areaComboBox.SelectedIndex = 0;
-            if (unitToUpdate.Area == "דרום")
+            if (unitToUpdate.area == "דרום")
                 this.areaComboBox.SelectedIndex = 1;
-            if (unitToUpdate.Area == "מרכז")
+            if (unitToUpdate.area == "מרכז")
                 this.areaComboBox.SelectedIndex = 2;
-            if (unitToUpdate.Area == "ירושלים")
+            if (unitToUpdate.area == "ירושלים")
                 this.areaComboBox.SelectedIndex = 3;
-            this.typeComboBox.ItemsSource = Enum.GetValues(typeof(Enums.HostingUnitType));
-            if (unitToUpdate.Type == "צימר")
+            this.typeComboBox.ItemsSource = Enum.GetValues(typeof(Enums.hostingUnitType));
+            if (unitToUpdate.type == "צימר")
                 this.typeComboBox.SelectedIndex = 0;
-            if (unitToUpdate.Type == "מלון")
+            if (unitToUpdate.type == "מלון")
                 this.typeComboBox.SelectedIndex = 1;
-            if (unitToUpdate.Type == "קמפינג")
+            if (unitToUpdate.type == "קמפינג")
                 this.typeComboBox.SelectedIndex = 2;
         }
 
@@ -119,9 +119,9 @@ namespace PLWPF
                     value = int.Parse(this.branchNumTextBox.Text);
                     value = int.Parse(this.accountTextBox.Text);
                     temp = CheckBranch(int.Parse(this.bankNumTextBox.Text), int.Parse(this.branchNumTextBox.Text));
-                    unitToUpdate.Owner.BankBranchDetails.BankName = temp.BankName;
-                    unitToUpdate.Owner.BankBranchDetails.BranchAddress = temp.BranchAddress;
-                    unitToUpdate.Owner.BankBranchDetails.BranchCity = temp.BranchCity;
+                    unitToUpdate.owner.bankBranchDetails.bankName = temp.bankName;
+                    unitToUpdate.owner.bankBranchDetails.branchAddress = temp.branchAddress;
+                    unitToUpdate.owner.bankBranchDetails.branchCity = temp.branchCity;
 
                 }
 

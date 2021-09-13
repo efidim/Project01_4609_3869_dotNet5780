@@ -10,32 +10,32 @@ namespace BE
 {
     public class Order 
     {
-        public int HostingUnitKey{ get; set; }
-        public int GuestRequestKey{ get; set; }
-        public int OrderKey{ get; set; }
-        public int Status{ get; set; }
-        public DateTime CreateDate{ get; set; }
-        public DateTime OrderDate{ get; set; }
-        public int CommissionPerDay{ get; set; }
+        public int hostingUnitKey{ get; set; }
+        public int guestRequestKey{ get; set; }
+        public int orderKey{ get; set; }
+        public int status{ get; set; }
+        public DateTime createDate{ get; set; }
+        public DateTime orderDate{ get; set; }
+        public int commissionPerDay{ get; set; }
 
         public override string ToString()
         {
-            string str = "Hosting Unit Key: " + HostingUnitKey +
-                "\nGuest Request Key: " + GuestRequestKey +
-                "\nOrder Key: " + OrderKey;
-            if (Status == 0)
+            string str = "Hosting Unit Key: " + hostingUnitKey +
+                "\nGuest Request Key: " + guestRequestKey +
+                "\nOrder Key: " + orderKey;
+            if (status == 0)
                 str += "\n Not yet addressed";
-            if (Status == 1)
+            if (status == 1)
                 str += "\nMail sent";
-            if (Status == 2)
+            if (status == 2)
                 str += "\nClosed due to customer unresponsiveness";
-            if (Status == 3)
+            if (status == 3)
                 str += "\nClosed with customer responsiveness";
-            if (Status == 4)
+            if (status == 4)
                 str += "\nClosed because expired date";
 
-            str += "Create Date: " + CreateDate +
-                "\nOrder Date: " + OrderDate;
+            str += "Create Date: " + createDate +
+                "\nOrder Date: " + orderDate;
 
             return str;
         }

@@ -31,7 +31,7 @@
                  HorizontalAlignment="Left"
                   Margin="261,173,0,0" 
                  TextWrapping="Wrap" 
-                 Text="{Binding Status, Converter={StaticResource IntToStringConverter}}"
+                 Text="{Binding status, Converter={StaticResource IntToStringConverter}}"
                  VerticalAlignment="Top" 
                  FontSize="18"
                  Width="270"

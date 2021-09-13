@@ -14,7 +14,7 @@ namespace BL
         void AddGuestRequest(GuestRequest guest);
         void UpdateGuestRequest(GuestRequest guest);
         GuestRequest GetRequest(int keyRequest);
-        List<GuestRequest> GetAllGuests();
+        List<GuestRequest> GetAllRequests();
         IEnumerable<IGrouping<string, GuestRequest>> RequestsByArea();
         IEnumerable<IGrouping<int, GuestRequest>> RequestsByGuests();
         IEnumerable<GuestRequest> RequestsByCondition(Func<GuestRequest, bool> method);

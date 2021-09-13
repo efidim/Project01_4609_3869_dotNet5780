@@ -1,18 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using BE;
 using BL;
 
@@ -25,7 +16,7 @@ namespace PLWPF
     {
         BE.GuestRequest guest;
         BL.IBL bl;
-        private System.Windows.Controls.Calendar MyCalendar;
+        private Calendar MyCalendar;
 
         public GuestRequestWindow()
         {
@@ -39,14 +30,14 @@ namespace PLWPF
 
             guest = new BE.GuestRequest();
             this.GuestRequestGrid.DataContext = guest;
-            bl = BL.FactoryBl.getBl();
+            bl = BL.FactoryBL.getBL();
             this.DataContext = guest;
 
-            this.areaComboBox.ItemsSource =Enum.GetValues(typeof(Enums.Area));
-            this.Type.ItemsSource = Enum.GetValues(typeof(Enums.HostingUnitType));
-            this.poolComboBox.ItemsSource = Enum.GetValues(typeof(Enums.Response));
-            this.jacuzziComboBox.ItemsSource = Enum.GetValues(typeof(Enums.Response));
-            this.attractionComboBox.ItemsSource = Enum.GetValues(typeof(Enums.Response));
+            this.areaComboBox.ItemsSource =Enum.GetValues(typeof(Enums.area));
+            this.Type.ItemsSource = Enum.GetValues(typeof(Enums.hostingUnitType));
+            this.poolComboBox.ItemsSource = Enum.GetValues(typeof(Enums.response));
+            this.jacuzziComboBox.ItemsSource = Enum.GetValues(typeof(Enums.response));
+            this.attractionComboBox.ItemsSource = Enum.GetValues(typeof(Enums.response));
 
             MyCalendar = CreateCalendar();
             vbCalendar.Child = null;
@@ -64,8 +55,8 @@ namespace PLWPF
         }
         private void addCurrentList(List<DateTime> tList)
         {
-            guest.EntryDate = tList.First();
-            guest.ReleaseDate = tList.Last();
+            guest.entryDate = tList.First();
+            guest.releaseDate = tList.Last();
         }
 
 
@@ -80,28 +71,28 @@ namespace PLWPF
                 addCurrentList(myList);
 
                 if (poolComboBox.SelectedItem.ToString() == "אפשרי")
-                    guest.Pool = 0;
+                    guest.pool = 0;
                 else if (poolComboBox.SelectedItem.ToString() == "לא_מעוניין")
-                    guest.Pool = 1;
+                    guest.pool = 1;
                 else if (poolComboBox.SelectedItem.ToString() == "הכרחי")
-                    guest.Pool = 2;
+                    guest.pool = 2;
 
                 if (jacuzziComboBox.SelectedItem.ToString() == "אפשרי")
-                    guest.Jacuzzi = 0;
+                    guest.jacuzzi = 0;
                 else if (jacuzziComboBox.SelectedItem.ToString() == "לא_מעוניין")
-                    guest.Jacuzzi = 1;
+                    guest.jacuzzi = 1;
                 else if (jacuzziComboBox.SelectedItem.ToString() == "הכרחי")
-                    guest.Jacuzzi = 2;
+                    guest.jacuzzi = 2;
 
                 if (attractionComboBox.SelectedItem.ToString() == "אפשרי")
-                    guest.ChildrenAttractions = 0;
+                    guest.childrenAttractions = 0;
                 else if (attractionComboBox.SelectedItem.ToString() == "לא_מעוניין")
-                    guest.ChildrenAttractions = 1;
+                    guest.childrenAttractions = 1;
                 else if (attractionComboBox.SelectedItem.ToString() == "הכרחי")
-                    guest.ChildrenAttractions = 2;
+                    guest.childrenAttractions = 2;
 
-                guest.RegistrationDate = DateTime.Now;
-                guest.Status = true;
+                guest.registrationDate = DateTime.Now;
+                guest.status = true;
 
                 int value;
                 try

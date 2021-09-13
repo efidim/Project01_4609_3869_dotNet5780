@@ -38,11 +38,11 @@
 
         <Label Content=":מייל" HorizontalAlignment="Left" Margin="184,60,0,0" VerticalAlignment="Top" Width="150"/>
 
-        <TextBox x:Name="PrivateName" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" HorizontalAlignment="Left"   Margin="538,66,0,0" TextWrapping="Wrap" Text="{Binding PrivateName}" VerticalAlignment="Top" Width="145" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="PrivateName" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" HorizontalAlignment="Left"   Margin="538,66,0,0" TextWrapping="Wrap" Text="{Binding privateName}" VerticalAlignment="Top" Width="145" Grid.ColumnSpan="2"/>
 
-        <TextBox x:Name="FamilyName" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" HorizontalAlignment="Left"  Margin="247,66,0,0" TextWrapping="Wrap" Text="{Binding FamilyName}" VerticalAlignment="Top" Width="145" />
+        <TextBox x:Name="FamilyName" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" HorizontalAlignment="Left"  Margin="247,66,0,0" TextWrapping="Wrap" Text="{Binding familyName}" VerticalAlignment="Top" Width="145" />
 
-        <TextBox x:Name="Mail" FontSize="15" HorizontalAlignment="Left"  Margin="13,66,0,0" TextWrapping="Wrap" Text="{Binding MailAddress}" VerticalAlignment="Top" Width="166"/>
+        <TextBox x:Name="Mail" FontSize="15" HorizontalAlignment="Left"  Margin="13,66,0,0" TextWrapping="Wrap" Text="{Binding mailAddress}" VerticalAlignment="Top" Width="166"/>
 
         <Label Content="מלא פרטי דרישת לקוח" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin="280,0,10.2,0" VerticalAlignment="Top" Width="269" FontSize="24" RenderTransformOrigin="0.5,0.5" FontWeight="Bold"/>
 
@@ -54,18 +54,18 @@
         <Label Content=":סוג" HorizontalAlignment="Left" Margin="454,379,0,0" VerticalAlignment="Top" Width="65"/>
 
         <ComboBox
-            SelectedItem="{Binding Area}" HorizontalContentAlignment="Right" HorizontalAlignment="Left" x:Name="areaComboBox"  Margin="552,389,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393" Grid.ColumnSpan="2"/>
+            SelectedItem="{Binding area}" HorizontalContentAlignment="Right" HorizontalAlignment="Left" x:Name="areaComboBox"  Margin="552,389,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393" Grid.ColumnSpan="2"/>
 
         <ComboBox
-          SelectedItem="{Binding Type}" HorizontalContentAlignment="Right" HorizontalAlignment="Left" x:Name="Type" Margin="301,389,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
+          SelectedItem="{Binding type}" HorizontalContentAlignment="Right" HorizontalAlignment="Left" x:Name="Type" Margin="301,389,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.507,0.393"/>
 
         <Label Content=":מספר מבוגרים"  HorizontalAlignment="Left" Margin="52.5,433,0,0" VerticalAlignment="Top" Width="150" Grid.Column="1"/>
 
         <Label Content=":מספר ילדים"  HorizontalAlignment="Left" Margin="301,433,0,0" VerticalAlignment="Top" Width="120"/>
 
-        <TextBox Text="{Binding Adults, Mode=OneWayToSource}" HorizontalContentAlignment="Right"  HorizontalAlignment="Left" x:Name="Adults" Margin="540,442,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="51" Grid.ColumnSpan="2"/>
+        <TextBox Text="{Binding adults, Mode=OneWayToSource}" HorizontalContentAlignment="Right"  HorizontalAlignment="Left" x:Name="Adults" Margin="540,442,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="51" Grid.ColumnSpan="2"/>
 
-        <TextBox Text="{Binding Children, Mode=OneWayToSource}" HorizontalContentAlignment="Right" HorizontalAlignment="Left" x:Name="Children" Margin="226,442,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="51"/>
+        <TextBox Text="{Binding children, Mode=OneWayToSource}" HorizontalContentAlignment="Right" HorizontalAlignment="Left" x:Name="Children" Margin="226,442,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="51"/>
 
         <Label Content=":בריכה" HorizontalAlignment="Left" Margin="124.5,496,0,0" VerticalAlignment="Top" Width="70" Grid.Column="1"/>
 
@@ -83,13 +83,13 @@
             <Button.Style>
                 <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle2}">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=PrivateName, Path=Text}" Value="">
+                        <DataTrigger Binding="{Binding ElementName=privateName, Path=Text}" Value="">
                             <Setter Property="Button.IsEnabled" Value="false"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=FamilyName, Path=Text}" Value="">
+                        <DataTrigger Binding="{Binding ElementName=familyName, Path=Text}" Value="">
                             <Setter Property="Button.IsEnabled" Value="false"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=Mail, Path=Text}" Value="">
+                        <DataTrigger Binding="{Binding ElementName=mail, Path=Text}" Value="">
                             <Setter Property="Button.IsEnabled" Value="false"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding ElementName=areaComboBox, Path=Visibility}" Value="Collapsed">
@@ -109,17 +109,17 @@
                         </DataTrigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding ElementName=Type, Path=Visibility}"
+                                <Condition Binding="{Binding ElementName=type, Path=Visibility}"
                                            Value="Visible" />
-                                <Condition Binding="{Binding ElementName=Type, Path=SelectedValue}"
+                                <Condition Binding="{Binding ElementName=type, Path=SelectedValue}"
                                            Value="{x:Null}" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Button.IsEnabled" Value="false" />
                         </MultiDataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=Adults, Path=Text}" Value="">
+                        <DataTrigger Binding="{Binding ElementName=adults, Path=Text}" Value="">
                             <Setter Property="Button.IsEnabled" Value="false"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=Children, Path=Text}" Value="">
+                        <DataTrigger Binding="{Binding ElementName=children, Path=Text}" Value="">
                             <Setter Property="Button.IsEnabled" Value="false"/>
                         </DataTrigger>
 
