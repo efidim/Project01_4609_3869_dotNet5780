@@ -6,7 +6,7 @@
 -	Multi-threads programming
 -	Data retrieval from XML files with LINQ queries 
 
-The project was completed as part of the "Mini-project in .NET" at Lev Academic Center (JCT) on 2020. Authors: Efi Dimentman & Yossef Levran. Grade: 100.
+The project was completed as part of the "Mini-project in .NET" at Lev Academic Center (JCT) on 2020. Authors:  Yossef Levran & Efi Dimentman. Grade: 100.
 
 Project Class Diagram:
 
